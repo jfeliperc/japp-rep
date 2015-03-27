@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects/>
+ <used-by-projects/>
+ <paths>
+  <path value="/japp/WebContent/resources/demo">
+   <libraries>
+    <library class="composite">
+     <id class="model-object" path="FileSystems/WEB-ROOT/resources/demo" project="japp"/>
+     <attributes>
+      <entry name="uri">
+       <value-info value="http://java.sun.com/jsf/composite/demo"/>
+      </entry>
+     </attributes>
+     <component class="composite" path="/japp/WebContent/resources/demo/input.xhtml">
+      <id class="model-object" path="/input.xhtml" project="japp"/>
+      <attributes>
+       <entry name="component-type"/>
+       <entry name="description"/>
+       <entry name="bodycontent"/>
+       <entry name="component-class"/>
+       <entry name="name">
+        <value-info value="input"/>
+       </entry>
+      </attributes>
+      <attribute class="composite">
+       <id class="model-object" path="/input.xhtml/Interface/value" project="japp"/>
+      </attribute>
+      <attribute class="composite">
+       <id class="model-object" path="/input.xhtml/Interface/action" project="japp"/>
+      </attribute>
+      <attribute class="composite">
+       <id class="model-object"
+        path="/input.xhtml/Interface/submitlabel" project="japp"/>
+      </attribute>
+      <attribute class="composite">
+       <id class="model-object" path="/input.xhtml/Interface/label" project="japp"/>
+      </attribute>
+     </component>
+    </library>
+   </libraries>
+  </path>
+  <path value="/japp/WebContent/WEB-INF/faces-config.xml">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/WEB-INF/faces-config.xml" project="japp"/>
+    </library>
+   </libraries>
+  </path>
+ </paths>
+ <validation>
+  <core validator-id="jsf-verification">
+   <linked-resource declaration="true" name="%1;%2;%3;%4;" path="%0"/>
+  </core>
+  <core validator-id="jboss.jsf.core">
+   <linked-resource name="%6;%7;%8;" path="%5"/>
+   <linked-resource name="%10;" path="%9"/>
+  </core>
+  <el>
+   <linked-el length="23" name="%11" offset="754" path="%9"/>
+   <linked-el length="17" name="%12" offset="709" path="%9"/>
+   <linked-el length="41" name="%12" offset="513" path="%13"/>
+   <linked-el length="17" name="%14" offset="709" path="%9"/>
+   <linked-el length="41" name="%14" offset="513" path="%13"/>
+   <linked-el length="15" name="%15" offset="732" path="%9"/>
+   <linked-el length="41" name="%15" offset="513" path="%13"/>
+   <linked-el length="15" name="%16" offset="732" path="%9"/>
+   <linked-el length="41" name="%16" offset="513" path="%13"/>
+   <linked-el length="20" name="%5" offset="655" path="%5"/>
+   <linked-el length="20" name="%5" offset="703" path="%5"/>
+   <linked-el length="26" name="%5" offset="783" path="%5"/>
+   <linked-el length="21" name="%5" offset="756" path="%5"/>
+   <linked-el length="23" name="%17" offset="754" path="%9"/>
+  </el>
+ </validation>
+ <aliases>
+  <alias path="http://java.sun.com/jsf/composite/demo:input" value="%10"/>
+  <alias path="/japp/JavaSource/resources.properties" value="%12"/>
+  <alias path="/japp/WebContent/WEB-INF/faces-config.xml" value="%0"/>
+  <alias path="http://java.sun.com/jsf/composite:implementation" value="%8"/>
+  <alias path="/japp/WebContent/pages/inputname.xhtml" value="%9"/>
+  <alias path="\japp\WebContent\pages\inputname.xhtml" value="%3"/>
+  <alias path="\japp\WebContent\pages\greeting.xhtml" value="%4"/>
+  <alias path="/pages/greeting.xhtml" value="%1"/>
+  <alias path="baseMb" value="%11"/>
+  <alias path="msgs" value="%14"/>
+  <alias path="user.name" value="%15"/>
+  <alias path="http://java.sun.com/jsf/composite:interface" value="%6"/>
+  <alias path="/pages/inputname.xhtml" value="%2"/>
+  <alias path="http://java.sun.com/jsf/composite:attribute" value="%7"/>
+  <alias path="/japp/WebContent/pages/greeting.xhtml" value="%13"/>
+  <alias path="user" value="%16"/>
+  <alias path="/japp/WebContent/resources/demo/input.xhtml" value="%5"/>
+  <alias path="/japp/JavaSource/com/module/faces/BaseMb.java" value="%17"/>
+ </aliases>
+ <includes/>
+ <uris>
+  <uri value="http://java.sun.com/jsf/html">
+   <prefix>h</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/composite">
+   <prefix>composite</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/core">
+   <prefix>f</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/composite/demo">
+   <prefix>ez</prefix>
+  </uri>
+ </uris>
+</kb-project>
