@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  
+<!-- 
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+ -->	
+	<persistence-unit name="japp" transaction-type="JTA">
+		
+		<!-- provider>org.hibernate.jpa.HibernatePersistenceProvider</provider -->
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
+		<jta-data-source>java:app/japp/jappDS</jta-data-source>
+		
+		<class>com.module.jpa.model.Acesso</class>
+		<class>com.module.jpa.model.Atividade</class>
+		<class>com.module.jpa.model.AtividadeServico</class>
+		<class>com.module.jpa.model.Contato</class>
+		<class>com.module.jpa.model.Empresa</class>
+		<class>com.module.jpa.model.Endereco</class>
+		<class>com.module.jpa.model.Estoque</class>
+		<class>com.module.jpa.model.Orcamento</class>
+		<class>com.module.jpa.model.Pedido</class>
+		<class>com.module.jpa.model.PedidoItem</class>
+		<class>com.module.jpa.model.Pessoa</class>
+		<class>com.module.jpa.model.Produto</class>
+		<class>com.module.jpa.model.Servico</class>
+		<class>com.module.jpa.model.TipoAtividade</class>
+		<class>com.module.jpa.model.TipoPessoa</class>
+		<class>com.module.jpa.model.TipoProduto</class>
+		<class>com.module.jpa.model.Usuario</class>
+		<class>com.module.jpa.model.ValorProduto</class>
+		
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />  
+            <property name="hibernate.hbm2ddl.auto" value="update" />  
+            <property name="hibernate.show_sql" value="true" />  
+            <property name="hibernate.format_sql" value="true" />  
+            <property name="hibernate.archive.autodetection" value="class" />
+            
+		</properties>
+		
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  
+	<persistence-unit name="japp" transaction-type="RESOURCE_LOCAL">
+		
+		<!-- provider>org.hibernate.jpa.HibernatePersistenceProvider</provider -->
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
+		<non-jta-data-source>java:app/japp/jappDS</non-jta-data-source>
+		
+		<class>com.module.jpa.model.Acesso</class>
+		<class>com.module.jpa.model.Atividade</class>
+		<class>com.module.jpa.model.AtividadeServico</class>
+		<class>com.module.jpa.model.Contato</class>
+		<class>com.module.jpa.model.Empresa</class>
+		<class>com.module.jpa.model.Endereco</class>
+		<class>com.module.jpa.model.Estoque</class>
+		<class>com.module.jpa.model.Orcamento</class>
+		<class>com.module.jpa.model.Pedido</class>
+		<class>com.module.jpa.model.PedidoItem</class>
+		<class>com.module.jpa.model.Pessoa</class>
+		<class>com.module.jpa.model.Produto</class>
+		<class>com.module.jpa.model.Servico</class>
+		<class>com.module.jpa.model.TipoAtividade</class>
+		<class>com.module.jpa.model.TipoPessoa</class>
+		<class>com.module.jpa.model.TipoProduto</class>
+		<class>com.module.jpa.model.Usuario</class>
+		<class>com.module.jpa.model.ValorProduto</class>
+		
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/japp"/>
+			<property name="javax.persistence.jdbc.user" value="root"/>
+			<property name="javax.persistence.jdbc.password" value=""/>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>			
+			
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />  
+            <property name="hibernate.hbm2ddl.auto" value="update" />  
+            <property name="hibernate.show_sql" value="true" />  
+            <property name="hibernate.format_sql" value="true" />  
+            <property name="hibernate.archive.autodetection" value="class" />
+            <property name="hibernate.connection.autocommit" value="true"/> 
+            <!-- property name="hibernate.transaction.factory_class" value="org.hibernate.transaction.JTATransactionFactory"/ -->            
+            <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.JBossTransactionManagerLookup"/>
+			<property name="hibernate.jta.UserTransaction" value="javax.transaction.UserTransaction"/>
+            
+      		<!-- property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" / -->
+		</properties>
+		
+	</persistence-unit>
+</persistence>
