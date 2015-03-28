@@ -37,7 +37,7 @@
      <user>root</user>
      <password></password>
      <!-- For JBoss AS 7.1.1 must be false. For JBoss AS 7.1.2/7.1.3 (EAP 6.0.0/6.0.1) must be true -->
-     <transactional>false</transactional>
+     <transactional>true</transactional>
      <max-pool-size>10</max-pool-size>
      <min-pool-size>5</min-pool-size>
      <max-statements>0</max-statements>
