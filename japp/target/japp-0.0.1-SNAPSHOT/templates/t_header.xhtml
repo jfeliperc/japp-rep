@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+	<nav>
+	    <div id="header" class="navbar-default navbar-static-top">
+	        <div id="j_idt10" class="ui-panel ui-widget ui-widget-content ui-corner-all" data-widget="widget_j_idt10">
+	            <div id="j_idt10_content" class="ui-panel-content ui-widget-content">
+	                <table>
+	                    <tbody>
+	                    <tr>
+	                        <td style="width: 20%; padding-left: 20px;s" >
+	                            <img src="../css/img/logogercook.png" alt="" width="120px;" height="80px;" />
+	                        </td> 
+	                        <td style="width: 100%"></td>
+	                        <td style="width: 30%; height: 90%; vertical-align: bottom; text-align: right">
+	                            <h:form>
+	                                <h:commandButton action="#{loginBean.executarLogout()}" value="Sair" class="btn btn-default "/>
+	                            </h:form>
+	                        </td>
+	                    </tr>            
+	                    </tbody>
+	                </table>
+	            </div>
+	        </div>    
+	    </div>
+	</nav>    
+
+</ui:composition>

@@ -1,0 +1,64 @@
+<ui:composition template="../templates/t_base.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a4j="http://richfaces.org/a4j" 
+    xmlns:rich="http://richfaces.org/rich">
+
+    <ui:define name="conteudo">
+    	<rich:panel header="Solicitação cadastro" style="width:98%; height: 95%; ">
+	      	<div style="padding-left: 10px">
+		      	
+		      	<div class="row">
+				  	<div class="col-md-3">
+						<div class="form-group form-group-sm">
+						  <div class="col-xs-5">
+						  	<label for="exampleInputEmail1">Login</label>
+						  	<h:inputText value="" class="form-control input-sm" id="cInpLogin"/>
+						  </div>
+						</div>
+					</div>
+				  	<div class="col-md-4">
+						<div class="form-group form-group-sm">
+						  <div class="col-xs-8">
+						  	<label for="exampleInputEmail1">Nome Completo</label>
+						  	<h:inputText value="" class="form-control input-sm" id="cInpNome"/>
+						  </div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+				  	<div class="col-md-3">
+						<div class="form-group form-group-sm">
+						  <div class="col-xs-5">
+						  	<label for="exampleInputEmail1">Data Nascimento</label>
+						  	<h:inputText value="" class="form-control input-sm" id="cInpDatNasc"/>
+						  </div>
+						</div>
+					</div>
+				  	<div class="col-md-4">
+						<div class="form-group form-group-sm">
+						  <div class="col-xs-5">
+							  <label for="exampleInputEmail1">CPF</label>
+							  <h:inputText value="" class="form-control input-sm" id="cInpCpf"/>
+						  </div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<br/><br/>
+				<div class="row">
+				  <h:commandButton action="c_pessoa" value="Enviar Solicitação de Cadastro" class="btn btn-default "/>
+				</div>
+				
+			</div>	
+	    </rich:panel>
+	    
+    </ui:define>
+    
+</ui:composition>
+
+
+    
