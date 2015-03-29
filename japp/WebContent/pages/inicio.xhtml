@@ -8,12 +8,15 @@
 
 
     <ui:define name="conteudo">
-    	<rich:panel header="" style="width:100%; height: 95%">
-	      <ul>
-	        <li>RichFaces is a component library for JSF</li>
-	        <li>easily integrating AJAX capabilities.</li>
-	     </ul>
-	    </rich:panel>
+    	<h:form>
+	    	<rich:panel header="" style="width:100%; height: 95%">
+		      <ul>
+		        <li>Página inicial</li>
+		        <li>-----</li>
+		        <li><h:commandButton action="#{produtoMb.testeEjb()}" value="Cadastrar" class="btn btn-default "/></li>
+		     </ul>
+		    </rich:panel>
+	    </h:form>
     </ui:define>
     
 </ui:composition>

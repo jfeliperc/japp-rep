@@ -7,55 +7,46 @@
     xmlns:rich="http://richfaces.org/rich">
 
     <ui:define name="conteudo">
-    	<rich:panel header="Solicitação cadastro" style="width:98%; height: 95%; ">
-	      	<div style="padding-left: 10px">
-		      	
-		      	<div class="row">
-				  	<div class="col-md-3">
-						<div class="form-group form-group-sm">
-						  <div class="col-xs-5">
-						  	<label for="exampleInputEmail1">Login</label>
-						  	<h:inputText value="" class="form-control input-sm" id="cInpLogin"/>
-						  </div>
-						</div>
+    	<h:form>
+	    	<rich:panel header="Solicitação cadastro" style="width:98%; height: 95%; ">
+		      	<div style="padding-left: 10px">
+			      	
+			      	<div class="row">
+					  	<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Login</label></div>	
+						<div class="col-sm-3"><h:inputText value="#{pessoaMb.usuario.login}" id="cInpLogin"/></div>
+					  	<div class="col-sm-1"><label for="exampleInputEmail1">Nome Completo</label></div>	
+						<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.nomecompleto}" id="cInpNome" size="100"/></div>
 					</div>
-				  	<div class="col-md-4">
-						<div class="form-group form-group-sm">
-						  <div class="col-xs-8">
-						  	<label for="exampleInputEmail1">Nome Completo</label>
-						  	<h:inputText value="" class="form-control input-sm" id="cInpNome"/>
-						  </div>
-						</div>
+					<br/>
+					<div class="row">
+						<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Data Nascimento</label></div>	
+						<div class="col-sm-3"><rich:calendar value="#{pessoaMb.pessoa.datanascimento}" id="cInpDatNasc" /></div>
+					  	<div class="col-sm-1"><label for="exampleInputEmail1">CPF</label></div>	
+						<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.docprincipal}" id="cInpCpf" size="50"/></div>
 					</div>
-				</div>
-				<div class="row">
-				  	<div class="col-md-3">
-						<div class="form-group form-group-sm">
-						  <div class="col-xs-5">
-						  	<label for="exampleInputEmail1">Data Nascimento</label>
-						  	<h:inputText value="" class="form-control input-sm" id="cInpDatNasc"/>
-						  </div>
+					<br/>
+					<div class="row">
+						<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Tipo Documento</label></div>	
+						<div class="col-sm-3">
+							<h:selectOneMenu value="#{pessoaMb.pessoa.tipodocumento}" style="width:150px">
+								<f:selectItem itemLabel="RG" itemValue="RG"/>
+								<f:selectItem itemLabel="Habilitacao" itemValue="CH"/>
+								<f:selectItem itemLabel="Passaporte" itemValue="PS"/>
+								<f:selectItem itemLabel="Titulo Eleitor" itemValue="TE"/>
+							</h:selectOneMenu>
 						</div>
+					  	<div class="col-sm-1"><label for="exampleInputEmail1">Documento</label></div>	
+						<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.documento}" id="cInpDocumento" size="50"/></div>
 					</div>
-				  	<div class="col-md-4">
-						<div class="form-group form-group-sm">
-						  <div class="col-xs-5">
-							  <label for="exampleInputEmail1">CPF</label>
-							  <h:inputText value="" class="form-control input-sm" id="cInpCpf"/>
-						  </div>
-						</div>
+					
+					<br/><br/>
+					<div class="row">
+					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Enviar Solicitação de Cadastro" class="btn btn-default "/>
 					</div>
-				</div>
-				
-				
-				<br/><br/>
-				<div class="row">
-				  <h:commandButton action="c_pessoa" value="Enviar Solicitação de Cadastro" class="btn btn-default "/>
-				</div>
-				
-			</div>	
-	    </rich:panel>
-	    
+					
+				</div>	
+		    </rich:panel>
+	    </h:form>
     </ui:define>
     
 </ui:composition>

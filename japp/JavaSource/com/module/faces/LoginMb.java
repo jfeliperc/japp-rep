@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 
 @ManagedBean
 @SessionScoped
-public class LoginMb {
+public class LoginMb extends BaseMb{
 
 	private String login;
 	private String pass;
@@ -22,7 +22,7 @@ public class LoginMb {
 //        	return "inicio";
 //        }
         
-		return "login";
+		return "inicio";
 	}
 	
 	public String executarLogout(){
