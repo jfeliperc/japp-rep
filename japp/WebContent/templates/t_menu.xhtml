@@ -5,14 +5,16 @@
     xmlns:a4j="http://richfaces.org/a4j" 
     xmlns:rich="http://richfaces.org/rich">
  
-    <h:form>  
+    <h:form id="formMenu">  
         <rich:toolbar height="26px">
             <rich:dropDownMenu mode="ajax">
                 <f:facet name="label">
                     <h:outputText value="Administração" />
                 </f:facet>
-                <rich:menuItem label="Usuário" action="b_pessoa" />
-                <rich:menuItem label="Empresa" action="c_empresa" />
+                <rich:menuItem submitMode="client" label="Usuário" action="b_pessoa" />
+                <rich:menuItem submitMode="client" label="Empresa" action="c_empresa" />
+                <rich:menuSeparator id="menuSeparator11" />
+                <rich:menuItem label="Sair" action="#{loginMb.executarLogout()}" />
             </rich:dropDownMenu>
             
             <rich:dropDownMenu mode="ajax">
@@ -40,6 +42,7 @@
                     <h:outputText value="Receitas" />
                 </rich:menuItem>
             </rich:dropDownMenu>
+            
         </rich:toolbar>
     </h:form>
  

@@ -1,5 +1,6 @@
 package com.module.faces;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -28,6 +29,7 @@ public class PessoaMb extends BaseMb{
 		super();
 		this.usuario = new Usuario();
 		this.pessoa = new Pessoa();
+		this.listaUsuarios = new ArrayList<Usuario>();
 	}
 
 	public String solicitarCadastroPessoa(){

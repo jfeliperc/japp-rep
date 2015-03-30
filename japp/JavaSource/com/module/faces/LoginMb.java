@@ -49,6 +49,10 @@ public class LoginMb extends BaseMb{
         session.setAttribute("AUTHENTICATED", null);
 		return "login";
 	}
+	
+	public String encaminharSolicitaCadastro(){
+		return "c_pessoa";
+	}
 
 	public String getLogin() {
 		return login;

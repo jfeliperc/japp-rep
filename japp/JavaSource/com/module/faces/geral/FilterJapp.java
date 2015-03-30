@@ -44,13 +44,13 @@ public class FilterJapp implements Filter {
         // named AUTHENTICATED. If the attribute is not exists redirect
         // user to the login page.
         //
-        if (!request.getRequestURI().endsWith("login.jsf") &&
-        		!request.getRequestURI().endsWith(".css") && 
-        		!request.getRequestURI().endsWith(".ecss") &&
-        		request.getRequestURI().endsWith(".jsf") &&
-                request.getSession().getAttribute("AUTHENTICATED") == null) {
-            response.sendRedirect(request.getContextPath() + "/pages/login.jsf");
-        }
+//        if (//!request.getRequestURI().endsWith("login.jsf") &&
+//        		!request.getRequestURI().endsWith(".css") && 
+//        		!request.getRequestURI().endsWith(".ecss") &&
+//        		(request.getRequestURI().endsWith(".jsf") || request.getRequestURI().endsWith(".xhtml")) &&
+//                request.getSession().getAttribute("AUTHENTICATED") == null) {
+//            response.sendRedirect(request.getContextPath() + "/pages/login.xhtml");
+//        }
 		chain.doFilter(request, response);
 
 	}
