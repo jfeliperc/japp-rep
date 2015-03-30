@@ -154,15 +154,6 @@ CREATE TABLE IF NOT EXISTS `japp`.`atividade_servico` (
 ENGINE = INNODB;
 
 -- -----------------------------------------------------
--- Table `japp`.`tipo_pessoa`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `japp`.`tipo_pessoa` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = INNODB;
-
--- -----------------------------------------------------
 -- Table `japp`.`pessoa`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `japp`.`pessoa` (
@@ -175,38 +166,34 @@ CREATE TABLE IF NOT EXISTS `japp`.`pessoa` (
   `tipodocprincipal` VARCHAR(10) NULL,
   `documento` VARCHAR(45) NULL,
   `tipodocumento` VARCHAR(10) NULL,
-  `tipo_pessoa_id` INT NOT NULL,
+  `tipo_pessoa`  VARCHAR(3) NOT NULL,  
+  `login` VARCHAR(45) NULL,
+  `pass` VARCHAR(45) NULL,
+  `validade_login` DATETIME NULL,
+  `tipo_usuario` VARCHAR(1) NOT NULL,
+  `empresa_id` INT NULL, 
+  `dataultimoacesso` DATETIME NULL, 
   `datainclusao` DATETIME NULL,
   `dataalteracao` DATETIME NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_pessoa_tipo_pessoal_idx` (`tipo_pessoa_id` ASC),
-  CONSTRAINT `fk_pessoa_tipo_pessoa1`
-    FOREIGN KEY (`tipo_pessoa_id`)
-    REFERENCES `japp`.`tipo_pessoa` (`id`)
+  CONSTRAINT `fk_empresa_pessoa`
+    FOREIGN KEY (`empresa_id`)
+    REFERENCES `japp`.`empresa` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = INNODB;
+  ENGINE = INNODB;
 
-
--- -----------------------------------------------------
--- Table `japp`.`associado`
--- -----------------------------------------------------
--- CREATE TABLE IF NOT EXISTS `japp`.`associado` (
--- )
--- ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `japp`.`acesso`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `japp`.`acesso` (
   `id` INT NOT NULL,
-  `login` VARCHAR(45) NULL,
-  `pass` VARCHAR(45) NULL,
   `pessoa_id` INT NOT NULL,
   `status` INT NOT NULL,
-  `dataultimoacesso` DATETIME NULL,
-  `datainclusao` DATETIME NULL,
-  `dataalteracao` DATETIME NULL,
+  `rotina_master` INT NOT NULL,
+  `rotina_slave` INT NOT NULL,  
   PRIMARY KEY (`id`),
   INDEX `fk_acesso_pessoaidx` (`pessoa_id` ASC),
   CONSTRAINT `fk_acesso_pessoa`
@@ -304,27 +291,6 @@ CREATE TABLE IF NOT EXISTS `japp`.`empresa` (
   INDEX `idx_id_empresa` (`id` ASC),
   INDEX `idx_rs_empresa` (`razao_social` ASC),
   INDEX `idx_nf_empresa` (`nome_fantasia` ASC))
-ENGINE = INNODB;
-
--- -----------------------------------------------------
--- Table `japp`.`usuario`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `japp`.`usuario` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `tipo` VARCHAR(1) NOT NULL,
-  `login` VARCHAR(45) NULL,
-  `pass` VARCHAR(45) NULL,
-  `validade` DATETIME NULL,
-  `pessoa_id` INT NOT NULL,
-  `datainclusao` DATETIME NULL,
-  `dataalteracao` DATETIME NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_pessoa_idx` (`pessoa_id` ASC),
-  CONSTRAINT `fk_usuario_pessoa`
-    FOREIGN KEY (`pessoa_id`)
-    REFERENCES `japp`.`pessoa` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
 ENGINE = INNODB;
 
 -- -----------------------------------------------------
