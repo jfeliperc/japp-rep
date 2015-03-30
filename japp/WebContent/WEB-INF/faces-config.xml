@@ -24,6 +24,16 @@
             <to-view-id>/pages/c_pessoa.xhtml</to-view-id>
         </navigation-case>
         
+        <navigation-case>
+            <from-outcome>b_pessoa</from-outcome>
+            <to-view-id>/pages/b_pessoa.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+        	<from-outcome>c_empresa</from-outcome>
+        	<to-view-id>/pages/c_empresa.xhtml</to-view-id>
+        </navigation-case>
+        
 	</navigation-rule>
 
     <application>

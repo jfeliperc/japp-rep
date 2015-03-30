@@ -8,7 +8,7 @@
 
     <ui:define name="conteudo">
     	<h:form>
-	    	<rich:panel header="Solicitação cadastro" style="width:98%; height: 95%; ">
+	    	<rich:panel header="Solicitação de cadastro" style="width:99%; height: 95%; ">
 		      	<div style="padding-left: 10px">
 			      	
 			      	<div class="row">
@@ -38,10 +38,15 @@
 					  	<div class="col-sm-1"><label for="exampleInputEmail1">Documento</label></div>	
 						<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.documento}" id="cInpDocumento" size="50"/></div>
 					</div>
+					<br/>
+					<div class="row">
+						<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Email</label></div>		
+						<div class="col-sm-3"><h:inputText value="#{pessoaMb.cadEmail}" id="cInpEmail" size="50"/></div>
+					</div>
 					
 					<br/><br/>
 					<div class="row">
-					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Enviar Solicitação de Cadastro" class="btn btn-default "/>
+					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Enviar Solicitação de Cadastro" class="btn"/>
 					</div>
 					
 				</div>	

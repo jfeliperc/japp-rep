@@ -1,5 +1,7 @@
 package com.module.faces;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -17,6 +19,10 @@ public class PessoaMb extends BaseMb{
 	
 	private Usuario usuario;
 	private Pessoa pessoa;
+	
+	private String cadEmail;
+	
+	private List<Usuario> listaUsuarios;
 	
 	public PessoaMb() {
 		super();
@@ -44,6 +50,22 @@ public class PessoaMb extends BaseMb{
 
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
+	}
+
+	public String getCadEmail() {
+		return cadEmail;
+	}
+
+	public void setCadEmail(String cadEmail) {
+		this.cadEmail = cadEmail;
+	}
+
+	public List<Usuario> getListaUsuarios() {
+		return listaUsuarios;
+	}
+
+	public void setListaUsuarios(List<Usuario> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
 	}
 
 }

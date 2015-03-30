@@ -25,6 +25,10 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  <context-param>
+    <param-name>org.richfaces.skin</param-name>
+    <param-value>classic</param-value>
+  </context-param>
   <data-source>
     <name>java:app/japp/jappDS</name>
     <class-name>com.mysql.jdbc.jdbc2.optional.MysqlDataSource</class-name>

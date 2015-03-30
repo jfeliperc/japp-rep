@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import com.module.ejb.contract.IPessoaEjb;
 import com.module.jpa.dao.Dao;
 import com.module.jpa.model.Pessoa;
+import com.module.jpa.model.TipoPessoa;
 import com.module.jpa.model.Usuario;
 
 @Stateless
@@ -48,6 +49,13 @@ public class PessoaEjb implements IPessoaEjb {
 		Dao<Usuario> daoUsuario = new Dao<Usuario>();
 		
 		pessoa.setDataalteracao(new Date());
+		pessoa.setTipo("2");
+		
+		TipoPessoa tp = new TipoPessoa();
+		tp.setId(1);
+		
+		pessoa.setTipoPessoa(tp);
+		
 		usuario.setDataalteracao(new Date());
 		usuario.setTipo("2");
 		

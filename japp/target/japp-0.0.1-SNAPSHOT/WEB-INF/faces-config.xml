@@ -7,11 +7,33 @@
 	version="2.0">
 
 	<navigation-rule>
-		<from-view-id>/pages/inputname.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>greeting</from-outcome>
-			<to-view-id>/pages/greeting.xhtml</to-view-id>
-		</navigation-case>
+		<from-view-id>/*.*</from-view-id>
+        
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/pages/login.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>inicio</from-outcome>
+            <to-view-id>/pages/inicio.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>c_pessoa</from-outcome>
+            <to-view-id>/pages/c_pessoa.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>b_pessoa</from-outcome>
+            <to-view-id>/pages/b_pessoa.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+        	<from-outcome>c_empresa</from-outcome>
+        	<to-view-id>/pages/c_empresa.xhtml</to-view-id>
+        </navigation-case>
+        
 	</navigation-rule>
 
     <application>
