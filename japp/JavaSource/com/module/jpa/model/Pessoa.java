@@ -28,19 +28,36 @@ public class Pessoa implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date datanascimento;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataultimoacesso;
+
 	private String docprincipal;
 
 	private String documento;
+
+	private String login;
 
 	private String nome;
 
 	private String nomecompleto;
 
+	private String pass;
+
 	private String tipo;
+
+	@Column(name="tipo_pessoa")
+	private String tipoPessoa;
+
+	@Column(name="tipo_usuario")
+	private String tipoUsuario;
 
 	private String tipodocprincipal;
 
 	private String tipodocumento;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="validade_login")
+	private Date validadeLogin;
 
 	//bi-directional many-to-one association to Acesso
 	@OneToMany(mappedBy="pessoa")
@@ -61,7 +78,11 @@ public class Pessoa implements Serializable {
 	//bi-directional many-to-one association to TipoPessoa
 	@ManyToOne
 	@JoinColumn(name="tipo_pessoa_id")
-	private TipoPessoa tipoPessoa;
+	private TipoPessoa tipoPessoaBean;
+
+	//bi-directional many-to-one association to Empresa
+	@ManyToOne
+	private Empresa empresa;
 
 	//bi-directional many-to-one association to Usuario
 	@OneToMany(mappedBy="pessoa")
@@ -102,6 +123,14 @@ public class Pessoa implements Serializable {
 		this.datanascimento = datanascimento;
 	}
 
+	public Date getDataultimoacesso() {
+		return this.dataultimoacesso;
+	}
+
+	public void setDataultimoacesso(Date dataultimoacesso) {
+		this.dataultimoacesso = dataultimoacesso;
+	}
+
 	public String getDocprincipal() {
 		return this.docprincipal;
 	}
@@ -116,6 +145,14 @@ public class Pessoa implements Serializable {
 
 	public void setDocumento(String documento) {
 		this.documento = documento;
+	}
+
+	public String getLogin() {
+		return this.login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	public String getNome() {
@@ -134,12 +171,36 @@ public class Pessoa implements Serializable {
 		this.nomecompleto = nomecompleto;
 	}
 
+	public String getPass() {
+		return this.pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
 	public String getTipo() {
 		return this.tipo;
 	}
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public String getTipoPessoa() {
+		return this.tipoPessoa;
+	}
+
+	public void setTipoPessoa(String tipoPessoa) {
+		this.tipoPessoa = tipoPessoa;
+	}
+
+	public String getTipoUsuario() {
+		return this.tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 	public String getTipodocprincipal() {
@@ -156,6 +217,14 @@ public class Pessoa implements Serializable {
 
 	public void setTipodocumento(String tipodocumento) {
 		this.tipodocumento = tipodocumento;
+	}
+
+	public Date getValidadeLogin() {
+		return this.validadeLogin;
+	}
+
+	public void setValidadeLogin(Date validadeLogin) {
+		this.validadeLogin = validadeLogin;
 	}
 
 	public List<Acesso> getAcessos() {
@@ -246,12 +315,20 @@ public class Pessoa implements Serializable {
 		return orcamento;
 	}
 
-	public TipoPessoa getTipoPessoa() {
-		return this.tipoPessoa;
+	public TipoPessoa getTipoPessoaBean() {
+		return this.tipoPessoaBean;
 	}
 
-	public void setTipoPessoa(TipoPessoa tipoPessoa) {
-		this.tipoPessoa = tipoPessoa;
+	public void setTipoPessoaBean(TipoPessoa tipoPessoaBean) {
+		this.tipoPessoaBean = tipoPessoaBean;
+	}
+
+	public Empresa getEmpresa() {
+		return this.empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 	public List<Usuario> getUsuarios() {

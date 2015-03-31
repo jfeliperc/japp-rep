@@ -18,7 +18,7 @@
 	                        <div class="panel panel-default">
 	                            <div class="panel-heading"><strong>   Digite dados de login </strong></div>
 	                            <div class="panel-body">
-	                                <h:form>
+	                                <h:form id="formLogin">
 	                                    <input type="hidden" name="metodo" id="metodo" value="003Buscar" />
 	                                    <br />
 	                                    <div class="form-group input-group">
@@ -35,7 +35,7 @@
 												<h:commandButton action="#{loginMb.executarLogin()}" value="Logar" class="btn"/>
 											</div>
 										  	<div class="col-md-3">
-												<h:commandButton action="c_pessoa" value="Cadastrar" class="btn"/>
+												<h:commandButton action="#{loginMb.encaminharSolicitaCadastro()}" value="Cadastrar" class="btn"/>
 											</div>
 										</div>
 	                                    <hr />                                

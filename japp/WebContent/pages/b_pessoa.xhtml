@@ -46,11 +46,14 @@
 					
 					<br/><br/>
 					<div class="row">
-					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Buscar" class="btn"/>
+					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Buscar" class="btn"/>	
+					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Inserir" class="btn"/>
+					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Limpar" class="btn"/>
+					  <hr/>
 					</div>
 					
 					<br/>
-					<rich:dataTable value="#{pessoaMb.listaUsuarios}" var="us">
+					<rich:dataTable value="#{pessoaMb.listaUsuarios}" var="us" style="width:100%">
 		    			<rich:column>
 		    				<f:facet name="header">Id</f:facet>
 		    				<h:outputText value="#{us.id}" />
@@ -66,6 +69,9 @@
 		    			<rich:column>
 		    				<f:facet name="header">Status</f:facet>
 		    				<h:outputText value="#{us.tipo}" />
+		    			</rich:column>
+		    			<rich:column>
+		    				<f:facet name="header">Ação</f:facet>
 		    			</rich:column>
 		    		</rich:dataTable>
 					

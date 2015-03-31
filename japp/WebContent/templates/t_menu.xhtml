@@ -5,45 +5,58 @@
     xmlns:a4j="http://richfaces.org/a4j" 
     xmlns:rich="http://richfaces.org/rich">
  
-    <h:form id="formMenu">  
-        <rich:toolbar height="26px">
-            <rich:dropDownMenu mode="ajax">
-                <f:facet name="label">
-                    <h:outputText value="Administração" />
-                </f:facet>
-                <rich:menuItem submitMode="client" label="Usuário" action="b_pessoa" />
-                <rich:menuItem submitMode="client" label="Empresa" action="c_empresa" />
-                <rich:menuSeparator id="menuSeparator11" />
-                <rich:menuItem label="Sair" action="#{loginMb.executarLogout()}" />
-            </rich:dropDownMenu>
-            
-            <rich:dropDownMenu mode="ajax">
-                <f:facet name="label">
-                    <h:outputText value="Produtos" />
-                </f:facet>
-                <rich:menuItem label="Consulta" action="#{dropDownMenuBean.doNew}" />
-                <rich:menuGroup label="Estoque">
-                    <rich:menuItem label="Pedido" action="#{dropDownMenuBean.doSave}" />
-                    <rich:menuItem label="Entrada" action="#{dropDownMenuBean.doSaveAll}" />
-                </rich:menuGroup>
-            </rich:dropDownMenu>
- 
-            <rich:dropDownMenu mode="ajax">
-                <f:facet name="label">
-                    <h:panelGrid cellpadding="0" cellspacing="0" columns="2" style="vertical-align:middle">
-                        <h:outputText value="Cozinha" />
-                    </h:panelGrid>
-                </f:facet>
-                <rich:menuItem submitMode="client" onclick="document.location.href='http://labs.jboss.com/jbossrichfaces/'">
-                    <h:outputText value="Cardápio" />
-                </rich:menuItem>
-                <rich:menuItem submitMode="client"
-                    onclick="document.location.href='http://jboss.com/index.html?module=bb&amp;op=viewforum&amp;f=261'">
-                    <h:outputText value="Receitas" />
-                </rich:menuItem>
-            </rich:dropDownMenu>
-            
-        </rich:toolbar>
+    <h:form id="formMenu"> 
+        
+        <nav class="navbar navbar-default" style="min-height: 30px !important;">
+		  <div class="container-fluid">		    
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      
+		      <ul class="nav navbar-nav">		        
+		        <li class="dropdown ">
+			        <div class="btn-group">
+					  <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">Administração<span class="caret"/></a>
+					  <ul class="dropdown-menu">
+					    <li><h:commandLink styleClass="dropdown-toggle btn" action="b_pessoa" value="Usuário" /></li>
+					    <li><h:commandLink styleClass="dropdown-toggle btn" action="c_empresa" value="Empresa" /></li>					    
+					  </ul>
+					</div>
+				</li>
+		        
+		        <li class="dropdown">
+			        <div class="btn-group">
+					  <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">Produtos<span class="caret"/></a>
+					  <ul class="dropdown-menu">
+					    <li><a href="#">Consulta</a></li>
+					    <li class="divider"></li>
+					    <li>
+					      <a href="#">Estoque</a>
+					      <ul class="dropdown-menu">
+					        <li><a href="#">Pedido</a></li>
+					        <li><a href="#">Entrada</a></li>
+					      </ul>
+					    </li>
+					  </ul>
+					</div>
+				</li>
+		        
+		        <li class="dropdown">
+			        <div class="btn-group">
+					  <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">Cozinha<span class="caret"/></a>
+					  <ul class="dropdown-menu">
+					    <li><a href="#">Cardápio</a></li>
+					    <li><a href="#">Receitas</a></li>					    
+					  </ul>
+					</div>
+				</li>
+		      </ul>  
+		      
+		      <div class="btn-group navbar-right">
+			      <h:commandLink styleClass="dropdown-toggle btn" action="#{loginMb.executarLogout()}" value="Sair" />
+		      </div>
+		      
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
     </h:form>
  
 </ui:composition>

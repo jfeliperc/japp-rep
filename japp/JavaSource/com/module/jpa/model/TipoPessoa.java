@@ -16,23 +16,23 @@ public class TipoPessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
 
 	private String nome;
 
 	//bi-directional many-to-one association to Pessoa
-	@OneToMany(mappedBy="tipoPessoa")
+	@OneToMany(mappedBy="tipoPessoaBean")
 	private List<Pessoa> pessoas;
 
 	public TipoPessoa() {
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -54,14 +54,14 @@ public class TipoPessoa implements Serializable {
 
 	public Pessoa addPessoa(Pessoa pessoa) {
 		getPessoas().add(pessoa);
-		pessoa.setTipoPessoa(this);
+		pessoa.setTipoPessoaBean(this);
 
 		return pessoa;
 	}
 
 	public Pessoa removePessoa(Pessoa pessoa) {
 		getPessoas().remove(pessoa);
-		pessoa.setTipoPessoa(null);
+		pessoa.setTipoPessoaBean(null);
 
 		return pessoa;
 	}

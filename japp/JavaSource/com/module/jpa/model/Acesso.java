@@ -1,8 +1,17 @@
 package com.module.jpa.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -30,6 +39,12 @@ public class Acesso implements Serializable {
 	private String login;
 
 	private String pass;
+
+	@Column(name="rotina_master")
+	private int rotinaMaster;
+
+	@Column(name="rotina_slave")
+	private int rotinaSlave;
 
 	private int status;
 
@@ -86,6 +101,22 @@ public class Acesso implements Serializable {
 
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+
+	public int getRotinaMaster() {
+		return this.rotinaMaster;
+	}
+
+	public void setRotinaMaster(int rotinaMaster) {
+		this.rotinaMaster = rotinaMaster;
+	}
+
+	public int getRotinaSlave() {
+		return this.rotinaSlave;
+	}
+
+	public void setRotinaSlave(int rotinaSlave) {
+		this.rotinaSlave = rotinaSlave;
 	}
 
 	public int getStatus() {

@@ -46,30 +46,34 @@
 					
 					<br/><br/>
 					<div class="row">
-					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Buscar" class="btn"/>
+					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Buscar" class="btn"/>	
+					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Inserir" class="btn"/>
+					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Limpar" class="btn"/>
+					  <hr/>
 					</div>
 					
-					<h:dataTable value="#{pessoaMb.listaUsuarios}" var="us"
-		    			styleClass="order-table"
-		    			headerClass="order-table-header"
-		    			rowClasses="order-table-odd-row, order-table-even-row">
-		    			<h:column>
+					<br/>
+					<rich:dataTable value="#{pessoaMb.listaUsuarios}" var="us" style="width:100%">
+		    			<rich:column>
 		    				<f:facet name="header">Id</f:facet>
-		    				#{us.id}
-		    			</h:column>
-		    			<h:column>
+		    				<h:outputText value="#{us.id}" />
+		    			</rich:column>
+		    			<rich:column>
 		    				<f:facet name="header">Nome</f:facet>
-		    				#{us.pessoa.nomecompleto}
-		    			</h:column>
-		    			<h:column>
+		    				<h:outputText value="#{us.pessoa.nomecompleto}" />
+		    			</rich:column>
+		    			<rich:column>
 		    				<f:facet name="header">Login</f:facet>
-		    				#{us.login}
-		    			</h:column>
-		    			<h:column>
+		    				<h:outputText value="#{us.login}" />
+		    			</rich:column>
+		    			<rich:column>
 		    				<f:facet name="header">Status</f:facet>
-		    				ativo
-		    			</h:column>
-		    		</h:dataTable>
+		    				<h:outputText value="#{us.tipo}" />
+		    			</rich:column>
+		    			<rich:column>
+		    				<f:facet name="header">Ação</f:facet>
+		    			</rich:column>
+		    		</rich:dataTable>
 					
 				</div>	
 		    </rich:panel>

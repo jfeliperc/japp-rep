@@ -49,12 +49,8 @@ public class PessoaEjb implements IPessoaEjb {
 		Dao<Usuario> daoUsuario = new Dao<Usuario>();
 		
 		pessoa.setDataalteracao(new Date());
-		pessoa.setTipo("2");
-		
-		TipoPessoa tp = new TipoPessoa();
-		tp.setId(1);
-		
-		pessoa.setTipoPessoa(tp);
+		pessoa.setTipo("2");		
+		pessoa.setTipoPessoa("PF");
 		
 		usuario.setDataalteracao(new Date());
 		usuario.setTipo("2");
