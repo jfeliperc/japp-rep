@@ -34,7 +34,7 @@ public class PessoaEjb implements IPessoaEjb {
 
 	@Override
 	public List<Pessoa> listarPessoas(Pessoa Pessoa) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

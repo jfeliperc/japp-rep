@@ -6,11 +6,15 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 
 @Stateless
 public class Dao<T> implements IDao<T> {
 
-	
+	private Class<T> entityClass;
+
+    
 	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("japp");	
 	private EntityManager em; 
  
@@ -18,37 +22,63 @@ public class Dao<T> implements IDao<T> {
 		this.em  = emf.createEntityManager();
 	}
 	
+	public Dao(Class<T> entityClass) {
+		this.em  = emf.createEntityManager();
+        this.entityClass = entityClass;
+    }
+	
+	
     @Override
-    public void add(T t) {
-    	if (t != null){    		
+    public void add(T obj) {
+    	if (obj != null){    		
     		em.getTransaction().begin();
-    	    if (!em.contains(t)) {
-    	        em.persist(t);
+    	    if (!em.contains(obj)) {
+    	        em.persist(obj);
     	    }    	    
     	    em.getTransaction().commit();
     	}
     }
  
     @Override
-    public void update(T user) {
-        em.merge(user);
+    public void update(T obj) {
+        em.merge(obj);
     }
  
     @Override
-    public void delete(T user) {
+    public void delete(T obj) {
         em.remove(
-            em.contains(user) ? user : em.merge(user)
+            em.contains(obj) ? obj : em.merge(obj)
         );
     }
  
     @Override
     public T getById(int id) {
-        return null; //em.find(T.class, id);
+    	return em.find(entityClass, id);
     }
  
-    @Override
+    @SuppressWarnings("rawtypes")
+	@Override
     public List<T> getAll() {
-        return null; //em.createNamedQuery("User.getAll", T.class).getResultList();
+    	CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+        cq.select(cq.from(entityClass));
+        return em.createQuery(cq).getResultList();
     }
-	
+    
+    public List<T> findRange(int[] range) {
+        CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+        cq.select(cq.from(entityClass));
+        javax.persistence.Query q = em.createQuery(cq);
+        q.setMaxResults(range[1] - range[0] + 1);
+        q.setFirstResult(range[0]);
+        return q.getResultList();
+    }
+
+    public int count() {
+        CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+        javax.persistence.criteria.Root<T> rt = cq.from(entityClass);
+        cq.select(em.getCriteriaBuilder().count(rt));
+        Query q = em.createQuery(cq);
+        return ((Long) q.getSingleResult()).intValue();
+    }
+	    
 }

@@ -10,11 +10,17 @@
     <ui:define name="conteudo">
     	<h:form>
 	    	<rich:panel header="" style="width:100%; height: 95%">
-		      <ul>
-		        <li>Página inicial</li>
-		        <li>-----</li>
-		        <li><h:commandButton action="#{produtoMb.testeEjb()}" value="Cadastrar" class="btn btn-default "/></li>
-		     </ul>
+		      
+		      <rich:tabPanel style="width:100%; height: 400px" activeItem="1">
+		      	<rich:tab style="height: 400px" title="Pendências" header="Pendências" >
+		      		Lista de Pendências
+		      	</rich:tab>
+		      	
+		      	<rich:tab style="height: 400px" title="Alertas" header="Alertas">
+		      		Alertas
+		      	</rich:tab>		      
+		      </rich:tabPanel>
+		      
 		    </rich:panel>
 	    </h:form>
     </ui:define>

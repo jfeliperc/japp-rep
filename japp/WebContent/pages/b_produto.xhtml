@@ -9,41 +9,40 @@
     <ui:define name="conteudo">
     	<h:form>
 	    	<rich:panel header="Consulta Produtos" style="width:99%; height: 95%; ">
-		      	<div style="padding-left: 10px">
-			      	
-			      	<div class="row">
-					  	<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Login</label></div>	
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.usuario.login}" id="cInpLogin"/></div>
-					  	<div class="col-sm-1"><label for="exampleInputEmail1">Nome Completo</label></div>	
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.nomecompleto}" id="cInpNome" size="100"/></div>
-					</div>
+		      	<div style="padding-left: 10px">		      	
+			      	<h:panelGroup id="messagePanel" layout="block">
+	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+	                	<hr/>
+		            </h:panelGroup>
+			      	<h:panelGrid columns="4" styleClass="gridForm">
+	                    <h:outputLabel value="#{bundle.EditProdutoLabel_id}" for="id" />
+	                    <h:inputText id="id" value="#{produtoMb.produto.id}" title="#{bundle.EditProdutoTitle_id}" required="true" requiredMessage="#{bundle.EditProdutoRequiredMessage_id}"/>
+	                    <h:outputLabel value="#{bundle.EditProdutoLabel_nome}" for="nome" />
+	                    <h:inputText id="nome" value="#{produtoMb.produto.nome}" title="#{bundle.EditProdutoTitle_nome}" required="true" requiredMessage="#{bundle.EditProdutoRequiredMessage_nome}"/>
+	                    <h:outputLabel value="#{bundle.EditProdutoLabel_descricao}" for="descricao" />
+	                    <h:inputText id="descricao" value="#{produtoMb.produto.descricao}" title="#{bundle.EditProdutoTitle_descricao}" />
+	                    <h:outputLabel value="#{bundle.EditProdutoLabel_medida}" for="medida" />
+	                    <h:inputText id="medida" value="#{produtoMb.produto.medida}" title="#{bundle.EditProdutoTitle_medida}" />
+	                    <h:outputLabel value="#{bundle.EditProdutoLabel_qtdRefCompra}" for="qtdRefCompra" />
+	                    <h:inputText id="qtdRefCompra" value="#{produtoMb.produto.qtdRefCompra}" title="#{bundle.EditProdutoTitle_qtdRefCompra}" />
+	                    <h:outputLabel value="#{bundle.EditProdutoLabel_qtdRefSaida}" for="qtdRefSaida" />
+	                    <h:inputText id="qtdRefSaida" value="#{produtoMb.produto.qtdRefSaida}" title="#{bundle.EditProdutoTitle_qtdRefSaida}" />
+	                    <h:outputLabel value="#{bundle.EditProdutoLabel_datainclusao}" for="datainclusao" />
+	                    <h:inputText id="datainclusao" value="#{produtoMb.produto.datainclusao}" title="#{bundle.EditProdutoTitle_datainclusao}" >
+	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+	                    </h:inputText>
+	                    <h:outputLabel value="#{bundle.EditProdutoLabel_dataalteracao}" for="dataalteracao" />
+	                    <h:inputText id="dataalteracao" value="#{produtoMb.produto.dataalteracao}" title="#{bundle.EditProdutoTitle_dataalteracao}" >
+	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+	                    </h:inputText>
+	                    <h:outputLabel value="#{bundle.EditProdutoLabel_tipoProdutoId}" for="tipoProdutoId" />
+	                    <h:selectOneMenu id="tipoProdutoId" value="#{produtoMb.produto.tipoProduto}" title="#{bundle.EditProdutoTitle_tipoProdutoId}" required="true" requiredMessage="#{bundle.EditProdutoRequiredMessage_tipoProdutoId}">
+	                        <f:selectItems value="#{produtoMb.itemsTipoProduto}" var="tp" itemLabel="tp.descricao" itemValue="tp"/>
+	                    </h:selectOneMenu>
+	                </h:panelGrid>
+                	
 					<br/>
-					<div class="row">
-						<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Data Nascimento</label></div>	
-						<div class="col-sm-3"><rich:calendar value="#{pessoaMb.pessoa.datanascimento}" id="cInpDatNasc" /></div>
-					  	<div class="col-sm-1"><label for="exampleInputEmail1">CPF</label></div>	
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.docprincipal}" id="cInpCpf" size="50"/></div>
-					</div>
-					<br/>
-					<div class="row">
-						<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Tipo Documento</label></div>	
-						<div class="col-sm-3">
-							<h:selectOneMenu value="#{pessoaMb.pessoa.tipodocumento}" style="width:150px">
-								<f:selectItem itemLabel="RG" itemValue="RG"/>
-								<f:selectItem itemLabel="Habilitacao" itemValue="CH"/>
-								<f:selectItem itemLabel="Passaporte" itemValue="PS"/>
-								<f:selectItem itemLabel="Titulo Eleitor" itemValue="TE"/>
-							</h:selectOneMenu>
-						</div>
-					  	<div class="col-sm-1"><label for="exampleInputEmail1">Documento</label></div>	
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.documento}" id="cInpDocumento" size="50"/></div>
-					</div>
-					<br/>
-					<div class="row">
-						<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Email</label></div>		
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.cadEmail}" id="cInpEmail" size="50"/></div>
-					</div>
-					
+										
 					<br/><br/>
 					<div class="row">
 					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Enviar Solicitação de Cadastro" class="btn btn-default "/>

@@ -38,6 +38,10 @@ public class PessoaMb extends BaseMb{
 		return "login";
 	}
 	
+	public void buscar(){
+		
+	}
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}

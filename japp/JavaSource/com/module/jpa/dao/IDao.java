@@ -14,4 +14,5 @@ public interface IDao<T> {
     T getById(int id);
  
     List<T> getAll();
+
 }
