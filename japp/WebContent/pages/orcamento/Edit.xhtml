@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditOrcamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditOrcamentoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{orcamentoController.selected.id}" title="#{bundle.EditOrcamentoTitle_id}" required="true" requiredMessage="#{bundle.EditOrcamentoRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditOrcamentoLabel_numero}" for="numero" />
+                    <h:inputText id="numero" value="#{orcamentoController.selected.numero}" title="#{bundle.EditOrcamentoTitle_numero}" />
+                    <h:outputLabel value="#{bundle.EditOrcamentoLabel_datasolicitacao}" for="datasolicitacao" />
+                    <h:inputText id="datasolicitacao" value="#{orcamentoController.selected.datasolicitacao}" title="#{bundle.EditOrcamentoTitle_datasolicitacao}" />
+                    <h:outputLabel value="#{bundle.EditOrcamentoLabel_dataconclusao}" for="dataconclusao" />
+                    <h:inputText id="dataconclusao" value="#{orcamentoController.selected.dataconclusao}" title="#{bundle.EditOrcamentoTitle_dataconclusao}" />
+                    <h:outputLabel value="#{bundle.EditOrcamentoLabel_datavalidade}" for="datavalidade" />
+                    <h:inputText id="datavalidade" value="#{orcamentoController.selected.datavalidade}" title="#{bundle.EditOrcamentoTitle_datavalidade}" />
+                    <h:outputLabel value="#{bundle.EditOrcamentoLabel_garantia}" for="garantia" />
+                    <h:inputText id="garantia" value="#{orcamentoController.selected.garantia}" title="#{bundle.EditOrcamentoTitle_garantia}" />
+                    <h:outputLabel value="#{bundle.EditOrcamentoLabel_valormaoobra}" for="valormaoobra" />
+                    <h:inputText id="valormaoobra" value="#{orcamentoController.selected.valormaoobra}" title="#{bundle.EditOrcamentoTitle_valormaoobra}" />
+                    <h:outputLabel value="#{bundle.EditOrcamentoLabel_valortotal}" for="valortotal" />
+                    <h:inputText id="valortotal" value="#{orcamentoController.selected.valortotal}" title="#{bundle.EditOrcamentoTitle_valortotal}" />
+                    <h:outputLabel value="#{bundle.EditOrcamentoLabel_descricao}" for="descricao" />
+                    <h:inputText id="descricao" value="#{orcamentoController.selected.descricao}" title="#{bundle.EditOrcamentoTitle_descricao}" />
+                    <h:outputLabel value="#{bundle.EditOrcamentoLabel_tipoorcamento}" for="tipoorcamento" />
+                    <h:inputText id="tipoorcamento" value="#{orcamentoController.selected.tipoorcamento}" title="#{bundle.EditOrcamentoTitle_tipoorcamento}" />
+                    <h:outputLabel value="#{bundle.EditOrcamentoLabel_datainclusao}" for="datainclusao" />
+                    <h:inputText id="datainclusao" value="#{orcamentoController.selected.datainclusao}" title="#{bundle.EditOrcamentoTitle_datainclusao}" />
+                    <h:outputLabel value="#{bundle.EditOrcamentoLabel_dataalteracao}" for="dataalteracao" />
+                    <h:inputText id="dataalteracao" value="#{orcamentoController.selected.dataalteracao}" title="#{bundle.EditOrcamentoTitle_dataalteracao}" />
+                    <h:outputLabel value="#{bundle.EditOrcamentoLabel_servicoId}" for="servicoId" />
+                    <h:selectOneMenu id="servicoId" value="#{orcamentoController.selected.servicoId}" title="#{bundle.EditOrcamentoTitle_servicoId}" required="true" requiredMessage="#{bundle.EditOrcamentoRequiredMessage_servicoId}">
+                        <f:selectItems value="#{servicoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditOrcamentoLabel_solicitanteId}" for="solicitanteId" />
+                    <h:selectOneMenu id="solicitanteId" value="#{orcamentoController.selected.solicitanteId}" title="#{bundle.EditOrcamentoTitle_solicitanteId}" required="true" requiredMessage="#{bundle.EditOrcamentoRequiredMessage_solicitanteId}">
+                        <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{orcamentoController.update}" value="#{bundle.EditOrcamentoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditOrcamentoViewLink}"/>
+                <br />
+                <h:commandLink action="#{orcamentoController.prepareList}" value="#{bundle.EditOrcamentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditOrcamentoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

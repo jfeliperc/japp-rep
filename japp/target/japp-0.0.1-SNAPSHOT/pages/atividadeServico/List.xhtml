@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAtividadeServicoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAtividadeServicoEmpty}" rendered="#{atividadeServicoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{atividadeServicoController.items.rowCount > 0}">
+                    <h:outputText value="#{atividadeServicoController.pagination.pageFirstItem + 1}..#{atividadeServicoController.pagination.pageLastItem + 1}/#{atividadeServicoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{atividadeServicoController.previous}" value="#{bundle.Previous} #{atividadeServicoController.pagination.pageSize}" rendered="#{atividadeServicoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{atividadeServicoController.next}" value="#{bundle.Next} #{atividadeServicoController.pagination.pageSize}" rendered="#{atividadeServicoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{atividadeServicoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAtividadeServicoTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAtividadeServicoTitle_servicoId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.servicoId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAtividadeServicoTitle_atividadeId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.atividadeId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{atividadeServicoController.prepareView}" value="#{bundle.ListAtividadeServicoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{atividadeServicoController.prepareEdit}" value="#{bundle.ListAtividadeServicoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{atividadeServicoController.destroy}" value="#{bundle.ListAtividadeServicoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{atividadeServicoController.prepareCreate}" value="#{bundle.ListAtividadeServicoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAtividadeServicoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

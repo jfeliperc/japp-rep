@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPessoaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPessoaLabel_id}"/>
+                    <h:outputText value="#{pessoaController.selected.id}" title="#{bundle.ViewPessoaTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_tipo}"/>
+                    <h:outputText value="#{pessoaController.selected.tipo}" title="#{bundle.ViewPessoaTitle_tipo}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_nome}"/>
+                    <h:outputText value="#{pessoaController.selected.nome}" title="#{bundle.ViewPessoaTitle_nome}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_nomecompleto}"/>
+                    <h:outputText value="#{pessoaController.selected.nomecompleto}" title="#{bundle.ViewPessoaTitle_nomecompleto}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_datanascimento}"/>
+                    <h:outputText value="#{pessoaController.selected.datanascimento}" title="#{bundle.ViewPessoaTitle_datanascimento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_docprincipal}"/>
+                    <h:outputText value="#{pessoaController.selected.docprincipal}" title="#{bundle.ViewPessoaTitle_docprincipal}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_tipodocprincipal}"/>
+                    <h:outputText value="#{pessoaController.selected.tipodocprincipal}" title="#{bundle.ViewPessoaTitle_tipodocprincipal}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_documento}"/>
+                    <h:outputText value="#{pessoaController.selected.documento}" title="#{bundle.ViewPessoaTitle_documento}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_tipodocumento}"/>
+                    <h:outputText value="#{pessoaController.selected.tipodocumento}" title="#{bundle.ViewPessoaTitle_tipodocumento}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_tipoPessoa}"/>
+                    <h:outputText value="#{pessoaController.selected.tipoPessoa}" title="#{bundle.ViewPessoaTitle_tipoPessoa}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_login}"/>
+                    <h:outputText value="#{pessoaController.selected.login}" title="#{bundle.ViewPessoaTitle_login}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_pass}"/>
+                    <h:outputText value="#{pessoaController.selected.pass}" title="#{bundle.ViewPessoaTitle_pass}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_validadeLogin}"/>
+                    <h:outputText value="#{pessoaController.selected.validadeLogin}" title="#{bundle.ViewPessoaTitle_validadeLogin}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_tipoUsuario}"/>
+                    <h:outputText value="#{pessoaController.selected.tipoUsuario}" title="#{bundle.ViewPessoaTitle_tipoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_dataultimoacesso}"/>
+                    <h:outputText value="#{pessoaController.selected.dataultimoacesso}" title="#{bundle.ViewPessoaTitle_dataultimoacesso}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_datainclusao}"/>
+                    <h:outputText value="#{pessoaController.selected.datainclusao}" title="#{bundle.ViewPessoaTitle_datainclusao}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_dataalteracao}"/>
+                    <h:outputText value="#{pessoaController.selected.dataalteracao}" title="#{bundle.ViewPessoaTitle_dataalteracao}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_empresaId}"/>
+                    <h:outputText value="#{pessoaController.selected.empresaId}" title="#{bundle.ViewPessoaTitle_empresaId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pessoaController.destroyAndView}" value="#{bundle.ViewPessoaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPessoaEditLink}"/>
+                <br />
+                <h:commandLink action="#{pessoaController.prepareCreate}" value="#{bundle.ViewPessoaCreateLink}" />
+                <br />
+                <h:commandLink action="#{pessoaController.prepareList}" value="#{bundle.ViewPessoaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPessoaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

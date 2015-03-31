@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTipoProdutoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTipoProdutoLabel_id}"/>
+                    <h:outputText value="#{tipoProdutoController.selected.id}" title="#{bundle.ViewTipoProdutoTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewTipoProdutoLabel_nome}"/>
+                    <h:outputText value="#{tipoProdutoController.selected.nome}" title="#{bundle.ViewTipoProdutoTitle_nome}"/>
+                    <h:outputText value="#{bundle.ViewTipoProdutoLabel_descricao}"/>
+                    <h:outputText value="#{tipoProdutoController.selected.descricao}" title="#{bundle.ViewTipoProdutoTitle_descricao}"/>
+                    <h:outputText value="#{bundle.ViewTipoProdutoLabel_datainclusao}"/>
+                    <h:outputText value="#{tipoProdutoController.selected.datainclusao}" title="#{bundle.ViewTipoProdutoTitle_datainclusao}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTipoProdutoLabel_dataalteracao}"/>
+                    <h:outputText value="#{tipoProdutoController.selected.dataalteracao}" title="#{bundle.ViewTipoProdutoTitle_dataalteracao}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoProdutoController.destroyAndView}" value="#{bundle.ViewTipoProdutoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTipoProdutoEditLink}"/>
+                <br />
+                <h:commandLink action="#{tipoProdutoController.prepareCreate}" value="#{bundle.ViewTipoProdutoCreateLink}" />
+                <br />
+                <h:commandLink action="#{tipoProdutoController.prepareList}" value="#{bundle.ViewTipoProdutoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTipoProdutoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

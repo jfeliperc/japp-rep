@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPedidoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPedidoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{pedidoController.selected.id}" title="#{bundle.EditPedidoTitle_id}" required="true" requiredMessage="#{bundle.EditPedidoRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditPedidoLabel_datapedido}" for="datapedido" />
+                    <h:inputText id="datapedido" value="#{pedidoController.selected.datapedido}" title="#{bundle.EditPedidoTitle_datapedido}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPedidoLabel_dataprevista}" for="dataprevista" />
+                    <h:inputText id="dataprevista" value="#{pedidoController.selected.dataprevista}" title="#{bundle.EditPedidoTitle_dataprevista}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPedidoLabel_dataenvio}" for="dataenvio" />
+                    <h:inputText id="dataenvio" value="#{pedidoController.selected.dataenvio}" title="#{bundle.EditPedidoTitle_dataenvio}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPedidoLabel_enviovia}" for="enviovia" />
+                    <h:inputText id="enviovia" value="#{pedidoController.selected.enviovia}" title="#{bundle.EditPedidoTitle_enviovia}" />
+                    <h:outputLabel value="#{bundle.EditPedidoLabel_valorfrete}" for="valorfrete" />
+                    <h:inputText id="valorfrete" value="#{pedidoController.selected.valorfrete}" title="#{bundle.EditPedidoTitle_valorfrete}" />
+                    <h:outputLabel value="#{bundle.EditPedidoLabel_valorpedido}" for="valorpedido" />
+                    <h:inputText id="valorpedido" value="#{pedidoController.selected.valorpedido}" title="#{bundle.EditPedidoTitle_valorpedido}" />
+                    <h:outputLabel value="#{bundle.EditPedidoLabel_destnome}" for="destnome" />
+                    <h:inputText id="destnome" value="#{pedidoController.selected.destnome}" title="#{bundle.EditPedidoTitle_destnome}" />
+                    <h:outputLabel value="#{bundle.EditPedidoLabel_destendereco}" for="destendereco" />
+                    <h:inputText id="destendereco" value="#{pedidoController.selected.destendereco}" title="#{bundle.EditPedidoTitle_destendereco}" />
+                    <h:outputLabel value="#{bundle.EditPedidoLabel_destcidade}" for="destcidade" />
+                    <h:inputText id="destcidade" value="#{pedidoController.selected.destcidade}" title="#{bundle.EditPedidoTitle_destcidade}" />
+                    <h:outputLabel value="#{bundle.EditPedidoLabel_destestado}" for="destestado" />
+                    <h:inputText id="destestado" value="#{pedidoController.selected.destestado}" title="#{bundle.EditPedidoTitle_destestado}" />
+                    <h:outputLabel value="#{bundle.EditPedidoLabel_destcaixapostal}" for="destcaixapostal" />
+                    <h:inputText id="destcaixapostal" value="#{pedidoController.selected.destcaixapostal}" title="#{bundle.EditPedidoTitle_destcaixapostal}" />
+                    <h:outputLabel value="#{bundle.EditPedidoLabel_destpais}" for="destpais" />
+                    <h:inputText id="destpais" value="#{pedidoController.selected.destpais}" title="#{bundle.EditPedidoTitle_destpais}" />
+                    <h:outputLabel value="#{bundle.EditPedidoLabel_empresaId}" for="empresaId" />
+                    <h:selectOneMenu id="empresaId" value="#{pedidoController.selected.empresaId}" title="#{bundle.EditPedidoTitle_empresaId}" >
+                        <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{pedidoController.update}" value="#{bundle.EditPedidoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPedidoViewLink}"/>
+                <br />
+                <h:commandLink action="#{pedidoController.prepareList}" value="#{bundle.EditPedidoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPedidoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

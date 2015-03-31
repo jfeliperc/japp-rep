@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAtividadeServicoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAtividadeServicoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{atividadeServicoController.selected.id}" title="#{bundle.EditAtividadeServicoTitle_id}" required="true" requiredMessage="#{bundle.EditAtividadeServicoRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditAtividadeServicoLabel_servicoId}" for="servicoId" />
+                    <h:selectOneMenu id="servicoId" value="#{atividadeServicoController.selected.servicoId}" title="#{bundle.EditAtividadeServicoTitle_servicoId}" required="true" requiredMessage="#{bundle.EditAtividadeServicoRequiredMessage_servicoId}">
+                        <f:selectItems value="#{servicoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditAtividadeServicoLabel_atividadeId}" for="atividadeId" />
+                    <h:selectOneMenu id="atividadeId" value="#{atividadeServicoController.selected.atividadeId}" title="#{bundle.EditAtividadeServicoTitle_atividadeId}" required="true" requiredMessage="#{bundle.EditAtividadeServicoRequiredMessage_atividadeId}">
+                        <f:selectItems value="#{atividadeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{atividadeServicoController.update}" value="#{bundle.EditAtividadeServicoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAtividadeServicoViewLink}"/>
+                <br />
+                <h:commandLink action="#{atividadeServicoController.prepareList}" value="#{bundle.EditAtividadeServicoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAtividadeServicoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePessoaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{pessoaController.selected.id}" title="#{bundle.CreatePessoaTitle_id}" required="true" requiredMessage="#{bundle.CreatePessoaRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_tipo}" for="tipo" />
+                    <h:inputText id="tipo" value="#{pessoaController.selected.tipo}" title="#{bundle.CreatePessoaTitle_tipo}" required="true" requiredMessage="#{bundle.CreatePessoaRequiredMessage_tipo}"/>
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{pessoaController.selected.nome}" title="#{bundle.CreatePessoaTitle_nome}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_nomecompleto}" for="nomecompleto" />
+                    <h:inputText id="nomecompleto" value="#{pessoaController.selected.nomecompleto}" title="#{bundle.CreatePessoaTitle_nomecompleto}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_datanascimento}" for="datanascimento" />
+                    <h:inputText id="datanascimento" value="#{pessoaController.selected.datanascimento}" title="#{bundle.CreatePessoaTitle_datanascimento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_docprincipal}" for="docprincipal" />
+                    <h:inputText id="docprincipal" value="#{pessoaController.selected.docprincipal}" title="#{bundle.CreatePessoaTitle_docprincipal}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_tipodocprincipal}" for="tipodocprincipal" />
+                    <h:inputText id="tipodocprincipal" value="#{pessoaController.selected.tipodocprincipal}" title="#{bundle.CreatePessoaTitle_tipodocprincipal}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_documento}" for="documento" />
+                    <h:inputText id="documento" value="#{pessoaController.selected.documento}" title="#{bundle.CreatePessoaTitle_documento}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_tipodocumento}" for="tipodocumento" />
+                    <h:inputText id="tipodocumento" value="#{pessoaController.selected.tipodocumento}" title="#{bundle.CreatePessoaTitle_tipodocumento}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_tipoPessoa}" for="tipoPessoa" />
+                    <h:inputText id="tipoPessoa" value="#{pessoaController.selected.tipoPessoa}" title="#{bundle.CreatePessoaTitle_tipoPessoa}" required="true" requiredMessage="#{bundle.CreatePessoaRequiredMessage_tipoPessoa}"/>
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_login}" for="login" />
+                    <h:inputText id="login" value="#{pessoaController.selected.login}" title="#{bundle.CreatePessoaTitle_login}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_pass}" for="pass" />
+                    <h:inputText id="pass" value="#{pessoaController.selected.pass}" title="#{bundle.CreatePessoaTitle_pass}" />
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_validadeLogin}" for="validadeLogin" />
+                    <h:inputText id="validadeLogin" value="#{pessoaController.selected.validadeLogin}" title="#{bundle.CreatePessoaTitle_validadeLogin}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_tipoUsuario}" for="tipoUsuario" />
+                    <h:inputText id="tipoUsuario" value="#{pessoaController.selected.tipoUsuario}" title="#{bundle.CreatePessoaTitle_tipoUsuario}" required="true" requiredMessage="#{bundle.CreatePessoaRequiredMessage_tipoUsuario}"/>
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_dataultimoacesso}" for="dataultimoacesso" />
+                    <h:inputText id="dataultimoacesso" value="#{pessoaController.selected.dataultimoacesso}" title="#{bundle.CreatePessoaTitle_dataultimoacesso}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_datainclusao}" for="datainclusao" />
+                    <h:inputText id="datainclusao" value="#{pessoaController.selected.datainclusao}" title="#{bundle.CreatePessoaTitle_datainclusao}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_dataalteracao}" for="dataalteracao" />
+                    <h:inputText id="dataalteracao" value="#{pessoaController.selected.dataalteracao}" title="#{bundle.CreatePessoaTitle_dataalteracao}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePessoaLabel_empresaId}" for="empresaId" />
+                    <h:selectOneMenu id="empresaId" value="#{pessoaController.selected.empresaId}" title="#{bundle.CreatePessoaTitle_empresaId}" >
+                        <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pessoaController.create}" value="#{bundle.CreatePessoaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pessoaController.prepareList}" value="#{bundle.CreatePessoaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePessoaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

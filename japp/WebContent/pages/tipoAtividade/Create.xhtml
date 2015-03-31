@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTipoAtividadeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTipoAtividadeLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{tipoAtividadeController.selected.id}" title="#{bundle.CreateTipoAtividadeTitle_id}" required="true" requiredMessage="#{bundle.CreateTipoAtividadeRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateTipoAtividadeLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{tipoAtividadeController.selected.nome}" title="#{bundle.CreateTipoAtividadeTitle_nome}" required="true" requiredMessage="#{bundle.CreateTipoAtividadeRequiredMessage_nome}"/>
+                    <h:outputLabel value="#{bundle.CreateTipoAtividadeLabel_descricao}" for="descricao" />
+                    <h:inputText id="descricao" value="#{tipoAtividadeController.selected.descricao}" title="#{bundle.CreateTipoAtividadeTitle_descricao}" />
+                    <h:outputLabel value="#{bundle.CreateTipoAtividadeLabel_datainclusao}" for="datainclusao" />
+                    <h:inputText id="datainclusao" value="#{tipoAtividadeController.selected.datainclusao}" title="#{bundle.CreateTipoAtividadeTitle_datainclusao}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTipoAtividadeLabel_dataalteracao}" for="dataalteracao" />
+                    <h:inputText id="dataalteracao" value="#{tipoAtividadeController.selected.dataalteracao}" title="#{bundle.CreateTipoAtividadeTitle_dataalteracao}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoAtividadeController.create}" value="#{bundle.CreateTipoAtividadeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tipoAtividadeController.prepareList}" value="#{bundle.CreateTipoAtividadeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTipoAtividadeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

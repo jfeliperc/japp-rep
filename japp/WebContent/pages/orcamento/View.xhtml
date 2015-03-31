@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewOrcamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewOrcamentoLabel_id}"/>
+                    <h:outputText value="#{orcamentoController.selected.id}" title="#{bundle.ViewOrcamentoTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewOrcamentoLabel_numero}"/>
+                    <h:outputText value="#{orcamentoController.selected.numero}" title="#{bundle.ViewOrcamentoTitle_numero}"/>
+                    <h:outputText value="#{bundle.ViewOrcamentoLabel_datasolicitacao}"/>
+                    <h:outputText value="#{orcamentoController.selected.datasolicitacao}" title="#{bundle.ViewOrcamentoTitle_datasolicitacao}"/>
+                    <h:outputText value="#{bundle.ViewOrcamentoLabel_dataconclusao}"/>
+                    <h:outputText value="#{orcamentoController.selected.dataconclusao}" title="#{bundle.ViewOrcamentoTitle_dataconclusao}"/>
+                    <h:outputText value="#{bundle.ViewOrcamentoLabel_datavalidade}"/>
+                    <h:outputText value="#{orcamentoController.selected.datavalidade}" title="#{bundle.ViewOrcamentoTitle_datavalidade}"/>
+                    <h:outputText value="#{bundle.ViewOrcamentoLabel_garantia}"/>
+                    <h:outputText value="#{orcamentoController.selected.garantia}" title="#{bundle.ViewOrcamentoTitle_garantia}"/>
+                    <h:outputText value="#{bundle.ViewOrcamentoLabel_valormaoobra}"/>
+                    <h:outputText value="#{orcamentoController.selected.valormaoobra}" title="#{bundle.ViewOrcamentoTitle_valormaoobra}"/>
+                    <h:outputText value="#{bundle.ViewOrcamentoLabel_valortotal}"/>
+                    <h:outputText value="#{orcamentoController.selected.valortotal}" title="#{bundle.ViewOrcamentoTitle_valortotal}"/>
+                    <h:outputText value="#{bundle.ViewOrcamentoLabel_descricao}"/>
+                    <h:outputText value="#{orcamentoController.selected.descricao}" title="#{bundle.ViewOrcamentoTitle_descricao}"/>
+                    <h:outputText value="#{bundle.ViewOrcamentoLabel_tipoorcamento}"/>
+                    <h:outputText value="#{orcamentoController.selected.tipoorcamento}" title="#{bundle.ViewOrcamentoTitle_tipoorcamento}"/>
+                    <h:outputText value="#{bundle.ViewOrcamentoLabel_datainclusao}"/>
+                    <h:outputText value="#{orcamentoController.selected.datainclusao}" title="#{bundle.ViewOrcamentoTitle_datainclusao}"/>
+                    <h:outputText value="#{bundle.ViewOrcamentoLabel_dataalteracao}"/>
+                    <h:outputText value="#{orcamentoController.selected.dataalteracao}" title="#{bundle.ViewOrcamentoTitle_dataalteracao}"/>
+                    <h:outputText value="#{bundle.ViewOrcamentoLabel_servicoId}"/>
+                    <h:outputText value="#{orcamentoController.selected.servicoId}" title="#{bundle.ViewOrcamentoTitle_servicoId}"/>
+                    <h:outputText value="#{bundle.ViewOrcamentoLabel_solicitanteId}"/>
+                    <h:outputText value="#{orcamentoController.selected.solicitanteId}" title="#{bundle.ViewOrcamentoTitle_solicitanteId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{orcamentoController.destroyAndView}" value="#{bundle.ViewOrcamentoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewOrcamentoEditLink}"/>
+                <br />
+                <h:commandLink action="#{orcamentoController.prepareCreate}" value="#{bundle.ViewOrcamentoCreateLink}" />
+                <br />
+                <h:commandLink action="#{orcamentoController.prepareList}" value="#{bundle.ViewOrcamentoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewOrcamentoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAcessoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAcessoLabel_id}"/>
+                    <h:outputText value="#{acessoController.selected.id}" title="#{bundle.ViewAcessoTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewAcessoLabel_status}"/>
+                    <h:outputText value="#{acessoController.selected.status}" title="#{bundle.ViewAcessoTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewAcessoLabel_rotinaMaster}"/>
+                    <h:outputText value="#{acessoController.selected.rotinaMaster}" title="#{bundle.ViewAcessoTitle_rotinaMaster}"/>
+                    <h:outputText value="#{bundle.ViewAcessoLabel_rotinaSlave}"/>
+                    <h:outputText value="#{acessoController.selected.rotinaSlave}" title="#{bundle.ViewAcessoTitle_rotinaSlave}"/>
+                    <h:outputText value="#{bundle.ViewAcessoLabel_pessoaId}"/>
+                    <h:outputText value="#{acessoController.selected.pessoaId}" title="#{bundle.ViewAcessoTitle_pessoaId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{acessoController.destroyAndView}" value="#{bundle.ViewAcessoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAcessoEditLink}"/>
+                <br />
+                <h:commandLink action="#{acessoController.prepareCreate}" value="#{bundle.ViewAcessoCreateLink}" />
+                <br />
+                <h:commandLink action="#{acessoController.prepareList}" value="#{bundle.ViewAcessoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAcessoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
