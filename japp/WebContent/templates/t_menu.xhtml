@@ -10,14 +10,14 @@
         <nav class="navbar navbar-default" style="min-height: 30px !important;">
 		  <div class="container-fluid">		    
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		      
+		      <!-- <li class="divider"></li> -->
 		      <ul class="nav navbar-nav">		        
 		        <li class="dropdown ">
 			        <div class="btn-group">
 					  <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">Administração<span class="caret"/></a>
 					  <ul class="dropdown-menu">
-					    <li><h:commandLink styleClass="dropdown-toggle btn" action="b_pessoa" value="Usuário" /></li>
-					    <li><h:commandLink styleClass="dropdown-toggle btn" action="c_empresa" value="Empresa" /></li>					    
+					    <li><h:commandLink action="c_empresa" value="Empresa" /></li>
+					    <li><h:commandLink action="b_pessoa" value="Pessoa" /></li>					    
 					  </ul>
 					</div>
 				</li>
@@ -26,10 +26,9 @@
 			        <div class="btn-group">
 					  <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">Produtos<span class="caret"/></a>
 					  <ul class="dropdown-menu">
-					    <li><h:commandLink styleClass="dropdown-toggle btn" action="b_produto" value="Consulta" /></li>
-					    <li class="divider"></li>
+					    <li><h:commandLink action="b_produto" value="Consulta" /></li>
 					    <li>
-					      <h:commandLink styleClass="dropdown-toggle btn" action="#" value="Estoque" />
+					      <h:commandLink action="#" value="Estoque   >>" />
 					      <ul class="dropdown-menu">
 					        <li><a href="#">Pedido</a></li>
 					        <li><a href="#">Entrada</a></li>
@@ -51,7 +50,26 @@
 		      </ul>  
 		      
 		      <div class="btn-group navbar-right">
-			      <h:commandLink styleClass="dropdown-toggle btn" action="#{loginMb.executarLogout()}" value="Sair" />
+		      	<ul class="nav navbar-nav">
+			      	<li class="dropdown">
+				        <div class="btn-group">
+						  <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">Configurações<span class="caret"/></a>
+						  <ul class="dropdown-menu">
+						    <li><a href="#">Usuario</a></li>
+						    <li><a href="#">Acesso</a></li>					    
+						  </ul>
+						</div>
+					</li>
+					
+					<li>
+						<div class="btn-group">
+							<h:commandLink styleClass="dropdown-toggle btn" action="#{loginMb.executarLogout()}" value="Sair" />
+						</div>	
+					</li>
+					
+				</ul>
+		      	
+			    
 		      </div>
 		      
 		    </div><!-- /.navbar-collapse -->

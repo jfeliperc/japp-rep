@@ -25,20 +25,7 @@ public class Acesso implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataalteracao;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date datainclusao;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataultimoacesso;
-
-	private String login;
-
-	private String pass;
+	private Integer id;
 
 	@Column(name="rotina_master")
 	private int rotinaMaster;
@@ -55,52 +42,12 @@ public class Acesso implements Serializable {
 	public Acesso() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Date getDataalteracao() {
-		return this.dataalteracao;
-	}
-
-	public void setDataalteracao(Date dataalteracao) {
-		this.dataalteracao = dataalteracao;
-	}
-
-	public Date getDatainclusao() {
-		return this.datainclusao;
-	}
-
-	public void setDatainclusao(Date datainclusao) {
-		this.datainclusao = datainclusao;
-	}
-
-	public Date getDataultimoacesso() {
-		return this.dataultimoacesso;
-	}
-
-	public void setDataultimoacesso(Date dataultimoacesso) {
-		this.dataultimoacesso = dataultimoacesso;
-	}
-
-	public String getLogin() {
-		return this.login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getPass() {
-		return this.pass;
-	}
-
-	public void setPass(String pass) {
-		this.pass = pass;
 	}
 
 	public int getRotinaMaster() {

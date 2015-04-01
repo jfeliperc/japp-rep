@@ -5,6 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import com.module.ejb.contract.IProdutoEjb;
+import com.module.jpa.model.Empresa;
 import com.module.jpa.model.Produto;
 
 
@@ -15,21 +16,15 @@ public class EmpresaMb extends BaseMb{
 	@EJB
 	private IProdutoEjb produtoEjb;
 
-	private Produto produto;
+	private Empresa empresa;
 	
-	public String testeEjb(){
-		
-		produtoEjb.testeTipoPessoa();
-        
-		return "login";
+
+	public Empresa getEmpresa() {
+		return empresa;
 	}
 
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 	
 	

@@ -10,46 +10,38 @@
     	<h:form>
 	    	<rich:panel header="Dados da empresa" style="width:99%; height: 95%; ">
 		      	<div style="padding-left: 10px">
-			      	
-			      	<div class="row">
-					  	<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Nome Fantasia</label></div>	
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.usuario.login}" id="cInpNomeFant"/></div>
-					  	<div class="col-sm-1"><label for="exampleInputEmail1">Razão Social</label></div>	
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.nomecompleto}" id="cInpRazaoSocial" size="100"/></div>
-					</div>
-					<br/>
-			      	<div class="row">
-					  	<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">CNPJ</label></div>	
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.usuario.login}" id="cInpLogin"/></div>
-					  	<div class="col-sm-1"><label for="exampleInputEmail1">Insc. Estadual</label></div>	
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.nomecompleto}" id="cInpNome" size="100"/></div>
-					</div>
-					<br/>
-					<div class="row">
-						<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Data Referência</label></div>	
-						<div class="col-sm-3"><rich:calendar value="#{pessoaMb.pessoa.datanascimento}" id="cInpDatNasc" /></div>
-					  	<div class="col-sm-1"><label for="exampleInputEmail1">CPF</label></div>	
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.docprincipal}" id="cInpCpf" size="50"/></div>
-					</div>
-					<br/>
-					<div class="row">
-						<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Tipo Documento</label></div>	
-						<div class="col-sm-3">
-							<h:selectOneMenu value="#{pessoaMb.pessoa.tipodocumento}" style="width:150px">
-								<f:selectItem itemLabel="RG" itemValue="RG"/>
-								<f:selectItem itemLabel="Habilitacao" itemValue="CH"/>
-								<f:selectItem itemLabel="Passaporte" itemValue="PS"/>
-								<f:selectItem itemLabel="Titulo Eleitor" itemValue="TE"/>
-							</h:selectOneMenu>
-						</div>
-					  	<div class="col-sm-1"><label for="exampleInputEmail1">Documento</label></div>	
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.documento}" id="cInpDocumento" size="50"/></div>
-					</div>
-					<br/>
-					<div class="row">
-						<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Email</label></div>		
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.cadEmail}" id="cInpEmail" size="50"/></div>
-					</div>
+			      	<h:panelGroup id="messagePanel" layout="block">
+	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+	                	<hr/>
+		            </h:panelGroup>
+			      	<h:panelGrid columns="4" styleClass="gridForm">
+	                    <h:outputLabel value="#{bundle.EmpresaLabel_id}" for="id" />
+	                    <h:inputText id="id" value="#{empresaMb.empresa.id}" title="#{bundle.EmpresaTitle_id}" required="true" requiredMessage="#{bundle.EmpresaRequiredMessage_id}"/>
+	                    <h:outputLabel value="#{bundle.EmpresaLabel_razaoSocial}" for="razaoSocial" />
+	                    <h:inputText id="razaoSocial" value="#{empresaMb.empresa.razaoSocial}" title="#{bundle.EmpresaTitle_razaoSocial}" 
+	                    	required="true" requiredMessage="#{bundle.EmpresaRequiredMessage_razaoSocial}" size="100"/>
+	                    <h:outputLabel value="#{bundle.EmpresaLabel_nomeFantasia}" for="nomeFantasia" />
+	                    <h:inputText id="nomeFantasia" value="#{empresaMb.empresa.nomeFantasia}" title="#{bundle.EmpresaTitle_nomeFantasia}" size="100"/>
+	                    <h:outputLabel value="#{bundle.EmpresaLabel_cnpj}" for="cnpj" />
+	                    <h:inputText id="cnpj" value="#{empresaMb.empresa.cnpj}" title="#{bundle.EmpresaTitle_cnpj}" size="70" />
+	                    <h:outputLabel value="#{bundle.EmpresaLabel_inscricaoEst}" for="inscricaoEst" />
+	                    <h:inputText id="inscricaoEst" value="#{empresaMb.empresa.inscricaoEst}" title="#{bundle.EmpresaTitle_inscricaoEst}" size="50" />
+	                    <h:outputLabel value="#{bundle.EmpresaLabel_inscricaoMun}" for="inscricaoMun" />
+	                    <h:inputText id="inscricaoMun" value="#{empresaMb.empresa.inscricaoMun}" title="#{bundle.EmpresaTitle_inscricaoMun}" size="50" />
+	                    <h:outputLabel value="#{bundle.EmpresaLabel_matriz}" for="matriz" />
+	                    <h:inputText id="matriz" value="#{empresaMb.empresa.matriz}" title="#{bundle.EmpresaTitle_matriz}" />
+	                    <h:outputLabel value="#{bundle.EmpresaLabel_ativo}" for="ativo" />
+	                    <h:inputText id="ativo" value="#{empresaMb.empresa.ativo}" title="#{bundle.EmpresaTitle_ativo}" />
+	                    <h:outputLabel value="#{bundle.EmpresaLabel_datainclusao}" for="datainclusao" />
+	                    <h:inputText id="datainclusao" value="#{empresaMb.empresa.datainclusao}" title="#{bundle.EmpresaTitle_datainclusao}" >
+	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+	                    </h:inputText>
+	                    <h:outputLabel value="#{bundle.EmpresaLabel_dataalteracao}" for="dataalteracao" />
+	                    <h:inputText id="dataalteracao" value="#{empresaMb.empresa.dataalteracao}" title="#{bundle.EmpresaTitle_dataalteracao}" >
+	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+	                    </h:inputText>
+	                </h:panelGrid>
+	                <br />
 					
 					<br/><br/>
 					<div class="row">

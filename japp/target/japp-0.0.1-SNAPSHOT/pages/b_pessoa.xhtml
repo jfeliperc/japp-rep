@@ -8,45 +8,70 @@
 
     <ui:define name="conteudo">
     	<h:form>
-	    	<rich:panel header="Solicitação de cadastro" style="width:99%; height: 95%; ">
+	    	<rich:panel header="Solicitação de cadastro" style="width:100%; height: 95%; ">
 		      	<div style="padding-left: 10px">
-			      	
-			      	<div class="row">
-					  	<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Login</label></div>	
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.usuario.login}" id="cInpLogin"/></div>
-					  	<div class="col-sm-1"><label for="exampleInputEmail1">Nome Completo</label></div>	
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.nomecompleto}" id="cInpNome" size="100"/></div>
-					</div>
-					<br/>
-					<div class="row">
-						<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Data Nascimento</label></div>	
-						<div class="col-sm-3"><rich:calendar value="#{pessoaMb.pessoa.datanascimento}" id="cInpDatNasc" /></div>
-					  	<div class="col-sm-1"><label for="exampleInputEmail1">CPF</label></div>	
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.docprincipal}" id="cInpCpf" size="50"/></div>
-					</div>
-					<br/>
-					<div class="row">
-						<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Tipo Documento</label></div>	
-						<div class="col-sm-3">
-							<h:selectOneMenu value="#{pessoaMb.pessoa.tipodocumento}" style="width:150px">
-								<f:selectItem itemLabel="RG" itemValue="RG"/>
-								<f:selectItem itemLabel="Habilitacao" itemValue="CH"/>
-								<f:selectItem itemLabel="Passaporte" itemValue="PS"/>
-								<f:selectItem itemLabel="Titulo Eleitor" itemValue="TE"/>
-							</h:selectOneMenu>
-						</div>
-					  	<div class="col-sm-1"><label for="exampleInputEmail1">Documento</label></div>	
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.documento}" id="cInpDocumento" size="50"/></div>
-					</div>
-					<br/>
-					<div class="row">
-						<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Email</label></div>		
-						<div class="col-sm-3"><h:inputText value="#{pessoaMb.cadEmail}" id="cInpEmail" size="50"/></div>
-					</div>
-					
+			      	<h:panelGroup id="messagePanel" layout="block">
+	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+	                	<hr/>
+		            </h:panelGroup>
+			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
+	                    <h:outputLabel value="#{bundle.PessoaLabel_id}" for="id" />
+	                    <h:inputText id="id" value="#{pessoaMb.pessoa.id}" title="#{bundle.PessoaTitle_id}" required="true" requiredMessage="#{bundle.PessoaRequiredMessage_id}"/>
+	                    <h:outputLabel value="#{bundle.PessoaLabel_tipo}" for="tipo" />
+	                    <h:inputText id="tipo" value="#{pessoaMb.pessoa.tipo}" title="#{bundle.PessoaTitle_tipo}" required="true" requiredMessage="#{bundle.PessoaRequiredMessage_tipo}"/>
+	                    <h:outputLabel value="#{bundle.PessoaLabel_nome}" for="nome" />
+	                    <h:inputText id="nome" value="#{pessoaMb.pessoa.nome}" title="#{bundle.PessoaTitle_nome}" size="70"/>
+	                    <h:outputLabel value="#{bundle.PessoaLabel_nomecompleto}" for="nomecompleto" />
+	                    <h:inputText id="nomecompleto" value="#{pessoaMb.pessoa.nomecompleto}" title="#{bundle.PessoaTitle_nomecompleto}" size="100" />
+	                    <h:outputLabel value="#{bundle.PessoaLabel_datanascimento}" for="datanascimento" />
+	                    <h:inputText id="datanascimento" value="#{pessoaMb.pessoa.datanascimento}" title="#{bundle.PessoaTitle_datanascimento}" >
+	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+	                    </h:inputText>
+	                    <h:outputLabel value="#{bundle.PessoaLabel_docprincipal}" for="docprincipal" />
+	                    <h:inputText id="docprincipal" value="#{pessoaMb.pessoa.docprincipal}" title="#{bundle.PessoaTitle_docprincipal}" />
+	                    <h:outputLabel value="#{bundle.PessoaLabel_tipodocprincipal}" for="tipodocprincipal" />
+	                    <h:inputText id="tipodocprincipal" value="#{pessoaMb.pessoa.tipodocprincipal}" title="#{bundle.PessoaTitle_tipodocprincipal}" />
+	                    <h:outputLabel value="#{bundle.PessoaLabel_documento}" for="documento" />
+	                    <h:inputText id="documento" value="#{pessoaMb.pessoa.documento}" title="#{bundle.PessoaTitle_documento}" />
+	                    <h:outputLabel value="#{bundle.PessoaLabel_tipodocumento}" for="tipodocumento" />
+	                    <h:inputText id="tipodocumento" value="#{pessoaMb.pessoa.tipodocumento}" title="#{bundle.PessoaTitle_tipodocumento}" />
+	                    <h:outputLabel value="#{bundle.PessoaLabel_tipoPessoa}" for="tipoPessoa" />
+	                    <h:inputText id="tipoPessoa" value="#{pessoaMb.pessoa.tipoPessoa}" title="#{bundle.PessoaTitle_tipoPessoa}" required="true" requiredMessage="#{bundle.PessoaRequiredMessage_tipoPessoa}"/>
+	                    <h:outputLabel value="#{bundle.PessoaLabel_login}" for="login" />
+	                    <h:inputText id="login" value="#{pessoaMb.pessoa.login}" title="#{bundle.PessoaTitle_login}" />
+	                    <h:outputLabel value="#{bundle.PessoaLabel_pass}" for="pass" />
+	                    <h:inputText id="pass" value="#{pessoaMb.pessoa.pass}" title="#{bundle.PessoaTitle_pass}" />
+	                    <h:outputLabel value="#{bundle.PessoaLabel_validadeLogin}" for="validadeLogin" />
+	                    <h:inputText id="validadeLogin" value="#{pessoaMb.pessoa.validadeLogin}" title="#{bundle.PessoaTitle_validadeLogin}" >
+	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+	                    </h:inputText>
+	                    <h:outputLabel value="#{bundle.PessoaLabel_tipoUsuario}" for="tipoUsuario" />
+	                    <h:inputText id="tipoUsuario" value="#{pessoaMb.pessoa.tipoUsuario}" title="#{bundle.PessoaTitle_tipoUsuario}" required="true" requiredMessage="#{bundle.PessoaRequiredMessage_tipoUsuario}"/>
+	                    <h:outputLabel value="#{bundle.PessoaLabel_dataultimoacesso}" for="dataultimoacesso" />
+	                    <h:inputText id="dataultimoacesso" value="#{pessoaMb.pessoa.dataultimoacesso}" title="#{bundle.PessoaTitle_dataultimoacesso}" >
+	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+	                    </h:inputText>
+	                    <h:outputLabel value="#{bundle.PessoaLabel_datainclusao}" for="datainclusao" />
+	                    <h:inputText id="datainclusao" value="#{pessoaMb.pessoa.datainclusao}" title="#{bundle.PessoaTitle_datainclusao}" >
+	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+	                    </h:inputText>
+	                    <h:outputLabel value="#{bundle.PessoaLabel_dataalteracao}" for="dataalteracao" />
+	                    <h:inputText id="dataalteracao" value="#{pessoaMb.pessoa.dataalteracao}" title="#{bundle.PessoaTitle_dataalteracao}" >
+	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+	                    </h:inputText>
+	                    <h:outputLabel value="#{bundle.PessoaLabel_empresaId}" for="empresaId" />
+	                    <h:selectOneMenu id="empresaId" value="#{pessoaMb.pessoa.empresa.id}" title="#{bundle.PessoaTitle_empresaId}" style="width:200px">
+	                        <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
+	                    </h:selectOneMenu>
+	                    <h:outputLabel value="Email" for="email" />
+	                    <h:inputText id="email" value="#{pessoaMb.pessoa.nome}" title="#{bundle.PessoaTitle_nome}" size="70"/>
+	                    
+	                </h:panelGrid>
+	                <br />
+				    
 					<br/><br/>
 					<div class="row">
-					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Buscar" class="btn"/>	
+					  <h:commandButton action="#{pessoaMb.buscar()}" value="Buscar" class="btn"/>	
 					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Inserir" class="btn"/>
 					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Limpar" class="btn"/>
 					  <hr/>

@@ -14,29 +14,32 @@
 	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
 	                	<hr/>
 		            </h:panelGroup>
-			      	<h:panelGrid columns="4" styleClass="gridForm">
-	                    <h:outputLabel value="#{bundle.EditProdutoLabel_id}" for="id" />
-	                    <h:inputText id="id" value="#{produtoMb.produto.id}" title="#{bundle.EditProdutoTitle_id}" required="true" requiredMessage="#{bundle.EditProdutoRequiredMessage_id}"/>
-	                    <h:outputLabel value="#{bundle.EditProdutoLabel_nome}" for="nome" />
-	                    <h:inputText id="nome" value="#{produtoMb.produto.nome}" title="#{bundle.EditProdutoTitle_nome}" required="true" requiredMessage="#{bundle.EditProdutoRequiredMessage_nome}"/>
-	                    <h:outputLabel value="#{bundle.EditProdutoLabel_descricao}" for="descricao" />
-	                    <h:inputText id="descricao" value="#{produtoMb.produto.descricao}" title="#{bundle.EditProdutoTitle_descricao}" />
-	                    <h:outputLabel value="#{bundle.EditProdutoLabel_medida}" for="medida" />
-	                    <h:inputText id="medida" value="#{produtoMb.produto.medida}" title="#{bundle.EditProdutoTitle_medida}" />
-	                    <h:outputLabel value="#{bundle.EditProdutoLabel_qtdRefCompra}" for="qtdRefCompra" />
-	                    <h:inputText id="qtdRefCompra" value="#{produtoMb.produto.qtdRefCompra}" title="#{bundle.EditProdutoTitle_qtdRefCompra}" />
-	                    <h:outputLabel value="#{bundle.EditProdutoLabel_qtdRefSaida}" for="qtdRefSaida" />
-	                    <h:inputText id="qtdRefSaida" value="#{produtoMb.produto.qtdRefSaida}" title="#{bundle.EditProdutoTitle_qtdRefSaida}" />
-	                    <h:outputLabel value="#{bundle.EditProdutoLabel_datainclusao}" for="datainclusao" />
-	                    <h:inputText id="datainclusao" value="#{produtoMb.produto.datainclusao}" title="#{bundle.EditProdutoTitle_datainclusao}" >
+			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
+	                    <h:outputLabel value="#{bundle.id_}" for="id" />
+	                    <h:inputText id="id" value="#{produtoMb.produto.id}" title="#{bundle.ProdutoTitle_id}" required="true" 
+	                    	requiredMessage="#{bundle.ProdutoRequiredMessage_id}"/>
+	                    <h:outputLabel value="#{bundle.nome_}" for="nome" />
+	                    <h:inputText id="nome" value="#{produtoMb.produto.nome}" title="#{bundle.ProdutoTitle_nome}" required="true" 
+	                    	requiredMessage="#{bundle.ProdutoRequiredMessage_nome}" size="100"/>
+	                    <h:outputLabel value="#{bundle.descricao_}" for="descricao" />
+	                    <h:inputText id="descricao" value="#{produtoMb.produto.descricao}" title="#{bundle.ProdutoTitle_descricao}" size="100" />
+	                    <h:outputLabel value="#{bundle.ProdutoLabel_medida}" for="medida" />
+	                    <h:inputText id="medida" value="#{produtoMb.produto.medida}" title="#{bundle.ProdutoTitle_medida}" />
+	                    <h:outputLabel value="#{bundle.ProdutoLabel_qtdRefCompra}" for="qtdRefCompra" />
+	                    <h:inputText id="qtdRefCompra" value="#{produtoMb.produto.qtdRefCompra}" title="#{bundle.ProdutoTitle_qtdRefCompra}" />
+	                    <h:outputLabel value="#{bundle.ProdutoLabel_qtdRefSaida}" for="qtdRefSaida" />
+	                    <h:inputText id="qtdRefSaida" value="#{produtoMb.produto.qtdRefSaida}" title="#{bundle.ProdutoTitle_qtdRefSaida}" />
+	                    <h:outputLabel value="#{bundle.datainclusao_}" for="datainclusao" />
+	                    <h:inputText id="datainclusao" value="#{produtoMb.produto.datainclusao}" title="#{bundle.ProdutoTitle_datainclusao}" >
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 	                    </h:inputText>
-	                    <h:outputLabel value="#{bundle.EditProdutoLabel_dataalteracao}" for="dataalteracao" />
-	                    <h:inputText id="dataalteracao" value="#{produtoMb.produto.dataalteracao}" title="#{bundle.EditProdutoTitle_dataalteracao}" >
+	                    <h:outputLabel value="#{bundle.dataalteracao_}" for="dataalteracao" />
+	                    <h:inputText id="dataalteracao" value="#{produtoMb.produto.dataalteracao}" title="#{bundle.ProdutoTitle_dataalteracao}" >
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 	                    </h:inputText>
-	                    <h:outputLabel value="#{bundle.EditProdutoLabel_tipoProdutoId}" for="tipoProdutoId" />
-	                    <h:selectOneMenu id="tipoProdutoId" value="#{produtoMb.produto.tipoProduto}" title="#{bundle.EditProdutoTitle_tipoProdutoId}" required="true" requiredMessage="#{bundle.EditProdutoRequiredMessage_tipoProdutoId}">
+	                    <h:outputLabel value="#{bundle.ProdutoLabel_tipoProdutoId}" for="tipoProdutoId" />
+	                    <h:selectOneMenu id="tipoProdutoId" value="#{produtoMb.produto.tipoProduto}" title="#{bundle.ProdutoTitle_tipoProdutoId}" 
+	                    	required="true" requiredMessage="#{bundle.ProdutoRequiredMessage_tipoProdutoId}" style="width:200px">
 	                        <f:selectItems value="#{produtoMb.itemsTipoProduto}" var="tp" itemLabel="tp.descricao" itemValue="tp"/>
 	                    </h:selectOneMenu>
 	                </h:panelGrid>
@@ -45,7 +48,7 @@
 										
 					<br/><br/>
 					<div class="row">
-					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Enviar Solicitação de Cadastro" class="btn btn-default "/>
+					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Consultar" class="btn btn-default "/>
 					</div>
 					
 				</div>	
