@@ -8,7 +8,6 @@ import javax.ejb.Stateless;
 import com.module.ejb.contract.IPessoaEjb;
 import com.module.jpa.dao.Dao;
 import com.module.jpa.model.Pessoa;
-import com.module.jpa.model.TipoPessoa;
 import com.module.jpa.model.Usuario;
 
 @Stateless
@@ -68,6 +67,12 @@ public class PessoaEjb implements IPessoaEjb {
 		}else{
 			daoUsuario.update(usuario);
 		}
+	}
+
+	@Override
+	public int buscarQtdPessoa() {
+		Dao<Pessoa> daoPessoa = new Dao<Pessoa>();
+		return daoPessoa.count();
 	}
 
 }

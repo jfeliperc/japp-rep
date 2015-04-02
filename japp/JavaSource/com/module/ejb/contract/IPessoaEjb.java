@@ -16,5 +16,7 @@ public interface IPessoaEjb {
 	public void excluirPessoa(Pessoa Pessoa);
 
 	public void solicitarCadastro(Pessoa pessoa, Usuario usuario);
+
+	public int buscarQtdPessoa();
 	
 }

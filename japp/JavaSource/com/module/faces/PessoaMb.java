@@ -34,12 +34,20 @@ public class PessoaMb extends BaseMb{
 
 	public String solicitarCadastroPessoa(){
 		pessoaEjb.solicitarCadastro(pessoa, usuario);
-        setMsg("SolicitaÃ§Ã£o de cadastro registrada.");
+        setMsg("Solicitação de cadastro registrada.");
 		return "login";
 	}
 	
 	public void buscar(){
 		
+	}
+	
+	public void salvar(){
+
+	}
+
+	public void limpar(){
+
 	}
 	
 	public Usuario getUsuario() {

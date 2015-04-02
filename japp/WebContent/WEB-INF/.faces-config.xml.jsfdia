@@ -17,6 +17,9 @@
    <PROCESS-ITEM-OUTPUT ID="b_produto::#pages#b_produto.xhtml"
     NAME="output4" PATH="/pages/b_produto.xhtml"
     TARGET="rules:#pages#b_produto.xhtml" TITLE="b_produto" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="c_empresa::#pages#c_empresa.xhtml"
+    NAME="output5" PATH="/pages/c_empresa.xhtml"
+    TARGET="rules:#pages#c_empresa.xhtml" TITLE="c_empresa" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#pages#inicio.xhtml"
