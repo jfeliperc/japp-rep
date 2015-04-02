@@ -77,8 +77,34 @@
 					  <hr/>
 					</div>
 					
+					<rich:panel header="Contatos" style="width:100%; height: 95%; ">
+						<h:panelGrid columns="3" styleClass="gridForm" cellspacing="0px" cellpadding="0">
+							<h:outputLabel value="Tipo" for="tipoC" />
+		                    <h:outputLabel value="Descrição" for="descricaoC" />
+		                    <h:outputLabel value="" />
+		                    <h:inputText id="tipoC" value="#{contatoController.selected.tipo}" title="#{bundle.ContatoTitle_tipo}" />
+		                    <h:inputText id="descricaoC" value="#{contatoController.selected.descricao}" title="#{bundle.ContatoTitle_descricao}" size="50" />
+					  		<h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Salvar" class="btn"/>
+		                    
+						</h:panelGrid>
+						<br/>
+						<rich:dataTable value="#{pessoaMb.listaUsuarios}" var="us" style="width:100%" id="tbContato">
+			    			<rich:column>
+			    				<f:facet name="header">Tipo</f:facet>
+			    				<h:outputText value="#{us.login}" />
+			    			</rich:column>
+			    			<rich:column>
+			    				<f:facet name="header">Descrição</f:facet>
+			    				<h:outputText value="#{us.tipo}" />
+			    			</rich:column>
+			    			<rich:column>
+			    				<f:facet name="header">Ação</f:facet>
+			    			</rich:column>
+			    		</rich:dataTable>	
+					</rich:panel>
+					
 					<br/>
-					<rich:dataTable value="#{pessoaMb.listaUsuarios}" var="us" style="width:100%">
+					<rich:dataTable value="#{pessoaMb.listaUsuarios}" var="us" style="width:100%" id="tbListaPessoa">
 		    			<rich:column>
 		    				<f:facet name="header">Id</f:facet>
 		    				<h:outputText value="#{us.id}" />
@@ -101,6 +127,7 @@
 		    		</rich:dataTable>
 					
 				</div>	
+				<br/><br/><br/>
 		    </rich:panel>
 	    </h:form>
     </ui:define>
