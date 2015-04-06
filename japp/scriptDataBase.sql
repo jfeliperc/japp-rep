@@ -162,8 +162,7 @@ CREATE TABLE IF NOT EXISTS `japp`.`pessoa` (
   `nome` VARCHAR(45) NULL,
   `nomecompleto` VARCHAR(45) NULL,
   `datanascimento` DATETIME NULL,
-  `docprincipal` VARCHAR(45) NULL,
-  `tipodocprincipal` VARCHAR(10) NULL,
+  `cpf` VARCHAR(45) NULL,
   `documento` VARCHAR(45) NULL,
   `tipodocumento` VARCHAR(10) NULL,
   `tipo_pessoa`  VARCHAR(3) NOT NULL,  
@@ -228,7 +227,8 @@ ENGINE = INNODB;
 CREATE TABLE IF NOT EXISTS `japp`.`orcamento` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `numero` VARCHAR(10) NULL,
-  `solicitante_id` INT NOT NULL,
+  `pessoa_id` INT NOT NULL COMMENT 'pessoa fisica que solicitou orcamento',
+  `empresa_id` INT NOT NULL COMMENT 'pessoa juridica que solicitou orcamento',
   `servico_id` INT NOT NULL,
   `datasolicitacao` VARCHAR(45) NULL,
   `dataconclusao` VARCHAR(45) NULL,
@@ -242,16 +242,13 @@ CREATE TABLE IF NOT EXISTS `japp`.`orcamento` (
   `dataalteracao` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_orcamento_pessoal_idx` (`solicitante_id` ASC),
-  CONSTRAINT `fk_orcamento_pessoa`
-    FOREIGN KEY (`solicitante_id`) REFERENCES `japp`.`pessoa` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_orcamento_servico`
-    FOREIGN KEY (`servico_id`) REFERENCES `japp`.`servico` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)	
+  CONSTRAINT `fk_orcamento_pessoa` FOREIGN KEY (`pessoa_id`) REFERENCES `japp`.`pessoa` (`id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_orcamento_empresa` FOREIGN KEY (`empresa_id`) REFERENCES `japp`.`empresa` (`id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_orcamento_servico` FOREIGN KEY (`servico_id`) REFERENCES `japp`.`servico` (`id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION)	
 ENGINE = INNODB;
-
 
 -- -----------------------------------------------------
 -- Table `japp`.`orcamento_produto`
@@ -307,16 +304,62 @@ CREATE TABLE IF NOT EXISTS `japp`.`endereco` (
   `logradouro` VARCHAR(45) NULL,
   `numero` VARCHAR(45) NULL,
   `complemento` VARCHAR(45) NULL,
-  `pessoa_id` INT NOT NULL,
+  `pessoa_id` INT NULL,
+  `empresa_id` INT NULL,
   `datainclusao` DATETIME NULL,
   `dataalteracao` DATETIME NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_endereco_pessoa_idx` (`pessoa_id` ASC),
-  CONSTRAINT `fk_endereco_pessoa`
-    FOREIGN KEY (`pessoa_id`)
-    REFERENCES `japp`.`pessoa` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  CONSTRAINT `fk_endereco_pessoa` FOREIGN KEY (`pessoa_id`) REFERENCES `japp`.`pessoa` (`id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_endereco_empresa FOREIGN KEY (`empresa_id`) REFERENCES `japp`.`empresa` (`id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION)
+ENGINE = INNODB;
+
+-- -----------------------------------------------------
+-- Table `japp`.`fornec_cliente`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `japp`.`fornec_cliente` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `tipo` VARCHAR(1) NOT NULL COMMENT 'F = Fornecedor; C = Cliente',
+  `tipo_pessoa`  VARCHAR(3) NOT NULL,
+  `nome` VARCHAR(45) NULL,
+  `nomecompleto` VARCHAR(45) NULL,
+  `razao_social` VARCHAR(45) NOT NULL,
+  `nome_fantasia` VARCHAR(45) NULL,  
+  `datanascimento` DATETIME NULL,
+  `cpf` VARCHAR(45) NULL,
+  `cnpj` VARCHAR(45) NULL,
+  `inscricao_est` VARCHAR(45) NULL,
+  `inscricao_mun` VARCHAR(45) NULL,  
+  `tipodocumento` VARCHAR(10) NULL,
+  `documento` VARCHAR(45) NULL,    
+  `empresa_id` INT NULL COMMENT 'empresa/filial relacionada a este fornecedor/cliente', 
+  `ativo` TINYINT(1),    
+  `observacao` VARCHAR(255) NULL,  
+  `datainclusao` DATETIME NULL,
+  `dataalteracao` DATETIME NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fornec_cliente_idx` (`id` ASC),
+  INDEX `fk_empresa_id_idx` (`empresa_id` ASC),
+  CONSTRAINT `fk_empresa_id` FOREIGN KEY (`empresa_id`) REFERENCES `japp`.`empresa` (`id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION)
+ENGINE = INNODB;
+
+-- -----------------------------------------------------
+-- Table `japp`.`fornec_produto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `japp`.`fornec_produto` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`fornecedor_id` INT NOT NULL,
+	`produto_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fornec_cliente_idx` (`id` ASC),
+  INDEX `fk_empresa_id_idx` (`empresa_id` ASC),
+  CONSTRAINT `fk_fornecedor_id` FOREIGN KEY (`fornecedor_id`) REFERENCES `japp`.`fornec_cliente` (`id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_produto_id` FOREIGN KEY (`produto_id`) REFERENCES `japp`.`produto` (`id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION	)
 ENGINE = INNODB;
 
 -- ---------------------------------- origem web --------------------------------------------------
