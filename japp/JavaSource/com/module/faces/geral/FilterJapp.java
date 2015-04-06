@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet Filter implementation class FilterJapp
  */
-@WebFilter("/FilterJapp")
+//@WebFilter("/FilterJapp")
 public class FilterJapp implements Filter {
 
     /**

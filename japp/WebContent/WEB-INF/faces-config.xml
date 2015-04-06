@@ -20,8 +20,8 @@
         </navigation-case>
         
         <navigation-case>
-            <from-outcome>c_pessoa</from-outcome>
-            <to-view-id>/pages/c_pessoa.xhtml</to-view-id>
+            <from-outcome>cadLogin</from-outcome>
+            <to-view-id>/pages/cadLogin.xhtml</to-view-id>
         </navigation-case>
         
         <navigation-case>

@@ -41,7 +41,7 @@
 			
 			.gridForm {
 				border-spacing: 10px !important;
-				width: 70%;
+				width: 90%;
 				text-align: left;
 			}
 			
@@ -58,6 +58,18 @@
 			td, th {
 				padding: 5px !important;
 			}
+			
+			.conteudoCtrBody{
+				width: 10%;
+				vertical-align: top;
+				// position: fixed;
+				// top:25px;
+			} 
+			
+			.conteudoBody{
+				padding: 5px !important;
+				vertical-align: top;
+			}
   		
   		</style>
   		
@@ -72,13 +84,22 @@
                 <ui:include src="t_menu.xhtml" />
             </ui:insert>
             
-            <div style="padding-left: 5px;">
-            	<ui:insert name="conteudo"/>
+            <div style="padding-left: 5px;" >
+            	<h:panelGrid columns="2" columnClasses="conteudoCtrBody conteudoBody">
+            		<ui:insert name="conteudoCtr"/>
+            		<ui:insert name="conteudo"/>
+            		<ui:insert name="detalheCtr"/>
+            		<ui:insert name="detalhe"/>
+            	</h:panelGrid>
         	</div>
+        	
+        	<br/><br/>
         	
             <ui:insert name="rodape">
                 <ui:include src="t_footer.xhtml" />
             </ui:insert> 
+            
+            <ui:insert name="popups"/>
         
     </h:body>
 </html>

@@ -15,13 +15,13 @@
 	                	<hr/>
 		            </h:panelGroup>
 			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
-	                    <h:outputLabel value="#{bundle.ProdutoLabel_id}" for="id" />
+	                    <h:outputLabel value="#{bundle.id_}" for="id" />
 	                    <h:inputText id="id" value="#{produtoMb.produto.id}" title="#{bundle.ProdutoTitle_id}" required="true" 
 	                    	requiredMessage="#{bundle.ProdutoRequiredMessage_id}"/>
-	                    <h:outputLabel value="#{bundle.ProdutoLabel_nome}" for="nome" />
+	                    <h:outputLabel value="#{bundle.nome_}" for="nome" />
 	                    <h:inputText id="nome" value="#{produtoMb.produto.nome}" title="#{bundle.ProdutoTitle_nome}" required="true" 
 	                    	requiredMessage="#{bundle.ProdutoRequiredMessage_nome}" size="100"/>
-	                    <h:outputLabel value="#{bundle.ProdutoLabel_descricao}" for="descricao" />
+	                    <h:outputLabel value="#{bundle.descricao_}" for="descricao" />
 	                    <h:inputText id="descricao" value="#{produtoMb.produto.descricao}" title="#{bundle.ProdutoTitle_descricao}" size="100" />
 	                    <h:outputLabel value="#{bundle.ProdutoLabel_medida}" for="medida" />
 	                    <h:inputText id="medida" value="#{produtoMb.produto.medida}" title="#{bundle.ProdutoTitle_medida}" />
@@ -29,11 +29,11 @@
 	                    <h:inputText id="qtdRefCompra" value="#{produtoMb.produto.qtdRefCompra}" title="#{bundle.ProdutoTitle_qtdRefCompra}" />
 	                    <h:outputLabel value="#{bundle.ProdutoLabel_qtdRefSaida}" for="qtdRefSaida" />
 	                    <h:inputText id="qtdRefSaida" value="#{produtoMb.produto.qtdRefSaida}" title="#{bundle.ProdutoTitle_qtdRefSaida}" />
-	                    <h:outputLabel value="#{bundle.ProdutoLabel_datainclusao}" for="datainclusao" />
+	                    <h:outputLabel value="#{bundle.datainclusao_}" for="datainclusao" />
 	                    <h:inputText id="datainclusao" value="#{produtoMb.produto.datainclusao}" title="#{bundle.ProdutoTitle_datainclusao}" >
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 	                    </h:inputText>
-	                    <h:outputLabel value="#{bundle.ProdutoLabel_dataalteracao}" for="dataalteracao" />
+	                    <h:outputLabel value="#{bundle.dataalteracao_}" for="dataalteracao" />
 	                    <h:inputText id="dataalteracao" value="#{produtoMb.produto.dataalteracao}" title="#{bundle.ProdutoTitle_dataalteracao}" >
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 	                    </h:inputText>

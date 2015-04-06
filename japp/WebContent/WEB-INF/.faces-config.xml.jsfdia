@@ -8,9 +8,9 @@
    <PROCESS-ITEM-OUTPUT ID="inicio::#pages#inicio.xhtml" NAME="output1"
     PATH="/pages/inicio.xhtml" TARGET="rules:#pages#inicio.xhtml"
     TITLE="inicio" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="c_pessoa::#pages#c_pessoa.xhtml"
-    NAME="output2" PATH="/pages/c_pessoa.xhtml"
-    TARGET="rules:#pages#c_pessoa.xhtml" TITLE="c_pessoa" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cadLogin::#pages#cadLogin.xhtml"
+    NAME="output2" PATH="/pages/cadLogin.xhtml"
+    TARGET="rules:#pages#cadLogin.xhtml" TITLE="cadLogin" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="b_pessoa::#pages#b_pessoa.xhtml"
     NAME="output3" PATH="/pages/b_pessoa.xhtml"
     TARGET="rules:#pages#b_pessoa.xhtml" TITLE="b_pessoa" model-entity="JSFProcessItemOutput"/>
@@ -26,12 +26,12 @@
   PATH="/pages/inicio.xhtml" SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#pages#login.xhtml" PATH="/pages/login.xhtml"
   SHAPE="256,33,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#pages#c_pessoa.xhtml"
-  PATH="/pages/c_pessoa.xhtml" SHAPE="272,321,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#pages#c_empresa.xhtml"
   PATH="/pages/c_empresa.xhtml" SHAPE="288,465,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#pages#b_pessoa.xhtml"
   PATH="/pages/b_pessoa.xhtml" SHAPE="288,465,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#pages#b_produto.xhtml"
   PATH="/pages/b_produto.xhtml" SHAPE="304,497,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadLogin.xhtml"
+  PATH="/pages/cadLogin.xhtml" SHAPE="304,417,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

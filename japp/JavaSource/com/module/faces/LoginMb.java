@@ -6,8 +6,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import com.module.ejb.contract.IUsuarioEjb;
-import com.module.jpa.model.Usuario;
+import com.module.ejb.contract.IPessoaEjb;
+import com.module.jpa.model.Pessoa;
 
 
 @ManagedBean
@@ -15,7 +15,7 @@ import com.module.jpa.model.Usuario;
 public class LoginMb extends BaseMb{
 
 	@EJB
-	private IUsuarioEjb usuarioEjb;
+	private IPessoaEjb pessoaEjb;
 	
 	private String login;
 	private String pass;
@@ -26,14 +26,14 @@ public class LoginMb extends BaseMb{
         HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
         session.setAttribute("AUTHENTICATED", "True");
 		
-        if (usuarioEjb.validarLogin(login, pass, empresaId)){
+        if (pessoaEjb.validarLogin(login, pass, empresaId)){
         	
-        	Usuario usuario = new Usuario();
-        	usuario.setLogin(login);
-        	usuario.setPass(pass);
-        	usuario = usuarioEjb.buscarUsuario(usuario);
+        	Pessoa pessoa = new Pessoa();
+        	pessoa.setLogin(login);
+        	pessoa.setPass(pass);
+        	pessoa = pessoaEjb.buscarPorLogin(login);
         	
-        	session.setAttribute("userLog", usuario);
+        	session.setAttribute("userLog", pessoa);
         	
         	return "inicio";
         }else{

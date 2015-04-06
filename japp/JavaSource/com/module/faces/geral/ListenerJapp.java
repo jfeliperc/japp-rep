@@ -34,16 +34,18 @@ public class ListenerJapp implements PhaseListener {
         boolean timedout = newSession; //postback && newSession;
         
         if (session != null){
-            String chave = (String)session.getAttribute("autenticado_chave");
+            String chave = (String)session.getAttribute("AUTHENTICATED");
             timedout = ((chave == null)||("".equals(chave)));
         }
         
         if (timedout) {
             //if (pessoaEjb.buscarQtdPessoa() > 0){        	
-        	//if (!context.getViewRoot().getViewId().contains("login.xhtml")){
+        	if ((!context.getViewRoot().getViewId().contains("login.xhtml"))
+        		&&
+        		(!context.getViewRoot().getViewId().contains("cadLogin.xhtml"))){
                 NavigationHandler nh = context.getApplication().getNavigationHandler();
                 nh.handleNavigation(context, null, "login");
-            //}
+            }
             //}
         }
 	}

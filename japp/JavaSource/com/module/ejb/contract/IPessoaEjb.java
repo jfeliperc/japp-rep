@@ -3,7 +3,6 @@ package com.module.ejb.contract;
 import java.util.List;
 
 import com.module.jpa.model.Pessoa;
-import com.module.jpa.model.Usuario;
 
 public interface IPessoaEjb {
 
@@ -15,8 +14,12 @@ public interface IPessoaEjb {
 	
 	public void excluirPessoa(Pessoa Pessoa);
 
-	public void solicitarCadastro(Pessoa pessoa, Usuario usuario);
+	public void solicitarCadastro(Pessoa pessoa);
 
 	public int buscarQtdPessoa();
+
+	public Pessoa buscarPorLogin(String login);
+
+	public boolean validarLogin(String login, String pass, Integer empresaId);
 	
 }

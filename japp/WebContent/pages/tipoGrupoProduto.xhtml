@@ -1,0 +1,58 @@
+<ui:composition template="../templates/t_base.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a4j="http://richfaces.org/a4j" 
+    xmlns:rich="http://richfaces.org/rich">
+
+    <ui:define name="conteudo">
+    	<h:form>
+	    	<rich:panel header="Cadastro de tipos e grupos de produtos" style="width:99%; height: 95%; ">
+		      	<div style="padding-left: 10px">		      	
+			      	<h:panelGroup id="messagePanel" layout="block">
+	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+	                	<hr/>
+		            </h:panelGroup>
+		            <h:panelGroup id="messagePanel" layout="block">
+	                	<h3>Grupos de produtos</h3>
+	                	<hr/>
+		            </h:panelGroup>
+			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
+	                    <h:outputLabel value="#{bundle.id_}" for="id" />
+	                    <h:inputText id="id" value="#{produtoMb.produto.id}" title="#{bundle.ProdutoTitle_id}" required="true" 
+	                    	requiredMessage="#{bundle.ProdutoRequiredMessage_id}"/>
+	                    <h:outputLabel value="#{bundle.nome_}" for="nome" />
+	                    <h:inputText id="nome" value="#{produtoMb.produto.nome}" title="#{bundle.ProdutoTitle_nome}" required="true" 
+	                    	requiredMessage="#{bundle.ProdutoRequiredMessage_nome}" size="100"/>                   
+	                </h:panelGrid>
+                	
+					<br/><hr/>
+					
+					<h:panelGroup id="messagePanel" layout="block">
+	                	<h3>Tipos de produtos</h3>
+	                	<hr/>
+		            </h:panelGroup>
+			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
+	                    <h:outputLabel value="#{bundle.id_}" for="idT" />
+	                    <h:inputText id="idT" value="#{produtoMb.produto.id}" title="#{bundle.ProdutoTitle_id}" required="true" 
+	                    	requiredMessage="#{bundle.ProdutoRequiredMessage_id}"/>
+	                    <h:outputLabel value="#{bundle.nome_}" for="nomeT" />
+	                    <h:inputText id="nomeT" value="#{produtoMb.produto.nome}" title="#{bundle.ProdutoTitle_nome}" required="true" 
+	                    	requiredMessage="#{bundle.ProdutoRequiredMessage_nome}" size="100"/>                   
+	                </h:panelGrid>
+										
+					<br/><br/>
+					<div class="row">
+					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Consultar" class="btn btn-default "/>
+					</div>
+					
+				</div>	
+		    </rich:panel>
+	    </h:form>
+    </ui:define>
+    
+</ui:composition>
+
+
+    
