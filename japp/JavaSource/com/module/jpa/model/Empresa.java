@@ -27,7 +27,7 @@ public class Empresa implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
-	private Object ativo;
+	private String ativo;
 
 	private String cnpj;
 
@@ -82,11 +82,11 @@ public class Empresa implements Serializable {
 		this.id = id;
 	}
 
-	public Object getAtivo() {
+	public String getAtivo() {
 		return this.ativo;
 	}
 
-	public void setAtivo(Object ativo) {
+	public void setAtivo(String ativo) {
 		this.ativo = ativo;
 	}
 

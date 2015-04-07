@@ -37,7 +37,7 @@
         <navigation-case>
         	<from-outcome>c_empresa</from-outcome>
         	<to-view-id>/pages/c_empresa.xhtml</to-view-id>
-        </navigation-case>
+        </navigation-case> 
         
 	</navigation-rule>
 

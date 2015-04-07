@@ -6,6 +6,9 @@
     xmlns:a4j="http://richfaces.org/a4j" 
     xmlns:rich="http://richfaces.org/rich">
 
+    <ui:define name="menuVertical">
+    
+    </ui:define>
     
     <ui:define name="conteudo">
         <h:form id="fPrincipal">            
@@ -79,7 +82,7 @@
 							<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Data Nascimento</label></div>	
 							<div class="col-sm-3"><rich:calendar value="#{pessoaMb.pessoa.datanascimento}" id="cInpDatNasc" /></div>
 						  	<div class="col-sm-1"><label for="exampleInputEmail1">CPF</label></div>	
-							<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.docprincipal}" id="cInpCpf" size="50"/></div>
+							<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.cpf}" id="cInpCpf" size="50"/></div>
 						</div>
 						<br/>
 						<div class="row">

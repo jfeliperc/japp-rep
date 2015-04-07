@@ -11,12 +11,15 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
 		<non-jta-data-source>java:app/japp/jappDS</non-jta-data-source>
 		
 		<class>com.module.jpa.model.Acesso</class>
+		<class>com.module.jpa.model.AgenteExterno</class>
 		<class>com.module.jpa.model.Atividade</class>
 		<class>com.module.jpa.model.AtividadeServico</class>
 		<class>com.module.jpa.model.Contato</class>
 		<class>com.module.jpa.model.Empresa</class>
 		<class>com.module.jpa.model.Endereco</class>
 		<class>com.module.jpa.model.Estoque</class>
+		<class>com.module.jpa.model.FornecProduto</class>
+		<class>com.module.jpa.model.GrupoProduto</class>
 		<class>com.module.jpa.model.Orcamento</class>
 		<class>com.module.jpa.model.Pedido</class>
 		<class>com.module.jpa.model.PedidoItem</class>
@@ -24,9 +27,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
 		<class>com.module.jpa.model.Produto</class>
 		<class>com.module.jpa.model.Servico</class>
 		<class>com.module.jpa.model.TipoAtividade</class>
-		<class>com.module.jpa.model.TipoPessoa</class>
 		<class>com.module.jpa.model.TipoProduto</class>
-		<class>com.module.jpa.model.Usuario</class>
 		<class>com.module.jpa.model.ValorProduto</class>
 		
 		<properties>

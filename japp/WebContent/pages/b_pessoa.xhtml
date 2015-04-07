@@ -15,7 +15,6 @@
 	</ui:define>
 
     <ui:define name="conteudo">
-    	<h:form>
 	    	<rich:panel header="Solicitação de cadastro" style="width:100%; height: 95%; ">
 		      	<div style="padding-left: 10px">
 			      	<h:panelGroup id="messagePanel" layout="block">
@@ -35,10 +34,8 @@
 	                    <h:inputText id="datanascimento" value="#{pessoaMb.pessoa.datanascimento}" title="#{bundle.PessoaTitle_datanascimento}" >
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 	                    </h:inputText>
-	                    <h:outputLabel value="#{bundle.PessoaLabel_docprincipal}" for="docprincipal" />
-	                    <h:inputText id="docprincipal" value="#{pessoaMb.pessoa.docprincipal}" title="#{bundle.PessoaTitle_docprincipal}" />
-	                    <h:outputLabel value="#{bundle.PessoaLabel_tipodocprincipal}" for="tipodocprincipal" />
-	                    <h:inputText id="tipodocprincipal" value="#{pessoaMb.pessoa.tipodocprincipal}" title="#{bundle.PessoaTitle_tipodocprincipal}" />
+	                    <h:outputLabel value="#{bundle.PessoaLabel_docprincipal}" for="cpf" />
+	                    <h:inputText id="cpf" value="#{pessoaMb.pessoa.cpf}" title="#{bundle.PessoaTitle_cpf}" />
 	                    <h:outputLabel value="#{bundle.PessoaLabel_documento}" for="documento" />
 	                    <h:inputText id="documento" value="#{pessoaMb.pessoa.documento}" title="#{bundle.PessoaTitle_documento}" />
 	                    <h:outputLabel value="#{bundle.PessoaLabel_tipodocumento}" for="tipodocumento" />
@@ -78,7 +75,6 @@
 	                <br/><br/>				    
 				</div>	
 		    </rich:panel>
-	    </h:form>
     </ui:define>
     
     <ui:define name="detalheCtr">

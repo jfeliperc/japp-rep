@@ -18,9 +18,9 @@ public class AgenteExterno implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Integer id;
 
-	private Object ativo;
+	private String ativo;
 
 	private String cnpj;
 
@@ -77,19 +77,19 @@ public class AgenteExterno implements Serializable {
 	public AgenteExterno() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public Object getAtivo() {
+	public String getAtivo() {
 		return this.ativo;
 	}
 
-	public void setAtivo(Object ativo) {
+	public void setAtivo(String ativo) {
 		this.ativo = ativo;
 	}
 

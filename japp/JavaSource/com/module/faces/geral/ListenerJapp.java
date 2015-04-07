@@ -33,21 +33,21 @@ public class ListenerJapp implements PhaseListener {
         //boolean postback = !ext.getRequestParameterMap().isEmpty(); // Depois de logado, este objeto sempre vem false (era pra vir true)
         boolean timedout = newSession; //postback && newSession;
         
-        if (session != null){
-            String chave = (String)session.getAttribute("AUTHENTICATED");
-            timedout = ((chave == null)||("".equals(chave)));
-        }
-        
-        if (timedout) {
-            //if (pessoaEjb.buscarQtdPessoa() > 0){        	
-        	if ((!context.getViewRoot().getViewId().contains("login.xhtml"))
-        		&&
-        		(!context.getViewRoot().getViewId().contains("cadLogin.xhtml"))){
-                NavigationHandler nh = context.getApplication().getNavigationHandler();
-                nh.handleNavigation(context, null, "login");
-            }
-            //}
-        }
+//        if (session != null){
+//            String chave = (String)session.getAttribute("AUTHENTICATED");
+//            timedout = ((chave == null)||("".equals(chave)));
+//        }
+//        
+//        if (timedout) {
+//            //if (pessoaEjb.buscarQtdPessoa() > 0){        	
+//        	if ((!context.getViewRoot().getViewId().contains("login.xhtml"))
+//        		&&
+//        		(!context.getViewRoot().getViewId().contains("cadLogin.xhtml"))){
+//                NavigationHandler nh = context.getApplication().getNavigationHandler();
+//                nh.handleNavigation(context, null, "login");
+//            }
+//            //}
+//        }
 	}
 
 	@Override

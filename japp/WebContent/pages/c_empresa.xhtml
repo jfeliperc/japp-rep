@@ -7,9 +7,8 @@
     xmlns:rich="http://richfaces.org/rich">
 
     <ui:define name="conteudo">
-    	<h:form>
 	    	<rich:panel header="Dados da empresa" style="width:99%; height: 95%; ">
-		      	<div style="padding-left: 10px">
+		      	<div>
 			      	<h:panelGroup id="messagePanel" layout="block">
 	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
 	                	<hr/>
@@ -44,13 +43,12 @@
 	                <br />
 					
 					<br/><br/>
-					<div class="row">
+					<div>
 					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Salvar" class="btn btn-default "/>
 					</div>
 					
 				</div>	
 		    </rich:panel>
-	    </h:form>
     </ui:define>
     
 </ui:composition>
