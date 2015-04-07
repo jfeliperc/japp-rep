@@ -347,7 +347,7 @@ CREATE TABLE IF NOT EXISTS `japp`.`fornec_cliente` (
 ENGINE = INNODB;
 
 -- -----------------------------------------------------
--- Table `japp`.`fornec_produto`
+-- Table `japp`.`fornec_produto` --
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `japp`.`fornec_produto` (
 	`id` INT NOT NULL AUTO_INCREMENT,
