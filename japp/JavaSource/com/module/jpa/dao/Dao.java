@@ -14,7 +14,6 @@ public class Dao<T> implements IDao<T> {
 
 	private Class<T> entityClass;
 
-    
 	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("japp");	
 	private EntityManager em; 
  
@@ -27,6 +26,9 @@ public class Dao<T> implements IDao<T> {
         this.entityClass = entityClass;
     }
 	
+	protected EntityManager getEm(){
+		return this.em;
+	}
 	
     @Override
     public void add(T obj) {

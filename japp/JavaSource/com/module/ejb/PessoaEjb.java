@@ -6,9 +6,11 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 import com.module.ejb.contract.IPessoaEjb;
+import com.module.enums.TipoPessoa;
+import com.module.enums.TipoUsuario;
 import com.module.jpa.dao.Dao;
+import com.module.jpa.dao.PessoaDao;
 import com.module.jpa.model.Pessoa;
-import com.module.jpa.model.Usuario;
 
 @Stateless
 public class PessoaEjb implements IPessoaEjb {
@@ -26,33 +28,36 @@ public class PessoaEjb implements IPessoaEjb {
 	}
 
 	@Override
-	public Pessoa buscarPessoa(Pessoa Pessoa) {
-		// TODO Auto-generated method stub
-		return null;
+	public Pessoa buscarPessoa(Pessoa pessoa) {
+		Dao<Pessoa> dao = new Dao<Pessoa>();
+		return dao.getById(pessoa.getId());
 	}
 
 	@Override
-	public List<Pessoa> listarPessoas(Pessoa Pessoa) {
+	public List<Pessoa> listarPessoas(Pessoa pessoa) {
+		Dao<Pessoa> dao = new Dao<Pessoa>();
+		
+		
 		
 		return null;
 	}
 
 	@Override
-	public void excluirPessoa(Pessoa Pessoa) {
-		
+	public void excluirPessoa(Pessoa pessoa) {
+		Dao<Pessoa> dao = new Dao<Pessoa>();
+		if (pessoa.getId() != null){
+			dao.delete(pessoa);
+		}
 	}
 
 	@Override
-	public void solicitarCadastro(Pessoa pessoa, Usuario usuario) {
+	public void solicitarCadastro(Pessoa pessoa) {
 		Dao<Pessoa> daoPessoa = new Dao<Pessoa>();
-		Dao<Usuario> daoUsuario = new Dao<Usuario>();
 		
 		pessoa.setDataalteracao(new Date());
-		pessoa.setTipo("2");		
-		pessoa.setTipoPessoa("PF");
-		
-		usuario.setDataalteracao(new Date());
-		usuario.setTipo("2");
+		pessoa.setTipo("1");		
+		pessoa.setTipoPessoa(TipoPessoa.PF.getValor());
+		pessoa.setTipoUsuario(TipoUsuario.USER_PDN.getValor());
 		
 		if (pessoa.getId() == null){
 			pessoa.setDatainclusao(new Date());
@@ -60,19 +65,35 @@ public class PessoaEjb implements IPessoaEjb {
 		}else{
 			daoPessoa.update(pessoa);
 		}
-		usuario.setPessoa(pessoa);
-		if (usuario.getId() == null){
-			usuario.setDatainclusao(new Date());
-			daoUsuario.add(usuario);
-		}else{
-			daoUsuario.update(usuario);
-		}
+		
 	}
 
 	@Override
 	public int buscarQtdPessoa() {
 		Dao<Pessoa> daoPessoa = new Dao<Pessoa>();
 		return daoPessoa.count();
+	}
+	
+	@Override
+	public Pessoa buscarPorLogin(String login){
+		PessoaDao dao = new PessoaDao();
+		Pessoa retorno = null;
+		if (login != null){
+//			List<Pessoa> res = dao.getByLogin(login);
+//			if (res != null){
+//				retorno = res.get(0);
+//			}
+			retorno = dao.getByLogin(login);
+		}else{
+			retorno = null;
+		}
+		return retorno;
+	}
+
+	@Override
+	public boolean validarLogin(String login, String pass, Integer empresaId) {
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 }

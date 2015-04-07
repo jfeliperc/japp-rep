@@ -20,8 +20,8 @@
         </navigation-case>
         
         <navigation-case>
-            <from-outcome>c_pessoa</from-outcome>
-            <to-view-id>/pages/c_pessoa.xhtml</to-view-id>
+            <from-outcome>cadLogin</from-outcome>
+            <to-view-id>/pages/cadLogin.xhtml</to-view-id>
         </navigation-case>
         
         <navigation-case>
@@ -51,5 +51,9 @@
             <var>bundle</var>
         </resource-bundle>
     </application>
+    
+    <lifecycle>  
+        <phase-listener>com.module.faces.geral.ListenerJapp</phase-listener>  
+    </lifecycle> 
         
 </faces-config>

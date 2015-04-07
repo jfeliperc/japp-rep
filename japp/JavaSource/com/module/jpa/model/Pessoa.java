@@ -11,7 +11,9 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Pessoa.findAll", query="SELECT p FROM Pessoa p")
+@NamedQueries({
+@NamedQuery(name="Pessoa.findAll", query="SELECT p FROM Pessoa p"),
+@NamedQuery(name="Pessoa.findByLogin", query="SELECT p FROM Pessoa p WHERE p.login = :login")})
 public class Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -54,6 +56,8 @@ public class Pessoa implements Serializable {
 	private String tipodocprincipal;
 
 	private String tipodocumento;
+	
+	private String email;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="validade_login")
@@ -233,6 +237,14 @@ public class Pessoa implements Serializable {
 
 	public void setAcessos(List<Acesso> acessos) {
 		this.acessos = acessos;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public Acesso addAcesso(Acesso acesso) {

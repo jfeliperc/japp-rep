@@ -1,4 +1,3 @@
-com/module/jpa/dao/AbstractDao.class
 com/module/jpa/model/Endereco.class
 com/module/jpa/model/Orcamento.class
 com/module/jpa/dao/IDao.class
@@ -15,12 +14,14 @@ com/module/faces/EmpresaMb.class
 com/module/jpa/model/Pessoa.class
 com/module/jpa/model/TipoProduto.class
 com/module/jpa/model/Contato.class
+com/module/faces/geral/ListenerJapp.class
 com/module/ejb/contract/IProdutoEjb.class
 com/module/jpa/model/Atividade.class
 com/module/ejb/contract/IEmpresaEjb.class
 com/module/jpa/model/ValorProduto.class
 com/module/ejb/ProdutoEjb.class
 com/module/jpa/model/TipoAtividade.class
+com/module/jpa/dao/PessoaDao.class
 com/module/ejb/UsuarioEjb.class
 com/module/jpa/model/Servico.class
 com/module/enums/TipoUsuario.class

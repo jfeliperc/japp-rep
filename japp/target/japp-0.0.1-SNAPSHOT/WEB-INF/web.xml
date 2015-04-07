@@ -1,57 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
- <display-name>japp</display-name>
- <context-param>
-  <param-name>org.richfaces.skin</param-name>
-  <param-value>classic</param-value>
- </context-param>
- <data-source>
-  <name>java:app/japp/jappDS</name>
-  <class-name>com.mysql.jdbc.jdbc2.optional.MysqlDataSource</class-name>
-  <url>jdbc:mysql://localhost:3306/japp</url>
-  <user>root</user>
-  <transactional>true</transactional>
-  <max-pool-size>10</max-pool-size>
-  <min-pool-size>5</min-pool-size>
-  <max-statements>0</max-statements>
- </data-source>
- <!-- Login filter -->
- <filter>
-  <filter-name>FilterJapp</filter-name>
-  <filter-class>com.module.faces.geral.FilterJapp</filter-class>
- </filter>
- <!-- Set the login filter to secure all the pages in the /secured/* path of the application  -->
- <filter-mapping>
-  <filter-name>FilterJapp</filter-name>
-  <url-pattern>*.jsf</url-pattern>
- </filter-mapping>
- <filter-mapping>
-  <filter-name>FilterJapp</filter-name>
-  <url-pattern>*.xhtml</url-pattern>
- </filter-mapping>
- <servlet>
-  <servlet-name>Faces Servlet</servlet-name>
-  <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-  <load-on-startup>1</load-on-startup>
- </servlet>
- <servlet-mapping>
-  <servlet-name>Faces Servlet</servlet-name>
-  <url-pattern>*.jsf</url-pattern>
- </servlet-mapping>
- <servlet-mapping>
-  <servlet-name>Faces Servlet</servlet-name>
-  <url-pattern>*.faces</url-pattern>
- </servlet-mapping>
- <servlet-mapping>
-  <servlet-name>Faces Servlet</servlet-name>
-  <url-pattern>*.xhtml</url-pattern>
- </servlet-mapping>
- <servlet-mapping>
-  <servlet-name>Faces Servlet</servlet-name>
-  <url-pattern>/faces/*</url-pattern>
- </servlet-mapping>
- <welcome-file-list>
-  <welcome-file>index.html</welcome-file>
- </welcome-file-list>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>japp</display-name>
+  <context-param>
+    <param-name>org.richfaces.skin</param-name>
+    <param-value>classic</param-value>
+  </context-param>
+  <data-source>
+    <name>java:app/japp/jappDS</name>
+    <class-name>com.mysql.jdbc.jdbc2.optional.MysqlDataSource</class-name>
+    <url>jdbc:mysql://localhost:3306/japp</url>
+    <user>root</user>
+    <transactional>true</transactional>
+    <max-pool-size>10</max-pool-size>
+    <min-pool-size>5</min-pool-size>
+    <max-statements>0</max-statements>
+  </data-source>
+  
+  <!-- filter>
+    <filter-name>FilterJapp</filter-name>
+    <filter-class>com.module.faces.geral.FilterJapp</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterJapp</filter-name>
+    <url-pattern>*.jsf</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>FilterJapp</filter-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </filter-mapping -->
+  
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.jsf</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.faces</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>/faces/*</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
 </web-app>

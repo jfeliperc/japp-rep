@@ -8,26 +8,37 @@
 
     
     <ui:define name="conteudo">
-        <h:form id="fPrincipal">
-            
+        <h:form id="fPrincipal">            
 			<div id="main-wrapper" class="col-md-12 pull-right">
 	            <div id="main">
 	                <br/><br/><br/>
 	                <div class="row ">               
 	                    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
 	                        <div class="panel panel-default">
+	                            
+	                            <h:panelGroup id="messagePanel" layout="block">
+				                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+					            </h:panelGroup>
+	                            
 	                            <div class="panel-heading"><strong>   Digite dados de login </strong></div>
 	                            <div class="panel-body">
 	                                <h:form id="formLogin">
 	                                    <input type="hidden" name="metodo" id="metodo" value="003Buscar" />
 	                                    <br />
+	                                    Login<br/>
 	                                    <div class="form-group input-group">
 	                                        <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
-	                                        <input type="text" class="form-control" placeholder="Login" />
+	                                        <h:inputText value="#{loginMb.login}" styleClass="form-control">
+	                                        	<!-- rich:placeholder value="Login..." / -->
+	                                        </h:inputText>
+	                                        <!-- input type="text" class="form-control" value="#{loginMb.login}" placeholder="Login" / -->
 	                                    </div>
+	                                    Senha<br/>
 	                                    <div class="form-group input-group">
 	                                        <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
-	                                        <input type="password" class="form-control"  placeholder="Senha" />
+	                                        <h:inputText value="#{loginMb.pass}" styleClass="form-control">
+	                                        	<!-- rich:placeholder value="Login..." / -->
+	                                        </h:inputText>
 	                                    </div>
 	                                    
 	                                    <div class="row">
@@ -35,7 +46,7 @@
 												<h:commandButton action="#{loginMb.executarLogin()}" value="Logar" class="btn"/>
 											</div>
 										  	<div class="col-md-3">
-												<h:commandButton action="#{loginMb.encaminharSolicitaCadastro()}" value="Cadastrar" class="btn"/>
+												<h:commandButton value="Cadastrar" class="btn" action="cadLogin" />
 											</div>
 										</div>
 	                                    <hr />                                
@@ -46,9 +57,61 @@
 	                </div>                
 	            </div>
 	        </div>
-
-        </h:form>    
+        </h:form>
     </ui:define>
+    
+    <ui:define name="popups">
+    	<rich:popupPanel id="popCadPessoa" modal="true" autosized="true" resizeable="false" >
+        	<h:form>
+		    	<rich:panel header="Solicitação de cadastro" style="width:1000px; height: 400px; ">
+        			
+        			<f:facet name="controls"><h:outputLink value="#" onclick="#{rich:component('popup')}.hide(); return false;">X</h:outputLink></f:facet>
+			      	
+			      	<div style="padding-left: 10px">			      	
+				      	<div class="row">
+						  	<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Login</label></div>	
+							<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.login}" id="cInpLogin"/></div>
+						  	<div class="col-sm-1"><label for="exampleInputEmail1">Nome Completo</label></div>	
+							<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.nomecompleto}" id="cInpNome" size="80"/></div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Data Nascimento</label></div>	
+							<div class="col-sm-3"><rich:calendar value="#{pessoaMb.pessoa.datanascimento}" id="cInpDatNasc" /></div>
+						  	<div class="col-sm-1"><label for="exampleInputEmail1">CPF</label></div>	
+							<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.docprincipal}" id="cInpCpf" size="50"/></div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Tipo Documento</label></div>	
+							<div class="col-sm-3">
+								<h:selectOneMenu value="#{pessoaMb.pessoa.tipodocumento}" style="width:150px">
+									<f:selectItem itemLabel="RG" itemValue="RG"/>
+									<f:selectItem itemLabel="Habilitacao" itemValue="CH"/>
+									<f:selectItem itemLabel="Passaporte" itemValue="PS"/>
+									<f:selectItem itemLabel="Titulo Eleitor" itemValue="TE"/>
+								</h:selectOneMenu>
+							</div>
+						  	<div class="col-sm-1"><label for="exampleInputEmail1">Documento</label></div>	
+							<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.documento}" id="cInpDocumento" size="50"/></div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Email</label></div>		
+							<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.email}" id="cInpEmail" size="50"/></div>
+						</div>					
+						<br/><br/>
+						<div class="row">
+						  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Enviar Solicitação de Cadastro" class="btn"/>
+						  <h:commandButton value="Cancelar" onclick="#{rich:component('popup')}.hide(); return false;" class="btn"/>
+						</div>					
+					</div>	
+			    </rich:panel>
+		    </h:form>
+        </rich:popupPanel>
+    </ui:define>
+    
+    
     
 </ui:composition>
 

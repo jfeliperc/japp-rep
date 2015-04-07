@@ -15,13 +15,13 @@
 	                	<hr/>
 		            </h:panelGroup>
 			      	<h:panelGrid columns="4" styleClass="gridForm">
-	                    <h:outputLabel value="#{bundle.EmpresaLabel_id}" for="id" />
+	                    <h:outputLabel value="#{bundle.id_}" for="id" />
 	                    <h:inputText id="id" value="#{empresaMb.empresa.id}" title="#{bundle.EmpresaTitle_id}" required="true" requiredMessage="#{bundle.EmpresaRequiredMessage_id}"/>
 	                    <h:outputLabel value="#{bundle.EmpresaLabel_razaoSocial}" for="razaoSocial" />
 	                    <h:inputText id="razaoSocial" value="#{empresaMb.empresa.razaoSocial}" title="#{bundle.EmpresaTitle_razaoSocial}" 
 	                    	required="true" requiredMessage="#{bundle.EmpresaRequiredMessage_razaoSocial}" size="100"/>
 	                    <h:outputLabel value="#{bundle.EmpresaLabel_nomeFantasia}" for="nomeFantasia" />
-	                    <h:inputText id="nomeFantasia" value="#{empresaMb.empresa.nomeFantasia}" title="#{bundle.EmpresaTitle_nomeFantasia}" size="100"/>
+	                    <h:inputText id="nomeFantasia" value="#{empresaMb.empresa.nomeFantasia}" title="#{bundle.EmpresaTitle_nomeFantasia}" size="90"/>
 	                    <h:outputLabel value="#{bundle.EmpresaLabel_cnpj}" for="cnpj" />
 	                    <h:inputText id="cnpj" value="#{empresaMb.empresa.cnpj}" title="#{bundle.EmpresaTitle_cnpj}" size="70" />
 	                    <h:outputLabel value="#{bundle.EmpresaLabel_inscricaoEst}" for="inscricaoEst" />
@@ -32,11 +32,11 @@
 	                    <h:inputText id="matriz" value="#{empresaMb.empresa.matriz}" title="#{bundle.EmpresaTitle_matriz}" />
 	                    <h:outputLabel value="#{bundle.EmpresaLabel_ativo}" for="ativo" />
 	                    <h:inputText id="ativo" value="#{empresaMb.empresa.ativo}" title="#{bundle.EmpresaTitle_ativo}" />
-	                    <h:outputLabel value="#{bundle.EmpresaLabel_datainclusao}" for="datainclusao" />
+	                    <h:outputLabel value="#{bundle.datainclusao_}" for="datainclusao" />
 	                    <h:inputText id="datainclusao" value="#{empresaMb.empresa.datainclusao}" title="#{bundle.EmpresaTitle_datainclusao}" >
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 	                    </h:inputText>
-	                    <h:outputLabel value="#{bundle.EmpresaLabel_dataalteracao}" for="dataalteracao" />
+	                    <h:outputLabel value="#{bundle.dataalteracao_}" for="dataalteracao" />
 	                    <h:inputText id="dataalteracao" value="#{empresaMb.empresa.dataalteracao}" title="#{bundle.EmpresaTitle_dataalteracao}" >
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 	                    </h:inputText>
