@@ -47,6 +47,11 @@ public class Pedido implements Serializable {
 
 	private BigDecimal valorpedido;
 
+	//bi-directional many-to-one association to AgenteExterno
+	@ManyToOne
+	@JoinColumn(name="fornecedor_id")
+	private AgenteExterno agenteExterno;
+
 	//bi-directional many-to-one association to Empresa
 	@ManyToOne
 	private Empresa empresa;
@@ -160,6 +165,14 @@ public class Pedido implements Serializable {
 
 	public void setValorpedido(BigDecimal valorpedido) {
 		this.valorpedido = valorpedido;
+	}
+
+	public AgenteExterno getAgenteExterno() {
+		return this.agenteExterno;
+	}
+
+	public void setAgenteExterno(AgenteExterno agenteExterno) {
+		this.agenteExterno = agenteExterno;
 	}
 
 	public Empresa getEmpresa() {

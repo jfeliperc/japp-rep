@@ -11,7 +11,15 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Empresa.findAll", query="SELECT e FROM Empresa e")
+@NamedQueries({
+    @NamedQuery(name = "Empresa.findAll", query = "SELECT e FROM Empresa e"),
+    @NamedQuery(name = "Empresa.findById", query = "SELECT e FROM Empresa e WHERE e.id = :id"),
+    @NamedQuery(name = "Empresa.findByRazaoSocial", query = "SELECT e FROM Empresa e WHERE e.razaoSocial = :razaoSocial"),
+    @NamedQuery(name = "Empresa.findByNomeFantasia", query = "SELECT e FROM Empresa e WHERE e.nomeFantasia = :nomeFantasia"),
+    @NamedQuery(name = "Empresa.findByCnpj", query = "SELECT e FROM Empresa e WHERE e.cnpj = :cnpj"),
+    @NamedQuery(name = "Empresa.findByInscricaoEst", query = "SELECT e FROM Empresa e WHERE e.inscricaoEst = :inscricaoEst"),
+    @NamedQuery(name = "Empresa.findByInscricaoMun", query = "SELECT e FROM Empresa e WHERE e.inscricaoMun = :inscricaoMun"),
+    @NamedQuery(name = "Empresa.findByMatriz", query = "SELECT e FROM Empresa e WHERE e.matriz = :matriz")})
 public class Empresa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -19,7 +27,7 @@ public class Empresa implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
-	private byte ativo;
+	private Object ativo;
 
 	private String cnpj;
 
@@ -43,6 +51,18 @@ public class Empresa implements Serializable {
 	@Column(name="razao_social")
 	private String razaoSocial;
 
+	//bi-directional many-to-one association to AgenteExterno
+	@OneToMany(mappedBy="empresa")
+	private List<AgenteExterno> agenteExternos;
+
+	//bi-directional many-to-one association to Endereco
+	@OneToMany(mappedBy="empresa")
+	private List<Endereco> enderecos;
+
+	//bi-directional many-to-one association to Orcamento
+	@OneToMany(mappedBy="empresa")
+	private List<Orcamento> orcamentos;
+
 	//bi-directional many-to-one association to Pedido
 	@OneToMany(mappedBy="empresa")
 	private List<Pedido> pedidos;
@@ -62,11 +82,11 @@ public class Empresa implements Serializable {
 		this.id = id;
 	}
 
-	public byte getAtivo() {
+	public Object getAtivo() {
 		return this.ativo;
 	}
 
-	public void setAtivo(byte ativo) {
+	public void setAtivo(Object ativo) {
 		this.ativo = ativo;
 	}
 
@@ -132,6 +152,72 @@ public class Empresa implements Serializable {
 
 	public void setRazaoSocial(String razaoSocial) {
 		this.razaoSocial = razaoSocial;
+	}
+
+	public List<AgenteExterno> getAgenteExternos() {
+		return this.agenteExternos;
+	}
+
+	public void setAgenteExternos(List<AgenteExterno> agenteExternos) {
+		this.agenteExternos = agenteExternos;
+	}
+
+	public AgenteExterno addAgenteExterno(AgenteExterno agenteExterno) {
+		getAgenteExternos().add(agenteExterno);
+		agenteExterno.setEmpresa(this);
+
+		return agenteExterno;
+	}
+
+	public AgenteExterno removeAgenteExterno(AgenteExterno agenteExterno) {
+		getAgenteExternos().remove(agenteExterno);
+		agenteExterno.setEmpresa(null);
+
+		return agenteExterno;
+	}
+
+	public List<Endereco> getEnderecos() {
+		return this.enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
+	}
+
+	public Endereco addEndereco(Endereco endereco) {
+		getEnderecos().add(endereco);
+		endereco.setEmpresa(this);
+
+		return endereco;
+	}
+
+	public Endereco removeEndereco(Endereco endereco) {
+		getEnderecos().remove(endereco);
+		endereco.setEmpresa(null);
+
+		return endereco;
+	}
+
+	public List<Orcamento> getOrcamentos() {
+		return this.orcamentos;
+	}
+
+	public void setOrcamentos(List<Orcamento> orcamentos) {
+		this.orcamentos = orcamentos;
+	}
+
+	public Orcamento addOrcamento(Orcamento orcamento) {
+		getOrcamentos().add(orcamento);
+		orcamento.setEmpresa(this);
+
+		return orcamento;
+	}
+
+	public Orcamento removeOrcamento(Orcamento orcamento) {
+		getOrcamentos().remove(orcamento);
+		orcamento.setEmpresa(null);
+
+		return orcamento;
 	}
 
 	public List<Pedido> getPedidos() {

@@ -12,14 +12,28 @@ import java.util.List;
  */
 @Entity
 @NamedQueries({
-@NamedQuery(name="Pessoa.findAll", query="SELECT p FROM Pessoa p"),
-@NamedQuery(name="Pessoa.findByLogin", query="SELECT p FROM Pessoa p WHERE p.login = :login")})
+    @NamedQuery(name = "Pessoa.findAll", query = "SELECT p FROM Pessoa p"),
+    @NamedQuery(name = "Pessoa.findById", query = "SELECT p FROM Pessoa p WHERE p.id = :id"),
+    @NamedQuery(name = "Pessoa.findByTipo", query = "SELECT p FROM Pessoa p WHERE p.tipo = :tipo"),
+    @NamedQuery(name = "Pessoa.findByNome", query = "SELECT p FROM Pessoa p WHERE p.nome = :nome"),
+    @NamedQuery(name = "Pessoa.findByNomecompleto", query = "SELECT p FROM Pessoa p WHERE p.nomecompleto = :nomecompleto"),
+    @NamedQuery(name = "Pessoa.findByDatanascimento", query = "SELECT p FROM Pessoa p WHERE p.datanascimento = :datanascimento"),
+    @NamedQuery(name = "Pessoa.findByDocumento", query = "SELECT p FROM Pessoa p WHERE p.documento = :documento"),
+    @NamedQuery(name = "Pessoa.findByTipodocumento", query = "SELECT p FROM Pessoa p WHERE p.tipodocumento = :tipodocumento"),
+    @NamedQuery(name = "Pessoa.findByTipoPessoa", query = "SELECT p FROM Pessoa p WHERE p.tipoPessoa = :tipoPessoa"),
+    @NamedQuery(name = "Pessoa.findByLogin", query = "SELECT p FROM Pessoa p WHERE p.login = :login"),
+    @NamedQuery(name = "Pessoa.findByPass", query = "SELECT p FROM Pessoa p WHERE p.pass = :pass"),
+    @NamedQuery(name = "Pessoa.findByValidadeLogin", query = "SELECT p FROM Pessoa p WHERE p.validadeLogin = :validadeLogin"),
+    @NamedQuery(name = "Pessoa.findByTipoUsuario", query = "SELECT p FROM Pessoa p WHERE p.tipoUsuario = :tipoUsuario"),
+    @NamedQuery(name = "Pessoa.findByDataultimoacesso", query = "SELECT p FROM Pessoa p WHERE p.dataultimoacesso = :dataultimoacesso")})
 public class Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
+
+	private String cpf;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataalteracao;
@@ -33,9 +47,9 @@ public class Pessoa implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataultimoacesso;
 
-	private String docprincipal;
-
 	private String documento;
+
+	private String email;
 
 	private String login;
 
@@ -53,11 +67,7 @@ public class Pessoa implements Serializable {
 	@Column(name="tipo_usuario")
 	private String tipoUsuario;
 
-	private String tipodocprincipal;
-
 	private String tipodocumento;
-	
-	private String email;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="validade_login")
@@ -79,18 +89,9 @@ public class Pessoa implements Serializable {
 	@OneToMany(mappedBy="pessoa")
 	private List<Orcamento> orcamentos;
 
-	//bi-directional many-to-one association to TipoPessoa
-	@ManyToOne
-	@JoinColumn(name="tipo_pessoa_id")
-	private TipoPessoa tipoPessoaBean;
-
 	//bi-directional many-to-one association to Empresa
 	@ManyToOne
 	private Empresa empresa;
-
-	//bi-directional many-to-one association to Usuario
-	@OneToMany(mappedBy="pessoa")
-	private List<Usuario> usuarios;
 
 	public Pessoa() {
 	}
@@ -101,6 +102,14 @@ public class Pessoa implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getCpf() {
+		return this.cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public Date getDataalteracao() {
@@ -135,20 +144,20 @@ public class Pessoa implements Serializable {
 		this.dataultimoacesso = dataultimoacesso;
 	}
 
-	public String getDocprincipal() {
-		return this.docprincipal;
-	}
-
-	public void setDocprincipal(String docprincipal) {
-		this.docprincipal = docprincipal;
-	}
-
 	public String getDocumento() {
 		return this.documento;
 	}
 
 	public void setDocumento(String documento) {
 		this.documento = documento;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getLogin() {
@@ -207,14 +216,6 @@ public class Pessoa implements Serializable {
 		this.tipoUsuario = tipoUsuario;
 	}
 
-	public String getTipodocprincipal() {
-		return this.tipodocprincipal;
-	}
-
-	public void setTipodocprincipal(String tipodocprincipal) {
-		this.tipodocprincipal = tipodocprincipal;
-	}
-
 	public String getTipodocumento() {
 		return this.tipodocumento;
 	}
@@ -237,14 +238,6 @@ public class Pessoa implements Serializable {
 
 	public void setAcessos(List<Acesso> acessos) {
 		this.acessos = acessos;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public Acesso addAcesso(Acesso acesso) {
@@ -327,42 +320,12 @@ public class Pessoa implements Serializable {
 		return orcamento;
 	}
 
-	public TipoPessoa getTipoPessoaBean() {
-		return this.tipoPessoaBean;
-	}
-
-	public void setTipoPessoaBean(TipoPessoa tipoPessoaBean) {
-		this.tipoPessoaBean = tipoPessoaBean;
-	}
-
 	public Empresa getEmpresa() {
 		return this.empresa;
 	}
 
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
-	}
-
-	public List<Usuario> getUsuarios() {
-		return this.usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
-
-	public Usuario addUsuario(Usuario usuario) {
-		getUsuarios().add(usuario);
-		usuario.setPessoa(this);
-
-		return usuario;
-	}
-
-	public Usuario removeUsuario(Usuario usuario) {
-		getUsuarios().remove(usuario);
-		usuario.setPessoa(null);
-
-		return usuario;
 	}
 
 }

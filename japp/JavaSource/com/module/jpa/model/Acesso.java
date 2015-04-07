@@ -1,14 +1,7 @@
 package com.module.jpa.model;
 
 import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 
 
 /**
@@ -22,7 +15,7 @@ public class Acesso implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
+	private int id;
 
 	@Column(name="rotina_master")
 	private int rotinaMaster;
@@ -39,11 +32,11 @@ public class Acesso implements Serializable {
 	public Acesso() {
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

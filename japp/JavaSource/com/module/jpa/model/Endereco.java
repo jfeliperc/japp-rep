@@ -42,6 +42,10 @@ public class Endereco implements Serializable {
 
 	private String uf;
 
+	//bi-directional many-to-one association to Empresa
+	@ManyToOne
+	private Empresa empresa;
+
 	//bi-directional many-to-one association to Pessoa
 	@ManyToOne
 	private Pessoa pessoa;
@@ -135,6 +139,14 @@ public class Endereco implements Serializable {
 
 	public void setUf(String uf) {
 		this.uf = uf;
+	}
+
+	public Empresa getEmpresa() {
+		return this.empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 	public Pessoa getPessoa() {

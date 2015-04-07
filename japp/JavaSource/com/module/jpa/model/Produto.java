@@ -41,6 +41,10 @@ public class Produto implements Serializable {
 	@OneToMany(mappedBy="produto")
 	private List<Estoque> estoques;
 
+	//bi-directional many-to-one association to FornecProduto
+	@OneToMany(mappedBy="produto")
+	private List<FornecProduto> fornecProdutos;
+
 	//bi-directional many-to-many association to Orcamento
 	@ManyToMany(mappedBy="produtos")
 	private List<Orcamento> orcamentos;
@@ -48,6 +52,11 @@ public class Produto implements Serializable {
 	//bi-directional many-to-one association to PedidoItem
 	@OneToMany(mappedBy="produto")
 	private List<PedidoItem> pedidoItems;
+
+	//bi-directional many-to-one association to GrupoProduto
+	@ManyToOne
+	@JoinColumn(name="grupo_produto_id")
+	private GrupoProduto grupoProduto;
 
 	//bi-directional many-to-one association to TipoProduto
 	@ManyToOne
@@ -147,6 +156,28 @@ public class Produto implements Serializable {
 		return estoque;
 	}
 
+	public List<FornecProduto> getFornecProdutos() {
+		return this.fornecProdutos;
+	}
+
+	public void setFornecProdutos(List<FornecProduto> fornecProdutos) {
+		this.fornecProdutos = fornecProdutos;
+	}
+
+	public FornecProduto addFornecProduto(FornecProduto fornecProduto) {
+		getFornecProdutos().add(fornecProduto);
+		fornecProduto.setProduto(this);
+
+		return fornecProduto;
+	}
+
+	public FornecProduto removeFornecProduto(FornecProduto fornecProduto) {
+		getFornecProdutos().remove(fornecProduto);
+		fornecProduto.setProduto(null);
+
+		return fornecProduto;
+	}
+
 	public List<Orcamento> getOrcamentos() {
 		return this.orcamentos;
 	}
@@ -175,6 +206,14 @@ public class Produto implements Serializable {
 		pedidoItem.setProduto(null);
 
 		return pedidoItem;
+	}
+
+	public GrupoProduto getGrupoProduto() {
+		return this.grupoProduto;
+	}
+
+	public void setGrupoProduto(GrupoProduto grupoProduto) {
+		this.grupoProduto = grupoProduto;
 	}
 
 	public TipoProduto getTipoProduto() {

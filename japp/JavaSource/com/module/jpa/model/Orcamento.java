@@ -40,14 +40,13 @@ public class Orcamento implements Serializable {
 
 	private String valortotal;
 
+	//bi-directional many-to-one association to Empresa
+	@ManyToOne
+	private Empresa empresa;
+
 	//bi-directional many-to-one association to Pessoa
 	@ManyToOne
-	@JoinColumn(name="solicitante_id")
 	private Pessoa pessoa;
-
-	//bi-directional many-to-one association to Servico
-	@ManyToOne
-	private Servico servico;
 
 	//bi-directional many-to-many association to Produto
 	@ManyToMany
@@ -61,6 +60,10 @@ public class Orcamento implements Serializable {
 			}
 		)
 	private List<Produto> produtos;
+
+	//bi-directional many-to-one association to Servico
+	@ManyToOne
+	private Servico servico;
 
 	public Orcamento() {
 	}
@@ -161,6 +164,14 @@ public class Orcamento implements Serializable {
 		this.valortotal = valortotal;
 	}
 
+	public Empresa getEmpresa() {
+		return this.empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
 	public Pessoa getPessoa() {
 		return this.pessoa;
 	}
@@ -169,20 +180,20 @@ public class Orcamento implements Serializable {
 		this.pessoa = pessoa;
 	}
 
-	public Servico getServico() {
-		return this.servico;
-	}
-
-	public void setServico(Servico servico) {
-		this.servico = servico;
-	}
-
 	public List<Produto> getProdutos() {
 		return this.produtos;
 	}
 
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
+	}
+
+	public Servico getServico() {
+		return this.servico;
+	}
+
+	public void setServico(Servico servico) {
+		this.servico = servico;
 	}
 
 }
