@@ -7,7 +7,7 @@ import javax.ejb.Stateless;
 
 import com.module.ejb.contract.IAcessoEjb;
 import com.module.jpa.model.Acesso;
-import com.module.jpa.model.Usuario;
+import com.module.jpa.model.Pessoa;
 
 @Stateless
 public class AcessoEjb implements IAcessoEjb, Serializable {
@@ -44,7 +44,7 @@ public class AcessoEjb implements IAcessoEjb, Serializable {
 	}
 
 	@Override
-	public void solicitarCadastro(Acesso acesso, Usuario usuario) {
+	public void solicitarCadastro(Acesso acesso, Pessoa pessoa) {
 		// TODO Auto-generated method stub
 		
 	}

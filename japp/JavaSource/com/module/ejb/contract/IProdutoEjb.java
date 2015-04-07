@@ -14,5 +14,4 @@ public interface IProdutoEjb {
 	
 	public void excluirProduto(Produto produto);
 	
-	public void testeTipoPessoa();
 }

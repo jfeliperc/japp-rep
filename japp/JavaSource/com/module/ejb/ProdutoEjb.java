@@ -7,7 +7,6 @@ import javax.ejb.Stateless;
 import com.module.ejb.contract.IProdutoEjb;
 import com.module.jpa.dao.Dao;
 import com.module.jpa.model.Produto;
-import com.module.jpa.model.TipoPessoa;
 
 @Stateless
 public class ProdutoEjb implements IProdutoEjb {
@@ -43,13 +42,5 @@ public class ProdutoEjb implements IProdutoEjb {
 
 	}
 
-	@Override
-	public void testeTipoPessoa() {
-		Dao<TipoPessoa> daoTeste = new Dao<TipoPessoa>();
-		TipoPessoa tp = new TipoPessoa();
-		tp.setNome("Juridica");
-		daoTeste.add(tp);
-		
-	}
 
 }

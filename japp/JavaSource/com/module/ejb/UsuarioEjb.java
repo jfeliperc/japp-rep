@@ -6,37 +6,37 @@ import javax.ejb.Stateless;
 
 import com.module.ejb.contract.IUsuarioEjb;
 import com.module.jpa.dao.Dao;
-import com.module.jpa.model.Usuario;
+import com.module.jpa.model.Pessoa;
 
 @Stateless
 public class UsuarioEjb implements IUsuarioEjb {
 
 	@Override
-	public Usuario cadastrarUsuario(Usuario usuario) {
+	public Pessoa cadastrarPessoa(Pessoa pessoa) {
 		
-		Dao<Usuario> dao = new Dao<Usuario>();
-		if (usuario.getId() == null){
-			dao.add(usuario);
+		Dao<Pessoa> dao = new Dao<Pessoa>();
+		if (pessoa.getId() == null){
+			dao.add(pessoa);
 		}else{
-			dao.update(usuario);
+			dao.update(pessoa);
 		}
-		return usuario;
+		return pessoa;
 	}
 
 	@Override
-	public Usuario buscarUsuario(Usuario usuario) {
+	public Pessoa buscarPessoa(Pessoa pessoa) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Usuario> listarUsuarios(Usuario usuario) {
+	public List<Pessoa> listarPessoas(Pessoa pessoa) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void excluirUsuario(Usuario usuario) {
+	public void excluirPessoa(Pessoa pessoa) {
 		// TODO Auto-generated method stub
 
 	}

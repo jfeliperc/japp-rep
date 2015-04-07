@@ -2,17 +2,17 @@ package com.module.ejb.contract;
 
 import java.util.List;
 
-import com.module.jpa.model.Usuario;
+import com.module.jpa.model.Pessoa;
 
 public interface IUsuarioEjb {
 
-	public Usuario cadastrarUsuario(Usuario usuario);
+	public Pessoa cadastrarPessoa(Pessoa pessoa);
 	
-	public Usuario buscarUsuario(Usuario usuario);
+	public Pessoa buscarPessoa(Pessoa pessoa);
 	
-	public List<Usuario> listarUsuarios(Usuario usuario);
+	public List<Pessoa> listarPessoas(Pessoa pessoa);
 	
-	public void excluirUsuario(Usuario usuario);
+	public void excluirPessoa(Pessoa pessoa);
 	
 	public boolean validarLogin(String user, String pass, Integer empresaId);
 }
