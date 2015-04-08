@@ -94,6 +94,9 @@ public class Pessoa implements Serializable {
 	private Empresa empresa;
 
 	public Pessoa() {
+		if (this.empresa == null){
+			this.empresa = new Empresa();
+		}
 	}
 
 	public Integer getId() {

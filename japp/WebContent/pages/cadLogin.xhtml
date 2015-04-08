@@ -6,72 +6,50 @@
     xmlns:a4j="http://richfaces.org/a4j" 
     xmlns:rich="http://richfaces.org/rich">
 
-    
-    <ui:define name="conteudo">    
-	         <br/>
-	         <div>
-	         <rich:panel header="Dados da empresa" style="width:100%; height: 95%; ">
-		      	
+    <ui:define name="conteudo">
+    	<h:form>
+	    	<rich:panel header="Solicitação de cadastro" style="width:100%; height: 95%; ">
+		      	<div style="padding-left: 10px">
 			      	<h:panelGroup id="messagePanel" layout="block">
 	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
 	                	<hr/>
-		            </h:panelGroup>     
-        			<div style="padding-left: 10px">			      	
-				      	<div class="row">
-						  	<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Login</label></div>	
-							<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.login}" id="cInpLogin"/></div>
-						  	<div class="col-sm-1"><label for="exampleInputEmail1">Nome Completo</label></div>	
-							<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.nomecompleto}" id="cInpNome" size="80"/></div>
-						</div>
-						<br/>
-						<div class="row">
-							<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Data Nascimento</label></div>	
-							<div class="col-sm-3"><rich:calendar value="#{pessoaMb.pessoa.datanascimento}" id="cInpDatNasc" /></div>
-						  	<div class="col-sm-1"><label for="exampleInputEmail1">CPF</label></div>	
-							<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.cpf}" id="cInpCpf" size="50"/></div>
-						</div>
-						<br/>
-						<div class="row">
-							<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Tipo Documento</label></div>	
-							<div class="col-sm-3">
-								<h:selectOneMenu value="#{pessoaMb.pessoa.tipodocumento}" style="width:150px">
-									<f:selectItem itemLabel="RG" itemValue="RG"/>
-									<f:selectItem itemLabel="Habilitacao" itemValue="CH"/>
-									<f:selectItem itemLabel="Passaporte" itemValue="PS"/>
-									<f:selectItem itemLabel="Titulo Eleitor" itemValue="TE"/>
-								</h:selectOneMenu>
-							</div>
-						  	<div class="col-sm-1"><label for="exampleInputEmail1">Documento</label></div>	
-							<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.documento}" id="cInpDocumento" size="50"/></div>
-						</div>
-						<br/>
-						<div class="row">
-							<div class="col-sm-1" style="width:150px"><label for="exampleInputEmail1">Email</label></div>		
-							<div class="col-sm-3"><h:inputText value="#{pessoaMb.pessoa.email}" id="cInpEmail" size="50"/></div>
-						</div>					
+		            </h:panelGroup>
+			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
+	                    	                    
+	                    <label for="exampleInputEmail1">Login</label>
+						<h:inputText value="#{pessoaMb.pessoa.login}" id="cInpLogin"/>
+						<label for="exampleInputEmail1">Nome Completo</label>
+						<h:inputText value="#{pessoaMb.pessoa.nomecompleto}" id="cInpNome" size="80"/>
+						<label for="exampleInputEmail1">Data Nascimento</label>
+						<rich:calendar value="#{pessoaMb.pessoa.datanascimento}" id="cInpDatNasc" 
+							enableManualInput="true" datePattern="dd/MM/yyyy"/>
+						<label for="exampleInputEmail1">CPF</label>
+						<h:inputText value="#{pessoaMb.pessoa.cpf}" id="cInpCpf" size="50"/>
+						<label for="exampleInputEmail1">Tipo Documento</label>						
+						<h:selectOneMenu value="#{pessoaMb.pessoa.tipodocumento}" style="width:150px">
+							<f:selectItem itemLabel="RG" itemValue="RG"/>
+							<f:selectItem itemLabel="Habilitacao" itemValue="CH"/>
+							<f:selectItem itemLabel="Passaporte" itemValue="PS"/>
+							<f:selectItem itemLabel="Titulo Eleitor" itemValue="TE"/>
+						</h:selectOneMenu>
+						<label for="exampleInputEmail1">Documento</label>
+						<h:inputText value="#{pessoaMb.pessoa.documento}" id="cInpDocumento" size="50"/>
+						<label for="exampleInputEmail1">Email</label>
+						<h:inputText value="#{pessoaMb.pessoa.email}" id="cInpEmail" size="50"/>
+						
 						<br/><br/>
-						<div class="row">
-						  	<div class="col-sm-3">
-							  <a4j:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Enviar Solicitação de Cadastro" 
-							  	render="main-wrapper" styleClass="btn"/>
-							</div>
-							<div class="col-md-3">
-							  <h:commandButton value="Cancelar" action="login" class="btn"/>
-							</div>
-						</div>				
-					</div>	
-			    </rich:panel>
-			          
+	                    
+	                </h:panelGrid>
+	                <br/><br/>	
 	                
-                <br />
-				
-				<br/><br/>
-				<div>
-				  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Salvar" class="btn btn-default "/>
-				</div>
-				
-			</div>	
-	                        
+	                <br/><br/>
+					<div>
+					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Salvar" class="btn btn-default "/>
+					</div>
+	                			    
+				</div>	
+		    </rich:panel>
+		</h:form>	    
     </ui:define>
     
 </ui:composition>

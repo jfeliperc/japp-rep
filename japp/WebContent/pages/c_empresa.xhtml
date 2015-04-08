@@ -14,9 +14,9 @@
 	                	<hr/>
 		            </h:panelGroup>
 			      	<h:panelGrid columns="4" styleClass="gridForm">
-	                    <h:outputLabel value="#{bundle.id_}" for="id" />
+	                    <h:outputLabel value="id" for="id" />
 	                    <h:inputText id="id" value="#{empresaMb.empresa.id}" title="#{bundle.EmpresaTitle_id}" required="true" requiredMessage="#{bundle.EmpresaRequiredMessage_id}"/>
-	                    <h:outputLabel value="#{bundle.EmpresaLabel_razaoSocial}" for="razaoSocial" />
+	                    <h:outputLabel value="Razão Social" for="razaoSocial" />
 	                    <h:inputText id="razaoSocial" value="#{empresaMb.empresa.razaoSocial}" title="#{bundle.EmpresaTitle_razaoSocial}" 
 	                    	required="true" requiredMessage="#{bundle.EmpresaRequiredMessage_razaoSocial}" size="100"/>
 	                    <h:outputLabel value="#{bundle.EmpresaLabel_nomeFantasia}" for="nomeFantasia" />
@@ -44,7 +44,9 @@
 					
 					<br/><br/>
 					<div>
-					  <h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Salvar" class="btn btn-default "/>
+					  <h:commandButton action="#{empresaMb.limpar()}" value="Limpar" class="btn btn-default "/>
+					  <h:commandButton action="#{empresaMb.buscar()}" value="Buscar" class="btn btn-default "/>
+					  <h:commandButton action="#{empresaMb.salvar()}" value="Salvar" class="btn btn-default "/>
 					</div>
 					
 				</div>	
