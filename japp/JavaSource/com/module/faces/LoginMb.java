@@ -61,21 +61,21 @@ public class LoginMb extends BaseMb{
 		this.menu = new ArrayList<EstrMenu>();
 		
 		EstrMenu itemGeral = new EstrMenu("Geral");
-		Menu empresa = new Menu("c_empresa","Empresa","Cadstro da empresa");
-		Menu pessoas = new Menu("b_pessoa","Pessoas","Cadstro de pessoas/usuários");
-		Menu fornec = new Menu("m10003","Fornecedores","Cadstro de fornecedores");
-		Menu cli = new Menu("m10004","Clientes","Cadstro de clientes");
+		Menu empresa = new Menu("empresa","Empresa","Cadastro da empresa");
+		Menu pessoas = new Menu("pessoa","Pessoas","Cadastro de pessoas/usuários");
+		Menu fornec = new Menu("fornecedor","Fornecedores","Cadastro de fornecedores");
+		Menu cli = new Menu("cliente","Clientes","Cadastro de clientes");
 		itemGeral.getSubmenus().add(empresa);
 		itemGeral.getSubmenus().add(pessoas);
 		itemGeral.getSubmenus().add(fornec);
 		itemGeral.getSubmenus().add(cli);
 		
 		EstrMenu itemProdutos = new EstrMenu("Produtos");
-		Menu produto = new Menu("b_produto","Produto","Cadstro da produto");
+		Menu produto = new Menu("produto","Produto","Cadastro de produto");
 		Menu estoque = new Menu("m20002","Estoque","Controle de estoque");
 		Menu entProd = new Menu("m20003","Entrada","Entrada de produtos");
 		Menu saidaProd = new Menu("m20004","Saída","Saída de produtos");
-		Menu pedido = new Menu("m20005","Pedidos","Pedidos de produtos");
+		Menu pedido = new Menu("pedido","Pedidos","Pedidos de produtos");
 		itemProdutos.getSubmenus().add(produto);
 		itemProdutos.getSubmenus().add(estoque);
 		itemProdutos.getSubmenus().add(entProd);
@@ -83,8 +83,8 @@ public class LoginMb extends BaseMb{
 		itemProdutos.getSubmenus().add(pedido);
 		
 		EstrMenu itemCozinha = new EstrMenu("Cozinha");
-		Menu receitas = new Menu("m30001","Receitas","Cadstro da produto");
-		Menu cardapio = new Menu("cadCardapio","Cardápio","Cadstro de cardápio");
+		Menu receitas = new Menu("m30001","Receitas","Cadastro de produto");
+		Menu cardapio = new Menu("cadCardapio","Cardápio","Cadastro de cardápio");
 		itemCozinha.getSubmenus().add(receitas);
 		itemCozinha.getSubmenus().add(cardapio);
 		
