@@ -61,6 +61,7 @@ public class PessoaEjb implements IPessoaEjb {
 		
 		if (pessoa.getId() == null){
 			pessoa.setDatainclusao(new Date());
+			pessoa.setEmpresa(null);
 			daoPessoa.add(pessoa);
 		}else{
 			daoPessoa.update(pessoa);

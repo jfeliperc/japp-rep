@@ -37,6 +37,16 @@
         <navigation-case>
         	<from-outcome>empresa</from-outcome>
         	<to-view-id>/pages/empresa.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+        	<from-outcome>cliente</from-outcome>
+        	<to-view-id>/pages/cliente.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+        	<from-outcome>fornecedor</from-outcome>
+        	<to-view-id>/pages/fornecedor.xhtml</to-view-id>
         </navigation-case> 
         
 	</navigation-rule>

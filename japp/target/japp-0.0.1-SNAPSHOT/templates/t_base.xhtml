@@ -13,18 +13,10 @@
 		<script type="text/javascript" src="#{request.contextPath}/script/jquery-2.1.3.min.js"></script>		
 		<script type="text/javascript" src="#{request.contextPath}/script/bootstrap.min.js"></script>
 		<script type="text/javascript" src="#{request.contextPath}/script/bootstrap-hover-dropdown.js"></script>
-  		<script type="text/javascript" src="dist/js/bootstrap-submenu.min.js"></script>		
+  		<script type="text/javascript" src="#{request.contextPath}/script/bootstrap-submenu.min.js"></script>		
   		
-  		<!-- script type="text/javascript">
-		  	$('#teste-red').on('click', function (){
-		      alert('teste0002');
-		      var param = $('input#campo-txt').val();
-		      $.post("", {param: param},function(data){
-		          $('div#main').text(data);
-		      })
-			});
-  		</script  -->
-  		
+  		<ui:insert name="extscript"/>
+  		  		
   		<style>
   			.btn-group ul.dropdown-menu li:HOVER ul {
 			  display:block; 

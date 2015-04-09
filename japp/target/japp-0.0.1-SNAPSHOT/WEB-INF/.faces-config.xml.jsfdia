@@ -20,6 +20,12 @@
    <PROCESS-ITEM-OUTPUT ID="empresa::#pages#empresa.xhtml"
     NAME="output5" PATH="/pages/empresa.xhtml"
     TARGET="rules:#pages#empresa.xhtml" TITLE="empresa" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cliente::#pages#cliente.xhtml"
+    NAME="output6" PATH="/pages/cliente.xhtml"
+    TARGET="rules:#pages#cliente.xhtml" TITLE="cliente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="fornecedor::#pages#fornecedor.xhtml"
+    NAME="output7" PATH="/pages/fornecedor.xhtml"
+    TARGET="rules:#pages#fornecedor.xhtml" TITLE="fornecedor" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#pages#inicio.xhtml"
@@ -34,4 +40,8 @@
   PATH="/pages/produto.xhtml" SHAPE="304,641,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#pages#pessoa.xhtml"
   PATH="/pages/pessoa.xhtml" SHAPE="304,417,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#fornecedor.xhtml"
+  PATH="/pages/fornecedor.xhtml" SHAPE="304,705,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cliente.xhtml"
+  PATH="/pages/cliente.xhtml" SHAPE="304,481,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

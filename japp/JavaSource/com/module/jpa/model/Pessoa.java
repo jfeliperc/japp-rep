@@ -90,7 +90,8 @@ public class Pessoa implements Serializable {
 	private List<Orcamento> orcamentos;
 
 	//bi-directional many-to-one association to Empresa
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="empresaId")
 	private Empresa empresa;
 
 	public Pessoa() {

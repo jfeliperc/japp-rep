@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Empresa.findAll", query = "SELECT e FROM Empresa e"),
-    @NamedQuery(name = "Empresa.findById", query = "SELECT e FROM Empresa e WHERE e.id = :id"),
+    @NamedQuery(name = "Empresa.findById", query = "SELECT e FROM Empresa e WHERE e.empresaId = :id"),
     @NamedQuery(name = "Empresa.findByRazaoSocial", query = "SELECT e FROM Empresa e WHERE e.razaoSocial = :razaoSocial"),
     @NamedQuery(name = "Empresa.findByNomeFantasia", query = "SELECT e FROM Empresa e WHERE e.nomeFantasia = :nomeFantasia"),
     @NamedQuery(name = "Empresa.findByCnpj", query = "SELECT e FROM Empresa e WHERE e.cnpj = :cnpj"),
@@ -25,7 +25,8 @@ public class Empresa implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
+	@Column(name="id")
+	private Integer empresaId;
 
 	private String ativo;
 
@@ -74,13 +75,24 @@ public class Empresa implements Serializable {
 	public Empresa() {
 	}
 
-	public Integer getId() {
-		return this.id;
+	
+//	public Integer getId() {
+//		return this.id;
+//	}
+//
+//	public void setId(Integer id) {
+//		this.id = id;
+//	}
+
+	public Integer getEmpresaId() {
+		return empresaId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+
+	public void setEmpresaId(Integer empresaId) {
+		this.empresaId = empresaId;
 	}
+
 
 	public String getAtivo() {
 		return this.ativo;

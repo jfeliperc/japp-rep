@@ -1,0 +1,89 @@
+<ui:composition template="../templates/t_base.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a4j="http://richfaces.org/a4j" 
+    xmlns:rich="http://richfaces.org/rich">
+
+    <ui:define name="conteudo">
+    	<h:form id="frmFornecedor">
+	    	<rich:panel header="Cadastro de clientes" style="width:99%; height: 95%; ">
+		      	<div>
+			      	<h:panelGroup id="botoesPanel" layout="block">		      			
+	      				<table><tr><td width="20px">
+	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+	      				</td><td width="20px">
+	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
+	      				</td><td width="20px">
+	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+	      				</td><td width="20px">
+	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
+	      				</td><td width="20px">
+	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>
+	      				</td></tr></table>		      				
+		      		</h:panelGroup>
+			      	<h:panelGroup id="messagePanel" layout="block">
+	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+	                	<hr/>
+		            </h:panelGroup>
+			      	<h:panelGrid columns="4" styleClass="gridForm">
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_id}" for="id" />
+	                    <h:inputText id="id" value="#{clienteMb.cliente.id}" title="#{mensagens.CreateAgenteExternoTitle_id}" />
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_ativo}" for="ativo" />
+	                    <h:inputText id="ativo" value="#{clienteMb.cliente.ativo}" title="#{mensagens.CreateAgenteExternoTitle_ativo}" />
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_cnpj}" for="cnpj" />
+	                    <h:inputText id="cnpj" value="#{clienteMb.cliente.cnpj}" title="#{mensagens.CreateAgenteExternoTitle_cnpj}" />
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_cpf}" for="cpf" />
+	                    <h:inputText id="cpf" value="#{clienteMb.cliente.cpf}" title="#{mensagens.CreateAgenteExternoTitle_cpf}" />
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_dataalteracao}" for="dataalteracao" />
+	                    <h:inputText id="dataalteracao" value="#{clienteMb.cliente.dataalteracao}" title="#{mensagens.CreateAgenteExternoTitle_dataalteracao}" >
+	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+	                    </h:inputText>
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_datainclusao}" for="datainclusao" />
+	                    <h:inputText id="datainclusao" value="#{clienteMb.cliente.datainclusao}" title="#{mensagens.CreateAgenteExternoTitle_datainclusao}" >
+	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+	                    </h:inputText>
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_datanascimento}" for="datanascimento" />
+	                    <h:inputText id="datanascimento" value="#{clienteMb.cliente.datanascimento}" title="#{mensagens.CreateAgenteExternoTitle_datanascimento}" >
+	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+	                    </h:inputText>
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_documento}" for="documento" />
+	                    <h:inputText id="documento" value="#{clienteMb.cliente.documento}" title="#{mensagens.CreateAgenteExternoTitle_documento}" />
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_inscricaoEst}" for="inscricaoEst" />
+	                    <h:inputText id="inscricaoEst" value="#{clienteMb.cliente.inscricaoEst}" title="#{mensagens.CreateAgenteExternoTitle_inscricaoEst}" />
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_inscricaoMun}" for="inscricaoMun" />
+	                    <h:inputText id="inscricaoMun" value="#{clienteMb.cliente.inscricaoMun}" title="#{mensagens.CreateAgenteExternoTitle_inscricaoMun}" />
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_nome}" for="nome" />
+	                    <h:inputText id="nome" value="#{clienteMb.cliente.nome}" title="#{mensagens.CreateAgenteExternoTitle_nome}" />
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_nomeFantasia}" for="nomeFantasia" />
+	                    <h:inputText id="nomeFantasia" value="#{clienteMb.cliente.nomeFantasia}" title="#{mensagens.CreateAgenteExternoTitle_nomeFantasia}" />
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_nomecompleto}" for="nomecompleto" />
+	                    <h:inputText id="nomecompleto" value="#{clienteMb.cliente.nomecompleto}" title="#{mensagens.CreateAgenteExternoTitle_nomecompleto}" />
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_observacao}" for="observacao" />
+	                    <h:inputText id="observacao" value="#{clienteMb.cliente.observacao}" title="#{mensagens.CreateAgenteExternoTitle_observacao}" />
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_razaoSocial}" for="razaoSocial" />
+	                    <h:inputText id="razaoSocial" value="#{clienteMb.cliente.razaoSocial}" title="#{mensagens.CreateAgenteExternoTitle_razaoSocial}" />
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_tipo}" for="tipo" />
+	                    <h:inputText id="tipo" value="#{clienteMb.cliente.tipo}" title="#{mensagens.CreateAgenteExternoTitle_tipo}" />
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_tipoPessoa}" for="tipoPessoa" />
+	                    <h:inputText id="tipoPessoa" value="#{clienteMb.cliente.tipoPessoa}" title="#{mensagens.CreateAgenteExternoTitle_tipoPessoa}" />
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_tipodocumento}" for="tipodocumento" />
+	                    <h:inputText id="tipodocumento" value="#{clienteMb.cliente.tipodocumento}" title="#{mensagens.CreateAgenteExternoTitle_tipodocumento}" />
+	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_empresa}" for="empresa" />
+	                    <h:selectOneMenu id="empresa" value="#{clienteMb.cliente.empresa}" title="#{mensagens.CreateAgenteExternoTitle_empresa}" >
+	                        <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
+	                    </h:selectOneMenu>
+	                </h:panelGrid>
+	                
+	                <br/><br/><hr/>
+					
+				</div>	
+		    </rich:panel>
+		</h:form>
+    </ui:define>
+    
+</ui:composition>
+
+
+    

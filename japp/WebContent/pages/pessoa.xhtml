@@ -15,8 +15,22 @@
 	</ui:define>
 
     <ui:define name="conteudo">
+    	<h:form id="frmPessoa">
 	    	<rich:panel header="Solicitação de cadastro" style="width:100%; height: 95%; ">
 		      	<div style="padding-left: 10px">
+		      		<h:panelGroup id="botoesPanel" layout="block">		      			
+	      				<table><tr><td width="20px">
+	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+	      				</td><td width="20px">
+	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
+	      				</td><td width="20px">
+	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+	      				</td><td width="20px">
+	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
+	      				</td><td width="20px">
+	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>
+	      				</td></tr></table>		      				
+		      		</h:panelGroup>
 			      	<h:panelGroup id="messagePanel" layout="block">
 	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
 	                	<hr/>
@@ -65,8 +79,8 @@
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 	                    </h:inputText>
 	                    <h:outputLabel value="#{bundle.PessoaLabel_empresaId}" for="empresaId" />
-	                    <h:selectOneMenu id="empresaId" value="#{pessoaMb.pessoa.empresa.id}" title="#{bundle.PessoaTitle_empresaId}" style="width:200px">
-	                        <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
+	                    <h:selectOneMenu id="empresaId" value="#{pessoaMb.pessoa.empresa}" title="Selecione a empresa vinculada" style="width:200px">
+	                        <f:selectItems value="#{pessoaMb.empresas}" var="emp" itemValue="emp" itemLabel="#{emp.nomeFantasia}"/>
 	                    </h:selectOneMenu>
 	                    <h:outputLabel value="Email" for="email" />
 	                    <h:inputText id="email" value="#{pessoaMb.pessoa.nome}" title="#{bundle.PessoaTitle_nome}" size="70"/>
@@ -75,38 +89,33 @@
 	                <br/><br/>				    
 				</div>	
 		    </rich:panel>
-    </ui:define>
-    
-    <ui:define name="detalheCtr">
-    	<h:commandButton action="#{pessoaMb.solicitarCadastroPessoa()}" value="Salvar" class="btn" style="90%"/>
-    </ui:define>
-    
-    <ui:define name="detalhe">
-    	<rich:panel header="Contatos" style="width:100%; height: 95%; ">
-			<h:panelGrid columns="3" styleClass="gridForm" cellspacing="0px" cellpadding="0">
-				<h:outputLabel value="Tipo" for="tipoC" />
-                   <h:outputLabel value="Descrição" for="descricaoC" />
-                   <h:outputLabel value="" />
-                   <h:inputText id="tipoC" value="#{contatoController.selected.tipo}" title="#{bundle.ContatoTitle_tipo}" />
-                   <h:inputText id="descricaoC" value="#{contatoController.selected.descricao}" title="#{bundle.ContatoTitle_descricao}" size="50" />
-		  		
-                   
-			</h:panelGrid>
-			<br/>
-			<rich:dataTable value="#{pessoaMb.listaUsuarios}" var="us" style="width:100%" id="tbContato">
-    			<rich:column>
-    				<f:facet name="header">Tipo</f:facet>
-    				<h:outputText value="#{us.login}" />
-    			</rich:column>
-    			<rich:column>
-    				<f:facet name="header">Descrição</f:facet>
-    				<h:outputText value="#{us.tipo}" />
-    			</rich:column>
-    			<rich:column>
-    				<f:facet name="header">Ação</f:facet>
-    			</rich:column>
-    		</rich:dataTable>	
-		</rich:panel>
+   
+	    	<rich:panel header="Contatos" style="width:100%; height: 95%; ">
+				<h:panelGrid columns="3" styleClass="gridForm" cellspacing="0px" cellpadding="0">
+					<h:outputLabel value="Tipo" for="tipoC" />
+	                   <h:outputLabel value="Descrição" for="descricaoC" />
+	                   <h:outputLabel value="" />
+	                   <h:inputText id="tipoC" value="#{contatoController.selected.tipo}" title="#{bundle.ContatoTitle_tipo}" />
+	                   <h:inputText id="descricaoC" value="#{contatoController.selected.descricao}" title="#{bundle.ContatoTitle_descricao}" size="50" />
+			  		
+	                   
+				</h:panelGrid>
+				<br/>
+				<rich:dataTable value="#{pessoaMb.pessoas}" var="us" style="width:100%" id="tbContato">
+	    			<rich:column>
+	    				<f:facet name="header">Tipo</f:facet>
+	    				<h:outputText value="#{us.login}" />
+	    			</rich:column>
+	    			<rich:column>
+	    				<f:facet name="header">Descrição</f:facet>
+	    				<h:outputText value="#{us.tipo}" />
+	    			</rich:column>
+	    			<rich:column>
+	    				<f:facet name="header">Ação</f:facet>
+	    			</rich:column>
+	    		</rich:dataTable>	
+			</rich:panel>
+		</h:form>
     </ui:define>
     
     
