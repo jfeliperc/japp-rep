@@ -2,17 +2,18 @@ package com.module.ejb.contract;
 
 import java.util.List;
 
-import com.module.jpa.model.Produto;
+import com.module.jpa.model.Empresa;
 
 public interface IEmpresaEjb {
 
-	public Produto cadastrarProduto(Produto produto);
+	public Empresa cadastrarEmpresa(Empresa empresa);
 	
-	public Produto buscarProduto(Produto produto);
+	public Empresa buscarEmpresa(Empresa empresa);
 	
-	public List<Produto> listarProdutos(Produto produto);
+	public List<Empresa> listarEmpresas(Empresa empresa);
 	
-	public void excluirProduto(Produto produto);
+	public List<Empresa> listarFiliais(Empresa empresa);
 	
-	public void testeTipoPessoa();
+	public void excluirEmpresa(Empresa empresa);
+	
 }
