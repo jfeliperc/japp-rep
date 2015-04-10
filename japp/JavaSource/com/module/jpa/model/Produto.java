@@ -36,6 +36,18 @@ public class Produto implements Serializable {
 
 	@Column(name="qtd_ref_saida")
 	private String qtdRefSaida;
+	
+	@Column(name="aliq_icms")
+	private Double aliqIcms;
+
+	@Column(name="aliq_ipi")
+	private Double aliqIpi;
+	
+	@Column(name="fator_coaccao")
+	private Double fatorCoaccao;
+
+	@Column(name="indice_coaccao")
+	private Double indiceCoaccao;
 
 	//bi-directional many-to-one association to Estoque
 	@OneToMany(mappedBy="produto")
@@ -246,4 +258,37 @@ public class Produto implements Serializable {
 		return valorProduto;
 	}
 
+	public Double getAliqIcms() {
+		return aliqIcms;
+	}
+
+	public void setAliqIcms(Double aliqIcms) {
+		this.aliqIcms = aliqIcms;
+	}
+
+	public Double getAliqIpi() {
+		return aliqIpi;
+	}
+
+	public void setAliqIpi(Double aliqIpi) {
+		this.aliqIpi = aliqIpi;
+	}
+
+	public Double getFatorCoaccao() {
+		return fatorCoaccao;
+	}
+
+	public void setFatorCoaccao(Double fatorCoaccao) {
+		this.fatorCoaccao = fatorCoaccao;
+	}
+
+	public Double getIndiceCoaccao() {
+		return indiceCoaccao;
+	}
+
+	public void setIndiceCoaccao(Double indiceCoaccao) {
+		this.indiceCoaccao = indiceCoaccao;
+	}
+
+	
 }

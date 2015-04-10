@@ -18,29 +18,43 @@
     	<h:form id="frmProduto">
 	    	<rich:panel header="Consulta Produtos" style="width:99%; height: 95%; ">
 		      	<div style="padding-left: 10px">		      	
-		      		<h:panelGroup id="botoesPanel" layout="block">		      			
-	      				<table><tr><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
-	      				</td><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
-	      				</td><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
-	      				</td><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
-	      				</td><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>
-	      				</td></tr></table>		      				
-		      		</h:panelGroup>
+		      		
+		      		<nav class="navbar navbar-default" style="min-height: 30px !important;">
+		  				<div class="container-fluid">		    
+		      				<span class="btn-group navbar-left">
+					      		<h:panelGroup id="botoesPanel" layout="block">		      			
+				      				<table><tr><td width="20px">
+				      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+				      				</td><td width="20px">
+				      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
+				      				</td><td width="20px">
+				      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+				      				</td><td width="20px">
+				      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
+				      				</td><td width="20px">
+				      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>
+				      				</td></tr></table>		      				
+					      		</h:panelGroup>
+				      		</span>
+				      		
+				      		<span class="btn-group navbar-right">
+				      			<span class="btn-group">
+									<h:commandLink styleClass="btn btn-link" action="tipoGrupoProduto" value="Grupo/Tipo Produto" />
+								</span>
+				      		</span>
+				      	</div>
+				    </nav>	
+				    	
 			      	<h:panelGroup id="messagePanel" layout="block">
 	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
 	                	<hr/>
 		            </h:panelGroup>
 			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
 	                    <h:outputLabel value="id" for="id" />
-	                    <h:inputText id="id" value="#{produtoMb.produto.id}" title="ProdutoTitle_id}" required="true" 
+	                    <h:inputText id="id" value="#{produtoMb.produto.id}" title="ProdutoTitle_id}" required="false" 
 	                    	requiredMessage="ProdutoRequiredMessage_id}"/>
 	                    <h:outputLabel value="nome" for="nome" />
-	                    <h:inputText id="nome" value="#{produtoMb.produto.nome}" title="ProdutoTitle_nome}" required="true" 
+	                    <h:inputText id="nome" value="#{produtoMb.produto.nome}" title="ProdutoTitle_nome}" required="false" 
 	                    	requiredMessage="ProdutoRequiredMessage_nome}" size="100"/>
 	                    <h:outputLabel value="descricao" for="descricao" />
 	                    <h:inputText id="descricao" value="#{produtoMb.produto.descricao}" title="ProdutoTitle_descricao}" size="100" />
@@ -58,10 +72,20 @@
 	                    <h:inputText id="dataalteracao" value="#{produtoMb.produto.dataalteracao}" title="ProdutoTitle_dataalteracao}" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
-	                    <h:outputLabel value="tipoProdutoId" for="tipoProdutoId" />
+	                    <h:outputLabel value="Tipo" for="tipoProdutoId" />
 	                    <h:panelGroup id="selPanel" layout="block">
 		                    <h:selectOneMenu id="tipoProdutoId" value="#{produtoMb.produto.tipoProduto}" title="ProdutoTitle_tipoProdutoId}" 
-		                    	required="true" requiredMessage="ProdutoRequiredMessage_tipoProdutoId}" style="width:200px">
+		                    	required="false" requiredMessage="ProdutoRequiredMessage_tipoProdutoId}" style="width:200px">
+		                        <f:selectItems value="#{produtoMb.itemsTipoProduto}" var="tp" itemLabel="tp.descricao" itemValue="tp"/>
+		                    </h:selectOneMenu>
+		                    <h:commandLink action="tipoGrupoProduto" value="" >
+		                    	<h:graphicImage value="/css/img/edit.png" width="20px" height="20px" />
+		                    </h:commandLink>
+	                    </h:panelGroup>
+	                    <h:outputLabel value="Grupo" for="grupoProdutoId" />
+	                    <h:panelGroup id="selPanelG" layout="block">
+		                    <h:selectOneMenu id="grupoProdutoId" value="#{produtoMb.produto.tipoProduto}" title="ProdutoTitle_tipoProdutoId}" 
+		                    	required="false" requiredMessage="ProdutoRequiredMessage_tipoProdutoId}" style="width:200px">
 		                        <f:selectItems value="#{produtoMb.itemsTipoProduto}" var="tp" itemLabel="tp.descricao" itemValue="tp"/>
 		                    </h:selectOneMenu>
 		                    <h:commandLink action="tipoGrupoProduto" value="" >
