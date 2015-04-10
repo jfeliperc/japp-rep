@@ -77,10 +77,7 @@
 		                    <h:selectOneMenu id="tipoProdutoId" value="#{produtoMb.produto.tipoProduto}" title="ProdutoTitle_tipoProdutoId}" 
 		                    	required="false" requiredMessage="ProdutoRequiredMessage_tipoProdutoId}" style="width:200px">
 		                        <f:selectItems value="#{produtoMb.itemsTipoProduto}" var="tp" itemLabel="tp.descricao" itemValue="tp"/>
-		                    </h:selectOneMenu>
-		                    <h:commandLink action="tipoGrupoProduto" value="" >
-		                    	<h:graphicImage value="/css/img/edit.png" width="20px" height="20px" />
-		                    </h:commandLink>
+		                    </h:selectOneMenu>		                    
 	                    </h:panelGroup>
 	                    <h:outputLabel value="Grupo" for="grupoProdutoId" />
 	                    <h:panelGroup id="selPanelG" layout="block">
@@ -88,9 +85,6 @@
 		                    	required="false" requiredMessage="ProdutoRequiredMessage_tipoProdutoId}" style="width:200px">
 		                        <f:selectItems value="#{produtoMb.itemsTipoProduto}" var="tp" itemLabel="tp.descricao" itemValue="tp"/>
 		                    </h:selectOneMenu>
-		                    <h:commandLink action="tipoGrupoProduto" value="" >
-		                    	<h:graphicImage value="/css/img/edit.png" width="20px" height="20px" />
-		                    </h:commandLink>
 	                    </h:panelGroup>
 	                </h:panelGrid>
                 	    
