@@ -12,15 +12,13 @@
 		      	<div>
 			      	<h:panelGroup id="botoesPanel" layout="block">		      			
 	      				<table><tr><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+	      				<h:commandLink action="#{empresaMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
 	      				</td><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
+	      				<h:commandLink action="#{empresaMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
 	      				</td><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+	      				<h:commandLink action="#{empresaMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
 	      				</td><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
-	      				</td><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>
+	      				<h:commandLink action="#{empresaMb.excluir()}" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
 	      				</td></tr></table>		      				
 		      		</h:panelGroup>
 			      	<h:panelGroup id="messagePanel" layout="block">
@@ -29,30 +27,35 @@
 		            </h:panelGroup>
 			      	<h:panelGrid columns="4" styleClass="gridForm">
 	                    <h:outputLabel value="id" for="id" />
-	                    <h:inputText id="id" value="#{empresaMb.empresa.empresaId}" title="EmpresaTitle_id}" required="true" requiredMessage="EmpresaRequiredMessage_id}"/>
-	                    <h:outputLabel value="razaoSocial" for="razaoSocial" />
-	                    <h:inputText id="razaoSocial" value="#{empresaMb.empresa.razaoSocial}" title="EmpresaTitle_razaoSocial}" 
-	                    	required="true" requiredMessage="EmpresaRequiredMessage_razaoSocial}" size="100"/>
-	                    <h:outputLabel value="nomeFantasia" for="nomeFantasia" />
+	                    <h:inputText id="id" value="#{empresaMb.empresa.empresaId}" title="EmpresaTitle_id}" required="false" />
+	                    <h:outputLabel value="Razão Social" for="razaoSocial" />
+	                    <h:inputText id="razaoSocial" value="#{empresaMb.empresa.razaoSocial}" title="EmpresaTitle_razaoSocial}" required="true" size="100"/>
+	                    <h:outputLabel value="Nome Fantasia" for="nomeFantasia" />
 	                    <h:inputText id="nomeFantasia" value="#{empresaMb.empresa.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="90"/>
-	                    <h:outputLabel value="cnpj" for="cnpj" />
+	                    <h:outputLabel value="Cnpj" for="cnpj" />
 	                    <h:inputText id="cnpj" value="#{empresaMb.empresa.cnpj}" title="EmpresaTitle_cnpj}" size="70" />
-	                    <h:outputLabel value="inscricaoEst" for="inscricaoEst" />
+	                    <h:outputLabel value="Inscricao Est." for="inscricaoEst" />
 	                    <h:inputText id="inscricaoEst" value="#{empresaMb.empresa.inscricaoEst}" title="EmpresaTitle_inscricaoEst}" size="50" />
-	                    <h:outputLabel value="inscricaoMun" for="inscricaoMun" />
+	                    <h:outputLabel value="Inscricao Mun." for="inscricaoMun" />
 	                    <h:inputText id="inscricaoMun" value="#{empresaMb.empresa.inscricaoMun}" title="EmpresaTitle_inscricaoMun}" size="50" />
-	                    <h:outputLabel value="matriz" for="matriz" />
-	                    <h:inputText id="matriz" value="#{empresaMb.empresa.matriz}" title="EmpresaTitle_matriz}" />
-	                    <h:outputLabel value="ativo" for="ativo" />
-	                    <h:inputText id="ativo" value="#{empresaMb.empresa.ativo}" title="EmpresaTitle_ativo}" />
-	                    <h:outputLabel value="datainclusao" for="datainclusao" />
-	                    <h:inputText id="datainclusao" value="#{empresaMb.empresa.datainclusao}" title="EmpresaTitle_datainclusao}" >
-	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-	                    </h:inputText>
-	                    <h:outputLabel value="dataalteracao" for="dataalteracao" />
-	                    <h:inputText id="dataalteracao" value="#{empresaMb.empresa.dataalteracao}" title="EmpresaTitle_dataalteracao}" >
-	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-	                    </h:inputText>
+	                    
+	                    <h:outputLabel value="Matriz" for="matriz" />
+	                    <h:selectOneMenu value="#{empresaMb.empresa.matriz}" style="width:350px">
+							<f:selectItems value="#{empresaMb.listMatriz}" var="it" itemValue="#{it.empresaId}" itemLabel="#{it.nomeFantasia}"/>
+						</h:selectOneMenu>
+	                    
+	                    <h:outputLabel value="Status" for="ativo" />
+	                    <h:selectOneMenu value="#{empresaMb.empresa.ativo}" style="width:150px">
+							<f:selectItem itemLabel="Ativo" itemValue="A"/>
+							<f:selectItem itemLabel="Inativo" itemValue="I"/>
+						</h:selectOneMenu>
+	                    
+	                    <h:outputLabel value="Data Inclusao" for="datainclusao" />
+	                    <rich:calendar value="#{empresaMb.empresa.datainclusao}" id="datainclusao" 
+							enableManualInput="true" datePattern="dd/MM/yyyy"/>
+	                    <h:outputLabel value="Data Alteracao" for="dataalteracao" />
+	                    <rich:calendar value="#{empresaMb.empresa.dataalteracao}" id="dataalteracao" 
+							enableManualInput="true" datePattern="dd/MM/yyyy"/>
 	                </h:panelGrid>
 	                
 	                <br/><br/><hr/>

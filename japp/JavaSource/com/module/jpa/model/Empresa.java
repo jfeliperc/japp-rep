@@ -44,7 +44,7 @@ public class Empresa implements Serializable {
 	@Column(name="inscricao_mun")
 	private String inscricaoMun;
 
-	private int matriz;
+	private Integer matriz;
 
 	@Column(name="nome_fantasia")
 	private String nomeFantasia;
@@ -74,15 +74,6 @@ public class Empresa implements Serializable {
 
 	public Empresa() {
 	}
-
-	
-//	public Integer getId() {
-//		return this.id;
-//	}
-//
-//	public void setId(Integer id) {
-//		this.id = id;
-//	}
 
 	public Integer getEmpresaId() {
 		return empresaId;
@@ -142,11 +133,11 @@ public class Empresa implements Serializable {
 		this.inscricaoMun = inscricaoMun;
 	}
 
-	public int getMatriz() {
+	public Integer getMatriz() {
 		return this.matriz;
 	}
 
-	public void setMatriz(int matriz) {
+	public void setMatriz(Integer matriz) {
 		this.matriz = matriz;
 	}
 

@@ -50,5 +50,10 @@ public class EmpresaEjb implements IEmpresaEjb, Serializable {
 		
 	}
 
+	@Override
+	public void salvarEmpresa(Empresa empresa) {
+		this.dao.add(empresa);		
+	}
+
 
 }

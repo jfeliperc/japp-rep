@@ -15,5 +15,7 @@ public interface IEmpresaEjb {
 	public List<Empresa> listarFiliais(Empresa empresa);
 	
 	public void excluirEmpresa(Empresa empresa);
+
+	public void salvarEmpresa(Empresa empresa);
 	
 }
