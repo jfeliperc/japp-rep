@@ -33,18 +33,23 @@ public class EmpresaMb extends BaseMb{
 		this.empresa = new Empresa();
 	}
 	
-	public void buscar(){
-		
+	public void buscar(){		
+		this.listEmpresa = empresaEjb.listarEmpresas(empresa);
+		if ((this.listEmpresa != null)&&(!this.listEmpresa.isEmpty())&&(this.listEmpresa.size() == 1)){
+			this.empresa = this.listEmpresa.get(0);
+			this.listEmpresa.clear();
+		}
 	}
 	
 	public void salvar(){
 		if (validarSalvar()){
-			empresaEjb.salvarEmpresa(this.empresa);
+			this.empresa = empresaEjb.cadastrarEmpresa(this.empresa);
+			addMsg("Dados da empresa registrados com sucesso.");
 		}
 	}
 	
 	private boolean validarSalvar() {
-		return false;
+		return true;
 	}
 
 	public void excluir(){

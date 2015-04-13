@@ -35,6 +35,11 @@
         </navigation-case>
         
         <navigation-case>
+            <from-outcome>tipoGrupoProduto</from-outcome>
+            <to-view-id>/pages/tipoGrupoProduto.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
         	<from-outcome>empresa</from-outcome>
         	<to-view-id>/pages/empresa.xhtml</to-view-id>
         </navigation-case>

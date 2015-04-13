@@ -20,11 +20,29 @@ public class ProdutoMb extends BaseMb{
 	private IProdutoEjb produtoEjb;
 
 	private Produto produto;
+	private List<Produto> listProduto;
 	private List<TipoProduto> itemsTipoProduto;
 	
 	public ProdutoMb(){		
 		this.produto = new Produto();
 		this.itemsTipoProduto = new ArrayList<TipoProduto>();   
+	}
+
+	public void limpar(){
+		this.produto = new Produto();
+		this.listProduto = new ArrayList<Produto>();
+	}
+	
+	public void buscar(){
+		
+	}
+	
+	public void salvar(){
+
+	}
+	
+	public void excluir(){
+
 	}
 
 	public Produto getProduto() {
@@ -42,6 +60,13 @@ public class ProdutoMb extends BaseMb{
 	public void setItemsTipoProduto(List<TipoProduto> itemsTipoProduto) {
 		this.itemsTipoProduto = itemsTipoProduto;
 	}
-	
+
+	public List<Produto> getListProduto() {
+		return listProduto;
+	}
+
+	public void setListProduto(List<Produto> listProduto) {
+		this.listProduto = listProduto;
+	}
 	
 }

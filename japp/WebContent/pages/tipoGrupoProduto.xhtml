@@ -28,31 +28,45 @@
 			      		<rich:tab header="Grupo de Produtos">
 			      			<h:panelGroup id="botoesPanel" layout="block">		      			
 			      				<table><tr><td width="20px">
-			      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+			      				<h:commandLink action="#{tipoGrupoProdutoMb.limparGrupoProduto()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
 			      				</td><td width="20px">
-			      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
+			      				<h:commandLink action="#{tipoGrupoProdutoMb.buscarGrupoProduto()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
 			      				</td><td width="20px">
-			      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+			      				<h:commandLink action="#{tipoGrupoProdutoMb.salvarGrupoProduto()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+			      				</td><td width="20px">
+			      				<h:commandLink action="#{tipoGrupoProdutoMb.excluirGrupoProduto()}" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
 			      				</td></tr></table>		      				
 				      		</h:panelGroup>
 					   	
-					      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
-			                    <h:outputLabel value="#{bundle.id_}" for="id" />
-			                    <h:inputText id="id" value="#{produtoMb.produto.id}" title="#{bundle.ProdutoTitle_id}" required="false" 
-			                    	requiredMessage="#{bundle.ProdutoRequiredMessage_id}"/>
-			                    <h:outputLabel value="#{bundle.nome_}" for="nome" />
-			                    <h:inputText id="nome" value="#{produtoMb.produto.nome}" title="#{bundle.ProdutoTitle_nome}" required="false" 
-			                    	requiredMessage="#{bundle.ProdutoRequiredMessage_nome}" size="100"/>                   
+					      	<h:panelGrid columns="2" styleClass="gridForm" cellspacing="5px" cellpadding="5">
+			                    <h:outputLabel value="Id" for="id" />
+			                    <h:inputText id="id" value="#{tipoGrupoProdutoMb.grupoProduto.id}" title="#{bundle.ProdutoTitle_id}" required="false"/>
+			                    <h:outputLabel value="Nome" for="nome" />
+			                    <h:inputText id="nome" value="#{tipoGrupoProdutoMb.grupoProduto.nome}" title="#{bundle.ProdutoTitle_nome}" required="false" size="100"/>
+			                    <h:outputLabel value="Descrição" for="descricao" />
+			                    <h:inputText id="descricao" value="#{tipoGrupoProdutoMb.grupoProduto.descricao}" title="#{bundle.ProdutoTitle_nome}" required="false" size="100"/>
+			                    <h:outputLabel value="Grupo-Pai" for="grupoPai" />			                    
+			                    <h:selectOneMenu id="grupoPai" value="#{tipoGrupoProdutoMb.grupoProduto.grupoPai}" title="Selecione um grupo-pai" style="width:200px">
+			                        <f:selectItems value="#{tipoGrupoProdutoMb.listGrupoProdutoPai}" var="grp" itemValue="#{grp.id}" itemLabel="#{grp.nome}" />
+			                    </h:selectOneMenu>
 			                </h:panelGrid>
 			                <br/>
-							<rich:dataTable value="#{pessoaMb.pessoas}" var="us" style="width:100%" id="tbContato">
+							<rich:dataTable value="#{tipoGrupoProdutoMb.limparGrupoProduto()}" var="us" style="width:100%" id="tbGrupos">
 				    			<rich:column>
-				    				<f:facet name="header">Tipo</f:facet>
-				    				<h:outputText value="#{us.login}" />
+				    				<f:facet name="header">id</f:facet>
+				    				<h:outputText value="#{us.id}" />
+				    			</rich:column>
+				    			<rich:column>
+				    				<f:facet name="header">Nome</f:facet>
+				    				<h:outputText value="#{us.nome}" />
 				    			</rich:column>
 				    			<rich:column>
 				    				<f:facet name="header">Descrição</f:facet>
-				    				<h:outputText value="#{us.tipo}" />
+				    				<h:outputText value="#{us.descricao}" />
+				    			</rich:column>
+				    			<rich:column>
+				    				<f:facet name="header">Sub-Grupos</f:facet>
+				    				<h:outputText value="#{us.descricao}" />
 				    			</rich:column>
 				    			<rich:column>
 				    				<f:facet name="header">Ação</f:facet>
@@ -64,28 +78,44 @@
 			      		<rich:tab header="Tipo de Produtos">
 			      			<h:panelGroup id="botoesPanel2" layout="block">		      			
 			      				<table><tr><td width="20px">
-			      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+			      				<h:commandLink action="#{tipoGrupoProdutoMb.limparTipoProduto()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
 			      				</td><td width="20px">
-			      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
+			      				<h:commandLink action="#{tipoGrupoProdutoMb.buscarTipoProduto()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
 			      				</td><td width="20px">
-			      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+			      				<h:commandLink action="#{tipoGrupoProdutoMb.salvarTipoProduto()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
 			      				</td><td width="20px">
-			      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
-			      				</td><td width="20px">
-			      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>
+			      				<h:commandLink action="#{tipoGrupoProdutoMb.excluirTipoProduto()}" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
 			      				</td></tr></table>		      				
 				      		</h:panelGroup>
 			            	
-					      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
-			                    <h:outputLabel value="#{bundle.id_}" for="idT" />
-			                    <h:inputText id="idT" value="#{produtoMb.produto.id}" title="#{bundle.ProdutoTitle_id}" required="false" 
-			                    	requiredMessage="#{bundle.ProdutoRequiredMessage_id}"/>
-			                    <h:outputLabel value="#{bundle.nome_}" for="nomeT" />
-			                    <h:inputText id="nomeT" value="#{produtoMb.produto.nome}" title="#{bundle.ProdutoTitle_nome}" required="false" 
-			                    	requiredMessage="#{bundle.ProdutoRequiredMessage_nome}" size="100"/>                   
+					      	<h:panelGrid columns="2" styleClass="gridForm" cellspacing="5px" cellpadding="5">
+			                    <h:outputLabel value="Id" for="id" />
+			                    <h:inputText id="idtp" value="#{tipoGrupoProdutoMb.tipoProduto.id}" title="#{bundle.ProdutoTitle_id}" required="false"/>
+			                    <h:outputLabel value="Nome" for="nome" />
+			                    <h:inputText id="nometp" value="#{tipoGrupoProdutoMb.tipoProduto.nome}" title="#{bundle.ProdutoTitle_nome}" required="false" size="100"/>
+			                    <h:outputLabel value="Descrição" for="descricao" />
+			                    <h:inputText id="descricaotp" value="#{tipoGrupoProdutoMb.tipoProduto.descricao}" title="#{bundle.ProdutoTitle_nome}" required="false" size="100"/>			                    
 			                </h:panelGrid>
+			                <br/>
+							<rich:dataTable value="#{tipoGrupoProdutoMb.limparGrupoProduto()}" var="us" style="width:100%" id="tbTipo">
+				    			<rich:column>
+				    				<f:facet name="header">id</f:facet>
+				    				<h:outputText value="#{us.id}" />
+				    			</rich:column>
+				    			<rich:column>
+				    				<f:facet name="header">Nome</f:facet>
+				    				<h:outputText value="#{us.nome}" />
+				    			</rich:column>
+				    			<rich:column>
+				    				<f:facet name="header">Descrição</f:facet>
+				    				<h:outputText value="#{us.descricao}" />
+				    			</rich:column>
+				    			<rich:column>
+				    				<f:facet name="header">Ação</f:facet>
+				    			</rich:column>
+				    		</rich:dataTable>       
 												
-							<br/><br/>
+							<br/><hr/>
 			      		</rich:tab>
 			      	</rich:tabPanel>
 			      	

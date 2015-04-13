@@ -15,7 +15,7 @@ public class Dao<T> implements IDao<T> {
 	private Class<T> entityClass;
 
 	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("japp");	
-	private EntityManager em; 
+	protected EntityManager em; 
  
 	public Dao() {
 		this.em  = emf.createEntityManager();
@@ -74,7 +74,7 @@ public class Dao<T> implements IDao<T> {
         q.setFirstResult(range[0]);
         return q.getResultList();
     }
-
+    
     public int count() {
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
         javax.persistence.criteria.Root<T> rt = cq.from(entityClass);

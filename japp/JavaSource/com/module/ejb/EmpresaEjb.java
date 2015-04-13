@@ -1,11 +1,13 @@
 package com.module.ejb;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
 
 import com.module.ejb.contract.IEmpresaEjb;
+import com.module.jpa.dao.Dao;
 import com.module.jpa.dao.EmpresaDao;
 import com.module.jpa.model.Empresa;
 
@@ -22,8 +24,13 @@ public class EmpresaEjb implements IEmpresaEjb, Serializable {
 
 	@Override
 	public Empresa cadastrarEmpresa(Empresa empresa) {
-		
-		return null;
+		Dao<Empresa> dao = new Dao<Empresa>();
+		if (empresa.getEmpresaId() == null){
+			dao.add(empresa);
+		}else{
+			dao.update(empresa);
+		}
+		return empresa;
 	}
 
 	@Override
@@ -34,8 +41,9 @@ public class EmpresaEjb implements IEmpresaEjb, Serializable {
 
 	@Override
 	public List<Empresa> listarEmpresas(Empresa empresa) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Empresa> retorno = new ArrayList<Empresa>();		
+		retorno = this.dao.findByExample(empresa);
+		return retorno;
 	}
 
 	@Override
