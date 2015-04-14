@@ -35,11 +35,11 @@ public class PessoaEjb implements IPessoaEjb {
 
 	@Override
 	public List<Pessoa> listarPessoas(Pessoa pessoa) {
-		Dao<Pessoa> dao = new Dao<Pessoa>();
+		PessoaDao dao = new PessoaDao();
 		
+		List<Pessoa> result = dao.findByExample(pessoa);
 		
-		
-		return null;
+		return result;
 	}
 
 	@Override
@@ -95,6 +95,12 @@ public class PessoaEjb implements IPessoaEjb {
 	public boolean validarLogin(String login, String pass, Integer empresaId) {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	@Override
+	public Pessoa salvarPessoa(Pessoa pessoa) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

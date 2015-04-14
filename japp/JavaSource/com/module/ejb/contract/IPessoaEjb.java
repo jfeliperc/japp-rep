@@ -21,5 +21,7 @@ public interface IPessoaEjb {
 	public Pessoa buscarPorLogin(String login);
 
 	public boolean validarLogin(String login, String pass, Integer empresaId);
+
+	public Pessoa salvarPessoa(Pessoa pessoa);
 	
 }

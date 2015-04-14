@@ -5,11 +5,13 @@ com\module\faces\geral\FilterJapp.class
 com\module\ejb\ProdutoEjb.class
 com\module\jpa\dao\IDao.class
 com\module\faces\BaseMb.class
-com\module\jpa\dao\PessoaDao.class
 com\module\jpa\model\GrupoProduto.class
+com\module\jpa\dao\PessoaDao.class
 com\module\jpa\model\Produto.class
 com\module\ejb\contract\IEmpresaEjb.class
 com\module\jpa\model\AtividadeServico.class
+com\module\jpa\dao\TipoProdutoDao.class
+com\module\jpa\dao\ProdutoDao.class
 com\module\jpa\model\Estoque.class
 com\module\ejb\contract\IClienteEjb.class
 com\module\jpa\model\Empresa.class
@@ -41,6 +43,7 @@ com\module\jpa\dao\EmpresaDao.class
 com\module\jpa\model\PedidoItem.class
 com\module\jpa\model\Orcamento.class
 com\module\jpa\model\Pedido.class
+com\module\jpa\dao\GrupoProdutoDao.class
 com\module\faces\geral\EstrMenu.class
 com\module\jpa\model\TipoProduto.class
 com\module\ejb\EmpresaEjb.class

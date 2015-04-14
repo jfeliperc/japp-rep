@@ -3,11 +3,13 @@ package com.module.faces;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import com.module.ejb.contract.IProdutoEjb;
+import com.module.jpa.model.GrupoProduto;
 import com.module.jpa.model.Produto;
 import com.module.jpa.model.TipoProduto;
 
@@ -22,6 +24,13 @@ public class ProdutoMb extends BaseMb{
 	private Produto produto;
 	private List<Produto> listProduto;
 	private List<TipoProduto> itemsTipoProduto;
+	private List<GrupoProduto> itemsGrupoProduto;
+	
+	@PostConstruct
+	public void construcao(){
+		itemsTipoProduto = this.produtoEjb.buscarAllTipoProduto();
+		itemsGrupoProduto = this.produtoEjb.buscarAllGrupoProduto();
+	}
 	
 	public ProdutoMb(){		
 		this.produto = new Produto();

@@ -7,7 +7,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
+import com.module.jpa.model.Empresa;
+import com.module.jpa.model.Pessoa;
 
 @Stateless
 public class Dao<T> implements IDao<T> {
@@ -82,5 +89,5 @@ public class Dao<T> implements IDao<T> {
         Query q = em.createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-	    
+
 }

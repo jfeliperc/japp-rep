@@ -38,11 +38,28 @@ public class PessoaMb extends BaseMb{
 	}
 	
 	public void buscar(){
-		
+		try {
+			this.pessoas = pessoaEjb.listarPessoas(this.pessoa);
+			
+			if ((this.pessoas != null)&&(!this.pessoas.isEmpty())&&(this.pessoas.size() == 1)){
+				this.pessoa = this.pessoas.get(0);
+				this.pessoas.clear();
+			}
+			
+		} catch (Exception e) {
+			addMsgError("Erro ao buscar pessoa(s) - "+e.getMessage());
+		}
 	}
 	
 	public void salvar(){
+		if (validarSalvar()){
+			this.pessoa = pessoaEjb.salvarPessoa(this.pessoa);
+		}
+	}
 
+	private boolean validarSalvar() {
+		
+		return false;
 	}
 
 	public void excluir(){

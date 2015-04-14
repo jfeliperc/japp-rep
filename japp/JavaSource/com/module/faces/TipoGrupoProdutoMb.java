@@ -3,6 +3,7 @@ package com.module.faces;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -25,6 +26,11 @@ public class TipoGrupoProdutoMb extends BaseMb{
 	private List<GrupoProduto> listGrupoProduto;
 	private List<GrupoProduto> listGrupoProdutoPai;
 	
+	@PostConstruct
+	public void construcao(){
+		this.listGrupoProdutoPai = produtoEjb.buscarAllGrupoProduto();		
+	}
+	
 	public TipoGrupoProdutoMb(){		
 		limparTipoProduto();
 		limparGrupoProduto();
@@ -36,13 +42,29 @@ public class TipoGrupoProdutoMb extends BaseMb{
 	}
 	
 	public void buscarTipoProduto(){
-		
+		this.listTipoProduto = produtoEjb.buscarTipoProduto(this.tipoProduto);
 	}
 	
 	public void salvarTipoProduto(){
-
+		if (validarSalvarTipoProduto()){
+			this.tipoProduto = produtoEjb.salvarTipoProduto(this.tipoProduto);
+			buscarTipoProduto();
+		}
 	}
 	
+	private boolean validarSalvarTipoProduto() {
+		boolean ret = true;
+		if ((this.tipoProduto.getNome() == null)||("".equals(this.tipoProduto.getNome()))){
+			ret = false;
+			addMsgError("Campo nome é obrigatório. (Tipo Produto)");
+		}
+		if ((this.tipoProduto.getDescricao() == null)||("".equals(this.tipoProduto.getDescricao()))){
+			ret = false;
+			addMsgError("Campo descrição é obrigatório. (Tipo Produto)");
+		}
+		return ret;
+	}
+
 	public void excluirTipoProduto(){
 
 	}
@@ -53,13 +75,29 @@ public class TipoGrupoProdutoMb extends BaseMb{
 	}
 	
 	public void buscarGrupoProduto(){
-		
+		this.listGrupoProduto = produtoEjb.buscarGrupoProduto(this.grupoProduto);
 	}
 	
 	public void salvarGrupoProduto(){
-
+		if (validarSalvarGrupoProduto()){
+			this.grupoProduto = produtoEjb.salvarGrupoProduto(this.grupoProduto);
+			buscarGrupoProduto();
+		}
 	}
 	
+	private boolean validarSalvarGrupoProduto() {
+		boolean ret = true;
+		if ((this.grupoProduto.getNome() == null)||("".equals(this.grupoProduto.getNome()))){
+			ret = false;
+			addMsgError("Campo nome é obrigatório. (Grupo Produto)");
+		}
+		if ((this.grupoProduto.getDescricao() == null)||("".equals(this.grupoProduto.getDescricao()))){
+			ret = false;
+			addMsgError("Campo descrição é obrigatório. (Grupo Produto)");
+		}
+		return ret;
+	}
+
 	public void excluirGrupoProduto(){
 
 	}
