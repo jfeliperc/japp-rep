@@ -43,13 +43,23 @@ public class ProdutoMb extends BaseMb{
 	}
 	
 	public void buscar(){
-		
+		this.listProduto = produtoEjb.listarProdutos(this.produto);
+		if ((this.listProduto != null)&&(!this.listProduto.isEmpty())&&(this.listProduto.size() == 1)){
+			this.produto = this.listProduto.get(0);
+			this.listProduto.clear();
+		}
 	}
 	
 	public void salvar(){
-
+		if (validarSalvar()){
+			this. produto = this.produtoEjb.cadastrarProduto(this.produto);
+		}
 	}
 	
+	private boolean validarSalvar() {
+		return true;
+	}
+
 	public void excluir(){
 
 	}

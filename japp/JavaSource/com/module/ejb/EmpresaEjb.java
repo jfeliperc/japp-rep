@@ -25,7 +25,8 @@ public class EmpresaEjb implements IEmpresaEjb, Serializable {
 	@Override
 	public Empresa cadastrarEmpresa(Empresa empresa) {
 		Dao<Empresa> dao = new Dao<Empresa>();
-		if (empresa.getEmpresaId() == null){
+		if ((empresa.getEmpresaId() == null)||(empresa.getEmpresaId().intValue() == 0)){
+			empresa.setEmpresaId(null);
 			dao.add(empresa);
 		}else{
 			dao.update(empresa);

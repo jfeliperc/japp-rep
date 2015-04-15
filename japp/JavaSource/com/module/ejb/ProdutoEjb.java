@@ -1,5 +1,6 @@
 package com.module.ejb;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -51,14 +52,26 @@ public class ProdutoEjb implements IProdutoEjb {
 
 	@Override
 	public List<TipoProduto> buscarTipoProduto(TipoProduto tipoProduto) {
-		// TODO Auto-generated method stub
-		return null;
+		TipoProdutoDao dao = new TipoProdutoDao();
+		List<TipoProduto> ret = new ArrayList<TipoProduto>();
+		if ((tipoProduto.getId() == null)&&(tipoProduto.getNome() == null)&&(tipoProduto.getDescricao() == null)){
+			ret = dao.getAll();
+		}else{
+			ret = dao.findByExample(tipoProduto);
+		}		
+		return ret;
 	}
 
 	@Override
 	public List<GrupoProduto> buscarGrupoProduto(GrupoProduto grupoProduto) {
-		// TODO Auto-generated method stub
-		return null;
+		GrupoProdutoDao dao = new GrupoProdutoDao();
+		List<GrupoProduto> ret = new ArrayList<GrupoProduto>();
+		//if ((grupoProduto.getId() == null)&&(grupoProduto.getNome() == null)&&(grupoProduto.getDescricao() == null)&&(grupoProduto.getGrupoPai() == null)){
+			ret = dao.getAll();
+//		}else{
+//			ret = dao.findByExample(grupoProduto);
+//		}		
+		return ret;
 	}
 
 	@Override
@@ -70,6 +83,7 @@ public class ProdutoEjb implements IProdutoEjb {
 				dao.update(tipoProduto);			
 			}else{
 				tipoProduto.setDatainclusao(new Date());
+				tipoProduto.setId(null);
 				dao.add(tipoProduto);
 			}
 		} catch (Exception e) {
@@ -87,6 +101,7 @@ public class ProdutoEjb implements IProdutoEjb {
 				dao.update(grupoProduto);
 			}else{
 				grupoProduto.setDatainclusao(new Date());
+				grupoProduto.setId(null);
 				dao.add(grupoProduto);
 			}
 		} catch (Exception e) {

@@ -51,7 +51,7 @@
 			                    </h:selectOneMenu>
 			                </h:panelGrid>
 			                <br/>
-							<rich:dataTable value="#{tipoGrupoProdutoMb.limparGrupoProduto()}" var="us" style="width:100%" id="tbGrupos">
+							<rich:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbGrupos">
 				    			<rich:column>
 				    				<f:facet name="header">id</f:facet>
 				    				<h:outputText value="#{us.id}" />

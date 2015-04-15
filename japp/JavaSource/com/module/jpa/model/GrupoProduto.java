@@ -29,7 +29,7 @@ public class GrupoProduto implements Serializable {
 	private String descricao;
 
 	@Column(name="grupo_pai")
-	private int grupoPai;
+	private Integer grupoPai;
 
 	private String nome;
 
@@ -72,11 +72,11 @@ public class GrupoProduto implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public int getGrupoPai() {
+	public Integer getGrupoPai() {
 		return this.grupoPai;
 	}
 
-	public void setGrupoPai(int grupoPai) {
+	public void setGrupoPai(Integer grupoPai) {
 		this.grupoPai = grupoPai;
 	}
 

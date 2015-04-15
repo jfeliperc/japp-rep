@@ -31,9 +31,16 @@ public class FornecedorMb extends BaseMb{
 	}
 	
 	public void salvar(){
-
+		if (validarSalvar()){
+			this.fornecedor = fornecedorEjb.cadastrarFornecedor(this.fornecedor);
+		}
 	}
 	
+	private boolean validarSalvar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	public void excluir(){
 
 	}
