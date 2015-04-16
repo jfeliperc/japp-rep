@@ -30,26 +30,33 @@
 			      	<h:panelGrid columns="4" styleClass="gridForm" width="90%">
 	                    <h:outputLabel value="id" for="id" />
 	                    <h:inputText id="id" value="#{fornecedorMb.fornecedor.id}" title="#{mensagens.CreateAgenteExternoTitle_id}" />
-	                    <h:outputLabel value="ativo" for="ativo" />
-	                    <h:inputText id="ativo" value="#{fornecedorMb.fornecedor.ativo}" title="#{mensagens.CreateAgenteExternoTitle_ativo}" />
-	                    <h:outputLabel value="cnpj" for="cnpj" />
-	                    <h:inputText id="cnpj" value="#{fornecedorMb.fornecedor.cnpj}" title="#{mensagens.CreateAgenteExternoTitle_cnpj}" />
-	                    <h:outputLabel value="Razao Social" for="razaoSocial" />
-	                    <h:inputText id="razaoSocial" value="#{fornecedorMb.fornecedor.razaoSocial}" title="#{mensagens.CreateAgenteExternoTitle_razaoSocial}" />
-	                    <h:outputLabel value="nomeFantasia" for="nomeFantasia" />
-	                    <h:inputText id="nomeFantasia" value="#{fornecedorMb.fornecedor.nomeFantasia}" title="#{mensagens.CreateAgenteExternoTitle_nomeFantasia}" />
-	                    <h:outputLabel value="inscricaoEst" for="inscricaoEst" />
-	                    <h:inputText id="inscricaoEst" value="#{fornecedorMb.fornecedor.inscricaoEst}" title="#{mensagens.CreateAgenteExternoTitle_inscricaoEst}" />
-	                    <h:outputLabel value="inscricaoMun" for="inscricaoMun" />
-	                    <h:inputText id="inscricaoMun" value="#{fornecedorMb.fornecedor.inscricaoMun}" title="#{mensagens.CreateAgenteExternoTitle_inscricaoMun}" />
+	                    	                    
+	                    <h:outputLabel value="Razão Social" for="razaoSocial" />
+	                    <h:inputText id="razaoSocial" value="#{fornecedorMb.fornecedor.razaoSocial}" title="EmpresaTitle_razaoSocial}" required="true" size="100"/>
+	                    <h:outputLabel value="Nome Fantasia" for="nomeFantasia" />
+	                    <h:inputText id="nomeFantasia" value="#{fornecedorMb.fornecedor.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="90"/>
+	                    <h:outputLabel value="Cnpj" for="cnpj" />
+	                    <h:inputText id="cnpj" value="#{fornecedorMb.fornecedor.cnpj}" title="EmpresaTitle_cnpj}" size="70" />
+	                    <h:outputLabel value="Inscricao Est." for="inscricaoEst" />
+	                    <h:inputText id="inscricaoEst" value="#{fornecedorMb.fornecedor.inscricaoEst}" title="EmpresaTitle_inscricaoEst}" size="50" />
+	                    <h:outputLabel value="Inscricao Mun." for="inscricaoMun" />
+	                    <h:inputText id="inscricaoMun" value="#{fornecedorMb.fornecedor.inscricaoMun}" title="EmpresaTitle_inscricaoMun}" size="50" />
+	                    
 	                    <h:outputLabel value="tipo" for="tipo" />
 	                    <h:inputText id="tipo" value="#{fornecedorMb.fornecedor.tipo}" title="#{mensagens.CreateAgenteExternoTitle_tipo}" />
-	                    <h:outputLabel value="observacao" for="observacao" />
-	                    <h:inputText id="observacao" value="#{fornecedorMb.fornecedor.observacao}" title="#{mensagens.CreateAgenteExternoTitle_observacao}" />
+	                    <h:outputLabel value="Observacao" for="observacao" />
+	                    <h:inputText id="observacao" value="#{fornecedorMb.fornecedor.observacao}" title="Observação" size="110" />
+	                    
 	                    <h:outputLabel value="empresa" for="empresa" />
 	                    <h:selectOneMenu id="empresa" value="#{fornecedorMb.fornecedor.empresa}" title="#{mensagens.CreateAgenteExternoTitle_empresa}" >
 	                        <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
 	                    </h:selectOneMenu>
+	                    
+	                    <h:outputLabel value="Status" for="ativo" />
+	                    <h:selectOneMenu value="#{fornecedorMb.fornecedor.ativo}" style="width:150px">
+							<f:selectItem itemLabel="Ativo" itemValue="A"/>
+							<f:selectItem itemLabel="Inativo" itemValue="I"/>
+						</h:selectOneMenu>
 	                    
 	                    <h:outputLabel value="dataalteracao}" for="dataalteracao" />
 	                    <h:inputText id="dataalteracao" value="#{fornecedorMb.fornecedor.dataalteracao}" title="#{mensagens.CreateAgenteExternoTitle_dataalteracao}" >

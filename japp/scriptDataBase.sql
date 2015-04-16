@@ -421,6 +421,43 @@ CONSTRAINT `fk_pedido_item_produto_id` FOREIGN KEY (`produto_id`) REFERENCES `ja
 ) ENGINE=INNODB;
 
 -- ------------------------------------------------------------------------
+-- -----------------------------------------------------
+-- Table `japp`.`receita`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `japp`.`receita` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `pessoa_id` INT NULL COMMENT 'pessoa responsavel',
+  `servico_id` INT NULL,
+  `resumo` VARCHAR(150) NULL,
+  `descricao` VARCHAR(255) NULL,
+  `tempo_medio` VARCHAR(25) NULL,
+  `datainclusao` VARCHAR(45) NULL,
+  `dataalteracao` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_receita_pessoa` FOREIGN KEY (`pessoa_id`) REFERENCES `japp`.`pessoa` (`id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_receita_servico` FOREIGN KEY (`servico_id`) REFERENCES `japp`.`servico` (`id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION)	
+ENGINE = INNODB;
+
+-- -----------------------------------------------------
+-- Table `japp`.`receita_produto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `japp`.`receita_produto` (
+  `id` INT NOT NULL AUTO_INCREMENT,  
+  `receita_id` INT NOT NULL,
+  `produto_id` INT NOT NULL,
+  `quantidade` SMALLINT(6) NOT NULL DEFAULT '0',
+  `observacao` VARCHAR(150) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `receita_produto_receita_idx` (`receita_id` ASC),
+  INDEX `receita_produto_produto_idx` (`produto_id` ASC),
+  CONSTRAINT `fk_receita_produto_receita` FOREIGN KEY (`receita_id`) REFERENCES `japp`.`receita` (`id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_receita_produto_produto` FOREIGN KEY (`produto_id`) REFERENCES `japp`.`produto` (`id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION)
+ENGINE = INNODB;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

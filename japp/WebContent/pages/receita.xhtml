@@ -10,87 +10,108 @@
     	<h:form id="frmReceita">
 	    	<rich:panel header="Cadastro de Receitas" style="width:99%; height: 95%; ">
 		      	<div>
-			      	<h:panelGroup id="botoesPanel" layout="block">		      			
-	      				<table><tr><td width="20px">
-	      				<h:commandLink action="#{empresaMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
-	      				</td><td width="20px">
-	      				<h:commandLink action="#{empresaMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>	      				
-	      				</td></tr></table>		      				
-		      		</h:panelGroup>
-			      	<h:panelGroup id="messagePanel" layout="block">
-	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-	                	<hr/>
-		            </h:panelGroup>
-			      	<h:panelGrid columns="2" styleClass="gridForm">
-	                    <h:outputLabel value="id" for="id" />
-	                    <h:inputText id="id" value="#{empresaMb.empresa.empresaId}" title="EmpresaTitle_id}" required="false" />
-	                    <h:outputLabel value="Título da Receita" for="razaoSocial" />
-	                    <h:inputText id="titReceita" value="#{empresaMb.empresa.razaoSocial}" title="EmpresaTitle_razaoSocial}" required="true" size="100"/>
-	                    <h:outputLabel value="Resumo" for="nomeFantasia" />
-	                    <h:inputText id="nomeFantasia" value="#{empresaMb.empresa.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="90"/>	                    
-	                </h:panelGrid>
-	                <hr/>
-	                <rich:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbGrupos">
-		    			<rich:column>
-		    				<f:facet name="header">id</f:facet>
-		    				<h:outputText value="#{us.id}" />
-		    			</rich:column>
-		    			<rich:column>
-		    				<f:facet name="header">Título</f:facet>
-		    				<h:outputText value="#{us.nome}" />
-		    			</rich:column>
-		    			<rich:column>
-		    				<f:facet name="header">Resumo</f:facet>
-		    				<h:outputText value="#{us.descricao}" />
-		    			</rich:column>
-		    			<rich:column>
-		    				<f:facet name="header">Ação</f:facet>
-		    			</rich:column>
-		    		</rich:dataTable>                	
+			      	<rich:panel header="Receita" style="width:99%; height: 95%; ">
+				      	<h:panelGroup id="botoesPanel" layout="block">		      			
+		      				<table><tr><td width="20px">
+		      				<h:commandLink action="#{empresaMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+		      				</td><td width="20px">
+		      				<h:commandLink action="#{empresaMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>	
+		      				</td><td width="20px">
+		      				<h:commandLink action="#{produtoMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>      				
+		      				</td></tr></table>		      				
+			      		</h:panelGroup>
+				      	<h:panelGroup id="messagePanel" layout="block">
+		                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+		                	<hr/>
+			            </h:panelGroup>
+				      	<h:panelGrid columns="2" styleClass="gridForm">
+		                    <h:outputLabel value="id" for="id" />
+		                    <h:inputText id="id" value="#{empresaMb.empresa.empresaId}" title="EmpresaTitle_id}" required="false" />
+		                    <h:outputLabel value="Título da Receita" for="razaoSocial" />
+		                    <h:inputText id="titReceita" value="#{empresaMb.empresa.razaoSocial}" title="EmpresaTitle_razaoSocial}" required="true" size="100"/>
+		                    <h:outputLabel value="Resumo" for="nomeFantasia" />
+		                    <h:inputText id="nomeFantasia" value="#{empresaMb.empresa.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="150"/>	                    
+		                </h:panelGrid>
+		                <hr/>
+		                <rich:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbGrupos">
+			    			<rich:column>
+			    				<f:facet name="header">id</f:facet>
+			    				<h:outputText value="#{us.id}" />
+			    			</rich:column>
+			    			<rich:column>
+			    				<f:facet name="header">Título</f:facet>
+			    				<h:outputText value="#{us.nome}" />
+			    			</rich:column>
+			    			<rich:column>
+			    				<f:facet name="header">Resumo</f:facet>
+			    				<h:outputText value="#{us.descricao}" />
+			    			</rich:column>
+			    			<rich:column>
+			    				<f:facet name="header">Ação</f:facet>
+			    			</rich:column>
+			    		</rich:dataTable>                	
+						<hr/>
+					</rich:panel>	
 					<hr/>
-					
-					<table>
-						<tr><td valign="top" width="50%">					
-							<h:panelGroup style="width:50%">
-								<fieldset><legend>Ingredientes</legend>
-									<h:panelGrid columns="2" styleClass="gridForm">
-					                    <h:outputLabel value="Produto" for="id" />
-					                    <h:inputText id="idpro" value="#{empresaMb.empresa.empresaId}" title="EmpresaTitle_id}" required="false" />
-					                    <h:outputLabel value="Quantidade" for="razaoSocial" />
-					                    <h:inputText id="qtd" value="#{empresaMb.empresa.razaoSocial}" title="EmpresaTitle_razaoSocial}" required="true" size="30"/>
-					                    <h:outputLabel value="Obs.:" for="nomeFantasia" />
-					                    <h:inputText id="obsReceita" value="#{empresaMb.empresa.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="90"/>	                    
-					                </h:panelGrid>
-									<rich:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbIngredientes">
-						    			<rich:column>
-						    				<f:facet name="header">id</f:facet>
-						    				<h:outputText value="#{us.id}" />
-						    			</rich:column>
-						    			<rich:column>
-						    				<f:facet name="header">Produto</f:facet>
-						    				<h:outputText value="#{us.nome}" />
-						    			</rich:column>
-						    			<rich:column>
-						    				<f:facet name="header">Quantidade</f:facet>
-						    				<h:outputText value="#{us.descricao}" />
-						    			</rich:column>					    			
-						    			<rich:column>
-						    				<f:facet name="header">Ação</f:facet>
-						    			</rich:column>
-						    		</rich:dataTable>
-					    		</fieldset>
-							</h:panelGroup>
-						</td><td valign="top" width="50%">	
-							<h:panelGroup style="width:50%">
-								<fieldset><legend>Descrição</legend>
-									<h:inputTextarea value="" rows="20" cols="130" />
-								</fieldset>
-							</h:panelGroup>
-						</td></tr>
-					</table>
-					
-					
-					
+					<rich:panel header="Detalhe" style="width:99%; height: 95%; ">
+						<h:panelGroup id="botoesPanelDetalhe" layout="block">		      			
+		      				<table><tr><td width="20px">
+		      				<h:commandLink action="#{empresaMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+		      				</td><td width="20px">
+		      				<h:commandLink action="#{produtoMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>      				
+		      				</td></tr></table>		      				
+			      		</h:panelGroup>
+						<table>
+							<tr><td valign="top" width="50%">					
+								<h:panelGroup style="width:50%">
+									<fieldset><legend>Ingredientes</legend>
+										<h:panelGrid columns="2" styleClass="gridForm">
+						                    <h:outputLabel value="Produto" for="id" />
+						                    <h:inputText id="idpro" value="#{empresaMb.empresa.empresaId}" title="EmpresaTitle_id}" required="false" />
+						                    <h:outputLabel value="Quantidade" for="razaoSocial" />
+						                    <h:inputText id="qtd" value="#{empresaMb.empresa.razaoSocial}" title="EmpresaTitle_razaoSocial}" required="true" size="30"/>
+						                    <h:outputLabel value="Obs.:" for="nomeFantasia" />
+						                    <h:inputText id="obsReceita" value="#{empresaMb.empresa.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="90"/>	                    
+						                </h:panelGrid>
+										<rich:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbIngredientes">
+							    			<rich:column>
+							    				<f:facet name="header">id</f:facet>
+							    				<h:outputText value="#{us.id}" />
+							    			</rich:column>
+							    			<rich:column>
+							    				<f:facet name="header">Produto</f:facet>
+							    				<h:outputText value="#{us.nome}" />
+							    			</rich:column>
+							    			<rich:column>
+							    				<f:facet name="header">Quantidade</f:facet>
+							    				<h:outputText value="#{us.descricao}" />
+							    			</rich:column>					    			
+							    			<rich:column>
+							    				<f:facet name="header">Ação</f:facet>
+							    			</rich:column>
+							    		</rich:dataTable>
+						    		</fieldset>
+								</h:panelGroup>
+							</td><td valign="top" width="50%">	
+								<h:panelGroup style="width:50%">
+									<fieldset><legend>Descrição</legend>
+										<h:inputTextarea value="" rows="20" cols="130" />
+									</fieldset>
+								</h:panelGroup>
+							</td></tr>
+						</table>
+						<hr/>
+						<h:panelGrid columns="1" styleClass="gridForm">
+		                    <h:outputLabel value="Serviço relacionado" for="selServico" />
+		                    <h:panelGroup id="selServico" layout="block">
+			                    <h:selectOneMenu id="tipoProdutoId" value="#{produtoMb.produto.tipoProduto}" title="ProdutoTitle_tipoProdutoId}" 
+			                    	required="false" requiredMessage="ProdutoRequiredMessage_tipoProdutoId}" style="width:250px">
+			                        <f:selectItems value="#{produtoMb.itemsTipoProduto}" var="tp" itemLabel="tp.descricao" itemValue="tp"/>
+			                    </h:selectOneMenu>		                    
+		                    </h:panelGroup>                  
+		                </h:panelGrid>
+		                <hr/>
+					</rich:panel>
 				</div>	
 		    </rich:panel>
 		</h:form>

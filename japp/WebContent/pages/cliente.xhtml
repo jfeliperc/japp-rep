@@ -28,52 +28,70 @@
 	                	<hr/>
 		            </h:panelGroup>
 			      	<h:panelGrid columns="4" styleClass="gridForm">
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_id}" for="id" />
-	                    <h:inputText id="id" value="#{clienteMb.cliente.id}" title="#{mensagens.CreateAgenteExternoTitle_id}" />
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_ativo}" for="ativo" />
-	                    <h:inputText id="ativo" value="#{clienteMb.cliente.ativo}" title="#{mensagens.CreateAgenteExternoTitle_ativo}" />
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_cnpj}" for="cnpj" />
-	                    <h:inputText id="cnpj" value="#{clienteMb.cliente.cnpj}" title="#{mensagens.CreateAgenteExternoTitle_cnpj}" />
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_cpf}" for="cpf" />
-	                    <h:inputText id="cpf" value="#{clienteMb.cliente.cpf}" title="#{mensagens.CreateAgenteExternoTitle_cpf}" />
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_dataalteracao}" for="dataalteracao" />
-	                    <h:inputText id="dataalteracao" value="#{clienteMb.cliente.dataalteracao}" title="#{mensagens.CreateAgenteExternoTitle_dataalteracao}" >
+	                    <h:outputLabel value="Id" for="id" />
+	                    <h:inputText id="id" value="#{clienteMb.cliente.id}" title="Identificação interna" />
+	                    	                    
+	                    <h:outputLabel value="Tipo" for="tipo" />
+	                    <h:selectOneMenu value="#{clienteMb.cliente.tipoPessoa}" style="width:150px">
+							<f:selectItem itemLabel="Pessoa Física" itemValue="PF"/>
+							<f:selectItem itemLabel="Pessoa Jurídica" itemValue="PJ"/>
+							<a4j:ajax event="change" render="pgPJ"></a4j:ajax>
+						</h:selectOneMenu>	
+						
+						<h:outputLabel value="Data Alteracao" for="dataalteracao" />
+	                    <h:inputText id="dataalteracao" value="#{clienteMb.cliente.dataalteracao}" title="dataalteracao" >
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 	                    </h:inputText>
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_datainclusao}" for="datainclusao" />
-	                    <h:inputText id="datainclusao" value="#{clienteMb.cliente.datainclusao}" title="#{mensagens.CreateAgenteExternoTitle_datainclusao}" >
+	                    
+	                    <h:outputLabel value="Data Inclusao" for="datainclusao" />
+	                    <h:inputText id="datainclusao" value="#{clienteMb.cliente.datainclusao}" title="datainclusao" >
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 	                    </h:inputText>
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_datanascimento}" for="datanascimento" />
-	                    <h:inputText id="datanascimento" value="#{clienteMb.cliente.datanascimento}" title="#{mensagens.CreateAgenteExternoTitle_datanascimento}" >
+	                    
+	                    <h:outputLabel value="Status" for="ativo" />
+	                    <h:selectOneMenu value="#{clienteMb.cliente.ativo}" style="width:150px">
+							<f:selectItem itemLabel="Ativo" itemValue="A"/>
+							<f:selectItem itemLabel="Inativo" itemValue="I"/>
+						</h:selectOneMenu>                    
+					</h:panelGrid>
+					<hr/>	
+	                <h:panelGrid columns="4" styleClass="gridForm">   	                    
+	                    <h:outputLabel value="Cpf" for="cpf" />
+	                    <h:inputText id="cpf" value="#{clienteMb.cliente.cpf}" title="Cpf" size="50" />
+	                    
+	                    <h:outputLabel value="Nome" for="nome" />
+	                    <h:inputText id="nome" value="#{clienteMb.cliente.nome}" title="nome" size="100" />
+	                    
+	                    <h:outputLabel value="Nome Completo" for="nomecompleto" />
+	                    <h:inputText id="nomecompleto" value="#{clienteMb.cliente.nomecompleto}" title="nomecompleto" size="120" />
+	                    	                    
+	                    <h:outputLabel value="Data Nascimento" for="datanascimento" />
+	                    <h:inputText id="datanascimento" value="#{clienteMb.cliente.datanascimento}" title="datanascimento" >
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 	                    </h:inputText>
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_documento}" for="documento" />
-	                    <h:inputText id="documento" value="#{clienteMb.cliente.documento}" title="#{mensagens.CreateAgenteExternoTitle_documento}" />
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_inscricaoEst}" for="inscricaoEst" />
-	                    <h:inputText id="inscricaoEst" value="#{clienteMb.cliente.inscricaoEst}" title="#{mensagens.CreateAgenteExternoTitle_inscricaoEst}" />
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_inscricaoMun}" for="inscricaoMun" />
-	                    <h:inputText id="inscricaoMun" value="#{clienteMb.cliente.inscricaoMun}" title="#{mensagens.CreateAgenteExternoTitle_inscricaoMun}" />
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_nome}" for="nome" />
-	                    <h:inputText id="nome" value="#{clienteMb.cliente.nome}" title="#{mensagens.CreateAgenteExternoTitle_nome}" />
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_nomeFantasia}" for="nomeFantasia" />
-	                    <h:inputText id="nomeFantasia" value="#{clienteMb.cliente.nomeFantasia}" title="#{mensagens.CreateAgenteExternoTitle_nomeFantasia}" />
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_nomecompleto}" for="nomecompleto" />
-	                    <h:inputText id="nomecompleto" value="#{clienteMb.cliente.nomecompleto}" title="#{mensagens.CreateAgenteExternoTitle_nomecompleto}" />
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_observacao}" for="observacao" />
-	                    <h:inputText id="observacao" value="#{clienteMb.cliente.observacao}" title="#{mensagens.CreateAgenteExternoTitle_observacao}" />
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_razaoSocial}" for="razaoSocial" />
-	                    <h:inputText id="razaoSocial" value="#{clienteMb.cliente.razaoSocial}" title="#{mensagens.CreateAgenteExternoTitle_razaoSocial}" />
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_tipo}" for="tipo" />
-	                    <h:inputText id="tipo" value="#{clienteMb.cliente.tipo}" title="#{mensagens.CreateAgenteExternoTitle_tipo}" />
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_tipoPessoa}" for="tipoPessoa" />
-	                    <h:inputText id="tipoPessoa" value="#{clienteMb.cliente.tipoPessoa}" title="#{mensagens.CreateAgenteExternoTitle_tipoPessoa}" />
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_tipodocumento}" for="tipodocumento" />
-	                    <h:inputText id="tipodocumento" value="#{clienteMb.cliente.tipodocumento}" title="#{mensagens.CreateAgenteExternoTitle_tipodocumento}" />
-	                    <h:outputLabel value="#{mensagens.CreateAgenteExternoLabel_empresa}" for="empresa" />
-	                    <h:selectOneMenu id="empresa" value="#{clienteMb.cliente.empresa}" title="#{mensagens.CreateAgenteExternoTitle_empresa}" >
-	                        <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
-	                    </h:selectOneMenu>
+	                </h:panelGrid>	
+	                <hr/>
+	                <h:panelGrid columns="4" styleClass="gridForm" id="pgPJ">     
+	                    <h:outputLabel value="Cnpj" for="cnpj" />
+	                    <h:inputText id="cnpj" value="#{clienteMb.cliente.cnpj}" title="Cnpj" size="50" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
+	                    	                    	                    
+	                    <h:outputLabel value="Razao Social" for="razaoSocial" />
+	                    <h:inputText id="razaoSocial" value="#{clienteMb.cliente.razaoSocial}" title="razaoSocial" size="120" disabled="#{clienteMb.cliente.ativo == 'PJ'}"/>
+	                    
+	                    <h:outputLabel value="Nome Fantasia" for="nomeFantasia" />
+	                    <h:inputText id="nomeFantasia" value="#{clienteMb.cliente.nomeFantasia}" title="nomeFantasia" size="120" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
+	                    
+	                    <h:outputLabel value="Documento" for="documento" />
+	                    <h:inputText id="documento" value="#{clienteMb.cliente.documento}" title="documento"  disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
+	                    
+	                    <h:outputLabel value="Inscricao Est." for="inscricaoEst" />
+	                    <h:inputText id="inscricaoEst" value="#{clienteMb.cliente.inscricaoEst}" title="inscricaoEst" size="50" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
+	                    
+	                    <h:outputLabel value="Inscricao Mun." for="inscricaoMun" />
+	                    <h:inputText id="inscricaoMun" value="#{clienteMb.cliente.inscricaoMun}" title="inscricaoMun" size="50" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
+	                    
+	                    <h:outputLabel value="Observacao" for="observacao" />
+	                    <h:inputText id="observacao" value="#{clienteMb.cliente.observacao}" title="observacao" size="130" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>	                    
 	                </h:panelGrid>
 	                
 	                <br/><br/><hr/>
