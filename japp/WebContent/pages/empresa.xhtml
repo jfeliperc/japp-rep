@@ -9,6 +9,7 @@
     <ui:define name="conteudo">
     	<h:form id="frmEmpresa">
 	    	<rich:panel header="Dados da empresa" style="width:99%; height: 95%; ">
+		      	<table><tr><td width="1300px">
 		      	<div>
 			      	<h:panelGroup id="botoesPanel" layout="block">		      			
 	      				<table><tr><td width="20px">
@@ -33,7 +34,7 @@
 	                    <h:outputLabel value="Nome Fantasia" for="nomeFantasia" />
 	                    <h:inputText id="nomeFantasia" value="#{empresaMb.empresa.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="90"/>
 	                    <h:outputLabel value="Cnpj" for="cnpj" />
-	                    <h:inputText id="cnpj" value="#{empresaMb.empresa.cnpj}" title="EmpresaTitle_cnpj}" size="70" />
+	                    <h:inputText id="cnpj" value="#{empresaMb.empresa.cnpj}" title="EmpresaTitle_cnpj}" size="70" styleClass="cpf"/>
 	                    <h:outputLabel value="Inscricao Est." for="inscricaoEst" />
 	                    <h:inputText id="inscricaoEst" value="#{empresaMb.empresa.inscricaoEst}" title="EmpresaTitle_inscricaoEst}" size="50" />
 	                    <h:outputLabel value="Inscricao Mun." for="inscricaoMun" />
@@ -61,6 +62,7 @@
 	                <br/><br/><hr/>
 					
 				</div>	
+				</td></tr></table>
 		    </rich:panel>
 		</h:form>
     </ui:define>

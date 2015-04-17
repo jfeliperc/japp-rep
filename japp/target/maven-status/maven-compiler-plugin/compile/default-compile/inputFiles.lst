@@ -44,6 +44,8 @@ C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\ejb\contract\IEmpresaEjb.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\faces\geral\ListenerJapp.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\Endereco.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\dao\VendaDao.java
+C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\ReceitaProduto.java
+C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\Receita.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\TipoProduto.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\AtividadeServico.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\dao\EmpresaDao.java

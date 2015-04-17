@@ -54,6 +54,11 @@
         	<to-view-id>/pages/fornecedor.xhtml</to-view-id>
         </navigation-case> 
         
+        <navigation-case>
+        	<from-outcome>receita</from-outcome>
+        	<to-view-id>/pages/receita.xhtml</to-view-id>
+        </navigation-case>
+        
 	</navigation-rule>
 
     <application>

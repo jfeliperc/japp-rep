@@ -1,45 +1,12 @@
-function rota(){
-    var metodo = $('input#metodo').val();
-    $.post("./front/RouteBase.php", 
-        {metodo: metodo},
-        function(data){
-        $('div#main').html(data);
-    });
-}
-
-function rota(idDivRefresh){
-    var metodo = $('input#metodo').val();
-    $.post("./front/RouteBase.php", 
-        {metodo: metodo},
-        function(data){
-        $('div#'+idDivRefresh).html(data);
-    });
-}
-
-function rotaMenu(opcao){
-    var metodo = $('input#opcao').val();
-    $.post("./front/RouteMenu.php", 
-        {metodo: metodo},
-        function(data){
-        $('div#wrapper').html(data);
-    });
-}
-
-$(document).ready(function() {
-    $('#testeBtn').click(function (){
-        var param = $('input#campoTxt').val();
-        $.post("./front/RouteBase.php", {metodo: param},function(data){
-            $('div#main').html(data);
-        });
-    });
+$(document).ready(function(){
+  $('.date').mask('11/11/1111');
+  $('.time').mask('00:00:00');
+  $('.date_time').mask('99/99/9999 00:00:00');
+  $('.cep').mask('99999-999');
+  $('.phone').mask('9999-9999');
+  $('.phone_with_ddd').mask('(99) 9999-9999');
+  $('.phone_us').mask('(999) 999-9999');
+  $('.mixed').mask('AAA 000-S0S');
+  $('.cpf').mask('999.999.999-99');
+  $('#cpf').mask('999.999.999-99');
 });
-
-
-
-//$('#teste-red').on('click', function (){
-//    alert('teste0002');
-////    var param = $('input#campo-txt').val();
-////    $.post("", {param: param},function(data){
-////        $('div#main').text(data);
-////    })
-//});

@@ -45,10 +45,12 @@ com\module\jpa\model\Orcamento.class
 com\module\jpa\model\Pedido.class
 com\module\jpa\dao\GrupoProdutoDao.class
 com\module\faces\geral\EstrMenu.class
+com\module\jpa\model\ReceitaProduto.class
 com\module\jpa\model\TipoProduto.class
 com\module\ejb\EmpresaEjb.class
 com\module\faces\TipoGrupoProdutoMb.class
 com\module\jpa\dao\Dao.class
+com\module\jpa\model\Receita.class
 com\module\jpa\model\AgenteExterno.class
 com\module\enums\TipoUsuario.class
 com\module\faces\ProdutoMb.class
