@@ -73,16 +73,18 @@
 	                    </h:inputText>
 	                    <h:outputLabel value="Tipo" for="tipoProdutoId" />
 	                    <h:panelGroup id="selPanel" layout="block">
-		                    <h:selectOneMenu id="tipoProdutoId" value="#{produtoMb.produto.tipoProduto}" title="ProdutoTitle_tipoProdutoId}" 
+		                    <h:selectOneMenu id="tipoProdutoId" value="#{produtoMb.produto.tipoProduto}" title="Tipo de Produto" 
 		                    	required="false" requiredMessage="ProdutoRequiredMessage_tipoProdutoId}" style="width:200px">
-		                        <f:selectItems value="#{produtoMb.itemsTipoProduto}" var="tp" itemLabel="tp.descricao" itemValue="tp"/>
+		                        <f:selectItem itemLabel="" itemValue="null"/>
+		                        <f:selectItems value="#{produtoMb.itemsTipoProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="tp"/>
 		                    </h:selectOneMenu>		                    
 	                    </h:panelGroup>
 	                    <h:outputLabel value="Grupo" for="grupoProdutoId" />
 	                    <h:panelGroup id="selPanelG" layout="block">
-		                    <h:selectOneMenu id="grupoProdutoId" value="#{produtoMb.produto.tipoProduto}" title="ProdutoTitle_tipoProdutoId}" 
+		                    <h:selectOneMenu id="grupoProdutoId" value="#{produtoMb.produto.tipoProduto}" title="Grupo de Produto" 
 		                    	required="false" requiredMessage="ProdutoRequiredMessage_tipoProdutoId}" style="width:200px">
-		                        <f:selectItems value="#{produtoMb.itemsTipoProduto}" var="tp" itemLabel="tp.descricao" itemValue="tp"/>
+		                        <f:selectItem itemLabel="" itemValue="null"/>
+		                        <f:selectItems value="#{produtoMb.itemsGrupoProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="tp"/>
 		                    </h:selectOneMenu>
 	                    </h:panelGroup>
 	                </h:panelGrid>

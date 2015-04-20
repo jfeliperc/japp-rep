@@ -65,16 +65,18 @@ public class LoginMb extends BaseMb{
 		Menu pessoas = new Menu("pessoa","Pessoas","Cadastro de pessoas/usuários");
 		Menu fornec = new Menu("fornecedor","Fornecedores","Cadastro de fornecedores");
 		Menu cli = new Menu("cliente","Clientes","Cadastro de clientes");
+		Menu serv = new Menu("servico","Serviços","Cadastro de serviços");
 		itemGeral.getSubmenus().add(empresa);
 		itemGeral.getSubmenus().add(pessoas);
 		itemGeral.getSubmenus().add(fornec);
 		itemGeral.getSubmenus().add(cli);
+		itemGeral.getSubmenus().add(serv);
 		
 		EstrMenu itemProdutos = new EstrMenu("Produtos");
 		Menu produto = new Menu("produto","Produto","Cadastro de produto");
-		Menu estoque = new Menu("m20002","Estoque","Controle de estoque");
-		Menu entProd = new Menu("m20003","Entrada","Entrada de produtos");
-		Menu saidaProd = new Menu("m20004","Saída","Saída de produtos");
+		Menu estoque = new Menu("estoque","Estoque","Controle de estoque");
+		Menu entProd = new Menu("entradaEst","Entrada","Entrada de produtos");
+		Menu saidaProd = new Menu("saidaEst","Saída","Saída de produtos");
 		Menu pedido = new Menu("pedido","Pedidos","Pedidos de produtos");
 		itemProdutos.getSubmenus().add(produto);
 		itemProdutos.getSubmenus().add(estoque);
@@ -89,7 +91,13 @@ public class LoginMb extends BaseMb{
 		itemCozinha.getSubmenus().add(cardapio);
 		
 		EstrMenu itemFinanceiro = new EstrMenu("Financeiro");
-		Menu notasfiscais = new Menu("m40001","Notas Fiscais","Entrada de notas fiscais");
+		Menu contas = new Menu("nfentrada","Contas","Entrada de notas fiscais");
+		Menu receitasFin = new Menu("nfentrada","Receitas","Entrada de notas fiscais");
+		Menu despesas = new Menu("nfentrada","Despesas","Entrada de notas fiscais");
+		Menu notasfiscais = new Menu("nfentrada","Notas Fiscais","Entrada de notas fiscais");
+		itemFinanceiro.getSubmenus().add(contas);
+		itemFinanceiro.getSubmenus().add(receitasFin);
+		itemFinanceiro.getSubmenus().add(despesas);
 		itemFinanceiro.getSubmenus().add(notasfiscais);
 		
 		this.menu.add(itemGeral);

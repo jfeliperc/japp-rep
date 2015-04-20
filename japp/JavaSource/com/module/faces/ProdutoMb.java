@@ -40,6 +40,7 @@ public class ProdutoMb extends BaseMb{
 	public void limpar(){
 		this.produto = new Produto();
 		this.listProduto = new ArrayList<Produto>();
+		this.itemsGrupoProduto = produtoEjb.buscarAllGrupoProduto();
 	}
 	
 	public void buscar(){
@@ -52,7 +53,7 @@ public class ProdutoMb extends BaseMb{
 	
 	public void salvar(){
 		if (validarSalvar()){
-			this. produto = this.produtoEjb.cadastrarProduto(this.produto);
+			this.produto = this.produtoEjb.cadastrarProduto(this.produto);
 		}
 	}
 	
@@ -61,7 +62,8 @@ public class ProdutoMb extends BaseMb{
 	}
 
 	public void excluir(){
-
+		this.produtoEjb.excluirProduto(this.produto);
+		buscar();
 	}
 
 	public Produto getProduto() {
@@ -86,6 +88,14 @@ public class ProdutoMb extends BaseMb{
 
 	public void setListProduto(List<Produto> listProduto) {
 		this.listProduto = listProduto;
+	}
+
+	public List<GrupoProduto> getItemsGrupoProduto() {
+		return itemsGrupoProduto;
+	}
+
+	public void setItemsGrupoProduto(List<GrupoProduto> itemsGrupoProduto) {
+		this.itemsGrupoProduto = itemsGrupoProduto;
 	}
 	
 }

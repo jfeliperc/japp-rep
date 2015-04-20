@@ -6,19 +6,25 @@
     xmlns:rich="http://richfaces.org/rich">
     
 	<h:form id="formMenuVert">
-		<div class="panel-heading"><strong>Menu</strong></div>
-			<div id="MainMenu">
-			  <div class="list-group panel">
-				<a4j:repeat value="#{loginMb.menu}" var="listMenu">	
+		<div class="panel-heading"><strong>Menu</strong></div>			
+		<div id="MainMenu">				
+		  <div class="list-group panel">
+			<a4j:repeat value="#{loginMb.menu}" var="listMenu">	
+			    <table><tr><td width="200px">
+			    
 				    <a href="#-#{listMenu.menu}" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu"><h:outputLabel value="#{listMenu.menu}" /></a>
 				    <div class="collapse" id="-#{listMenu.menu}">
 						<a4j:repeat value="#{listMenu.submenus}" var="itemMenu">
-							<li><h:commandLink action="#{loginMb.navegarMenu(itemMenu.id)}" value="#{itemMenu.label}" title="#{itemMenu.descricao}" styleClass="btn"/></li>		    
-						</a4j:repeat>	      
+							<!--  li><h:commandLink action="#{loginMb.navegarMenu(itemMenu.id)}" value="#{itemMenu.label}" title="#{itemMenu.descricao}" styleClass="btn"/></li -->
+							<h:commandLink action="#{loginMb.navegarMenu(itemMenu.id)}" value="#{itemMenu.label}" title="#{itemMenu.descricao}" styleClass="btn"/><br/>		    
+						</a4j:repeat>
 				    </div>
-				</a4j:repeat>
-			  </div>
-			</div>
+			    
+			    </td></tr></table> 
+			    
+			</a4j:repeat>		
+		  </div>			 
+		</div>
 	</h:form>    	    
 </ui:composition>
 
