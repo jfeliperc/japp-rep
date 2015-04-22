@@ -1,5 +1,6 @@
 package com.module.faces;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -17,9 +18,11 @@ public class EmpresaMb extends BaseMb{
 	@EJB
 	private IEmpresaEjb empresaEjb;
 
-	private Empresa empresa;
-	
+	private Empresa empresa;	
 	private List<Empresa> listEmpresa;
+	
+	private Empresa filial;	
+	private List<Empresa> listFiliais;
 
 	private List<Empresa> listMatriz;
 		
@@ -31,6 +34,8 @@ public class EmpresaMb extends BaseMb{
 
 	public void limpar(){
 		this.empresa = new Empresa();
+		this.filial = new Empresa();
+		this.listFiliais = new ArrayList<Empresa>(); 
 	}
 	
 	public void buscar(){		
@@ -78,6 +83,22 @@ public class EmpresaMb extends BaseMb{
 
 	public void setListMatriz(List<Empresa> listMatriz) {
 		this.listMatriz = listMatriz;
+	}
+
+	public Empresa getFilial() {
+		return filial;
+	}
+
+	public void setFilial(Empresa filial) {
+		this.filial = filial;
+	}
+
+	public List<Empresa> getListFiliais() {
+		return listFiliais;
+	}
+
+	public void setListFiliais(List<Empresa> listFiliais) {
+		this.listFiliais = listFiliais;
 	}
 	
 	
