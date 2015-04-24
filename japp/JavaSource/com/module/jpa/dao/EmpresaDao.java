@@ -57,5 +57,10 @@ public class EmpresaDao extends Dao<Empresa> {
 		
 		return predicate;
 	}
+
+	public List<Empresa> getFiliais(Empresa empresa) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

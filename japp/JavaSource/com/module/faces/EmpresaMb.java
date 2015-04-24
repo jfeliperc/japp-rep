@@ -58,6 +58,10 @@ public class EmpresaMb extends BaseMb{
 	}
 
 	public void excluir(){
+		if ((this.empresa != null)&&(this.empresa.getEmpresaId() != null)){
+			empresaEjb.excluirEmpresa(this.empresa);
+			limpar();
+		}
 		
 	}
 	

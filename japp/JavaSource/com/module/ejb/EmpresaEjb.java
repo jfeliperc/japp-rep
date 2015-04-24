@@ -49,14 +49,18 @@ public class EmpresaEjb implements IEmpresaEjb, Serializable {
 
 	@Override
 	public List<Empresa> listarFiliais(Empresa empresa) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Empresa> retorno = new ArrayList<Empresa>();
+		if ((empresa.getEmpresaId() != null)&&(empresa.getMatriz() != null)){
+			retorno = this.dao.getFiliais(empresa);
+		}
+		return retorno;
 	}
 
 	@Override
 	public void excluirEmpresa(Empresa empresa) {
-		// TODO Auto-generated method stub
-		
+		if (empresa.getEmpresaId() != null){
+			this.dao.delete(empresa);
+		}
 	}
 
 	@Override

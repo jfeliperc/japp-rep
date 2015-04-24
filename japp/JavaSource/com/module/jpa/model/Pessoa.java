@@ -91,7 +91,7 @@ public class Pessoa implements Serializable {
 
 	//bi-directional many-to-one association to Empresa
 	@ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="empresaId")
+    @JoinColumn(name="id")
 	private Empresa empresa;
 
 	public Pessoa() {

@@ -99,8 +99,21 @@ public class PessoaEjb implements IPessoaEjb {
 
 	@Override
 	public Pessoa salvarPessoa(Pessoa pessoa) {
-		// TODO Auto-generated method stub
-		return null;
+		Dao<Pessoa> daoPessoa = new Dao<Pessoa>();
+		
+		pessoa.setDataalteracao(new Date());
+		pessoa.setTipo("1");		
+		pessoa.setTipoPessoa(TipoPessoa.PF.getValor());
+		pessoa.setTipoUsuario(TipoUsuario.USER_PDN.getValor());
+		
+		if (pessoa.getId() == null){
+			pessoa.setDatainclusao(new Date());
+			pessoa.setEmpresa(null);
+			daoPessoa.add(pessoa);
+		}else{
+			daoPessoa.update(pessoa);
+		}
+		return pessoa;
 	}
 
 }
