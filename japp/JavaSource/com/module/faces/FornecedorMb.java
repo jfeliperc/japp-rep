@@ -27,7 +27,11 @@ public class FornecedorMb extends BaseMb{
 	}
 	
 	public void buscar(){
-		
+		this.listFornecedor = fornecedorEjb.listarFornecedores(fornecedor);
+		if ((this.listFornecedor != null)&&(!this.listFornecedor.isEmpty())&&(this.listFornecedor.size() == 1)){
+			this.fornecedor = this.listFornecedor.get(0);
+			this.listFornecedor.clear();
+		}
 	}
 	
 	public void salvar(){
