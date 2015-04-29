@@ -15,12 +15,12 @@
 	      				<table><tr><td width="20px">
 	      				<h:commandLink action="#{pessoaMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
 	      				</td><td width="20px">
-	      				<h:commandLink action="#{pessoaMb.solicitarCadastroPessoa()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+	      				<h:commandLink action="#{pessoaMb.solicitarCadastroPessoa()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>	      				
 	      				</td></tr></table>		      				
 		      		</h:panelGroup>
 			      	
 			      	<h:panelGroup id="messagePanel" layout="block">
-	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table" id="msgGeral"/>
 	                	<hr/>
 		            </h:panelGroup>
 			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">

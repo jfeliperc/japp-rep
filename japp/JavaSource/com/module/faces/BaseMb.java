@@ -20,11 +20,13 @@ public class BaseMb {
 	}
 	
 	protected void addMsgError(String msg){
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,null,msg)); 
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro no processo", msg);
+        FacesContext.getCurrentInstance().addMessage(null, message);   
 	}
 	
 	protected void addMsg(String msg){
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,null,msg)); 
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, msg,  "");
+        FacesContext.getCurrentInstance().addMessage(null, message);     
 	}
-	
+		
 }

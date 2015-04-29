@@ -34,9 +34,8 @@ public class PessoaMb extends BaseMb{
 	public void solicitarCadastroPessoa(){
 		pessoaEjb.solicitarCadastro(pessoa);
         addMsg("Solicitação de cadastro registrada.");
-		//return "login";
 	}
-	
+		
 	public void buscar(){
 		try {
 			this.pessoas = pessoaEjb.listarPessoas(this.pessoa);
