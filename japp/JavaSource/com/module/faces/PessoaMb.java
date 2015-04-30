@@ -1,5 +1,6 @@
 package com.module.faces;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -34,7 +35,7 @@ public class PessoaMb extends BaseMb{
 
 	public void solicitarCadastroPessoa(){
 		pessoaEjb.solicitarCadastro(pessoa);
-        addMsg("Solicitação de cadastro registrada.");
+        addMsg("Solicitaï¿½ï¿½o de cadastro registrada.");
 	}
 		
 	public void buscar(){
@@ -70,11 +71,11 @@ public class PessoaMb extends BaseMb{
 	private boolean validarSalvar() {
 		boolean ret = true;
 		if (StringUtils.isBlank(this.pessoa.getNomecompleto())){
-			addMsgError("O campo Nome Completo é obrigatório");
+			addMsgError("O campo Nome Completo ï¿½ obrigatï¿½rio");
 			ret = false;
 		}
 		if (StringUtils.isBlank(this.pessoa.getCpf())){
-			addMsgError("O campo CPF é obrigatório");
+			addMsgError("O campo CPF ï¿½ obrigatï¿½rio");
 			ret = false;
 		}
 		return ret;
@@ -83,13 +84,13 @@ public class PessoaMb extends BaseMb{
 	public void excluir(){
 		String msgResult = this.pessoa.getId()+"-"+this.pessoa.getNomecompleto()+"-"+this.getPessoa().getCpf();		
 		pessoaEjb.excluirPessoa(this.pessoa, true);
-		addMsg("Processo de exclusão/inativação concluído. "+msgResult);
+		addMsg("Processo de exclusï¿½o/inativaï¿½ï¿½o concluï¿½do. "+msgResult);
 	}
 
 	public void limpar(){
 		this.pessoa = new Pessoa();
 		this.contatoTemp = new Contato();
-		this.pessoas.clear();
+		this.pessoas = new ArrayList<Pessoa>();
 	}
 	
 	public Pessoa getPessoa() {

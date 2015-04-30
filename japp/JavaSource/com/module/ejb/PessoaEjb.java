@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.module.ejb.contract.IPessoaEjb;
 import com.module.enums.TipoPessoa;
 import com.module.enums.TipoUsuario;
@@ -76,6 +78,21 @@ public class PessoaEjb implements IPessoaEjb {
 		pessoa.setTipo("1");		
 		pessoa.setTipoPessoa(TipoPessoa.PF.getValor());
 		pessoa.setTipoUsuario(TipoUsuario.USER_PDN.getValor());
+		
+		if (!StringUtils.isBlank(pessoa.getNomecompleto())){
+			StringBuilder nomeRes = new StringBuilder();
+			String[] partes = pessoa.getNomecompleto().split(" ");
+			for (int i = 0; i < partes.length; i++) {
+				if (i == 0){
+					nomeRes.append(partes[0]);
+				}else if (i == partes.length-1){
+					nomeRes.append(" "+partes[i]);
+				}else{
+					nomeRes.append(" "+partes[i].substring(0,1));
+				}
+			}
+			pessoa.setNome(nomeRes.toString());
+		}
 		
 		if (pessoa.getId() == null){
 			pessoa.setDatainclusao(new Date());
