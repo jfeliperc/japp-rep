@@ -28,6 +28,9 @@ public class Produto implements Serializable {
 	private String descricao;
 
 	private String medida;
+	
+	@Column(name="cod_externo")
+	private String codExterno;
 
 	private String nome;
 
@@ -112,6 +115,14 @@ public class Produto implements Serializable {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public String getCodExterno() {
+		return codExterno;
+	}
+
+	public void setCodExterno(String codExterno) {
+		this.codExterno = codExterno;
 	}
 
 	public String getMedida() {

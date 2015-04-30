@@ -8,39 +8,52 @@
 
     <ui:define name="conteudo">
     	<h:form id="frmFornecedor">
-	    	<rich:panel header="Cadastro de fornecedores" style="width:99%; height: 95%; ">
+	    	<rich:panel header="Cadastro de fornecedores" style="width:99%; height: 95%; " rendered="#{!fornecedorMb.mostrarLista}">
 		      	<div>
-			      	<h:panelGroup id="botoesPanel" layout="block">		      			
-	      				<table><tr><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
-	      				</td><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
-	      				</td><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
-	      				</td><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
-	      				</td><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>
-	      				</td></tr></table>		      				
-		      		</h:panelGroup>
+			      			      		
+		      		<nav class="navbar navbar-default" style="min-height: 30px !important;">
+		  				<div class="container-fluid">		    
+		      				<span class="btn-group navbar-left">
+					      		<h:panelGroup id="botoesPanel" layout="block">		      			
+				      				<table><tr><td width="20px">
+				      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+				      				</td><td width="20px">
+				      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
+				      				</td><td width="20px">
+				      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+				      				</td><td width="20px">
+				      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>				      				
+				      				</td></tr></table>		      				
+					      		</h:panelGroup>
+				      		</span>
+				      		
+				      		<span class="btn-group navbar-right">
+				      			<span class="btn-group">
+									<h:commandLink styleClass="btn btn-link" action="#{fornecedorMb.alternaMostraLista()}" value="Ver Lista" />
+								</span>
+				      		</span>
+				      	</div>
+				    </nav>	
+		      		
+		      		
 			      	<h:panelGroup id="messagePanel" layout="block">
 	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
 	                	<hr/>
 		            </h:panelGroup>
 			      	<h:panelGrid columns="4" styleClass="gridForm" width="90%">
 	                    <h:outputLabel value="id" for="id" />
-	                    <h:inputText id="id" value="#{fornecedorMb.fornecedor.id}" title="#{mensagens.CreateAgenteExternoTitle_id}" />
+	                    <h:inputText id="id" value="#{fornecedorMb.fornecedor.id}" title="Id" />
 	                    	                    
 	                    <h:outputLabel value="Razão Social" for="razaoSocial" />
-	                    <h:inputText id="razaoSocial" value="#{fornecedorMb.fornecedor.razaoSocial}" title="EmpresaTitle_razaoSocial}" required="true" size="100"/>
+	                    <h:inputText id="razaoSocial" value="#{fornecedorMb.fornecedor.razaoSocial}" title="razaoSocial" required="true" size="100"/>
 	                    <h:outputLabel value="Nome Fantasia" for="nomeFantasia" />
-	                    <h:inputText id="nomeFantasia" value="#{fornecedorMb.fornecedor.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="90"/>
+	                    <h:inputText id="nomeFantasia" value="#{fornecedorMb.fornecedor.nomeFantasia}" title="nomeFantasia" size="90"/>
 	                    <h:outputLabel value="Cnpj" for="cnpj" />
-	                    <h:inputText id="cnpj" value="#{fornecedorMb.fornecedor.cnpj}" title="EmpresaTitle_cnpj}" size="70" />
+	                    <h:inputText id="cnpj" value="#{fornecedorMb.fornecedor.cnpj}" title="cnpj}" size="70" />
 	                    <h:outputLabel value="Inscricao Est." for="inscricaoEst" />
-	                    <h:inputText id="inscricaoEst" value="#{fornecedorMb.fornecedor.inscricaoEst}" title="EmpresaTitle_inscricaoEst}" size="50" />
+	                    <h:inputText id="inscricaoEst" value="#{fornecedorMb.fornecedor.inscricaoEst}" title="inscricaoEst" size="50" />
 	                    <h:outputLabel value="Inscricao Mun." for="inscricaoMun" />
-	                    <h:inputText id="inscricaoMun" value="#{fornecedorMb.fornecedor.inscricaoMun}" title="EmpresaTitle_inscricaoMun}" size="50" />
+	                    <h:inputText id="inscricaoMun" value="#{fornecedorMb.fornecedor.inscricaoMun}" title="inscricaoMun" size="50" />
 	                    
 	                    <h:outputLabel value="tipo" for="tipo" />
 	                    <h:inputText id="tipo" value="#{fornecedorMb.fornecedor.tipo}" title="#{mensagens.CreateAgenteExternoTitle_tipo}" />
@@ -73,6 +86,38 @@
 					
 				</div>	
 		    </rich:panel>
+		    
+		    <rich:panel header="Lista de fornecedores" style="width:100%; height: 95%; " rendered="#{fornecedorMb.mostrarLista}">
+		    	<table><tr><td width="1300px">
+		    	<div style="padding-left: 10px">
+			      	<nav class="navbar navbar-default" style="min-height: 30px !important;">
+		  				<div class="container-fluid">
+				      		<span class="btn-group navbar-right">
+				      			<span class="btn-group">
+									<h:commandLink styleClass="btn btn-link" action="#{fornecedorMb.alternaMostraLista()}" value="Ver detalhe" />
+								</span>				      			
+				      		</span>
+				      	</div>
+				    </nav>	
+				</div>    
+		    	<rich:dataTable value="#{fornecedorMb.listFornecedor}" var="us" style="width:100%" id="tbFornecedores">
+		    			<rich:column>
+		    				<f:facet name="header">Nome</f:facet>
+		    			</rich:column>
+		    			<rich:column>
+		    				<f:facet name="header">Razão Social</f:facet>
+		    			</rich:column>
+		    			<rich:column>
+		    				<f:facet name="header">CNPJ</f:facet>
+		    			</rich:column>
+		    			<rich:column>
+		    				<f:facet name="header">Ação</f:facet>		    				
+		    			</rich:column>
+		    	</rich:dataTable>
+		    	</td></tr></table>
+		    </rich:panel>
+		    
+		    
 		</h:form>
     </ui:define>
     

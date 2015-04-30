@@ -23,5 +23,7 @@ public interface IPessoaEjb {
 	public boolean validarLogin(String login, String pass, Integer empresaId);
 
 	public Pessoa salvarPessoa(Pessoa pessoa);
+
+	public void excluirPessoa(Pessoa pessoa, boolean exclusaoFisica);
 	
 }

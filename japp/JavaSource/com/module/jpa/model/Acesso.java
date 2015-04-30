@@ -1,6 +1,7 @@
 package com.module.jpa.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -17,17 +18,21 @@ public class Acesso implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
-	@Column(name="rotina_master")
-	private int rotinaMaster;
-
-	@Column(name="rotina_slave")
-	private int rotinaSlave;
-
-	private int status;
-
 	//bi-directional many-to-one association to Pessoa
 	@ManyToOne
 	private Pessoa pessoa;
+
+	private int status;
+
+	//bi-directional many-to-one association to Rotina
+	@ManyToOne
+	@JoinColumn(name="rotina_master")
+	private Rotina rotina1;
+
+	//bi-directional many-to-one association to Rotina
+	@ManyToOne
+	@JoinColumn(name="rotina_slave")
+	private Rotina rotina2;
 
 	public Acesso() {
 	}
@@ -40,20 +45,12 @@ public class Acesso implements Serializable {
 		this.id = id;
 	}
 
-	public int getRotinaMaster() {
-		return this.rotinaMaster;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setRotinaMaster(int rotinaMaster) {
-		this.rotinaMaster = rotinaMaster;
-	}
-
-	public int getRotinaSlave() {
-		return this.rotinaSlave;
-	}
-
-	public void setRotinaSlave(int rotinaSlave) {
-		this.rotinaSlave = rotinaSlave;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 	public int getStatus() {
@@ -64,12 +61,20 @@ public class Acesso implements Serializable {
 		this.status = status;
 	}
 
-	public Pessoa getPessoa() {
-		return this.pessoa;
+	public Rotina getRotina1() {
+		return this.rotina1;
 	}
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
+	public void setRotina1(Rotina rotina1) {
+		this.rotina1 = rotina1;
+	}
+
+	public Rotina getRotina2() {
+		return this.rotina2;
+	}
+
+	public void setRotina2(Rotina rotina2) {
+		this.rotina2 = rotina2;
 	}
 
 }

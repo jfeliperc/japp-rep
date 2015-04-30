@@ -79,9 +79,7 @@
 	                    </h:inputText>
 	                    
 	                    <h:outputLabel value="Empresa" for="empresaId" />
-	                    <h:selectOneMenu id="empresaId" value="#{acessoMb.pessoa.empresa}" title="Selecione a empresa vinculada" style="width:200px">
-	                        <f:selectItems value="#{acessoMb.empresas}" var="emp" itemValue="emp" itemLabel="#{emp.nomeFantasia}"/>
-	                    </h:selectOneMenu>
+	                    <h:inputText id="empresaId" value="#{acessoMb.pessoa.empresa.nomeFantasia}" title="empresa" disabled="true"/>
 	                    
 	                    <h:outputLabel value="Email" for="email" />
 	                    <h:inputText id="email" value="#{acessoMb.pessoa.email}" title="Email" size="70"/>

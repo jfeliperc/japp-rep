@@ -8,6 +8,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.module.ejb.contract.IProdutoEjb;
 import com.module.jpa.model.GrupoProduto;
 import com.module.jpa.model.Produto;
@@ -58,7 +60,16 @@ public class ProdutoMb extends BaseMb{
 	}
 	
 	private boolean validarSalvar() {
-		return true;
+		boolean ret = true;
+		if (StringUtils.isBlank(this.produto.getNome())){
+			addMsgError("O campo Nome é obrigatório");
+			ret = false;
+		}
+		if (StringUtils.isBlank(this.produto.getDescricao())){
+			addMsgError("O campo Descrição é obrigatório");
+			ret = false;
+		}
+		return ret;
 	}
 
 	public void excluir(){

@@ -6,6 +6,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.module.ejb.contract.IPessoaEjb;
 import com.module.jpa.model.Contato;
 import com.module.jpa.model.Empresa;
@@ -23,7 +25,6 @@ public class PessoaMb extends BaseMb{
 	private List<Empresa> empresas;
 	
 	private Contato contatoTemp;
-	
 	
 		
 	public PessoaMb() {
@@ -55,21 +56,40 @@ public class PessoaMb extends BaseMb{
 	public void salvar(){
 		if (validarSalvar()){
 			this.pessoa = pessoaEjb.salvarPessoa(this.pessoa);
+			this.pessoas.clear();
+			addMsg("Registro salvo com sucesso.");
 		}
 	}
 
+	public void editar(Pessoa us){
+		this.pessoa = us;
+		alternaMostraLista();
+	}
+
+	
 	private boolean validarSalvar() {
-		
-		return false;
+		boolean ret = true;
+		if (StringUtils.isBlank(this.pessoa.getNomecompleto())){
+			addMsgError("O campo Nome Completo é obrigatório");
+			ret = false;
+		}
+		if (StringUtils.isBlank(this.pessoa.getCpf())){
+			addMsgError("O campo CPF é obrigatório");
+			ret = false;
+		}
+		return ret;
 	}
 
 	public void excluir(){
-		
+		String msgResult = this.pessoa.getId()+"-"+this.pessoa.getNomecompleto()+"-"+this.getPessoa().getCpf();		
+		pessoaEjb.excluirPessoa(this.pessoa, true);
+		addMsg("Processo de exclusão/inativação concluído. "+msgResult);
 	}
 
 	public void limpar(){
 		this.pessoa = new Pessoa();
 		this.contatoTemp = new Contato();
+		this.pessoas.clear();
 	}
 	
 	public Pessoa getPessoa() {

@@ -7,9 +7,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import com.module.ejb.contract.IPessoaEjb;
-import com.module.jpa.model.Contato;
-import com.module.jpa.model.Empresa;
+import com.module.jpa.model.Acesso;
 import com.module.jpa.model.Pessoa;
+import com.module.jpa.model.Rotina;
 
 @ManagedBean
 @SessionScoped
@@ -19,9 +19,11 @@ public class AcessoMb extends BaseMb{
 	private IPessoaEjb pessoaEjb;
 	
 	private Pessoa pessoa;
-	private List<Pessoa> pessoas;
-	private List<Empresa> empresas;
+	private List<Pessoa> pessoas;			
+	private List<Acesso> acessos;
+	private List<Rotina> rotinas;
 		
+	
 	public AcessoMb() {
 		super();
 		limpar();
@@ -75,14 +77,6 @@ public class AcessoMb extends BaseMb{
 		this.pessoa = pessoa;
 	}
 
-	public List<Empresa> getEmpresas() {
-		return empresas;
-	}
-
-	public void setEmpresas(List<Empresa> empresas) {
-		this.empresas = empresas;
-	}
-
 	public List<Pessoa> getPessoas() {
 		return pessoas;
 	}
@@ -90,5 +84,23 @@ public class AcessoMb extends BaseMb{
 	public void setPessoas(List<Pessoa> pessoas) {
 		this.pessoas = pessoas;
 	}
+
+	public List<Acesso> getAcessos() {
+		return acessos;
+	}
+
+	public void setAcessos(List<Acesso> acessos) {
+		this.acessos = acessos;
+	}
+
+	public List<Rotina> getRotinas() {
+		return rotinas;
+	}
+
+	public void setRotinas(List<Rotina> rotinas) {
+		this.rotinas = rotinas;
+	}
+	
+	
 
 }

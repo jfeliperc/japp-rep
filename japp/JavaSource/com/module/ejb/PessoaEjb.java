@@ -46,7 +46,25 @@ public class PessoaEjb implements IPessoaEjb {
 	public void excluirPessoa(Pessoa pessoa) {
 		Dao<Pessoa> dao = new Dao<Pessoa>();
 		if (pessoa.getId() != null){
-			dao.delete(pessoa);
+			pessoa.setTipo("I");
+			dao.update(pessoa);
+		}
+	}
+	
+
+	@Override
+	public void excluirPessoa(Pessoa pessoa, boolean exclusaoFisica) {		
+		if (!exclusaoFisica){			
+			excluirPessoa(pessoa);
+		}else{
+			try{
+				Dao<Pessoa> dao = new Dao<Pessoa>();
+				if (pessoa.getId() != null){
+					dao.delete(pessoa);
+				}
+			}catch (Exception ex){
+				excluirPessoa(pessoa);
+			}
 		}
 	}
 
@@ -115,5 +133,6 @@ public class PessoaEjb implements IPessoaEjb {
 		}
 		return pessoa;
 	}
+
 
 }

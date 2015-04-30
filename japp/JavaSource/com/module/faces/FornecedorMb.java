@@ -21,6 +21,11 @@ public class FornecedorMb extends BaseMb{
 	private AgenteExterno fornecedor;
 	private List<AgenteExterno> listFornecedor;
 
+	public FornecedorMb(){
+		super();
+		limpar();
+	}
+	
 	public void limpar(){
 		this.fornecedor = new AgenteExterno();
 		this.listFornecedor = new ArrayList<AgenteExterno>();

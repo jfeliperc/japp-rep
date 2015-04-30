@@ -59,6 +59,9 @@ public class Pessoa implements Serializable {
 
 	private String pass;
 
+	/**
+	 * refere-se ao status A=ativo; I=Inativo
+	 */
 	private String tipo;
 
 	@Column(name="tipo_pessoa")

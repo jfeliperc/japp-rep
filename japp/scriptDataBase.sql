@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS `japp`.`produto` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(45) NULL,
+  `cod_externo` VARCHAR(45) NULL,
   `medida` VARCHAR(45) NULL,
   `qtd_ref_compra` VARCHAR(45) NULL,
   `qtd_ref_saida` VARCHAR(45) NULL,
@@ -206,6 +207,17 @@ CREATE TABLE IF NOT EXISTS `japp`.`pessoa` (
     ON UPDATE NO ACTION)
   ENGINE = INNODB;
 
+-- -----------------------------------------------------
+-- Table `japp`.`rotina`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `japp`.`rotina` (
+  `id` INT NOT NULL,
+  `rotina` VARCHAR(45) NULL,
+  `descricao` VARCHAR(150) NULL,
+  `status` INT NOT NULL,
+  `rotina_pai` INT NOT NULL,  
+  PRIMARY KEY (`id`))
+ENGINE = INNODB;
 
 -- -----------------------------------------------------
 -- Table `japp`.`acesso`
@@ -214,15 +226,16 @@ CREATE TABLE IF NOT EXISTS `japp`.`acesso` (
   `id` INT NOT NULL,
   `pessoa_id` INT NOT NULL,
   `status` INT NOT NULL,
-  `rotina_master` INT NOT NULL,
-  `rotina_slave` INT NOT NULL,  
+  `rotina_master` INT NULL,
+  `rotina_slave` INT NULL,  
   PRIMARY KEY (`id`),
   INDEX `fk_acesso_pessoaidx` (`pessoa_id` ASC),
-  CONSTRAINT `fk_acesso_pessoa`
-    FOREIGN KEY (`pessoa_id`)
-    REFERENCES `japp`.`pessoa` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  CONSTRAINT `fk_acesso_pessoa` FOREIGN KEY (`pessoa_id`) REFERENCES `japp`.`pessoa` (`id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rotina_master` FOREIGN KEY (`rotina_master`) REFERENCES `japp`.`rotina` (`id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rotina_slave` FOREIGN KEY (`rotina_slave`) REFERENCES `japp`.`rotina` (`id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION)
 ENGINE = INNODB;
 
 -- -----------------------------------------------------
