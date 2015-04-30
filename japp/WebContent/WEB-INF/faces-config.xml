@@ -20,6 +20,11 @@
         </navigation-case>
         
         <navigation-case>
+            <from-outcome>relatorio</from-outcome>
+            <to-view-id>/pages/inicioRelatorio.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
             <from-outcome>cadLogin</from-outcome>
             <to-view-id>/pages/cadLogin.xhtml</to-view-id>
         </navigation-case>
@@ -59,6 +64,10 @@
         	<to-view-id>/pages/receita.xhtml</to-view-id>
         </navigation-case>
         
+        <navigation-case>
+        	<from-outcome>acesso</from-outcome>
+        	<to-view-id>/pages/acesso.xhtml</to-view-id>
+        </navigation-case>        
 	</navigation-rule>
 
     <application>
@@ -76,4 +85,4 @@
         <phase-listener>com.module.faces.geral.ListenerJapp</phase-listener>  
     </lifecycle> 
         
-</faces-config>
+</faces-config>	

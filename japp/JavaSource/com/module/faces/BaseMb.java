@@ -28,6 +28,10 @@ public class BaseMb {
 	public void setMostrarLista(boolean mostrarLista) {
 		this.mostrarLista = mostrarLista;
 	}
+	
+	public void alternaMostraLista(){
+		this.mostrarLista = !this.mostrarLista;
+	}
 
 	protected void addMsgError(String msg){
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro no processo", msg);

@@ -1,0 +1,169 @@
+<ui:composition template="../templates/t_base.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a4j="http://richfaces.org/a4j" 
+    xmlns:rich="http://richfaces.org/rich">
+	
+    <ui:define name="conteudo">
+    	<h:form id="frmPessoa">
+	    	<rich:panel header="Configuração de acesso" style="width:100%; height: 95%; "  rendered="#{!pessoaMb.mostrarLista}">
+	    		<table><tr><td width="1300px">
+		      	<div style="padding-left: 10px">
+		      		
+		      		<nav class="navbar navbar-default" style="min-height: 30px !important;">
+		  				<div class="container-fluid">		    
+		      				<span class="btn-group navbar-left">
+					      		<h:panelGroup id="botoesPanel" layout="block">		      				      			
+				      				<table><tr><td width="20px">
+				      				<h:commandLink action="#{acessoMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+				      				</td><td width="20px">
+				      				<h:commandLink action="#{acessoMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
+				      				</td><td width="20px">
+				      				<h:commandLink action="#{acessoMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+				      				</td><td width="20px">
+				      				<h:commandLink action="#{acessoMb.excluir()}" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
+				      				</td></tr></table>		      				
+					      		</h:panelGroup>
+				      		</span>
+				      		
+				      		<span class="btn-group navbar-right">
+				      			<span class="btn-group">
+									<h:commandLink styleClass="btn btn-link" action="#{acessoMb.alternaMostraLista()}" value="Ver Lista" />
+								</span>
+				      		</span>
+				      	</div>
+				    </nav>	
+				    
+			      	<h:panelGroup id="messagePanel" layout="block">
+	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+	                	<hr/>
+		            </h:panelGroup>
+			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5" >
+	                    
+	                    <h:outputLabel value="Id" for="id" />
+	                    <h:inputText id="id" value="#{acessoMb.pessoa.id}" title="id" disabled="#{acessoMb.pessoa.id != null}"/>
+	                    
+	                    <h:outputLabel value="Nome" for="nome" />
+	                    <h:inputText id="nome" value="#{acessoMb.pessoa.nome}" title="nome" size="70" disabled="#{acessoMb.pessoa.nome != null}"/>
+	                    
+	                    <h:outputLabel value="Nome Completo" for="nomecompleto" />
+	                    <h:inputText id="nomecompleto" value="#{acessoMb.pessoa.nomecompleto}" title="nomecompleto}" size="100" />
+	                    
+	                    <h:outputLabel value="Data Nascimento" for="datanascimento" />
+	                    <h:inputText id="datanascimento" value="#{acessoMb.pessoa.datanascimento}" title="datanascimento" >
+	                        <f:convertDateTime pattern="dd/MM/yyyy" />
+	                    </h:inputText>
+	                    
+	                    <h:outputLabel value="CPF" for="cpf" />
+	                    <h:inputText id="cpf" value="#{acessoMb.pessoa.cpf}" title="cpf}" />
+	                    	                    
+	                    <h:outputLabel value="login" for="login" />
+	                    <h:inputText id="login" value="#{acessoMb.pessoa.login}" title="login}" />
+	                    
+	                    <h:outputLabel value="Senha" for="pass" />
+	                    <h:inputText id="pass" value="#{acessoMb.pessoa.pass}" title="pass}" />
+	                    
+	                    <h:outputLabel value="Validade Login" for="validadeLogin" />
+	                    <h:inputText id="validadeLogin" value="#{acessoMb.pessoa.validadeLogin}" title="validadeLogin" >
+	                        <f:convertDateTime pattern="dd/MM/yyyy" />
+	                    </h:inputText>
+	                    
+	                    <h:outputLabel value="Tipo Usuário" for="tipoUsuario" />
+	                    <h:inputText id="tipoUsuario" value="#{acessoMb.pessoa.tipoUsuario}" title="tipoUsuario" required="false"/>
+	                    
+	                    <h:outputLabel value="Data Último Acesso" for="dataultimoacesso" />
+	                    <h:inputText id="dataultimoacesso" value="#{acessoMb.pessoa.dataultimoacesso}" title="dataultimoacesso" >
+	                        <f:convertDateTime pattern="dd/MM/yyyy" />
+	                    </h:inputText>
+	                    
+	                    <h:outputLabel value="Empresa" for="empresaId" />
+	                    <h:selectOneMenu id="empresaId" value="#{acessoMb.pessoa.empresa}" title="Selecione a empresa vinculada" style="width:200px">
+	                        <f:selectItems value="#{acessoMb.empresas}" var="emp" itemValue="emp" itemLabel="#{emp.nomeFantasia}"/>
+	                    </h:selectOneMenu>
+	                    
+	                    <h:outputLabel value="Email" for="email" />
+	                    <h:inputText id="email" value="#{acessoMb.pessoa.email}" title="Email" size="70"/>
+	                    
+	                </h:panelGrid>
+	                <br/><br/>				    
+				</div>	
+				
+				<rich:panel header="Módulos" style="width:100%; height: 95%; ">					
+					<br/>
+					<rich:dataTable value="#{acessoMb.pessoa.contatos}" var="us" style="width:100%" id="tbModulo">
+		    			<rich:column width="50%">
+		    				<f:facet name="header">Módulo</f:facet>
+		    				<h:outputText value="#{us.login}" />
+		    			</rich:column>
+		    			<rich:column>
+		    				<f:facet name="header">Permissão</f:facet>
+		    				<h:outputText value="#{us.tipo}" />
+		    			</rich:column>
+		    			<rich:column>
+		    				<f:facet name="header">Ação</f:facet>
+		    			</rich:column>
+		    		</rich:dataTable>	
+				</rich:panel>
+				
+				<rich:panel header="Rotinas" style="width:100%; height: 95%; ">					
+					<br/>
+					<rich:dataTable value="#{acessoMb.pessoa.contatos}" var="us" style="width:100%" id="tbRotina">
+		    			<rich:column width="70%">
+		    				<f:facet name="header">Rotina</f:facet>
+		    				<h:outputText value="#{us.login}" />
+		    			</rich:column>
+		    			<rich:column>
+		    				<f:facet name="header">Permissão</f:facet>
+		    				<h:outputText value="#{us.tipo}" />
+		    			</rich:column>		    			
+		    		</rich:dataTable>	
+				</rich:panel>
+				
+				</td></tr></table>	
+		    </rich:panel>
+		    
+		    <rich:panel header="Lista de pessoas" style="width:100%; height: 95%; " rendered="#{acessoMb.mostrarLista}">
+		    	<table><tr><td width="1300px">
+		    	<div style="padding-left: 10px">
+			      	<nav class="navbar navbar-default" style="min-height: 30px !important;">
+		  				<div class="container-fluid">
+				      		<span class="btn-group navbar-right">
+				      			<span class="btn-group">
+									<h:commandLink styleClass="btn btn-link" action="#{acessoMb.alternaMostraLista()}" value="Ver detalhe" />
+								</span>				      			
+				      		</span>
+				      	</div>
+				    </nav>	
+				</div> 
+		    	<rich:dataTable value="#{acessoMb.pessoas}" var="us" style="width:100%" id="tbPessoas">
+		    			<rich:column>
+		    				<f:facet name="header">Nome</f:facet>
+		    				<h:outputText value="#{us.nome}" />
+		    			</rich:column>
+		    			<rich:column>
+		    				<f:facet name="header">CPF</f:facet>
+		    				<h:outputText value="#{us.cpf}" />
+		    			</rich:column>
+		    			<rich:column>
+		    				<f:facet name="header">Login</f:facet>
+		    				<h:outputText value="#{us.login}" />
+		    			</rich:column>
+		    			<rich:column>
+		    				<f:facet name="header">Email</f:facet>
+		    				<h:outputText value="#{us.email}" />
+		    			</rich:column>
+		    			<rich:column>
+		    				<f:facet name="header">Ação</f:facet>
+		    			</rich:column>
+		    	</rich:dataTable>
+		    	</td></tr></table>
+		    </rich:panel>
+   
+	    	
+		</h:form>
+    </ui:define>
+    
+    
+</ui:composition>

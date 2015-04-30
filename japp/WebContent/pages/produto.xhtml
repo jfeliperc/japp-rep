@@ -36,10 +36,14 @@
 					      		</h:panelGroup>
 				      		</span>
 				      		
-				      		<span class="btn-group navbar-right">
-				      			<span class="btn-group">
-									<h:commandLink styleClass="btn btn-link" action="tipoGrupoProduto" value="Grupo/Tipo Produto" />
-								</span>
+				      		<span class="btn-group navbar-right">				      			
+						        <div class="btn-group">
+								  <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">Opções<span class="caret"/></a>
+								  <ul class="dropdown-menu">
+								    <li><h:commandLink styleClass="btn btn-link" action="#{produtoMb.alternaMostraLista()}" value="Ver Lista" /></li>
+								    <li><h:commandLink styleClass="btn btn-link" action="tipoGrupoProduto" value="Grupo/Tipo Produto" /></li>					    
+								  </ul>
+								</div>								
 				      		</span>
 				      	</div>
 				    </nav>	

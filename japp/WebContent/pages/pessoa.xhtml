@@ -11,62 +11,77 @@
 	    	<rich:panel header="Cadastro de pessoas" style="width:100%; height: 95%; "  rendered="#{!pessoaMb.mostrarLista}">
 	    		<table><tr><td width="1300px">
 		      	<div style="padding-left: 10px">
-		      		<h:panelGroup id="botoesPanel" layout="block">		      				      			
-	      				<table><tr><td width="20px">
-	      				<h:commandLink action="#{pessoaMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
-	      				</td><td width="20px">
-	      				<h:commandLink action="#{pessoaMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
-	      				</td><td width="20px">
-	      				<h:commandLink action="#{pessoaMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
-	      				</td><td width="20px">
-	      				<h:commandLink action="#{pessoaMb.excluir()}" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
-	      				</td></tr></table>		      				
-		      		</h:panelGroup>
+		      				      		
+		      		<nav class="navbar navbar-default" style="min-height: 30px !important;">
+		  				<div class="container-fluid">		    
+		      				<span class="btn-group navbar-left">
+					      		<h:panelGroup id="botoesPanel" layout="block">		      				      			
+				      				<table><tr><td width="20px">
+				      				<h:commandLink action="#{pessoaMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+				      				</td><td width="20px">
+				      				<h:commandLink action="#{pessoaMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
+				      				</td><td width="20px">
+				      				<h:commandLink action="#{pessoaMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+				      				</td><td width="20px">
+				      				<h:commandLink action="#{pessoaMb.excluir()}" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
+				      				</td></tr></table>		      				
+					      		</h:panelGroup>
+				      		</span>
+				      		
+				      		<span class="btn-group navbar-right">
+				      			<span class="btn-group">
+									<h:commandLink styleClass="btn btn-link" action="#{pessoaMb.alternaMostraLista()}" value="Ver Lista" />
+								</span>
+				      		</span>
+				      	</div>
+				    </nav>	
+		      		
+		      		
 			      	<h:panelGroup id="messagePanel" layout="block">
 	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
 	                	<hr/>
 		            </h:panelGroup>
 			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
 	                    <h:outputLabel value="Id" for="id" />
-	                    <h:inputText id="id" value="#{pessoaMb.pessoa.id}" title="#{bundle.PessoaTitle_id}" required="false"/>
+	                    <h:inputText id="id" value="#{pessoaMb.pessoa.id}" title="id" required="false"/>
 	                    <h:outputLabel value="Tipo" for="tipo" />
-	                    <h:inputText id="tipo" value="#{pessoaMb.pessoa.tipo}" title="#{bundle.PessoaTitle_tipo}" required="false"/>
+	                    <h:inputText id="tipo" value="#{pessoaMb.pessoa.tipo}" title="tipo" required="false"/>
 	                    <h:outputLabel value="Nome" for="nome" />
-	                    <h:inputText id="nome" value="#{pessoaMb.pessoa.nome}" title="#{bundle.PessoaTitle_nome}" size="70"/>
+	                    <h:inputText id="nome" value="#{pessoaMb.pessoa.nome}" title="nome" size="70"/>
 	                    <h:outputLabel value="Nome Completo" for="nomecompleto" />
-	                    <h:inputText id="nomecompleto" value="#{pessoaMb.pessoa.nomecompleto}" title="#{bundle.PessoaTitle_nomecompleto}" size="100" />
+	                    <h:inputText id="nomecompleto" value="#{pessoaMb.pessoa.nomecompleto}" title="nome completo" size="100" />
 	                    <h:outputLabel value="Data Nascimento" for="datanascimento" />
-	                    <h:inputText id="datanascimento" value="#{pessoaMb.pessoa.datanascimento}" title="#{bundle.PessoaTitle_datanascimento}" >
+	                    <h:inputText id="datanascimento" value="#{pessoaMb.pessoa.datanascimento}" title="data nascimento" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
 	                    <h:outputLabel value="CPF" for="cpf" />
-	                    <h:inputText id="cpf" value="#{pessoaMb.pessoa.cpf}" title="#{bundle.PessoaTitle_cpf}" />
+	                    <h:inputText id="cpf" value="#{pessoaMb.pessoa.cpf}" title="cpf}" />
 	                    <h:outputLabel value="Documento" for="documento" />
-	                    <h:inputText id="documento" value="#{pessoaMb.pessoa.documento}" title="#{bundle.PessoaTitle_documento}" />
+	                    <h:inputText id="documento" value="#{pessoaMb.pessoa.documento}" title="documento}" />
 	                    <h:outputLabel value="Tipo Documento" for="tipodocumento" />
-	                    <h:inputText id="tipodocumento" value="#{pessoaMb.pessoa.tipodocumento}" title="#{bundle.PessoaTitle_tipodocumento}" />
+	                    <h:inputText id="tipodocumento" value="#{pessoaMb.pessoa.tipodocumento}" title="tipo documento" />
 	                    <h:outputLabel value="Tipo Pessoa" for="tipoPessoa" />
-	                    <h:inputText id="tipoPessoa" value="#{pessoaMb.pessoa.tipoPessoa}" title="#{bundle.PessoaTitle_tipoPessoa}" required="false"/>
+	                    <h:inputText id="tipoPessoa" value="#{pessoaMb.pessoa.tipoPessoa}" title="Tipo Pessoa" required="false"/>
 	                    <h:outputLabel value="login" for="login" />
-	                    <h:inputText id="login" value="#{pessoaMb.pessoa.login}" title="#{bundle.PessoaTitle_login}" />
+	                    <h:inputText id="login" value="#{pessoaMb.pessoa.login}" title="login" />
 	                    <h:outputLabel value="Senha" for="pass" />
-	                    <h:inputText id="pass" value="#{pessoaMb.pessoa.pass}" title="#{bundle.PessoaTitle_pass}" />
+	                    <h:inputText id="pass" value="#{pessoaMb.pessoa.pass}" title="pass" />
 	                    <h:outputLabel value="Validade Login" for="validadeLogin" />
-	                    <h:inputText id="validadeLogin" value="#{pessoaMb.pessoa.validadeLogin}" title="#{bundle.PessoaTitle_validadeLogin}" >
+	                    <h:inputText id="validadeLogin" value="#{pessoaMb.pessoa.validadeLogin}" title="Validade Login" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
 	                    <h:outputLabel value="Tipo Usuário" for="tipoUsuario" />
-	                    <h:inputText id="tipoUsuario" value="#{pessoaMb.pessoa.tipoUsuario}" title="#{bundle.PessoaTitle_tipoUsuario}" required="false"/>
+	                    <h:inputText id="tipoUsuario" value="#{pessoaMb.pessoa.tipoUsuario}" title="Tipo Usuario" required="false"/>
 	                    <h:outputLabel value="Data Último Acesso" for="dataultimoacesso" />
-	                    <h:inputText id="dataultimoacesso" value="#{pessoaMb.pessoa.dataultimoacesso}" title="#{bundle.PessoaTitle_dataultimoacesso}" >
+	                    <h:inputText id="dataultimoacesso" value="#{pessoaMb.pessoa.dataultimoacesso}" title="Data Último Acesso}" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
 	                    <h:outputLabel value="Data Inclusão" for="datainclusao" />
-	                    <h:inputText id="datainclusao" value="#{pessoaMb.pessoa.datainclusao}" title="#{bundle.PessoaTitle_datainclusao}" >
+	                    <h:inputText id="datainclusao" value="#{pessoaMb.pessoa.datainclusao}" title="Data Inclusao" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
 	                    <h:outputLabel value="Data Alteração" for="dataalteracao" />
-	                    <h:inputText id="dataalteracao" value="#{pessoaMb.pessoa.dataalteracao}" title="#{bundle.PessoaTitle_dataalteracao}" >
+	                    <h:inputText id="dataalteracao" value="#{pessoaMb.pessoa.dataalteracao}" title="Data Alteracao" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
 	                    <h:outputLabel value="Empresa" for="empresaId" />
@@ -74,7 +89,7 @@
 	                        <f:selectItems value="#{pessoaMb.empresas}" var="emp" itemValue="emp" itemLabel="#{emp.nomeFantasia}"/>
 	                    </h:selectOneMenu>
 	                    <h:outputLabel value="Email" for="email" />
-	                    <h:inputText id="email" value="#{pessoaMb.pessoa.nome}" title="#{bundle.PessoaTitle_nome}" size="70"/>
+	                    <h:inputText id="email" value="#{pessoaMb.pessoa.email}" title="Nome" size="70"/>
 	                    
 	                </h:panelGrid>
 	                <br/><br/>				    
@@ -99,7 +114,7 @@
 					<rich:dataTable value="#{pessoaMb.pessoa.contatos}" var="us" style="width:100%" id="tbContato">
 		    			<rich:column>
 		    				<f:facet name="header">Tipo</f:facet>
-		    				<h:outputText value="#{us.login}" />
+		    				<h:outputText value="#{us.nomeCompleto}" />
 		    			</rich:column>
 		    			<rich:column>
 		    				<f:facet name="header">Descrição</f:facet>
@@ -120,8 +135,8 @@
 		  				<div class="container-fluid">
 				      		<span class="btn-group navbar-right">
 				      			<span class="btn-group">
-									<h:commandLink styleClass="btn btn-link" action="pessoa" value="Cadastro de pessoas" />
-								</span>
+									<h:commandLink styleClass="btn btn-link" action="#{pessoaMb.alternaMostraLista()}" value="Ver detalhe" />
+								</span>				      			
 				      		</span>
 				      	</div>
 				    </nav>	
@@ -129,7 +144,7 @@
 		    	<rich:dataTable value="#{pessoaMb.pessoas}" var="us" style="width:100%" id="tbPessoas">
 		    			<rich:column>
 		    				<f:facet name="header">Nome</f:facet>
-		    				<h:outputText value="#{us.nome}" />
+		    				<h:outputText value="#{us.nomecompleto}" />
 		    			</rich:column>
 		    			<rich:column>
 		    				<f:facet name="header">CPF</f:facet>
@@ -145,6 +160,7 @@
 		    			</rich:column>
 		    			<rich:column>
 		    				<f:facet name="header">Ação</f:facet>
+		    				
 		    			</rich:column>
 		    	</rich:dataTable>
 		    	</td></tr></table>

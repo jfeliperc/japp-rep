@@ -44,7 +44,7 @@ public class LoginMb extends BaseMb{
         	
         	return "inicio";
         }else{
-        	setMsg("Login e/ou senha inv√°lido(s).");
+        	setMsg("Login e/ou senha inv·lido(s).");
     		return "login";
         }
         

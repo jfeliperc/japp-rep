@@ -13,7 +13,7 @@ import com.module.jpa.model.Pessoa;
 
 @ManagedBean
 @SessionScoped
-public class PessoaMb extends BaseMb{
+public class AcessoMb extends BaseMb{
 
 	@EJB
 	private IPessoaEjb pessoaEjb;
@@ -21,19 +21,15 @@ public class PessoaMb extends BaseMb{
 	private Pessoa pessoa;
 	private List<Pessoa> pessoas;
 	private List<Empresa> empresas;
-	
-	private Contato contatoTemp;
-	
-	
 		
-	public PessoaMb() {
+	public AcessoMb() {
 		super();
 		limpar();
 	}
 
 	public void solicitarCadastroPessoa(){
 		pessoaEjb.solicitarCadastro(pessoa);
-        addMsg("Solicitação de cadastro registrada.");
+        addMsg("Dados gravados com sucesso.");
 	}
 		
 	public void buscar(){
@@ -69,7 +65,6 @@ public class PessoaMb extends BaseMb{
 
 	public void limpar(){
 		this.pessoa = new Pessoa();
-		this.contatoTemp = new Contato();
 	}
 	
 	public Pessoa getPessoa() {
@@ -94,14 +89,6 @@ public class PessoaMb extends BaseMb{
 
 	public void setPessoas(List<Pessoa> pessoas) {
 		this.pessoas = pessoas;
-	}
-
-	public Contato getContatoTemp() {
-		return contatoTemp;
-	}
-
-	public void setContatoTemp(Contato contatoTemp) {
-		this.contatoTemp = contatoTemp;
 	}
 
 }
