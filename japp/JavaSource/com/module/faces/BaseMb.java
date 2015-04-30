@@ -10,6 +10,8 @@ import javax.faces.context.FacesContext;
 public class BaseMb {
 	
 	private String msg;
+	
+	private boolean mostrarLista;
 
 	public String getMsg() {
 		return msg;
@@ -19,6 +21,14 @@ public class BaseMb {
 		this.msg = msg;
 	}
 	
+	public boolean isMostrarLista() {
+		return mostrarLista;
+	}
+
+	public void setMostrarLista(boolean mostrarLista) {
+		this.mostrarLista = mostrarLista;
+	}
+
 	protected void addMsgError(String msg){
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro no processo", msg);
         FacesContext.getCurrentInstance().addMessage(null, message);   

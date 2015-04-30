@@ -24,7 +24,7 @@ public class PessoaMb extends BaseMb{
 	
 	private Contato contatoTemp;
 	
-	private boolean mostrarListaPessoas;
+	
 		
 	public PessoaMb() {
 		super();
@@ -70,14 +70,9 @@ public class PessoaMb extends BaseMb{
 		this.contatoTemp = new Contato();
 	}
 	
-	public boolean isMostrarListaPessoas(){
+	public boolean isMostrarLista(){
 		return ((this.pessoas != null)&&(!this.pessoas.isEmpty()));
-	}
-	
-	public void setMostrarListaPessoas(boolean mostrarListaPessoas) {
-		this.mostrarListaPessoas = mostrarListaPessoas;
-	}
-
+	}	
 
 	public Pessoa getPessoa() {
 		return pessoa;
