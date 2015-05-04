@@ -68,5 +68,23 @@ public class EmpresaEjb implements IEmpresaEjb, Serializable {
 		this.dao.add(empresa);		
 	}
 
+	@Override
+	public Empresa buscarEmpresaMaster() {
+		List<Empresa> retornoLst = new ArrayList<Empresa>();		
+		Empresa exemplo = new Empresa();
+		exemplo.setAtivo("A");		
+		retornoLst = this.dao.findByExample(exemplo);
+		
+		Empresa retorno = new Empresa();
+		for (Empresa empresa : retornoLst) {
+			if (empresa.getMatriz() == null){
+				retorno = empresa;
+				break;
+			}
+		}
+		
+		return retorno;
+	}
+
 
 }

@@ -6,16 +6,15 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 import com.module.ejb.contract.IAcessoEjb;
-import com.module.jpa.dao.Dao;
 import com.module.jpa.model.Acesso;
-import com.module.jpa.model.Pessoa;
+import com.module.jpa.model.Rotina;
 
 @Stateless
 public class AcessoEjb implements IAcessoEjb, Serializable {
 
 	private static final long serialVersionUID = 2727418736797001639L;
 
-	private Acesso current;   
+	private Acesso acesso;   
 
     public AcessoEjb() {
     }
@@ -45,13 +44,9 @@ public class AcessoEjb implements IAcessoEjb, Serializable {
 	}
 
 	@Override
-	public void solicitarCadastro(Acesso acesso, Pessoa pessoa) {
-		Dao<Pessoa> dao = new Dao<Pessoa>();
-		if (pessoa.getId() == null){
-			dao.add(pessoa);
-		}else{
-			dao.update(pessoa);
-		}
+	public List<Rotina> listarRotinas() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
     

@@ -3,7 +3,7 @@ package com.module.ejb.contract;
 import java.util.List;
 
 import com.module.jpa.model.Acesso;
-import com.module.jpa.model.Pessoa;
+import com.module.jpa.model.Rotina;
 
 public interface IAcessoEjb {
 
@@ -15,6 +15,6 @@ public interface IAcessoEjb {
 	
 	public void excluirAcesso(Acesso acesso);
 
-	public void solicitarCadastro(Acesso acesso, Pessoa pessoa);
+	public List<Rotina> listarRotinas();
 	
 }

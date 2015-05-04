@@ -7,6 +7,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.module.ejb.contract.IFornecedorEjb;
 import com.module.jpa.model.AgenteExterno;
 
@@ -46,8 +48,16 @@ public class FornecedorMb extends BaseMb{
 	}
 	
 	private boolean validarSalvar() {
-		// TODO Auto-generated method stub
-		return false;
+		boolean ret = true;
+		if (StringUtils.isBlank(this.fornecedor.getNome())){
+			addMsgError("O campo Nome é obrigatório");
+			ret = false;
+		}
+		if (StringUtils.isBlank(this.fornecedor.getCnpj())){
+			addMsgError("O campo CPF é obrigatório");
+			ret = false;
+		}
+		return ret;
 	}
 
 	public void excluir(){
