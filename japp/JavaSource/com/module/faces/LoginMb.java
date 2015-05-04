@@ -31,6 +31,7 @@ public class LoginMb extends BaseMb{
 	
 	private String login;
 	private String pass;
+
 	private String newPass;
 	private String confNewPass;
 	private Empresa empresa;
