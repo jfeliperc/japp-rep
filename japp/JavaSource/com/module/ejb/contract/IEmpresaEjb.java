@@ -17,5 +17,7 @@ public interface IEmpresaEjb {
 	public void excluirEmpresa(Empresa empresa);
 
 	public void salvarEmpresa(Empresa empresa);
+
+	public Empresa buscarEmpresaMaster();
 	
 }

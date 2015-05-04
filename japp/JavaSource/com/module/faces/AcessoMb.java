@@ -1,11 +1,13 @@
 package com.module.faces;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import com.module.ejb.contract.IAcessoEjb;
 import com.module.ejb.contract.IPessoaEjb;
 import com.module.jpa.model.Acesso;
 import com.module.jpa.model.Pessoa;
@@ -18,6 +20,9 @@ public class AcessoMb extends BaseMb{
 	@EJB
 	private IPessoaEjb pessoaEjb;
 	
+	@EJB
+	private IAcessoEjb acessoEjb;
+	
 	private Pessoa pessoa;
 	private List<Pessoa> pessoas;			
 	private List<Acesso> acessos;
@@ -28,15 +33,10 @@ public class AcessoMb extends BaseMb{
 		super();
 		limpar();
 	}
-
-	public void solicitarCadastroPessoa(){
-		pessoaEjb.solicitarCadastro(pessoa);
-        addMsg("Dados gravados com sucesso.");
-	}
 		
 	public void buscar(){
 		try {
-			this.pessoas = pessoaEjb.listarPessoas(this.pessoa);
+			this.pessoas = pessoaEjb.listarPessoasAcesso(this.pessoa);
 			
 			if ((this.pessoas != null)&&(!this.pessoas.isEmpty())&&(this.pessoas.size() == 1)){
 				this.pessoa = this.pessoas.get(0);
@@ -52,7 +52,12 @@ public class AcessoMb extends BaseMb{
 	
 	public void salvar(){
 		if (validarSalvar()){
-			this.pessoa = pessoaEjb.salvarPessoa(this.pessoa);
+			try {
+				this.pessoa = pessoaEjb.salvarPessoa(this.pessoa);
+			} catch (NoSuchAlgorithmException e) {
+				addMsgError("Erro ao salvar dados - "+e.getMessage());
+				//e.printStackTrace();
+			}
 		}
 	}
 
@@ -60,13 +65,10 @@ public class AcessoMb extends BaseMb{
 		
 		return false;
 	}
-
-	public void excluir(){
-		
-	}
-
+	
 	public void limpar(){
 		this.pessoa = new Pessoa();
+		this.rotinas = acessoEjb.listarRotinas();
 	}
 	
 	public Pessoa getPessoa() {

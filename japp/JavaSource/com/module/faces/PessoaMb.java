@@ -1,5 +1,6 @@
 package com.module.faces;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class PessoaMb extends BaseMb{
 
 	public void solicitarCadastroPessoa(){
 		pessoaEjb.solicitarCadastro(pessoa);
-        addMsg("Solicitaï¿½ï¿½o de cadastro registrada.");
+        addMsg("Solicitação de cadastro registrada.");
 	}
 		
 	public void buscar(){
@@ -56,7 +57,12 @@ public class PessoaMb extends BaseMb{
 	
 	public void salvar(){
 		if (validarSalvar()){
-			this.pessoa = pessoaEjb.salvarPessoa(this.pessoa);
+			try {
+				this.pessoa = pessoaEjb.salvarPessoa(this.pessoa);
+			} catch (NoSuchAlgorithmException e) {				
+				addMsgError("Erro ao salvar dados - "+e.getMessage());
+				//e.printStackTrace();
+			}
 			this.pessoas.clear();
 			addMsg("Registro salvo com sucesso.");
 		}
@@ -84,7 +90,7 @@ public class PessoaMb extends BaseMb{
 	public void excluir(){
 		String msgResult = this.pessoa.getId()+"-"+this.pessoa.getNomecompleto()+"-"+this.getPessoa().getCpf();		
 		pessoaEjb.excluirPessoa(this.pessoa, true);
-		addMsg("Processo de exclusï¿½o/inativaï¿½ï¿½o concluï¿½do. "+msgResult);
+		addMsg("Processo de exclusão/inativação concluído. "+msgResult);
 	}
 
 	public void limpar(){
