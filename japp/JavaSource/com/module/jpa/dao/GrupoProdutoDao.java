@@ -33,12 +33,15 @@ public class GrupoProdutoDao extends Dao<GrupoProduto> {
 
 	private Predicate prepararPredicatesByExample(GrupoProduto grupo, CriteriaBuilder cb, Root<GrupoProduto> raiz) {
 		Predicate predicate = cb.and();
-//		if ((empresa.getNomeFantasia() != null)&&(!"".equals(empresa.getNomeFantasia()))){
-//			predicate = cb.and(predicate, cb.equal(raiz.get("nomefantasia"), empresa.getNomeFantasia()));
-//		}
-//		if ((empresa.getRazaoSocial() != null)&&(!"".equals(empresa.getRazaoSocial()))){
-//			predicate = cb.and(predicate, cb.equal(raiz.get("razaosocial"), empresa.getRazaoSocial()));
-//		}
+		if ((grupo.getId() != null)&&(!"".equals(grupo.getId()))){
+			predicate = cb.and(predicate, cb.equal(raiz.get("id"), grupo.getId()));
+		}
+		if ((grupo.getNome() != null)&&(!"".equals(grupo.getNome()))){
+			predicate = cb.and(predicate, cb.equal(raiz.get("nome"), grupo.getNome()));
+		}
+		if ((grupo.getDescricao() != null)&&(!"".equals(grupo.getDescricao()))){
+			predicate = cb.and(predicate, cb.equal(raiz.get("descricao"), grupo.getDescricao()));
+		}
 		
 		return predicate;
 	}

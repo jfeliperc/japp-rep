@@ -42,6 +42,7 @@ public class ProdutoMb extends BaseMb{
 	public void limpar(){
 		this.produto = new Produto();
 		this.listProduto = new ArrayList<Produto>();
+		this.itemsTipoProduto = produtoEjb.buscarAllTipoProduto();
 		this.itemsGrupoProduto = produtoEjb.buscarAllGrupoProduto();
 	}
 	

@@ -6,11 +6,10 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 
-import org.apache.commons.beanutils.BeanUtils;
-
 import com.module.ejb.contract.IProdutoEjb;
 import com.module.jpa.dao.Dao;
 import com.module.jpa.dao.GrupoProdutoDao;
+import com.module.jpa.dao.ProdutoDao;
 import com.module.jpa.dao.TipoProdutoDao;
 import com.module.jpa.model.GrupoProduto;
 import com.module.jpa.model.Produto;
@@ -34,14 +33,20 @@ public class ProdutoEjb implements IProdutoEjb {
 
 	@Override
 	public Produto buscarProduto(Produto produto) {
-		// TODO Auto-generated method stub
-		return null;
+		Produto ret = new Produto();		
+		List<Produto> lst = listarProdutos(produto);
+		if (!lst.isEmpty()){
+			ret = lst.get(0);
+		}		
+		return ret;
 	}
 
 	@Override
 	public List<Produto> listarProdutos(Produto produto) {
-		// TODO Auto-generated method stub
-		return null;
+		ProdutoDao dao = new ProdutoDao();
+		List<Produto> ret = new ArrayList<Produto>();		
+		ret = dao.findByExample(produto);		
+		return ret;
 	}
 
 	@Override
@@ -66,11 +71,11 @@ public class ProdutoEjb implements IProdutoEjb {
 	public List<GrupoProduto> buscarGrupoProduto(GrupoProduto grupoProduto) {
 		GrupoProdutoDao dao = new GrupoProdutoDao();
 		List<GrupoProduto> ret = new ArrayList<GrupoProduto>();
-		//if ((grupoProduto.getId() == null)&&(grupoProduto.getNome() == null)&&(grupoProduto.getDescricao() == null)&&(grupoProduto.getGrupoPai() == null)){
+		if ((grupoProduto.getId() == null)&&(grupoProduto.getNome() == null)&&(grupoProduto.getDescricao() == null)&&(grupoProduto.getGrupoPai() == null)){
 			ret = dao.getAll();
-//		}else{
-//			ret = dao.findByExample(grupoProduto);
-//		}		
+		}else{
+			ret = dao.findByExample(grupoProduto);
+		}		
 		return ret;
 	}
 

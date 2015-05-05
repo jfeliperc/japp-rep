@@ -31,14 +31,17 @@ public class TipoProdutoDao extends Dao<TipoProduto> {
 		return emps;
 	}
 
-	private Predicate prepararPredicatesByExample(TipoProduto tipoProduto, CriteriaBuilder cb, Root<TipoProduto> raiz) {
+	private Predicate prepararPredicatesByExample(TipoProduto tipo, CriteriaBuilder cb, Root<TipoProduto> raiz) {
 		Predicate predicate = cb.and();
-//		if ((tipoProduto.getNomeFantasia() != null)&&(!"".equals(tipoProduto.getNomeFantasia()))){
-//			predicate = cb.and(predicate, cb.equal(raiz.get("nomefantasia"), tipoProduto.getNomeFantasia()));
-//		}
-//		if ((tipoProduto.getRazaoSocial() != null)&&(!"".equals(tipoProduto.getRazaoSocial()))){
-//			predicate = cb.and(predicate, cb.equal(raiz.get("razaosocial"), tipoProduto.getRazaoSocial()));
-//		}
+		if ((tipo.getId() != null)&&(!"".equals(tipo.getId()))){
+			predicate = cb.and(predicate, cb.equal(raiz.get("id"), tipo.getId()));
+		}
+		if ((tipo.getNome() != null)&&(!"".equals(tipo.getNome()))){
+			predicate = cb.and(predicate, cb.equal(raiz.get("nome"), tipo.getNome()));
+		}
+		if ((tipo.getDescricao() != null)&&(!"".equals(tipo.getDescricao()))){
+			predicate = cb.and(predicate, cb.equal(raiz.get("descricao"), tipo.getDescricao()));
+		}
 		
 		return predicate;
 	}
