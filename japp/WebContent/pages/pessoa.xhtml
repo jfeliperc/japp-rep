@@ -44,8 +44,13 @@
 			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
 	                    <h:outputLabel value="Id" for="id" />
 	                    <h:inputText id="id" value="#{pessoaMb.pessoa.id}" title="id" required="false"/>
+	                    
 	                    <h:outputLabel value="Status" for="tipo" />
-	                    <h:inputText id="tipo" value="#{pessoaMb.pessoa.tipo}" title="tipo" required="false"/>
+	                    <h:selectOneMenu value="#{pessoaMb.pessoa.tipo}" style="width:150px" id="tipo">
+							<f:selectItem itemLabel="Ativo" itemValue="1"/>
+							<f:selectItem itemLabel="Inativo" itemValue="0"/>
+						</h:selectOneMenu>
+	                    
 	                    <h:outputLabel value="Nome" for="nome" />
 	                    <h:inputText id="nome" value="#{pessoaMb.pessoa.nome}" title="nome" size="70"/>
 	                    <h:outputLabel value="Nome Completo" for="nomecompleto" />
@@ -55,7 +60,8 @@
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
 	                    <h:outputLabel value="CPF" for="cpf" />
-	                    <h:inputText id="cpf" value="#{pessoaMb.pessoa.cpf}" title="cpf}" />
+	                    <h:inputText id="cpf" value="#{pessoaMb.pessoa.cpf}" title="cpf}" 
+			                    	onkeypress="mask(this,'999.999.999-99',1,this)" />
 	                    <h:outputLabel value="Documento" for="documento" />
 	                    <h:inputText id="documento" value="#{pessoaMb.pessoa.documento}" title="documento}" />
 	                    <h:outputLabel value="Tipo Documento" for="tipodocumento" />
