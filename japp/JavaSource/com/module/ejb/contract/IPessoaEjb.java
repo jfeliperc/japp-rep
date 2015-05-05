@@ -1,7 +1,9 @@
 package com.module.ejb.contract;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import com.module.jpa.model.Empresa;
 import com.module.jpa.model.Pessoa;
 
 public interface IPessoaEjb {
@@ -20,10 +22,12 @@ public interface IPessoaEjb {
 
 	public Pessoa buscarPorLogin(String login);
 
-	public boolean validarLogin(String login, String pass, Integer empresaId);
+	public boolean validarLogin(String login, String pass, Empresa empresaId) throws NoSuchAlgorithmException;
 
-	public Pessoa salvarPessoa(Pessoa pessoa);
+	public Pessoa salvarPessoa(Pessoa pessoa) throws NoSuchAlgorithmException;
 
 	public void excluirPessoa(Pessoa pessoa, boolean exclusaoFisica);
+
+	public List<Pessoa> listarPessoasAcesso(Pessoa pessoa);
 	
 }

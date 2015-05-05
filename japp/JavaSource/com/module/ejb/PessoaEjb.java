@@ -1,5 +1,6 @@
 package com.module.ejb;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import com.module.enums.TipoPessoa;
 import com.module.enums.TipoUsuario;
 import com.module.jpa.dao.Dao;
 import com.module.jpa.dao.PessoaDao;
+import com.module.jpa.model.Empresa;
 import com.module.jpa.model.Pessoa;
 
 @Stateless
@@ -127,19 +129,32 @@ public class PessoaEjb implements IPessoaEjb {
 	}
 
 	@Override
-	public boolean validarLogin(String login, String pass, Integer empresaId) {
-		// TODO Auto-generated method stub
-		return true;
+	public boolean validarLogin(String login, String pass, Empresa empresaId) throws NoSuchAlgorithmException {
+		boolean ret = false;
+		
+		String criptPass = GeralEjb.convertPasswordToMD5(pass);
+		
+		Pessoa pessoa = buscarPorLogin(login);
+		
+		if ((pessoa != null)&&(pessoa.getPass() != null)){
+			ret = pessoa.getPass().equals(criptPass);
+		}
+		
+		return ret;
 	}
 
 	@Override
-	public Pessoa salvarPessoa(Pessoa pessoa) {
+	public Pessoa salvarPessoa(Pessoa pessoa) throws NoSuchAlgorithmException {
 		Dao<Pessoa> daoPessoa = new Dao<Pessoa>();
 		
 		pessoa.setDataalteracao(new Date());
 		pessoa.setTipo("1");		
 		pessoa.setTipoPessoa(TipoPessoa.PF.getValor());
 		pessoa.setTipoUsuario(TipoUsuario.USER_PDN.getValor());
+		
+		if (!StringUtils.isBlank(pessoa.getPass())){
+			pessoa.setPass(GeralEjb.convertPasswordToMD5(pessoa.getPass()));
+		}
 		
 		if (pessoa.getId() == null){
 			pessoa.setDatainclusao(new Date());
@@ -149,6 +164,12 @@ public class PessoaEjb implements IPessoaEjb {
 			daoPessoa.update(pessoa);
 		}
 		return pessoa;
+	}
+
+	@Override
+	public List<Pessoa> listarPessoasAcesso(Pessoa pessoa) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

@@ -124,26 +124,53 @@
 		                                    Login<br/>
 		                                    <div class="form-group input-group">
 		                                        <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
-		                                        <h:inputText value="#{loginMb.login}" styleClass="form-control">
-		                                        	<!-- rich:placeholder value="Login..." / -->
-		                                        </h:inputText>
-		                                        <!-- input type="text" class="form-control" value="#{loginMb.login}" placeholder="Login" / -->
+		                                        <h:inputText value="#{loginMb.login}" styleClass="form-control"/>
 		                                    </div>
 		                                    Senha<br/>
 		                                    <div class="form-group input-group">
 		                                        <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
-		                                        <h:inputText value="#{loginMb.pass}" styleClass="form-control">
-		                                        	<!-- rich:placeholder value="Login..." / -->
-		                                        </h:inputText>
+		                                        <h:inputSecret value="#{loginMb.pass}" styleClass="form-control"/>
+		                                    </div>
+		                                    
+		                                    <h:panelGroup rendered="#{loginMb.renovarSenha}">
+		                                    	Nova Senha<br/>
+			                                    <div class="form-group input-group">
+			                                        <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
+			                                        <h:inputSecret value="#{loginMb.pass}" styleClass="form-control" />
+			                                    </div>
+			                                    Confirma Nova Senha<br/>
+			                                    <div class="form-group input-group">
+			                                        <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
+			                                        <h:inputSecret value="#{loginMb.pass}" styleClass="form-control"/>
+			                                    </div>
+		                                    </h:panelGroup>
+		                                    
+		                                    
+		                                    Empresa<br/>
+		                                    <div class="form-group input-group">
+		                                        <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
+		                                        <h:inputText value="#{loginMb.empresa.nomeFantasia}" styleClass="form-control" disabled="true" />
+		                                    </div>
+		                                    Filial<br/>
+		                                    <div class="form-group input-group">
+		                                        <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
+		                                        
+		                                        <h:selectOneMenu id="filialLg" value="#{loginMb.filial}" title="filial" styleClass="form-control" style="width:100%" converter="genConverter">
+							                        <f:selectItem itemLabel="" itemValue="null"/>
+							                        <f:selectItems value="#{loginMb.filiais}" var="tp" itemLabel="#{tp.nomeFantasia}" itemValue="tp"/>
+							                    </h:selectOneMenu>
+		                                        
 		                                    </div>
 		                                    
 		                                    <div class="row">
-											  	<div class="col-md-2">
-													<h:commandButton action="#{loginMb.executarLogin()}" value="Logar" class="btn"/>
-												</div>
-											  	<div class="col-md-3">
-													<h:commandButton value="Cadastrar" class="btn" action="cadLogin" />
-												</div>
+											  	<table>
+												  	<tr>
+													  	<td><h:commandButton value="Logar" class="btn" action="#{loginMb.executarLogin()}"/></td>
+													  	<td><h:commandButton value="Limpar" class="btn" action="#{loginMb.limpar()}" /></td>
+													  	<td><h:commandButton value="Nova Senha" class="btn" action="#{loginMb.habilitarRenovarSenha()}" /></td>
+													  	<td><h:commandButton value="Cadastrar" class="btn" action="cadLogin" /></td>
+												  	</tr>
+											  	</table>
 											</div>
 		                                    <hr />                                
 		                                </h:form>

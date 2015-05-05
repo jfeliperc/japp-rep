@@ -70,8 +70,13 @@
 	                    <h:inputText id="tipoPessoa" value="#{pessoaMb.pessoa.tipoPessoa}" title="Tipo Pessoa" required="false"/>
 	                    <h:outputLabel value="login" for="login" />
 	                    <h:inputText id="login" value="#{pessoaMb.pessoa.login}" title="login" />
+	                    
 	                    <h:outputLabel value="Senha" for="pass" />
-	                    <h:inputText id="pass" value="#{pessoaMb.pessoa.pass}" title="pass" />
+	                    <h:panelGroup>
+		                    <h:selectBooleanCheckbox value="#{pessoaMb.renovarSenha}" title="Renovar senha no próximo login" label="Renovar senha no próximo login" layout="lineDirection" />
+		                    <h:outputLabel value="Renovar senha no próximo login" />
+	                    </h:panelGroup>
+	                    
 	                    <h:outputLabel value="Validade Login" for="validadeLogin" />
 	                    <h:inputText id="validadeLogin" value="#{pessoaMb.pessoa.validadeLogin}" title="Validade Login" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />

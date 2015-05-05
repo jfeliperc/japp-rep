@@ -1,7 +1,11 @@
 package com.module.jpa.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import com.module.faces.geral.IGenericModel;
+
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +24,8 @@ import java.util.List;
     @NamedQuery(name = "Empresa.findByInscricaoEst", query = "SELECT e FROM Empresa e WHERE e.inscricaoEst = :inscricaoEst"),
     @NamedQuery(name = "Empresa.findByInscricaoMun", query = "SELECT e FROM Empresa e WHERE e.inscricaoMun = :inscricaoMun"),
     @NamedQuery(name = "Empresa.findByMatriz", query = "SELECT e FROM Empresa e WHERE e.matriz = :matriz")})
-public class Empresa implements Serializable {
+public class Empresa implements Serializable, IGenericModel {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -265,6 +270,16 @@ public class Empresa implements Serializable {
 		pessoa.setEmpresa(null);
 
 		return pessoa;
+	}
+
+	@Override
+	public Integer getId() {		
+		return getEmpresaId();
+	}
+
+	@Override
+	public void setId(Integer id) {
+		setEmpresaId(id);
 	}
 
 }

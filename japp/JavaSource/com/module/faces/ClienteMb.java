@@ -7,6 +7,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.module.ejb.contract.IClienteEjb;
 import com.module.jpa.model.AgenteExterno;
 
@@ -26,11 +28,30 @@ public class ClienteMb extends BaseMb{
 	}
 	
 	public void buscar(){
-		
+		this.listCliente = clienteEjb.listarClientes(cliente);
+		if ((this.listCliente != null)&&(!this.listCliente.isEmpty())&&(this.listCliente.size() == 1)){
+			this.cliente = this.listCliente.get(0);
+			this.listCliente.clear();
+		}
+	}
+	
+	private boolean validarSalvar() {
+		boolean ret = true;
+		if (StringUtils.isBlank(this.cliente.getNome())){
+			addMsgError("O campo Nome é obrigatório");
+			ret = false;
+		}
+		if (StringUtils.isBlank(this.cliente.getCpf())){
+			addMsgError("O campo CPF é obrigatório");
+			ret = false;
+		}
+		return ret;
 	}
 	
 	public void salvar(){
-
+		if (validarSalvar()){
+			this.cliente = clienteEjb.cadastrarCliente(this.cliente);
+		}
 	}
 	
 	public void excluir(){

@@ -1,17 +1,21 @@
 package com.module.faces;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import com.module.ejb.contract.IEmpresaEjb;
 import com.module.ejb.contract.IPessoaEjb;
 import com.module.faces.geral.EstrMenu;
 import com.module.faces.geral.Menu;
+import com.module.jpa.model.Empresa;
 import com.module.jpa.model.Pessoa;
 
 
@@ -21,33 +25,77 @@ public class LoginMb extends BaseMb{
 
 	@EJB
 	private IPessoaEjb pessoaEjb;
+
+	@EJB
+	private IEmpresaEjb empresaEjb;
 	
 	private String login;
 	private String pass;
-	private Integer empresaId;
+
+	private String newPass;
+	private String confNewPass;
+	private Empresa empresa;
+//	private List<Empresa> empresas;
+	private Empresa filial;
+	private List<Empresa> filiais;
 	
 	private List<EstrMenu> menu;
 	
+	private boolean renovarSenha;
+	
+	public LoginMb() {
+		super();
+	}
+
+	@PostConstruct
+	public void posConstrucao(){
+		limpar();
+	}
+	
+	public void limpar() {
+		if (empresaEjb != null){
+			this.empresa = empresaEjb.buscarEmpresaMaster();
+			this.filiais = empresaEjb.listarFiliais(empresa);
+			this.filial = new Empresa();
+		}
+		this.renovarSenha = false;
+		this.login = null;
+		this.pass = null;
+		this.newPass = null;
+		this.confNewPass = null;
+	}
+
 	public String executarLogin(){
 		FacesContext context = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
         session.setAttribute("AUTHENTICATED", "True");
-		
-        if (pessoaEjb.validarLogin(login, pass, empresaId)){
-        	
-        	Pessoa pessoa = new Pessoa();
-        	pessoa.setLogin(login);
-        	pessoa.setPass(pass);
-        	pessoa = pessoaEjb.buscarPorLogin(login);
-        	
-        	session.setAttribute("userLog", pessoa);
-        	
-        	return "inicio";
-        }else{
-        	setMsg("Login e/ou senha inválido(s).");
-    		return "login";
-        }
+		String ret = "inicio";
+        try {
+			if (pessoaEjb.validarLogin(login, pass, empresa)){
+				
+				Pessoa pessoa = new Pessoa();
+				pessoa.setLogin(login);
+				pessoa.setPass(pass);
+				pessoa = pessoaEjb.buscarPorLogin(login);
+				
+				session.setAttribute("userLog", pessoa);
+				
+				ret = "inicio";
+			}else{
+				setMsg("Login e/ou senha inválido(s).");
+				ret = "login";
+			}
+		} catch (NoSuchAlgorithmException e) {
+			addMsgError("Erro ao validar dados - "+e.getMessage());
+			//e.printStackTrace();
+		}
+        return ret;
         
+	}
+	
+	public String habilitarRenovarSenha(){
+		this.renovarSenha = true;
+		return "login";
 	}
 	
 	public String executarLogout(){
@@ -128,6 +176,62 @@ public class LoginMb extends BaseMb{
 
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
+//	public List<Empresa> getEmpresas() {
+//		return empresas;
+//	}
+//
+//	public void setEmpresas(List<Empresa> empresas) {
+//		this.empresas = empresas;
+//	}
+
+	public Empresa getFilial() {
+		return filial;
+	}
+
+	public void setFilial(Empresa filial) {
+		this.filial = filial;
+	}
+
+	public List<Empresa> getFiliais() {
+		return filiais;
+	}
+
+	public void setFiliais(List<Empresa> filiais) {
+		this.filiais = filiais;
+	}
+
+	public boolean isRenovarSenha() {
+		return renovarSenha;
+	}
+
+	public void setRenovarSenha(boolean renovarSenha) {
+		this.renovarSenha = renovarSenha;
+	}
+
+	public String getNewPass() {
+		return newPass;
+	}
+
+	public void setNewPass(String newPass) {
+		this.newPass = newPass;
+	}
+
+	public String getConfNewPass() {
+		return confNewPass;
+	}
+
+	public void setConfNewPass(String confNewPass) {
+		this.confNewPass = confNewPass;
 	}
 
 	public List<EstrMenu> getMenu() {
