@@ -29,7 +29,7 @@ public class ProdutoDao extends Dao<Produto> {
 
 	private Predicate prepararPredicatesByExample(Produto produto, CriteriaBuilder cb, Root<Produto> raiz) {
 		Predicate predicate = cb.and();
-		if ((produto.getId() != null)&&(!"".equals(produto.getId()))){
+		if ((produto.getId() != null)&&(!"".equals(produto.getId()))&&(0 != produto.getId().intValue())){
 			predicate = cb.and(predicate, cb.equal(raiz.get("id"), produto.getId()));
 		}
 		if ((produto.getNome() != null)&&(!"".equals(produto.getNome()))){

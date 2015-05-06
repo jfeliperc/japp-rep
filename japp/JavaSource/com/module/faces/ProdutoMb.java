@@ -44,6 +44,7 @@ public class ProdutoMb extends BaseMb{
 		this.listProduto = new ArrayList<Produto>();
 		this.itemsTipoProduto = produtoEjb.buscarAllTipoProduto();
 		this.itemsGrupoProduto = produtoEjb.buscarAllGrupoProduto();
+		this.produto.setId(null);
 	}
 	
 	public void buscar(){
@@ -63,11 +64,11 @@ public class ProdutoMb extends BaseMb{
 	private boolean validarSalvar() {
 		boolean ret = true;
 		if (StringUtils.isBlank(this.produto.getNome())){
-			addMsgError("O campo Nome é obrigatório");
+			addMsgError("O campo Nome ï¿½ obrigatï¿½rio");
 			ret = false;
 		}
 		if (StringUtils.isBlank(this.produto.getDescricao())){
-			addMsgError("O campo Descrição é obrigatório");
+			addMsgError("O campo Descriï¿½ï¿½o ï¿½ obrigatï¿½rio");
 			ret = false;
 		}
 		return ret;

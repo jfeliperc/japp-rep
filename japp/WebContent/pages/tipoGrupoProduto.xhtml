@@ -98,7 +98,7 @@
 			                    <h:inputText id="descricaotp" value="#{tipoGrupoProdutoMb.tipoProduto.descricao}" title="#{bundle.ProdutoTitle_nome}" required="false" size="100"/>			                    
 			                </h:panelGrid>
 			                <br/>
-							<rich:dataTable value="#{tipoGrupoProdutoMb.limparGrupoProduto()}" var="us" style="width:100%" id="tbTipo">
+							<rich:dataTable value="#{tipoGrupoProdutoMb.listTipoProduto}" var="us" style="width:100%" id="tbTipo">
 				    			<rich:column>
 				    				<f:facet name="header">id</f:facet>
 				    				<h:outputText value="#{us.id}" />
