@@ -69,12 +69,12 @@ public class Produto implements Serializable {
 	private List<PedidoItem> pedidoItems;
 
 	//bi-directional many-to-one association to GrupoProduto
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER) 
 	@JoinColumn(name="grupo_produto_id")
 	private GrupoProduto grupoProduto;
 
 	//bi-directional many-to-one association to TipoProduto
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER) 
 	@JoinColumn(name="tipo_produto_id")
 	private TipoProduto tipoProduto;
 
