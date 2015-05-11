@@ -48,6 +48,7 @@
 			                    <h:inputText id="descricao" value="#{tipoGrupoProdutoMb.grupoProduto.descricao}" title="#{bundle.ProdutoTitle_nome}" required="false" size="100"/>
 			                    <h:outputLabel value="Grupo-Pai" for="grupoPai" />			                    
 			                    <h:selectOneMenu id="grupoPai" value="#{tipoGrupoProdutoMb.grupoProduto.grupoPai}" title="Selecione um grupo-pai" style="width:200px">
+			                        <f:selectItem itemLabel=" ---- " itemValue="0"/>
 			                        <f:selectItems value="#{tipoGrupoProdutoMb.listGrupoProdutoPai}" var="grp" itemValue="#{grp.id}" itemLabel="#{grp.nome}" />
 			                    </h:selectOneMenu>
 			                </h:panelGrid>
@@ -71,6 +72,7 @@
 				    			</rich:column>
 				    			<rich:column>
 				    				<f:facet name="header">Ação</f:facet>
+				    				<center><h:commandLink action="#{pessoaMb.editar(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
 				    			</rich:column>
 				    		</rich:dataTable>                	
 							<br/><hr/>
@@ -113,6 +115,7 @@
 				    			</rich:column>
 				    			<rich:column>
 				    				<f:facet name="header">Ação</f:facet>
+				    				<center><h:commandLink action="#{pessoaMb.editar(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
 				    			</rich:column>
 				    		</rich:dataTable>       
 												
