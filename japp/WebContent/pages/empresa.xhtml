@@ -68,8 +68,6 @@
 			      				<h:commandLink action="#{empresaMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
 			      				</td><td width="20px">
 			      				<h:commandLink action="#{empresaMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
-			      				</td><td width="20px">
-			      				<h:commandLink action="#{empresaMb.excluir()}" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
 			      				</td></tr></table>		      				
 				      		</h:panelGroup>
 					      	<h:panelGroup id="messagePanelFil" layout="block">
@@ -119,6 +117,7 @@
 				    			</rich:column>
 				    			<rich:column>
 				    				<f:facet name="header">Ação</f:facet>
+				    				<center><h:commandLink action="#{pessoaMb.editar(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
 				    			</rich:column>
 				    		</rich:dataTable> 
 			                <br/><br/><hr/>
