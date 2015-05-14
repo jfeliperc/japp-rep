@@ -38,11 +38,14 @@ public class EmpresaMb extends BaseMb{
 		this.listFiliais = new ArrayList<Empresa>(); 
 	}
 	
+	
 	public void buscar(){		
 		this.listEmpresa = empresaEjb.listarEmpresas(empresa);
 		if ((this.listEmpresa != null)&&(!this.listEmpresa.isEmpty())&&(this.listEmpresa.size() == 1)){
 			this.empresa = this.listEmpresa.get(0);
 			this.listEmpresa.clear();
+			
+			this.listFiliais = empresaEjb.listarFiliais(this.empresa);
 		}
 	}
 	
@@ -61,9 +64,36 @@ public class EmpresaMb extends BaseMb{
 		if ((this.empresa != null)&&(this.empresa.getEmpresaId() != null)){
 			empresaEjb.excluirEmpresa(this.empresa);
 			limpar();
-		}
-		
+		}		
 	}
+	
+	public void buscarFilial(){		
+		this.listEmpresa = empresaEjb.listarEmpresas(empresa);
+		if ((this.empresa != null)&&(this.empresa.getId() != null)&&(this.empresa.getId().intValue() > 0)){			
+			this.listFiliais = empresaEjb.listarFiliais(this.empresa);
+		}
+	}
+	
+	public void limparFilial(){
+		this.filial = new Empresa(); 
+	}
+	
+	private boolean validarSalvarFilial() {
+		return true;
+	}
+	
+	public void salvarFilial(){
+		if (validarSalvarFilial()){
+			this.filial = empresaEjb.cadastrarEmpresa(this.filial);
+			this.listFiliais = empresaEjb.listarFiliais(this.empresa);
+			addMsg("Dados da filial registrados com sucesso.");
+		}
+	}
+	
+	public void editarFilial(Empresa filial){
+		this.filial = filial;
+	}
+	
 	
 	public Empresa getEmpresa() {
 		return empresa;
