@@ -8,22 +8,12 @@ import com.module.jpa.model.TipoProduto;
 
 public interface IEstoqueEjb {
 
-	public Produto cadastrarProduto(Produto produto);
-	
-	public Produto buscarProduto(Produto produto);
-	
 	public List<Produto> listarProdutos(Produto produto);
 	
-	public void excluirProduto(Produto produto);
-
 	public List<TipoProduto> buscarTipoProduto(TipoProduto tipoProduto);
 
 	public List<GrupoProduto> buscarGrupoProduto(GrupoProduto grupoProduto);
-
-	public TipoProduto salvarTipoProduto(TipoProduto tipoProduto);
-
-	public GrupoProduto salvarGrupoProduto(GrupoProduto grupoProduto);
-
+	
 	public List<GrupoProduto> buscarAllGrupoProduto();
 
 	public List<TipoProduto> buscarAllTipoProduto();

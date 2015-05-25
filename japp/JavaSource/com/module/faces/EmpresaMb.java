@@ -7,6 +7,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.module.ejb.contract.IEmpresaEjb;
 import com.module.jpa.model.Empresa;
 
@@ -57,7 +59,12 @@ public class EmpresaMb extends BaseMb{
 	}
 	
 	private boolean validarSalvar() {
-		return true;
+		boolean ret = true;
+		if ((StringUtils.isBlank(this.empresa.getNomeFantasia()))||((StringUtils.isBlank(this.empresa.getRazaoSocial())))){
+			ret = false;
+			addMsgError("Nome Fantasia e Razão Social são informações obrigatórias.");
+		}
+		return ret;
 	}
 
 	public void excluir(){
@@ -79,11 +86,17 @@ public class EmpresaMb extends BaseMb{
 	}
 	
 	private boolean validarSalvarFilial() {
-		return true;
+		boolean ret = true;
+		if ((this.empresa == null)||(this.empresa.getEmpresaId() == null)){
+			ret = false;
+			addMsgError("Empresa matriz não selecionada.");
+		}
+		return ret;
 	}
 	
 	public void salvarFilial(){
 		if (validarSalvarFilial()){
+			this.filial.setMatriz(this.empresa.getEmpresaId());
 			this.filial = empresaEjb.cadastrarEmpresa(this.filial);
 			this.listFiliais = empresaEjb.listarFiliais(this.empresa);
 			addMsg("Dados da filial registrados com sucesso.");

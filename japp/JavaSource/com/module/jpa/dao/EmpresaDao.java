@@ -12,25 +12,6 @@ import com.module.jpa.model.Empresa;
 
 public class EmpresaDao extends Dao<Empresa> {
 
-//	public List<Empresa> getByRazaoSocial(String razaoSocial) {
-//		
-//		CriteriaBuilder cb = em.getCriteriaBuilder();
-//	    CriteriaQuery<Empresa> c = cb.createQuery(Empresa.class);	    
-//	    
-//	    Root<Empresa> f = c.from(Empresa.class);
-//	    
-//	    c.select(f);	    
-//	    
-//	    Predicate cl = cb.equal(f.get("razaosocial"), razaoSocial);
-//	    
-//	    c.where(cl);	    
-//	    
-//	    TypedQuery<Empresa> query = em.createQuery(c);
-//	    List<Empresa> emps = query.getResultList();
-//		
-//		return emps;
-//	}
-
 	public List<Empresa> findByExample(Empresa empresa) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 	    CriteriaQuery<Empresa> c = cb.createQuery(Empresa.class);	    
@@ -38,6 +19,7 @@ public class EmpresaDao extends Dao<Empresa> {
 	    Root<Empresa> raiz = c.from(Empresa.class);
 	    c.select(raiz);	  
 	    Predicate predicate = prepararPredicatesByExample(empresa, cb, raiz);
+	    predicate = cb.and(predicate, cb.isNull(raiz.get("matriz")));
 	    c.where(predicate);
 	    
 	    TypedQuery<Empresa> query = em.createQuery(c);
@@ -49,18 +31,29 @@ public class EmpresaDao extends Dao<Empresa> {
 	private Predicate prepararPredicatesByExample(Empresa empresa, CriteriaBuilder cb, Root<Empresa> raiz) {
 		Predicate predicate = cb.and();
 		if ((empresa.getNomeFantasia() != null)&&(!"".equals(empresa.getNomeFantasia()))){
-			predicate = cb.and(predicate, cb.equal(raiz.get("nomefantasia"), empresa.getNomeFantasia()));
+			predicate = cb.and(predicate, cb.equal(raiz.get("nomeFantasia"), empresa.getNomeFantasia()));
 		}
 		if ((empresa.getRazaoSocial() != null)&&(!"".equals(empresa.getRazaoSocial()))){
-			predicate = cb.and(predicate, cb.equal(raiz.get("razaosocial"), empresa.getRazaoSocial()));
+			predicate = cb.and(predicate, cb.equal(raiz.get("razaoSocial"), empresa.getRazaoSocial()));
 		}
 		
 		return predicate;
 	}
 
 	public List<Empresa> getFiliais(Empresa empresa) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+	    CriteriaQuery<Empresa> c = cb.createQuery(Empresa.class);	    
+	    
+	    Root<Empresa> raiz = c.from(Empresa.class);
+	    c.select(raiz);	  
+	    Predicate predicate = cb.equal(raiz.get("matriz"), empresa.getEmpresaId());
+	    c.where(predicate);
+	    
+	    TypedQuery<Empresa> query = em.createQuery(c);
+	    List<Empresa> emps = query.getResultList();
+		
+		return emps;
 	}
 	
 }

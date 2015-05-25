@@ -2,6 +2,7 @@ package com.module.ejb;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -25,8 +26,10 @@ public class EmpresaEjb implements IEmpresaEjb, Serializable {
 	@Override
 	public Empresa cadastrarEmpresa(Empresa empresa) {
 		Dao<Empresa> dao = new Dao<Empresa>();
+		empresa.setDataalteracao(new Date());
 		if ((empresa.getEmpresaId() == null)||(empresa.getEmpresaId().intValue() == 0)){
 			empresa.setEmpresaId(null);
+			empresa.setDatainclusao(new Date());
 			dao.add(empresa);
 		}else{
 			dao.update(empresa);
@@ -50,7 +53,7 @@ public class EmpresaEjb implements IEmpresaEjb, Serializable {
 	@Override
 	public List<Empresa> listarFiliais(Empresa empresa) {
 		List<Empresa> retorno = new ArrayList<Empresa>();
-		if ((empresa.getEmpresaId() != null)&&(empresa.getMatriz() != null)){
+		if ((empresa.getEmpresaId() != null)&&(empresa.getMatriz() == null)){
 			retorno = this.dao.getFiliais(empresa);
 		}
 		return retorno;

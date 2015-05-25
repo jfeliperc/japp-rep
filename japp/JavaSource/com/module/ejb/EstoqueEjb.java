@@ -1,13 +1,11 @@
 package com.module.ejb;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
 
-import com.module.ejb.contract.IProdutoEjb;
-import com.module.jpa.dao.Dao;
+import com.module.ejb.contract.IEstoqueEjb;
 import com.module.jpa.dao.GrupoProdutoDao;
 import com.module.jpa.dao.ProdutoDao;
 import com.module.jpa.dao.TipoProdutoDao;
@@ -16,31 +14,8 @@ import com.module.jpa.model.Produto;
 import com.module.jpa.model.TipoProduto;
 
 @Stateless
-public class EstoqueEjb implements IProdutoEjb {
+public class EstoqueEjb implements IEstoqueEjb {
 
-	@Override
-	public Produto cadastrarProduto(Produto produto) {
-		
-		Dao<Produto> dao = new Dao<Produto>();
-		if ((produto.getId() == null)||(0 == produto.getId().intValue())){
-			produto.setId(null);
-			dao.add(produto);
-		}else{
-			dao.update(produto);
-		}
-		
-		return produto;
-	}
-
-	@Override
-	public Produto buscarProduto(Produto produto) {
-		Produto ret = new Produto();		
-		List<Produto> lst = listarProdutos(produto);
-		if (!lst.isEmpty()){
-			ret = lst.get(0);
-		}		
-		return ret;
-	}
 
 	@Override
 	public List<Produto> listarProdutos(Produto produto) {
@@ -48,12 +23,6 @@ public class EstoqueEjb implements IProdutoEjb {
 		List<Produto> ret = new ArrayList<Produto>();		
 		ret = dao.findByExample(produto);		
 		return ret;
-	}
-
-	@Override
-	public void excluirProduto(Produto produto) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -85,42 +54,6 @@ public class EstoqueEjb implements IProdutoEjb {
 			ret = dao.findByExample(grupoProduto);
 		}		
 		return ret;
-	}
-
-	@Override
-	public TipoProduto salvarTipoProduto(TipoProduto tipoProduto) {
-		TipoProdutoDao dao = new TipoProdutoDao();
-		try {
-			tipoProduto.setDataalteracao(new Date());
-			if ((tipoProduto.getId() != null)&&(tipoProduto.getId().intValue() > 0)){			
-				dao.update(tipoProduto);			
-			}else{
-				tipoProduto.setDatainclusao(new Date());
-				tipoProduto.setId(null);
-				dao.add(tipoProduto);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return tipoProduto;
-	}
-
-	@Override
-	public GrupoProduto salvarGrupoProduto(GrupoProduto grupoProduto) {
-		GrupoProdutoDao dao = new GrupoProdutoDao();
-		try {			
-			grupoProduto.setDataalteracao(new Date());
-			if ((grupoProduto.getId() != null)&&(grupoProduto.getId().intValue() > 0)){				
-				dao.update(grupoProduto);
-			}else{
-				grupoProduto.setDatainclusao(new Date());
-				grupoProduto.setId(null);
-				dao.add(grupoProduto);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		return grupoProduto;
 	}
 
 	@Override

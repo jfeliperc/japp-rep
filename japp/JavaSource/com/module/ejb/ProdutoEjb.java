@@ -22,8 +22,10 @@ public class ProdutoEjb implements IProdutoEjb {
 	public Produto cadastrarProduto(Produto produto) {
 		
 		Dao<Produto> dao = new Dao<Produto>();
+		produto.setDataalteracao(new Date());
 		if ((produto.getId() == null)||(0 == produto.getId().intValue())){
 			produto.setId(null);
+			produto.setDatainclusao(new Date());
 			dao.add(produto);
 		}else{
 			dao.update(produto);

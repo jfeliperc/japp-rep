@@ -10,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.module.ejb.contract.IEstoqueEjb;
 import com.module.ejb.contract.IProdutoEjb;
 import com.module.jpa.model.GrupoProduto;
 import com.module.jpa.model.Produto;
@@ -21,7 +22,7 @@ import com.module.jpa.model.TipoProduto;
 public class EstoqueMb extends BaseMb{
 
 	@EJB
-	private IProdutoEjb produtoEjb;
+	private IEstoqueEjb estoqueEjb;
 
 	private Produto produto;
 	private List<Produto> listProduto;
@@ -30,8 +31,7 @@ public class EstoqueMb extends BaseMb{
 	
 	@PostConstruct
 	public void construcao(){
-		itemsTipoProduto = this.produtoEjb.buscarAllTipoProduto();
-		itemsGrupoProduto = this.produtoEjb.buscarAllGrupoProduto();
+		
 	}
 	
 	public EstoqueMb(){		
@@ -42,13 +42,11 @@ public class EstoqueMb extends BaseMb{
 	public void limpar(){
 		this.produto = new Produto();
 		this.listProduto = new ArrayList<Produto>();
-		this.itemsTipoProduto = produtoEjb.buscarAllTipoProduto();
-		this.itemsGrupoProduto = produtoEjb.buscarAllGrupoProduto();
 		this.produto.setId(null);
 	}
 	
 	public void buscar(){
-		this.listProduto = produtoEjb.listarProdutos(this.produto);
+//		this.listProduto = produtoEjb.listarProdutos(this.produto);
 		if ((this.listProduto != null)&&(!this.listProduto.isEmpty())&&(this.listProduto.size() == 1)){
 			this.produto = this.listProduto.get(0);
 			this.listProduto.clear();
@@ -57,7 +55,7 @@ public class EstoqueMb extends BaseMb{
 	
 	public void salvar(){
 		if (validarSalvar()){
-			this.produto = this.produtoEjb.cadastrarProduto(this.produto);
+//			this.produto = this.produtoEjb.cadastrarProduto(this.produto);
 		}
 	}
 	
@@ -75,7 +73,7 @@ public class EstoqueMb extends BaseMb{
 	}
 
 	public void excluir(){
-		this.produtoEjb.excluirProduto(this.produto);
+//		this.produtoEjb.excluirProduto(this.produto);
 		buscar();
 	}
 

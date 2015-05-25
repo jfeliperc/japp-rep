@@ -97,8 +97,8 @@
 												                    
 			                    <h:outputLabel value="Status" for="ativo" />
 			                    <h:selectOneMenu value="#{empresaMb.filial.ativo}" style="width:150px">
-									<f:selectItem itemLabel="Ativo" itemValue="A"/>
-									<f:selectItem itemLabel="Inativo" itemValue="I"/>
+									<f:selectItem itemLabel="Ativo" itemValue="1"/>
+									<f:selectItem itemLabel="Inativo" itemValue="0"/>
 								</h:selectOneMenu>
 			                </h:panelGrid>
 			                <br/>
@@ -117,7 +117,7 @@
 				    			</rich:column>
 				    			<rich:column>
 				    				<f:facet name="header">Ação</f:facet>
-				    				<center><h:commandLink action="#{pessoaMb.editar(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
+				    				<center><h:commandLink action="#{empresaMb.editarFilial(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
 				    			</rich:column>
 				    		</rich:dataTable> 
 			                <br/><br/><hr/>

@@ -7,16 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-
-import com.module.jpa.model.Empresa;
-import com.module.jpa.model.Pessoa;
 
 @Stateless
+//@Transactional
 public class Dao<T> implements IDao<T> {
 
 	private Class<T> entityClass;
@@ -50,7 +44,16 @@ public class Dao<T> implements IDao<T> {
  
     @Override
     public void update(T obj) {
-        em.merge(obj);
+    	if (obj != null){    		
+    		em.getTransaction().begin();
+    	    if (!em.contains(obj)) {
+    	        em.merge(obj);
+    	        em.flush();
+    	    }    	    
+    	    em.getTransaction().commit();
+    	}
+//    	em.merge(obj);
+//        em.flush();
     }
  
     @Override
