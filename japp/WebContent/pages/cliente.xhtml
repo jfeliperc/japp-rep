@@ -8,19 +8,17 @@
 
     <ui:define name="conteudo">
     	<h:form id="frmFornecedor">
-	    	<rich:panel header="Cadastro de clientes" style="width:99%; height: 95%; ">
+	    	<rich:panel header="Cadastro de clientes" style="width:99%; height: 95%; " id="pnlCadCli">
 		      	<div>
 			      	<h:panelGroup id="botoesPanel" layout="block">		      			
 	      				<table><tr><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+	      				<h:commandLink action="#{clienteMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
 	      				</td><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
+	      				<h:commandLink action="#{clienteMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
 	      				</td><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+	      				<h:commandLink action="#{clienteMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
 	      				</td><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
-	      				</td><td width="20px">
-	      				<h:commandLink action="tipoGrupoProduto" value="" ><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>
+	      				<h:commandLink action="#{clienteMb.excluir()}" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
 	      				</td></tr></table>		      				
 		      		</h:panelGroup>
 			      	<h:panelGroup id="messagePanel" layout="block">
@@ -35,7 +33,7 @@
 	                    <h:selectOneMenu value="#{clienteMb.cliente.tipoPessoa}" style="width:150px">
 							<f:selectItem itemLabel="Pessoa Física" itemValue="PF"/>
 							<f:selectItem itemLabel="Pessoa Jurídica" itemValue="PJ"/>
-							<a4j:ajax event="change" render="pgPJ"></a4j:ajax>
+							<a4j:ajax event="change" render="pnlCadCli"></a4j:ajax>
 						</h:selectOneMenu>	
 						
 						<h:outputLabel value="Data Alteracao" for="dataalteracao" />
@@ -55,7 +53,7 @@
 						</h:selectOneMenu>                    
 					</h:panelGrid>
 					<hr/>	
-	                <h:panelGrid columns="4" styleClass="gridForm">   	                    
+	                <h:panelGrid columns="4" styleClass="gridForm" rendered="#{clienteMb.cliente.tipoPessoa == 'PF'}">   	                    
 	                    <h:outputLabel value="Cpf" for="cpf" />
 	                    <h:inputText id="cpf" value="#{clienteMb.cliente.cpf}" title="Cpf" size="50" />
 	                    
@@ -70,8 +68,8 @@
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 	                    </h:inputText>
 	                </h:panelGrid>	
-	                <hr/>
-	                <h:panelGrid columns="4" styleClass="gridForm" id="pgPJ">     
+	                
+	                <h:panelGrid columns="4" styleClass="gridForm" id="pgPJ" rendered="#{clienteMb.cliente.tipoPessoa == 'PJ'}">     
 	                    <h:outputLabel value="Cnpj" for="cnpj" />
 	                    <h:inputText id="cnpj" value="#{clienteMb.cliente.cnpj}" title="Cnpj" size="50" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
 	                    	                    	                    

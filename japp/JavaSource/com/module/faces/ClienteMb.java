@@ -3,6 +3,7 @@ package com.module.faces;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -22,6 +23,11 @@ public class ClienteMb extends BaseMb{
 	private AgenteExterno cliente;
 	private List<AgenteExterno> listCliente;
 
+	@PostConstruct
+	public void posConstrucao(){
+		limpar();
+	}
+	
 	public void limpar(){
 		this.cliente = new AgenteExterno();
 		this.listCliente = new ArrayList<AgenteExterno>();

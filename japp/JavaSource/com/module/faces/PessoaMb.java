@@ -4,12 +4,14 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.module.ejb.contract.IEmpresaEjb;
 import com.module.ejb.contract.IPessoaEjb;
 import com.module.jpa.model.Contato;
 import com.module.jpa.model.Empresa;
@@ -22,6 +24,9 @@ public class PessoaMb extends BaseMb{
 	@EJB
 	private IPessoaEjb pessoaEjb;
 	
+	@EJB
+	private IEmpresaEjb empresaEjb;
+	
 	private Pessoa pessoa;
 	private List<Pessoa> pessoas;
 	private List<Empresa> empresas;
@@ -32,6 +37,11 @@ public class PessoaMb extends BaseMb{
 	public PessoaMb() {
 		super();
 		limpar();
+	}
+	
+	@PostConstruct
+	public void posConstrucao(){
+		this.empresas = empresaEjb.listarEmpresas(new Empresa());
 	}
 
 	public void solicitarCadastroPessoa(){
@@ -97,6 +107,8 @@ public class PessoaMb extends BaseMb{
 		this.pessoa = new Pessoa();
 		this.contatoTemp = new Contato();
 		this.pessoas = new ArrayList<Pessoa>();
+		
+		
 	}
 	
 	public Pessoa getPessoa() {

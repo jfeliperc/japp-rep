@@ -4,6 +4,7 @@ C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\PedidoItem.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\ejb\PessoaEjb.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\faces\geral\JsfUtil.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\faces\FornecedorMb.java
+C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\ejb\EstoqueEjb.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\Cardapio.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\faces\BaseMb.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\ejb\contract\IProdutoEjb.java
@@ -13,6 +14,7 @@ C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\ejb\AcessoEjb.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\OrcamentoProduto.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\Produto.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\faces\EmpresaMb.java
+C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\ejb\contract\IReceitaEjb.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\dao\IDao.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\dao\GrupoProdutoDao.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\enums\TipoUsuario.java
@@ -34,12 +36,14 @@ C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\dao\Dao.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\ejb\contract\IFornecedorEjb.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\ReceitaCardProdutoHi.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\ejb\contract\IUsuarioEjb.java
+C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\ejb\ReceitaEjb.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\ejb\ClienteEjb.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\faces\ClienteMb.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\ValorProduto.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\ejb\contract\IClienteEjb.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\GrupoProduto.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\ejb\contract\IAcessoEjb.java
+C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\ejb\contract\IEstoqueEjb.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\dao\TipoProdutoDao.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\Acesso.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\faces\geral\Menu.java
@@ -55,12 +59,16 @@ C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\ReceitaProduto.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\Receita.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\TipoProduto.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\AtividadeServico.java
+C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\faces\geral\IGenericModel.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\dao\EmpresaDao.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\FornecProduto.java
+C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\faces\geral\GenericConverter.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\OrcamentoProdutoPK.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\Orcamento.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\ejb\FornecedorEjb.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\Rotina.java
+C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\faces\ReceitaMb.java
+C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\faces\EstoqueMb.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\dao\AgenteExternoDao.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\jpa\model\Contato.java
 C:\Part\GitHub\japp-rep\japp\JavaSource\com\module\ejb\UsuarioEjb.java

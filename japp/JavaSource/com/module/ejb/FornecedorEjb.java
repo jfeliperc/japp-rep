@@ -5,11 +5,18 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 import com.module.ejb.contract.IFornecedorEjb;
+import com.module.jpa.dao.FornecedorDao;
 import com.module.jpa.model.AgenteExterno;
 
 @Stateless
 public class FornecedorEjb implements IFornecedorEjb {
 
+	FornecedorDao dao; 
+	
+	public FornecedorEjb() {
+		this.dao = new FornecedorDao();
+    }
+	
 	@Override
 	public AgenteExterno cadastrarFornecedor(AgenteExterno fornecedor) {
 		// TODO Auto-generated method stub

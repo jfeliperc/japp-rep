@@ -1,7 +1,11 @@
 package com.module.jpa.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import com.module.faces.geral.IGenericModel;
+
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +16,7 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Produto.findAll", query="SELECT p FROM Produto p")
-public class Produto implements Serializable {
+public class Produto implements Serializable, IGenericModel {
 	private static final long serialVersionUID = 1L;
 
 	@Id

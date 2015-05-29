@@ -1,7 +1,11 @@
 package com.module.jpa.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import com.module.faces.geral.IGenericModel;
+
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +30,7 @@ import java.util.List;
     @NamedQuery(name = "Pessoa.findByValidadeLogin", query = "SELECT p FROM Pessoa p WHERE p.validadeLogin = :validadeLogin"),
     @NamedQuery(name = "Pessoa.findByTipoUsuario", query = "SELECT p FROM Pessoa p WHERE p.tipoUsuario = :tipoUsuario"),
     @NamedQuery(name = "Pessoa.findByDataultimoacesso", query = "SELECT p FROM Pessoa p WHERE p.dataultimoacesso = :dataultimoacesso")})
-public class Pessoa implements Serializable {
+public class Pessoa implements Serializable, IGenericModel {
 	private static final long serialVersionUID = 1L;
 
 	@Id

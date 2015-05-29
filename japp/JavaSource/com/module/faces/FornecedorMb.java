@@ -3,14 +3,17 @@ package com.module.faces;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.module.ejb.contract.IEmpresaEjb;
 import com.module.ejb.contract.IFornecedorEjb;
 import com.module.jpa.model.AgenteExterno;
+import com.module.jpa.model.Empresa;
 
 
 @ManagedBean
@@ -19,13 +22,22 @@ public class FornecedorMb extends BaseMb{
 
 	@EJB
 	private IFornecedorEjb fornecedorEjb;
-
+	@EJB
+	private IEmpresaEjb empresaEjb;
+	
+	private List<Empresa> empresas;
+		
 	private AgenteExterno fornecedor;
 	private List<AgenteExterno> listFornecedor;
 
 	public FornecedorMb(){
 		super();
 		limpar();
+	}
+	
+	@PostConstruct
+	public void posConstrucao(){
+		this.empresas = empresaEjb.listarEmpresas(new Empresa());
 	}
 	
 	public void limpar(){
@@ -79,5 +91,14 @@ public class FornecedorMb extends BaseMb{
 	public void setListFornecedor(List<AgenteExterno> listFornecedor) {
 		this.listFornecedor = listFornecedor;
 	}
+
+	public List<Empresa> getEmpresas() {
+		return empresas;
+	}
+
+	public void setEmpresas(List<Empresa> empresas) {
+		this.empresas = empresas;
+	}
+
 	
 }

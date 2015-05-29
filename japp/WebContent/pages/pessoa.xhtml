@@ -96,8 +96,9 @@
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
 	                    <h:outputLabel value="Empresa" for="empresaId" />
-	                    <h:selectOneMenu id="empresaId" value="#{pessoaMb.pessoa.empresa}" title="Selecione a empresa vinculada" style="width:200px">
-	                        <f:selectItems value="#{pessoaMb.empresas}" var="emp" itemValue="emp" itemLabel="#{emp.nomeFantasia}"/>
+	                    <h:selectOneMenu id="empresaId" value="#{pessoaMb.pessoa.empresa}" title="Selecione a empresa vinculada" style="width:200px" converter="genConverter">
+	                        <f:selectItem itemValue="#{null}" itemLabel=""/>
+	                        <f:selectItems value="#{pessoaMb.empresas}" var="emp" itemValue="#{emp}" itemLabel="#{emp.nomeFantasia}"/>
 	                    </h:selectOneMenu>
 	                    <h:outputLabel value="Email" for="email" />
 	                    <h:inputText id="email" value="#{pessoaMb.pessoa.email}" title="Nome" size="70"/>
