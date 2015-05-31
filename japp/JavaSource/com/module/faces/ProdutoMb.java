@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.module.ejb.contract.IProdutoEjb;
 import com.module.jpa.model.GrupoProduto;
+import com.module.jpa.model.Pessoa;
 import com.module.jpa.model.Produto;
 import com.module.jpa.model.TipoProduto;
 
@@ -48,11 +49,21 @@ public class ProdutoMb extends BaseMb{
 	}
 	
 	public void buscar(){
-		this.listProduto = produtoEjb.listarProdutos(this.produto);
-		if ((this.listProduto != null)&&(!this.listProduto.isEmpty())&&(this.listProduto.size() == 1)){
-			this.produto = this.listProduto.get(0);
-			this.listProduto.clear();
+		
+		try {
+			this.listProduto = produtoEjb.listarProdutos(this.produto);
+			
+			if ((this.listProduto != null)&&(!this.listProduto.isEmpty())&&(this.listProduto.size() == 1)){
+				this.produto = this.listProduto.get(0);
+				this.listProduto.clear();
+			}else{
+				setMostrarLista((this.listProduto != null)&&(!this.listProduto.isEmpty()));
+			}
+			
+		} catch (Exception e) {
+			addMsgError("Erro ao buscar pessoa(s) - "+e.getMessage());
 		}
+		
 	}
 	
 	public void salvar(){
@@ -74,6 +85,12 @@ public class ProdutoMb extends BaseMb{
 		return ret;
 	}
 
+	public void editar(Produto us){
+		this.produto = us;
+		alternaMostraLista();
+	}
+
+	
 	public void excluir(){
 		this.produtoEjb.excluirProduto(this.produto);
 		buscar();

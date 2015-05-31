@@ -67,7 +67,7 @@ public class ReceitaMb extends BaseMb{
 	private boolean validarSalvar() {
 		boolean ret = true;
 		if (StringUtils.isBlank(this.produto.getNome())){
-			addMsgError("O campo Nome é obrigatório");
+			addMsgError("O campo Nome ï¿½ obrigatï¿½rio");
 			ret = false;
 		}
 		if (StringUtils.isBlank(this.produto.getDescricao())){
@@ -77,6 +77,10 @@ public class ReceitaMb extends BaseMb{
 		return ret;
 	}
 
+	public void editar(Receita us){
+		this.receita = us;
+	}
+	
 	public void excluir(){
 		this.produtoEjb.excluirProduto(this.produto);
 		buscar();
