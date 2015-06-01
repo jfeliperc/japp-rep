@@ -14,6 +14,8 @@ import com.module.ejb.contract.IProdutoEjb;
 import com.module.jpa.model.GrupoProduto;
 import com.module.jpa.model.Produto;
 import com.module.jpa.model.Receita;
+import com.module.jpa.model.ReceitaProduto;
+import com.module.jpa.model.Servico;
 import com.module.jpa.model.TipoProduto;
 
 
@@ -26,8 +28,11 @@ public class ReceitaMb extends BaseMb{
 
 	private Produto produto;
 	private Receita receita;
+	private ReceitaProduto receitaProduto;
+	private List<ReceitaProduto> listReceitaProduto;
 	private List<Produto> listProduto;
 	private List<Receita> listReceita;
+	private List<Servico> listServico;
 	private List<TipoProduto> itemsTipoProduto;
 	private List<GrupoProduto> itemsGrupoProduto;
 	
@@ -85,6 +90,14 @@ public class ReceitaMb extends BaseMb{
 		this.produtoEjb.excluirProduto(this.produto);
 		buscar();
 	}
+	
+	public void limparDetalhe(){
+		
+	}
+	
+	public void salvarDetalhe(){
+		
+	}
 
 	public Produto getProduto() {
 		return produto;
@@ -132,6 +145,30 @@ public class ReceitaMb extends BaseMb{
 
 	public void setListReceita(List<Receita> listReceita) {
 		this.listReceita = listReceita;
+	}
+
+	public ReceitaProduto getReceitaProduto() {
+		return receitaProduto;
+	}
+
+	public void setReceitaProduto(ReceitaProduto receitaProduto) {
+		this.receitaProduto = receitaProduto;
+	}
+
+	public List<ReceitaProduto> getListReceitaProduto() {
+		return listReceitaProduto;
+	}
+
+	public void setListReceitaProduto(List<ReceitaProduto> listReceitaProduto) {
+		this.listReceitaProduto = listReceitaProduto;
+	}
+
+	public List<Servico> getListServico() {
+		return listServico;
+	}
+
+	public void setListServico(List<Servico> listServico) {
+		this.listServico = listServico;
 	}
 	
 }

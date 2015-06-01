@@ -69,6 +69,16 @@
 	                    <h:inputText id="qtdRefCompra" value="#{produtoMb.produto.qtdRefCompra}" title="ProdutoTitle_qtdRefCompra}" />
 	                    <h:outputLabel value="qtdRefSaida" for="qtdRefSaida" />
 	                    <h:inputText id="qtdRefSaida" value="#{produtoMb.produto.qtdRefSaida}" title="ProdutoTitle_qtdRefSaida}" />
+	                    
+	                    <h:outputLabel value="Alíquota IPI" for="aliqIpi" />
+	                    <h:inputText id="aliqIpi" value="#{produtoMb.produto.aliqIpi}" title="Alíquota IPI" />
+	                    <h:outputLabel value="Alíquota ICMS" for="aliqIcms" />
+	                    <h:inputText id="aliqIcms" value="#{produtoMb.produto.aliqIcms}" title="Alíquota ICMS" />
+	                    <h:outputLabel value="Fator Coacção" for="fatorCoacao" />
+	                    <h:inputText id="fatorCoacao" value="#{produtoMb.produto.fatorCoaccao}" title="Fator Coacção" />
+	                    <h:outputLabel value="Índice Coacção" for="indiceCoacao" />
+	                    <h:inputText id="indiceCoacao" value="#{produtoMb.produto.indiceCoaccao}" title="Índice Coacção" />	                    
+	                    
 	                    <h:outputLabel value="datainclusao" for="datainclusao" />
 	                    <h:inputText id="datainclusao" value="#{produtoMb.produto.datainclusao}" title="ProdutoTitle_datainclusao}" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />

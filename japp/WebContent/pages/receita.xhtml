@@ -68,12 +68,12 @@
 								<h:panelGroup style="width:50%">
 									<fieldset><legend>Ingredientes</legend>
 										<h:panelGrid columns="2" styleClass="gridForm">
-						                    <h:outputLabel value="Produto" for="id" />
-						                    <h:inputText id="idpro" value="#{receitaMb.receita.id}" title="EmpresaTitle_id}" required="false" />
-						                    <h:outputLabel value="Quantidade" for="razaoSocial" />
-						                    <h:inputText id="qtd" value="#{receitaMb.receita.razaoSocial}" title="EmpresaTitle_razaoSocial}" required="true" size="30"/>
-						                    <h:outputLabel value="Obs.:" for="nomeFantasia" />
-						                    <h:inputText id="obsReceita" value="#{receitaMb.empresa.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="90"/>	                    
+						                    <h:outputLabel value="Produto" for="idpro" />
+						                    <h:inputText id="idpro" value="#{receitaMb.receitaProduto.produtoId}" title="Produto" required="false" />
+						                    <h:outputLabel value="Quantidade" for="qtd" />
+						                    <h:inputText id="qtd" value="#{receitaMb.receitaProduto.quantidade}" title="Quatidade" required="true" size="30"/>
+						                    <h:outputLabel value="Obs.:" for="obsReceita" />
+						                    <h:inputText id="obsReceita" value="#{receitaMb.receitaProduto.observacao}" title="Observação" size="90"/>	                    
 						                </h:panelGrid>
 										<rich:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbIngredientes">
 							    			<rich:column>
@@ -90,7 +90,7 @@
 							    			</rich:column>					    			
 							    			<rich:column>
 							    				<f:facet name="header">Ação</f:facet>
-							    				<center><h:commandLink action="#{pessoaMb.editar(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
+							    				<center><h:commandLink action="#{receitaMb.editar(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
 							    			</rich:column>
 							    		</rich:dataTable>
 						    		</fieldset>
@@ -107,9 +107,9 @@
 						<h:panelGrid columns="1" styleClass="gridForm">
 		                    <h:outputLabel value="Serviço relacionado" for="selServico" />
 		                    <h:panelGroup id="selServico" layout="block">
-			                    <h:selectOneMenu id="tipoProdutoId" value="#{produtoMb.produto.tipoProduto}" title="ProdutoTitle_tipoProdutoId}" 
-			                    	required="false" requiredMessage="ProdutoRequiredMessage_tipoProdutoId}" style="width:250px">
-			                        <f:selectItems value="#{produtoMb.itemsTipoProduto}" var="tp" itemLabel="tp.descricao" itemValue="tp"/>
+			                    <h:selectOneMenu id="tipoProdutoId" value="#{receitaMb.receita.servicoId}" title="Serviço" 
+			                    	required="false" requiredMessage="Campo Serviço é obrigatório" style="width:250px">
+			                        <f:selectItems value="#{receitaMb.listServico}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
 			                    </h:selectOneMenu>		                    
 		                    </h:panelGroup>                  
 		                </h:panelGrid>
