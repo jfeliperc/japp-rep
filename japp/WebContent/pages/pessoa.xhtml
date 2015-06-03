@@ -44,30 +44,33 @@
 			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
 	                    <h:outputLabel value="Id" for="id" />
 	                    <h:inputText id="id" value="#{pessoaMb.pessoa.id}" title="id" required="false"/>
-	                    
-	                    <h:outputLabel value="Status" for="tipo" />
-	                    <h:selectOneMenu value="#{pessoaMb.pessoa.tipo}" style="width:150px" id="tipo">
-							<f:selectItem itemLabel="Ativo" itemValue="1"/>
-							<f:selectItem itemLabel="Inativo" itemValue="0"/>
-						</h:selectOneMenu>
-	                    
+	                    <h:panelGroup></h:panelGroup>
+	                    <h:panelGroup></h:panelGroup>
+	                    	                    
 	                    <h:outputLabel value="Nome" for="nome" />
 	                    <h:inputText id="nome" value="#{pessoaMb.pessoa.nome}" title="nome" size="70"/>
+	                    
 	                    <h:outputLabel value="Nome Completo" for="nomecompleto" />
 	                    <h:inputText id="nomecompleto" value="#{pessoaMb.pessoa.nomecompleto}" title="nome completo" size="100" />
+	                    
 	                    <h:outputLabel value="Data Nascimento" for="datanascimento" />
 	                    <h:inputText id="datanascimento" value="#{pessoaMb.pessoa.datanascimento}" title="data nascimento" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
+	                    
 	                    <h:outputLabel value="CPF" for="cpf" />
 	                    <h:inputText id="cpf" value="#{pessoaMb.pessoa.cpf}" title="cpf}" 
 			                    	onkeypress="mask(this,'999.999.999-99',1,this)" />
+	                    
 	                    <h:outputLabel value="Documento" for="documento" />
 	                    <h:inputText id="documento" value="#{pessoaMb.pessoa.documento}" title="documento}" />
+	                    
 	                    <h:outputLabel value="Tipo Documento" for="tipodocumento" />
 	                    <h:inputText id="tipodocumento" value="#{pessoaMb.pessoa.tipodocumento}" title="tipo documento" />
+	                    
 	                    <h:outputLabel value="Tipo Pessoa" for="tipoPessoa" />
 	                    <h:inputText id="tipoPessoa" value="#{pessoaMb.pessoa.tipoPessoa}" title="Tipo Pessoa" required="false"/>
+	                    
 	                    <h:outputLabel value="login" for="login" />
 	                    <h:inputText id="login" value="#{pessoaMb.pessoa.login}" title="login" />
 	                    
@@ -81,12 +84,30 @@
 	                    <h:inputText id="validadeLogin" value="#{pessoaMb.pessoa.validadeLogin}" title="Validade Login" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
+	                    
 	                    <h:outputLabel value="Tipo Usuário" for="tipoUsuario" />
 	                    <h:inputText id="tipoUsuario" value="#{pessoaMb.pessoa.tipoUsuario}" title="Tipo Usuario" required="false"/>
+	                    
 	                    <h:outputLabel value="Data Último Acesso" for="dataultimoacesso" />
 	                    <h:inputText id="dataultimoacesso" value="#{pessoaMb.pessoa.dataultimoacesso}" title="Data Último Acesso}" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
+	                    	                    
+	                    <h:outputLabel value="Status" for="tipo" />
+	                    <h:selectOneMenu value="#{pessoaMb.pessoa.tipo}" style="width:150px" id="tipo">
+							<f:selectItem itemLabel="Ativo" itemValue="1"/>
+							<f:selectItem itemLabel="Inativo" itemValue="0"/>
+						</h:selectOneMenu>
+	                    	                    
+	                    <h:outputLabel value="Empresa" for="empresaId" />
+	                    <h:selectOneMenu id="empresaId" value="#{pessoaMb.pessoa.empresa}" title="Selecione a empresa vinculada" style="width:200px" converter="genConverter">
+	                        <f:selectItem itemValue="#{null}" itemLabel=""/>
+	                        <f:selectItems value="#{pessoaMb.empresas}" var="emp" itemValue="#{emp}" itemLabel="#{emp.nomeFantasia}"/>
+	                    </h:selectOneMenu>
+	                    
+	                    <h:outputLabel value="Email" for="email" />
+	                    <h:inputText id="email" value="#{pessoaMb.pessoa.email}" title="Nome" size="70"/>
+	                    
 	                    <h:outputLabel value="Data Inclusão" for="datainclusao" />
 	                    <h:inputText id="datainclusao" value="#{pessoaMb.pessoa.datainclusao}" title="Data Inclusao" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
@@ -95,13 +116,6 @@
 	                    <h:inputText id="dataalteracao" value="#{pessoaMb.pessoa.dataalteracao}" title="Data Alteracao" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
-	                    <h:outputLabel value="Empresa" for="empresaId" />
-	                    <h:selectOneMenu id="empresaId" value="#{pessoaMb.pessoa.empresa}" title="Selecione a empresa vinculada" style="width:200px" converter="genConverter">
-	                        <f:selectItem itemValue="#{null}" itemLabel=""/>
-	                        <f:selectItems value="#{pessoaMb.empresas}" var="emp" itemValue="#{emp}" itemLabel="#{emp.nomeFantasia}"/>
-	                    </h:selectOneMenu>
-	                    <h:outputLabel value="Email" for="email" />
-	                    <h:inputText id="email" value="#{pessoaMb.pessoa.email}" title="Nome" size="70"/>
 	                    
 	                </h:panelGrid>
 	                <br/><br/>				    

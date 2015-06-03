@@ -73,8 +73,14 @@
 						                    <h:outputLabel value="Quantidade" for="qtd" />
 						                    <h:inputText id="qtd" value="#{receitaMb.receitaProduto.quantidade}" title="Quatidade" required="true" size="30"/>
 						                    <h:outputLabel value="Obs.:" for="obsReceita" />
-						                    <h:inputText id="obsReceita" value="#{receitaMb.receitaProduto.observacao}" title="Observação" size="90"/>	                    
+						                    <h:inputText id="obsReceita" value="#{receitaMb.receitaProduto.observacao}" title="Observação" size="90"/>						                                        
 						                </h:panelGrid>
+						                <h:panelGrid columns="4" styleClass="gridForm">
+						                    <h:outputLabel value="Alíquota IPI:" />
+						                    <h:outputLabel value="Alíquota ICMS:" />			                    
+						                    <h:outputLabel value="Fator Coacção:" />
+						                    <h:outputLabel value="Índice Coacção:" />
+					                    </h:panelGrid>
 										<rich:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbIngredientes">
 							    			<rich:column>
 							    				<f:facet name="header">id</f:facet>

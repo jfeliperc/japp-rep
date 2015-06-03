@@ -30,30 +30,40 @@
 					      	<h:panelGrid columns="4" styleClass="gridForm">
 			                    <h:outputLabel value="id" for="id" />
 			                    <h:inputText id="id" value="#{empresaMb.empresa.empresaId}" title="EmpresaTitle_id}" required="false" />
+			                    <h:panelGroup></h:panelGroup>
+			                    <h:panelGroup></h:panelGroup>			                    
+			                    
 			                    <h:outputLabel value="Razão Social" for="razaoSocial" />
 			                    <h:inputText id="razaoSocial" value="#{empresaMb.empresa.razaoSocial}" title="EmpresaTitle_razaoSocial}" required="false" size="100"/>
+			                    
 			                    <h:outputLabel value="Nome Fantasia" for="nomeFantasia" />
 			                    <h:inputText id="nomeFantasia" value="#{empresaMb.empresa.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="90"/>
+			                    
 			                    <h:outputLabel value="Cnpj" for="cnpj" />
 			                    <h:inputText id="cnpj" value="#{empresaMb.empresa.cnpj}" title="Cnpj" size="70" styleClass="cpf"
 			                    	onkeypress="mask(this,'999.999.999-99',1,this)" />
+			                    
 			                    <h:outputLabel value="Inscricao Est." for="inscricaoEst" />
 			                    <h:inputText id="inscricaoEst" value="#{empresaMb.empresa.inscricaoEst}" title="EmpresaTitle_inscricaoEst}" size="50" />
+			                    
 			                    <h:outputLabel value="Inscricao Mun." for="inscricaoMun" />
 			                    <h:inputText id="inscricaoMun" value="#{empresaMb.empresa.inscricaoMun}" title="EmpresaTitle_inscricaoMun}" size="50" />
-			                    			                    
-			                    <h:outputLabel value="Data Inclusao" for="datainclusao" />
-			                    <rich:calendar value="#{empresaMb.empresa.datainclusao}" id="datainclusao" 
-									enableManualInput="true" datePattern="dd/MM/yyyy" />
-			                    <h:outputLabel value="Data Alteracao" for="dataalteracao" />
-			                    <rich:calendar value="#{empresaMb.empresa.dataalteracao}" id="dataalteracao" 
-									enableManualInput="true" datePattern="dd/MM/yyyy"/>
-								
+			                    
 			                    <h:outputLabel value="Status" for="ativo" />
 			                    <h:selectOneMenu value="#{empresaMb.empresa.ativo}" style="width:150px">
 									<f:selectItem itemLabel="Ativo" itemValue="1"/>
 									<f:selectItem itemLabel="Inativo" itemValue="0"/>
-								</h:selectOneMenu>	
+								</h:selectOneMenu>
+			                    			                    
+			                    <h:outputLabel value="Data Inclusao" for="datainclusao" />
+			                    <rich:calendar value="#{empresaMb.empresa.datainclusao}" id="datainclusao" 
+									enableManualInput="true" datePattern="dd/MM/yyyy" />
+			                    
+			                    <h:outputLabel value="Data Alteracao" for="dataalteracao" />
+			                    <rich:calendar value="#{empresaMb.empresa.dataalteracao}" id="dataalteracao" 
+									enableManualInput="true" datePattern="dd/MM/yyyy"/>
+								
+			                    	
 			                </h:panelGrid>
 			                
 			                <br/><br/><hr/>
@@ -78,28 +88,36 @@
 			     			<h:panelGrid columns="4" styleClass="gridForm">
 			                    <h:outputLabel value="id" for="id" />
 			                    <h:inputText id="idFil" value="#{empresaMb.filial.empresaId}" title="EmpresaTitle_id}" required="false" />
+			                    <h:panelGroup></h:panelGroup>
+			                    <h:panelGroup></h:panelGroup>
+			                    
 			                    <h:outputLabel value="Razão Social" for="razaoSocial" />
 			                    <h:inputText id="razaoSocialFil" value="#{empresaMb.filial.razaoSocial}" title="EmpresaTitle_razaoSocial}" required="false" size="100"/>
+			                    
 			                    <h:outputLabel value="Nome Fantasia" for="nomeFantasia" />
 			                    <h:inputText id="nomeFantasiaFil" value="#{empresaMb.filial.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="90"/>
+			                    
 			                    <h:outputLabel value="Cnpj" for="cnpj" />
 			                    <h:inputText id="cnpjFil" value="#{empresaMb.filial.cnpj}" title="EmpresaTitle_cnpj}" size="70" styleClass="cpf"/>
+			                    
 			                    <h:outputLabel value="Inscricao Est." for="inscricaoEst" />
 			                    <h:inputText id="inscricaoEstFil" value="#{empresaMb.filial.inscricaoEst}" title="EmpresaTitle_inscricaoEst}" size="50" />
+			                    
 			                    <h:outputLabel value="Inscricao Mun." for="inscricaoMun" />
 			                    <h:inputText id="inscricaoMunFil" value="#{empresaMb.filial.inscricaoMun}" title="EmpresaTitle_inscricaoMun}" size="50" />
 			                    
-			                    
-			                    <h:outputLabel value="Data Inclusao" for="datainclusao" />
-			                    <rich:calendar value="#{empresaMb.filial.datainclusao}" id="datainclusaoFil" enableManualInput="true" datePattern="dd/MM/yyyy"/>
-			                    <h:outputLabel value="Data Alteracao" for="dataalteracao" />
-			                    <rich:calendar value="#{empresaMb.filial.dataalteracao}" id="dataalteracaoFil" enableManualInput="true" datePattern="dd/MM/yyyy"/>
-												                    
 			                    <h:outputLabel value="Status" for="ativo" />
 			                    <h:selectOneMenu value="#{empresaMb.filial.ativo}" style="width:150px">
 									<f:selectItem itemLabel="Ativo" itemValue="1"/>
 									<f:selectItem itemLabel="Inativo" itemValue="0"/>
 								</h:selectOneMenu>
+			                    			                    
+			                    <h:outputLabel value="Data Inclusao" for="datainclusao" />
+			                    <rich:calendar value="#{empresaMb.filial.datainclusao}" id="datainclusaoFil" enableManualInput="true" datePattern="dd/MM/yyyy"/>
+			                    
+			                    <h:outputLabel value="Data Alteracao" for="dataalteracao" />
+			                    <rich:calendar value="#{empresaMb.filial.dataalteracao}" id="dataalteracaoFil" enableManualInput="true" datePattern="dd/MM/yyyy"/>
+												      
 			                </h:panelGrid>
 			                <br/>
 							<rich:dataTable value="#{empresaMb.listFiliais}" var="us" style="width:100%" id="tbFiliais">

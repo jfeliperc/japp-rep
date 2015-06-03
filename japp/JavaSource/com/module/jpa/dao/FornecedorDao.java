@@ -27,17 +27,17 @@ public class FornecedorDao extends Dao<AgenteExterno> {
 		return emps;
 	}
 
-	private Predicate prepararPredicatesByExample(AgenteExterno fornecedor, CriteriaBuilder cb, Root<AgenteExterno> raiz) {
+	private Predicate prepararPredicatesByExample(AgenteExterno agente, CriteriaBuilder cb, Root<AgenteExterno> raiz) {
 		Predicate predicate = cb.and();
-		if ((fornecedor.getId() != null)&&(!"".equals(fornecedor.getId()))&&(0 != fornecedor.getId().intValue())){
-			predicate = cb.and(predicate, cb.equal(raiz.get("id"), fornecedor.getId()));
+		if ((agente.getNome() != null)&&(!"".equals(agente.getNome()))){
+			predicate = cb.and(predicate, cb.equal(raiz.get("nome"), agente.getNome()));
 		}
-		if ((fornecedor.getNome() != null)&&(!"".equals(fornecedor.getNome()))){
-			predicate = cb.and(predicate, cb.equal(raiz.get("nome"), fornecedor.getNome()));
+		if ((agente.getNomecompleto() != null)&&(!"".equals(agente.getNomecompleto()))){
+			predicate = cb.and(predicate, cb.equal(raiz.get("nomecompleto"), agente.getNomecompleto()));
 		}
-//		if ((fornecedor.getDescricao() != null)&&(!"".equals(fornecedor.getDescricao()))){
-//			predicate = cb.and(predicate, cb.equal(raiz.get("descricao"), fornecedor.getDescricao()));
-//		}
+		if ((agente.getCpf() != null)&&(!"".equals(agente.getCpf()))){
+			predicate = cb.and(predicate, cb.equal(raiz.get("cpf"), agente.getCpf()));
+		}
 		
 		return predicate;
 	}
