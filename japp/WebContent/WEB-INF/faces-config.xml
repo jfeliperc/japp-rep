@@ -65,6 +65,11 @@
         </navigation-case>
         
         <navigation-case>
+        	<from-outcome>estoque</from-outcome>
+        	<to-view-id>/pages/estoque.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
         	<from-outcome>acesso</from-outcome>
         	<to-view-id>/pages/acesso.xhtml</to-view-id>
         </navigation-case>        

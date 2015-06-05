@@ -16,7 +16,7 @@
 
     <ui:define name="conteudo">
     	<h:form id="frmProduto">
-	    	<rich:panel header="Consulta Produtos" style="width:99%; height: 95%; " rendered="#{!produtoMb.mostrarLista}">
+	    	<rich:panel header="Estoque" style="width:99%; height: 95%; " rendered="#{!produtoMb.mostrarLista}">
 		      	<table><tr><td width="1300px">
 		      	<div style="padding-left: 10px">		      	
 		      		
@@ -53,11 +53,6 @@
 	                	<hr/>
 		            </h:panelGroup>
 			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
-	                    <h:outputLabel value="Id" for="id" />
-	                    <h:inputText id="id" value="#{produtoMb.produto.id}" title="ProdutoTitle_id}" required="false" 
-	                    	requiredMessage="ProdutoRequiredMessage_id}"/>
-	                    <h:panelGroup></h:panelGroup>
-	                    <h:panelGroup></h:panelGroup>	
 	                    	
 	                    <h:outputLabel value="Nome" for="nome" />
 	                    <h:inputText id="nome" value="#{produtoMb.produto.nome}" title="Nome" required="false" 
@@ -66,29 +61,10 @@
 	                    <h:outputLabel value="Descricao" for="descricao" />
 	                    <h:inputText id="descricao" value="#{produtoMb.produto.descricao}" title="Descricao" size="100" />
 	                    
-	                    <h:outputLabel value="Un. Medida" for="medida" />
-	                    <h:inputText id="medida" value="#{produtoMb.produto.medida}" title="Un. Medida" />
-	                    
 	                    <h:outputLabel value="Cód. Externo" for="cod_externo" />
 	                    <h:inputText id="cod_externo" value="#{produtoMb.produto.codExterno}" title="Código Externo" />
-	                    
-	                    <h:outputLabel value="Qtd. Média Compra" for="qtdRefCompra" />
-	                    <h:inputText id="qtdRefCompra" value="#{produtoMb.produto.qtdRefCompra}" title="ProdutoTitle_qtdRefCompra}" />
-	                    
-	                    <h:outputLabel value="Qtd. Média Saída" for="qtdRefSaida" />
-	                    <h:inputText id="qtdRefSaida" value="#{produtoMb.produto.qtdRefSaida}" title="ProdutoTitle_qtdRefSaida}" />
-	                    
-	                    <h:outputLabel value="Alíquota IPI" for="aliqIpi" />
-	                    <h:inputText id="aliqIpi" value="#{produtoMb.produto.aliqIpi}" title="Alíquota IPI" />
-	                    
-	                    <h:outputLabel value="Alíquota ICMS" for="aliqIcms" />
-	                    <h:inputText id="aliqIcms" value="#{produtoMb.produto.aliqIcms}" title="Alíquota ICMS" />
-	                    
-	                    <h:outputLabel value="Fator Coacção" for="fatorCoacao" />
-	                    <h:inputText id="fatorCoacao" value="#{produtoMb.produto.fatorCoaccao}" title="Fator Coacção" />
-	                    
-	                    <h:outputLabel value="Índice Coacção" for="indiceCoacao" />
-	                    <h:inputText id="indiceCoacao" value="#{produtoMb.produto.indiceCoaccao}" title="Índice Coacção" />	                    
+	                    <h:panelGroup></h:panelGroup>
+	                    <h:panelGroup></h:panelGroup>	
 	                    
 	                    <h:outputLabel value="Tipo" for="tipoProdutoId" />
 	                    <h:panelGroup id="selPanel" layout="block">
@@ -106,17 +82,38 @@
 		                    </h:selectOneMenu>
 	                    </h:panelGroup>
 	                    
-	                    <h:outputLabel value="datainclusao" for="datainclusao" />
-	                    <h:inputText id="datainclusao" value="#{produtoMb.produto.datainclusao}" title="ProdutoTitle_datainclusao}" >
-	                        <f:convertDateTime pattern="dd/MM/yyyy" />
-	                    </h:inputText>
-	                    
-	                    <h:outputLabel value="dataalteracao" for="dataalteracao" />
-	                    <h:inputText id="dataalteracao" value="#{produtoMb.produto.dataalteracao}" title="ProdutoTitle_dataalteracao}" >
-	                        <f:convertDateTime pattern="dd/MM/yyyy" />
-	                    </h:inputText>
-	                    
 	                </h:panelGrid>
+	                
+	                <rich:dataTable value="#{receitaMb.listReceita}" var="us" style="width:100%" id="tbGrupos">
+			    			<rich:column>
+			    				<f:facet name="header">Id Produto</f:facet>
+			    				<h:outputText value="#{us.id}" />
+			    			</rich:column>
+			    			<rich:column>
+			    				<f:facet name="header">Produto</f:facet>
+			    				<h:outputText value="#{us.descricao}" />
+			    			</rich:column>
+			    			<rich:column>
+			    				<f:facet name="header">Medida</f:facet>
+			    				<h:outputText value="#{us.descricao}" />
+			    			</rich:column>
+			    			<rich:column>
+			    				<f:facet name="header">Quantidade</f:facet>
+			    				<h:outputText value="#{us.descricao}" />
+			    			</rich:column>
+			    			<rich:column>
+			    				<f:facet name="header">Qtd. Mínima</f:facet>
+			    				<h:outputText value="#{us.descricao}" />
+			    			</rich:column>
+			    			<rich:column>
+			    				<f:facet name="header">Data Contagem</f:facet>
+			    				<h:outputText value="#{us.descricao}" />
+			    			</rich:column>
+			    			<rich:column>
+			    				<f:facet name="header">Ação</f:facet>
+			    				<center><h:commandLink action="#{receitaMb.editar(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
+			    			</rich:column>
+			    		</rich:dataTable>  
                 	    
 					<br/><br/><hr/>
 					

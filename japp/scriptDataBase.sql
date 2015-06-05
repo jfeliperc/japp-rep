@@ -1,4 +1,4 @@
--- FetchType.LAZY = Doesn’t load the relationships unless explicitly “asked for” via getter
+-- FetchType.LAZY = Doesnï¿½t load the relationships unless explicitly ï¿½asked forï¿½ via getter
 -- FetchType.EAGER = Loads ALL relationships
 
 -- drop database japp;
@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS `japp`.`produto` (
   `descricao` VARCHAR(45) NULL,
   `cod_externo` VARCHAR(45) NULL,
   `medida` VARCHAR(45) NULL,
+  `qtd_minima` DOUBLE NULL,
   `qtd_ref_compra` VARCHAR(45) NULL,
   `qtd_ref_saida` VARCHAR(45) NULL,
   `tipo_produto_id` INT NOT NULL,

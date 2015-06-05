@@ -107,6 +107,8 @@
 	                    
 	                    <h:outputLabel value="Email" for="email" />
 	                    <h:inputText id="email" value="#{pessoaMb.pessoa.email}" title="Nome" size="70"/>
+	                    <h:panelGroup></h:panelGroup>
+	                    <h:panelGroup></h:panelGroup>
 	                    
 	                    <h:outputLabel value="Data Inclusão" for="datainclusao" />
 	                    <h:inputText id="datainclusao" value="#{pessoaMb.pessoa.datainclusao}" title="Data Inclusao" >
@@ -132,19 +134,19 @@
 	                	<h:outputLabel value="Descrição" for="descricaoC" />
 	                	<h:inputText id="descricaoC" value="#{pessoaMb.contatoTemp.descricao}" title="Descrição do contato" size="100" />
 	                	<h:panelGroup>
-		                	<h:commandLink action="#{pessoaMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
-		                	<h:commandLink action="#{pessoaMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+		                	<h:commandLink action="#{pessoaMb.limparContatos()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+		                	<h:commandLink action="#{pessoaMb.salvarContatos()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
 		                </h:panelGroup>	
 					</h:panelGrid>
 					<br/>
 					<rich:dataTable value="#{pessoaMb.pessoa.contatos}" var="us" style="width:100%" id="tbContato">
 		    			<rich:column>
 		    				<f:facet name="header">Tipo</f:facet>
-		    				<h:outputText value="#{us.nomeCompleto}" />
+		    				<h:outputText value="#{us.tipo}" />
 		    			</rich:column>
 		    			<rich:column>
 		    				<f:facet name="header">Descrição</f:facet>
-		    				<h:outputText value="#{us.tipo}" />
+		    				<h:outputText value="#{us.descricao}" />
 		    			</rich:column>
 		    			<rich:column>
 		    				<f:facet name="header">Ação</f:facet>

@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.module.ejb.contract.IEstoqueEjb;
 import com.module.ejb.contract.IProdutoEjb;
+import com.module.jpa.model.Estoque;
 import com.module.jpa.model.GrupoProduto;
 import com.module.jpa.model.Produto;
 import com.module.jpa.model.TipoProduto;
@@ -26,6 +27,7 @@ public class EstoqueMb extends BaseMb{
 
 	private Produto produto;
 	private List<Produto> listProduto;
+	private List<Estoque> listEstoque;
 	private List<TipoProduto> itemsTipoProduto;
 	private List<GrupoProduto> itemsGrupoProduto;
 	
@@ -107,6 +109,14 @@ public class EstoqueMb extends BaseMb{
 
 	public void setItemsGrupoProduto(List<GrupoProduto> itemsGrupoProduto) {
 		this.itemsGrupoProduto = itemsGrupoProduto;
+	}
+
+	public List<Estoque> getListEstoque() {
+		return listEstoque;
+	}
+
+	public void setListEstoque(List<Estoque> listEstoque) {
+		this.listEstoque = listEstoque;
 	}
 	
 }

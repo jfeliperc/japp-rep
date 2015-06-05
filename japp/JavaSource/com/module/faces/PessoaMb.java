@@ -32,6 +32,7 @@ public class PessoaMb extends BaseMb{
 	private List<Empresa> empresas;
 	private Boolean renovarSenha;
 	private Contato contatoTemp;
+	private List<Contato> listContatoTemp;
 	
 		
 	public PessoaMb() {
@@ -46,7 +47,7 @@ public class PessoaMb extends BaseMb{
 
 	public void solicitarCadastroPessoa(){
 		pessoaEjb.solicitarCadastro(pessoa);
-        addMsg("Solicitação de cadastro registrada.");
+        addMsg("Solicitaï¿½ï¿½o de cadastro registrada.");
 	}
 		
 	public void buscar(){
@@ -100,14 +101,21 @@ public class PessoaMb extends BaseMb{
 	public void excluir(){
 		String msgResult = this.pessoa.getId()+"-"+this.pessoa.getNomecompleto()+"-"+this.getPessoa().getCpf();		
 		pessoaEjb.excluirPessoa(this.pessoa, true);
-		addMsg("Processo de exclusão/inativação concluído. "+msgResult);
+		addMsg("Processo de exclusï¿½o/inativaï¿½ï¿½o concluï¿½do. "+msgResult);
 	}
 
 	public void limpar(){
 		this.pessoa = new Pessoa();
 		this.contatoTemp = new Contato();
 		this.pessoas = new ArrayList<Pessoa>();
+				
+	}
+	
+	public void limparContatos(){
 		
+	}
+	
+	public void salvarContatos(){
 		
 	}
 	
@@ -149,6 +157,14 @@ public class PessoaMb extends BaseMb{
 
 	public void setRenovarSenha(Boolean renovarSenha) {
 		this.renovarSenha = renovarSenha;
+	}
+
+	public List<Contato> getListContatoTemp() {
+		return listContatoTemp;
+	}
+
+	public void setListContatoTemp(List<Contato> listContatoTemp) {
+		this.listContatoTemp = listContatoTemp;
 	}
 
 }

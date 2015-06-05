@@ -38,6 +38,9 @@ public class Produto implements Serializable, IGenericModel {
 
 	private String nome;
 
+	@Column(name="qtd_minima")
+	private Double qtdMinima;
+	
 	@Column(name="qtd_ref_compra")
 	private String qtdRefCompra;
 
