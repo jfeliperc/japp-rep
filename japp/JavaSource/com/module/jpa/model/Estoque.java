@@ -25,6 +25,9 @@ public class Estoque implements Serializable {
 	private int pessoaId;
 
 	private String quantidade;
+	
+	@Column(name="custo_medio")
+	private Double custoMedio;
 
 	private String status;
 
@@ -89,6 +92,14 @@ public class Estoque implements Serializable {
 
 	public void setProduto(Produto produto) {
 		this.produto = produto;
+	}
+
+	public Double getCustoMedio() {
+		return custoMedio;
+	}
+
+	public void setCustoMedio(Double custoMedio) {
+		this.custoMedio = custoMedio;
 	}
 
 }

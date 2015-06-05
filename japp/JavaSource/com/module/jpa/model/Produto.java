@@ -58,6 +58,9 @@ public class Produto implements Serializable, IGenericModel {
 
 	@Column(name="indice_coaccao")
 	private Double indiceCoaccao;
+	
+	@Column(name="calorias")
+	private Double calorias;
 
 	//bi-directional many-to-one association to Estoque
 	@OneToMany(mappedBy="produto")
@@ -306,6 +309,22 @@ public class Produto implements Serializable, IGenericModel {
 
 	public void setIndiceCoaccao(Double indiceCoaccao) {
 		this.indiceCoaccao = indiceCoaccao;
+	}
+
+	public Double getQtdMinima() {
+		return qtdMinima;
+	}
+
+	public void setQtdMinima(Double qtdMinima) {
+		this.qtdMinima = qtdMinima;
+	}
+
+	public Double getCalorias() {
+		return calorias;
+	}
+
+	public void setCalorias(Double calorias) {
+		this.calorias = calorias;
 	}
 
 	

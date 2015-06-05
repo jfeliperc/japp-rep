@@ -1,7 +1,9 @@
 package com.module.jpa.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -38,7 +40,15 @@ public class Receita implements Serializable {
 	//bi-directional many-to-one association to ReceitaProduto
 	@OneToMany(mappedBy="receita")
 	private List<ReceitaProduto> receitaProdutos;
+	
+	//bi-directional many-to-one association to TipoReceita
+	@ManyToOne(fetch = FetchType.EAGER) 
+	@JoinColumn(name="tipo_receita_id")
+	private TipoReceita tipoReceita;
 
+	@Column(name="calorias")
+	private Double calorias;
+	
 	public Receita() {
 	}
 
@@ -112,6 +122,22 @@ public class Receita implements Serializable {
 
 	public void setReceitaProdutos(List<ReceitaProduto> receitaProdutos) {
 		this.receitaProdutos = receitaProdutos;
+	}
+
+	public TipoReceita getTipoReceita() {
+		return tipoReceita;
+	}
+
+	public void setTipoReceita(TipoReceita tipoReceita) {
+		this.tipoReceita = tipoReceita;
+	}
+
+	public Double getCalorias() {
+		return calorias;
+	}
+
+	public void setCalorias(Double calorias) {
+		this.calorias = calorias;
 	}
 
 	public ReceitaProduto addReceitaProduto(ReceitaProduto receitaProduto) {

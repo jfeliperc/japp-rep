@@ -31,7 +31,28 @@
 		                    <h:outputLabel value="Título da Receita" for="razaoSocial" />
 		                    <h:inputText id="titReceita" value="#{receitaMb.receita.descricao}" title="Título" required="true" size="100"/>
 		                    <h:outputLabel value="Resumo" for="resumo" />
-		                    <h:inputText id="resumo" value="#{receitaMb.receita.resumo}" title="Resumo" size="150"/>	                    
+		                    <h:inputText id="resumo" value="#{receitaMb.receita.resumo}" title="Resumo" size="150"/>
+		                </h:panelGrid>
+		                
+	                    <h:panelGrid columns="6" styleClass="gridForm">
+	                    	<h:outputLabel value="Tipo de Receita" for="tipoReceita" />
+	                    	<h:panelGroup id="seltipoReceita" layout="block">
+			                    <h:selectOneMenu id="tipoProdutoId" value="#{receitaMb.receita.servicoId}" title="Tipo Receita" 
+			                    	required="false" requiredMessage="Campo Serviço é obrigatório" style="width:250px">
+			                        <f:selectItems value="#{receitaMb.listServico}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
+			                    </h:selectOneMenu>		                    
+		                    </h:panelGroup>
+		                    
+		                    <h:outputLabel value="Serviço relacionado" for="selServico" />
+		                    <h:panelGroup id="selServico" layout="block">
+			                    <h:selectOneMenu id="somServico" value="#{receitaMb.receita.servicoId}" title="Serviço" 
+			                    	required="false" requiredMessage="Campo Serviço é obrigatório" style="width:250px">
+			                        <f:selectItems value="#{receitaMb.listServico}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
+			                    </h:selectOneMenu>		                    
+		                    </h:panelGroup> 
+		                    
+		                    <h:outputLabel value="Calorias" for="caloriasRec" />
+						    <h:inputText id="caloriasRec" value="#{receitaMb.receitaProduto.quantidade}" title="Calorias da receita" disabled="true" size="25"/>                 
 		                </h:panelGrid>
 		                <hr/>
 		                <rich:dataTable value="#{receitaMb.listReceita}" var="us" style="width:100%" id="tbGrupos">
@@ -63,25 +84,38 @@
 		      				<h:commandLink action="#{receitaMb.salvarDetalhe()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>      				
 		      				</td></tr></table>		      				
 			      		</h:panelGroup>
-						<table>
-							<tr><td valign="top" width="50%">					
-								<h:panelGroup style="width:50%">
+									
+								<h:panelGroup style="width:99%;">
 									<fieldset><legend>Ingredientes</legend>
-										<h:panelGrid columns="2" styleClass="gridForm">
+										<h:panelGrid columns="4" styleClass="gridForm">
 						                    <h:outputLabel value="Produto" for="idpro" />
-						                    <h:inputText id="idpro" value="#{receitaMb.receitaProduto.produtoId}" title="Produto" required="false" />
-						                    <h:outputLabel value="Quantidade" for="qtd" />
-						                    <h:inputText id="qtd" value="#{receitaMb.receitaProduto.quantidade}" title="Quatidade" required="true" size="30"/>
-						                    <h:outputLabel value="Obs.:" for="obsReceita" />
-						                    <h:inputText id="obsReceita" value="#{receitaMb.receitaProduto.observacao}" title="Observação" size="90"/>						                                        
+						                    <h:panelGroup id="selProd" layout="block">
+							                    <h:selectOneMenu id="idpro" value="#{receitaMb.receitaProduto.produtoId}" title="Produto" 
+							                    	required="false" requiredMessage="Campo Serviço é obrigatório" style="width:250px">
+							                        <f:selectItems value="#{receitaMb.listServico}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
+							                    </h:selectOneMenu>		                    
+						                    </h:panelGroup>						                    
+						                    <h:panelGroup></h:panelGroup>
+						                    <h:panelGroup></h:panelGroup>
 						                </h:panelGrid>
-						                <h:panelGrid columns="4" styleClass="gridForm">
-						                    <h:outputLabel value="Alíquota IPI:" />
-						                    <h:outputLabel value="Alíquota ICMS:" />			                    
-						                    <h:outputLabel value="Fator Coacção:" />
-						                    <h:outputLabel value="Índice Coacção:" />
-					                    </h:panelGrid>
-										<rich:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbIngredientes">
+						                <h:panelGrid columns="6" styleClass="gridForm">   
+						                    <h:outputLabel value="Comensal" for="qtd" />
+						                    <h:inputText id="qtd" value="#{receitaMb.receitaProduto.quantidade}" title="Quatidade" required="true" size="25"/>
+						                    <h:outputLabel value="Percapta" for="percap" />
+						                    <h:inputText id="percap" value="#{receitaMb.receitaProduto.quantidade}" title="Quatidade" required="true" size="25"/>
+						                    <h:panelGroup></h:panelGroup><h:panelGroup></h:panelGroup>
+						                    <h:outputLabel value="Total" for="total" />
+						                    <h:inputText id="total" value="#{receitaMb.receitaProduto.quantidade}" title="Quatidade" required="true" size="25"/>
+						                    <h:outputLabel value="Custo" for="custo" />
+						                    <h:inputText id="custo" value="#{receitaMb.receitaProduto.quantidade}" title="Quatidade" required="true" size="25"/>
+						                    <h:outputLabel value="Calorias" for="calorias" />
+						                    <h:inputText id="calorias" value="#{receitaMb.receitaProduto.quantidade}" title="Quatidade" required="true" size="25"/>
+						                </h:panelGrid>
+						                <h:panelGrid columns="2" styleClass="gridForm">     
+						                    <h:outputLabel value="Obs.:" for="obsReceita" />
+						                    <h:inputText id="obsReceita" value="#{receitaMb.receitaProduto.observacao}" title="Observação" size="150"/>						                                        
+						                </h:panelGrid>						                
+										<rich:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbIngredientes" >
 							    			<rich:column>
 							    				<f:facet name="header">id</f:facet>
 							    				<h:outputText value="#{us.id}" />
@@ -101,25 +135,15 @@
 							    		</rich:dataTable>
 						    		</fieldset>
 								</h:panelGroup>
-							</td><td valign="top" width="50%">	
-								<h:panelGroup style="width:50%">
+							
+								<h:panelGroup style="width:99%">
 									<fieldset><legend>Descrição</legend>
-										<h:inputTextarea value="" rows="18" cols="110" />
+										<h:inputTextarea value="" rows="13" cols="210" />
 									</fieldset>
 								</h:panelGroup>
-							</td></tr>
-						</table>
+							
 						<hr/>
-						<h:panelGrid columns="1" styleClass="gridForm">
-		                    <h:outputLabel value="Serviço relacionado" for="selServico" />
-		                    <h:panelGroup id="selServico" layout="block">
-			                    <h:selectOneMenu id="tipoProdutoId" value="#{receitaMb.receita.servicoId}" title="Serviço" 
-			                    	required="false" requiredMessage="Campo Serviço é obrigatório" style="width:250px">
-			                        <f:selectItems value="#{receitaMb.listServico}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
-			                    </h:selectOneMenu>		                    
-		                    </h:panelGroup>                  
-		                </h:panelGrid>
-		                <hr/>
+						
 					</rich:panel>
 				</div>
 				</td></tr></table>	
