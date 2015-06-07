@@ -11,25 +11,41 @@
 	    	<rich:panel header="Cadastro de Receitas" style="width:99%; height: 95%; ">
 	    		<table><tr><td width="1300px">
 		      	<div>
+		      		
+		      		<nav class="navbar navbar-default" style="min-height: 30px !important;">
+		  				<div class="container-fluid">		    
+		      				<span class="btn-group navbar-left">
+					      		<h:panelGroup id="botoesPanel2" layout="block">		      			
+				      				<table><tr><td width="20px">
+				      				<h:commandLink action="#{receitaMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+				      				</td><td width="20px">
+				      				<h:commandLink action="#{receitaMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>	
+				      				</td><td width="20px">
+				      				<h:commandLink action="#{receitaMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>      				
+				      				</td></tr></table>		      				
+					      		</h:panelGroup>
+				      		</span>
+				      		
+				      		<span class="btn-group navbar-right">
+				      			<span class="btn-group">
+									<h:commandLink styleClass="btn btn-link" action="#{receitaMb.irCadastroTipoReceita()}" value="Tipo Receita" />
+								</span>
+				      		</span>
+				      	</div>
+				    </nav>	
+		      		
+		      	
 			      	<rich:panel header="Receita" style="width:99%; height: 95%; ">
-				      	<h:panelGroup id="botoesPanel" layout="block">		      			
-		      				<table><tr><td width="20px">
-		      				<h:commandLink action="#{receitaMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
-		      				</td><td width="20px">
-		      				<h:commandLink action="#{receitaMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>	
-		      				</td><td width="20px">
-		      				<h:commandLink action="#{receitaMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>      				
-		      				</td></tr></table>		      				
-			      		</h:panelGroup>
+				      	
 				      	<h:panelGroup id="messagePanel" layout="block">
 		                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
 		                	<hr/>
 			            </h:panelGroup>
 				      	<h:panelGrid columns="2" styleClass="gridForm">
 		                    <h:outputLabel value="id" for="id" />
-		                    <h:inputText id="id" value="#{receitaMb.receita.id}" title="EmpresaTitle_id}" required="false" />
+		                    <h:inputText id="id" value="#{receitaMb.receita.id}" title="EmpresaTitle_id}"/>
 		                    <h:outputLabel value="Título da Receita" for="razaoSocial" />
-		                    <h:inputText id="titReceita" value="#{receitaMb.receita.descricao}" title="Título" required="true" size="100"/>
+		                    <h:inputText id="titReceita" value="#{receitaMb.receita.descricao}" title="Título" size="100"/>
 		                    <h:outputLabel value="Resumo" for="resumo" />
 		                    <h:inputText id="resumo" value="#{receitaMb.receita.resumo}" title="Resumo" size="150"/>
 		                </h:panelGrid>
@@ -138,7 +154,7 @@
 							
 								<h:panelGroup style="width:99%">
 									<fieldset><legend>Descrição</legend>
-										<h:inputTextarea value="" rows="13" cols="210" />
+										<h:inputTextarea value="#{receitaMb.receita.descricao}" rows="13" cols="210" />
 									</fieldset>
 								</h:panelGroup>
 							

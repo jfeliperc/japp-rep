@@ -40,6 +40,9 @@ public class ReceitaMb extends BaseMb{
 	public void construcao(){
 		itemsTipoProduto = this.produtoEjb.buscarAllTipoProduto();
 		itemsGrupoProduto = this.produtoEjb.buscarAllGrupoProduto();
+		this.listReceitaProduto = new ArrayList<ReceitaProduto>();
+		this.receita = new Receita();
+		this.receitaProduto = new ReceitaProduto();
 	}
 	
 	public ReceitaMb(){		
@@ -97,6 +100,10 @@ public class ReceitaMb extends BaseMb{
 	
 	public void salvarDetalhe(){
 		
+	}
+	
+	public String irCadastroTipoReceita(){
+		return "tipoReceita";
 	}
 
 	public Produto getProduto() {
