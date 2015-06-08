@@ -107,8 +107,8 @@
 						                    <h:outputLabel value="Produto" for="idpro" />
 						                    <h:panelGroup id="selProd" layout="block">
 							                    <h:selectOneMenu id="idpro" value="#{receitaMb.receitaProduto.produtoId}" title="Produto" 
-							                    	required="false" requiredMessage="Campo Serviço é obrigatório" style="width:250px">
-							                        <f:selectItems value="#{receitaMb.listServico}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
+							                    	required="false" requiredMessage="Campo Produto é obrigatório" style="width:250px">
+							                        <f:selectItems value="#{receitaMb.listProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
 							                    </h:selectOneMenu>		                    
 						                    </h:panelGroup>						                    
 						                    <h:panelGroup></h:panelGroup>
