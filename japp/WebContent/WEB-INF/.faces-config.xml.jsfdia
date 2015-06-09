@@ -46,6 +46,9 @@
    <PROCESS-ITEM-OUTPUT ID="tipoReceita::#pages#tipoReceita.xhtml"
     NAME="output13" PATH="/pages/tipoReceita.xhtml"
     TARGET="rules:#pages#tipoReceita.xhtml" TITLE="tipoReceita" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cardapio::#pages#cardapio.xhtml"
+    NAME="output14" PATH="/pages/cardapio.xhtml"
+    TARGET="rules:#pages#cardapio.xhtml" TITLE="cardapio" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#pages#inicio.xhtml"
@@ -76,4 +79,6 @@
   PATH="/pages/estoque.xhtml" SHAPE="304,609,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#pages#tipoReceita.xhtml"
   PATH="/pages/tipoReceita.xhtml" SHAPE="304,673,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cardapio.xhtml"
+  PATH="/pages/cardapio.xhtml" SHAPE="304,705,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
