@@ -25,13 +25,30 @@
 		                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
 		                	<hr/>
 			            </h:panelGroup>
-				      	<h:panelGrid columns="2" styleClass="gridForm">
+				      	<h:panelGrid columns="4" styleClass="gridForm">
 		                    <h:outputLabel value="id" for="id" />
-		                    <h:inputText id="id" value="#{empresaMb.empresa.empresaId}" title="EmpresaTitle_id}" required="false" />
-		                    <h:outputLabel value="Título da Receita" for="razaoSocial" />
-		                    <h:inputText id="titReceita" value="#{empresaMb.empresa.razaoSocial}" title="EmpresaTitle_razaoSocial}" required="true" size="100"/>
+		                    <h:inputText id="id" value="#{empresaMb.empresa.empresaId}" title="Id" required="false" />
+		                    <h:outputLabel value="Título do Cardápio" for="titCardapio" />
+		                    <h:inputText id="titCardapio" value="#{empresaMb.empresa.razaoSocial}" title="Título do cardápio" required="true" size="150"/>
+		                </h:panelGrid>
+		                <h:panelGrid columns="2" styleClass="gridForm">    
 		                    <h:outputLabel value="Resumo" for="nomeFantasia" />
-		                    <h:inputText id="nomeFantasia" value="#{empresaMb.empresa.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="150"/>	                    
+		                    <h:inputText id="nomeFantasia" value="#{empresaMb.empresa.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="150"/>
+		                </h:panelGrid>
+		                <h:panelGrid columns="4" styleClass="gridForm">    	                    
+		                    <h:outputLabel value="Replicação" for="replicacao" />
+		                    <h:panelGroup id="selReplicacao" layout="block">
+			                    <h:selectOneMenu id="somReplicacao" value="#{produtoMb.produto.tipoProduto}" title="Tipo de replicação" style="width:250px">
+			                        <f:selectItem itemValue="00" itemLabel="Sem replicação"/>
+			                        <f:selectItem itemValue="01" itemLabel="Todos os dias"/>
+			                        <f:selectItem itemValue="02" itemLabel="Seg. -> Sex."/>
+			                        <f:selectItem itemValue="03" itemLabel="Mesmo dia várias semanas"/>
+			                        <f:selectItem itemValue="04" itemLabel="Período"/>
+			                    </h:selectOneMenu>		                    
+		                    </h:panelGroup>
+		                    <h:outputLabel value="Data" for="dataCardapio" />
+		                    <rich:calendar id="dataCardapio" value="#{empresaMb.empresa.nomeFantasia}" title="Data referência cardápio"/>	                    
+		                       
 		                </h:panelGrid>
 		                <hr/>
 		                <rich:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbGrupos">
