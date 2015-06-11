@@ -168,8 +168,10 @@ public class PessoaEjb implements IPessoaEjb {
 
 	@Override
 	public List<Pessoa> listarPessoasAcesso(Pessoa pessoa) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Pessoa> pessoas = listarPessoas(pessoa);
+		
+		
+		return pessoas;
 	}
 
 

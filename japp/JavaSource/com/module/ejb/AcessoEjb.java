@@ -1,6 +1,7 @@
 package com.module.ejb;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,6 +9,7 @@ import javax.ejb.Stateless;
 import com.module.ejb.contract.IAcessoEjb;
 import com.module.jpa.dao.AcessoDao;
 import com.module.jpa.model.Acesso;
+import com.module.jpa.model.Pessoa;
 import com.module.jpa.model.Rotina;
 
 @Stateless
@@ -17,6 +19,7 @@ public class AcessoEjb implements IAcessoEjb, Serializable {
 
 	private Acesso acesso; 
 	private AcessoDao dao;
+	//private RotinaDao rotinaDao;
 
     public AcessoEjb() {
     	this.dao = new AcessoDao();
@@ -39,6 +42,7 @@ public class AcessoEjb implements IAcessoEjb, Serializable {
 
 	@Override
 	public List<Acesso> listarAcessos(Acesso acesso) {
+		List<Acesso> ret = new ArrayList<Acesso>();
 		if ((acesso.getPessoa() != null)&&(acesso.getRotina1() != null)){
 			this.dao.getAcessoPorPessoa(acesso.getPessoa());
 		}
@@ -47,14 +51,28 @@ public class AcessoEjb implements IAcessoEjb, Serializable {
 
 	@Override
 	public void excluirAcesso(Acesso acesso) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 	@Override
-	public List<Rotina> listarRotinas() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Rotina> listarTodasRotinas() {
+		List<Rotina> rotinas = null; //rotinaDao.getAll();
+		return rotinas;		
+	}
+
+	@Override
+	public List<Acesso> listarTodosAcessos() {
+		List<Acesso> acessos = dao.getAll();
+		return acessos;
+	}
+
+	@Override
+	public List<Acesso> listarAcessos(Pessoa pessoa) {
+		List<Acesso> ret = new ArrayList<Acesso>();
+		if ((acesso.getPessoa() != null)&&(acesso.getRotina1() != null)){
+			ret = this.dao.getAcessoPorPessoa(acesso.getPessoa());
+		}
+		return ret;
 	}
 
     

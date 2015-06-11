@@ -44,10 +44,17 @@
 			                        <f:selectItem itemValue="02" itemLabel="Seg. -> Sex."/>
 			                        <f:selectItem itemValue="03" itemLabel="Mesmo dia várias semanas"/>
 			                        <f:selectItem itemValue="04" itemLabel="Período"/>
+			                        <a4j:ajax event="change" render="pnlDataPeriodo"></a4j:ajax>
 			                    </h:selectOneMenu>		                    
 		                    </h:panelGroup>
 		                    <h:outputLabel value="Data" for="dataCardapio" />
-		                    <rich:calendar id="dataCardapio" value="#{empresaMb.empresa.nomeFantasia}" title="Data referência cardápio"/>	                    
+		                    <h:panelGroup id="pnlDataPeriodo" layout="block">
+		                    	<rich:calendar id="dataCardapio" value="#{empresaMb.empresa.nomeFantasia}" title="Data referência cardápio" rendered="true"/>
+		                    	
+		                    	<rich:calendar id="dataIniCardapio" value="#{empresaMb.empresa.nomeFantasia}" title="Data inicial" rendered="false"/>
+		                    	<h:outputLabel value="à" for="dataCardapio"  rendered="false"/>
+		                    	<rich:calendar id="dataFimCardapio" value="#{empresaMb.empresa.nomeFantasia}" title="Data final" rendered="false"/>		                    
+		                    </h:panelGroup>		                    
 		                       
 		                </h:panelGrid>
 		                <hr/>
@@ -62,6 +69,14 @@
 			    			</rich:column>
 			    			<rich:column>
 			    				<f:facet name="header">Resumo</f:facet>
+			    				<h:outputText value="#{us.descricao}" />
+			    			</rich:column>
+			    			<rich:column>
+			    				<f:facet name="header">Replicação</f:facet>
+			    				<h:outputText value="#{us.descricao}" />
+			    			</rich:column>
+			    			<rich:column>
+			    				<f:facet name="header">Data</f:facet>
 			    				<h:outputText value="#{us.descricao}" />
 			    			</rich:column>
 			    			<rich:column>
@@ -84,10 +99,8 @@
 								<h:panelGroup style="width:50%">
 									<fieldset><legend>Ingredientes</legend>
 										<h:panelGrid columns="2" styleClass="gridForm">
-						                    <h:outputLabel value="Produto" for="id" />
+						                    <h:outputLabel value="Receita" for="id" />
 						                    <h:inputText id="idpro" value="#{empresaMb.empresa.empresaId}" title="EmpresaTitle_id}" required="false" />
-						                    <h:outputLabel value="Quantidade" for="razaoSocial" />
-						                    <h:inputText id="qtd" value="#{empresaMb.empresa.razaoSocial}" title="EmpresaTitle_razaoSocial}" required="true" size="30"/>
 						                    <h:outputLabel value="Obs.:" for="nomeFantasia" />
 						                    <h:inputText id="obsReceita" value="#{empresaMb.empresa.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="90"/>	                    
 						                </h:panelGrid>
@@ -97,11 +110,11 @@
 							    				<h:outputText value="#{us.id}" />
 							    			</rich:column>
 							    			<rich:column>
-							    				<f:facet name="header">Produto</f:facet>
+							    				<f:facet name="header">Receita</f:facet>
 							    				<h:outputText value="#{us.nome}" />
 							    			</rich:column>
 							    			<rich:column>
-							    				<f:facet name="header">Quantidade</f:facet>
+							    				<f:facet name="header">Obs.</f:facet>
 							    				<h:outputText value="#{us.descricao}" />
 							    			</rich:column>					    			
 							    			<rich:column>
@@ -118,17 +131,7 @@
 								</h:panelGroup>
 							</td></tr>
 						</table>
-						<hr/>
-						<h:panelGrid columns="1" styleClass="gridForm">
-		                    <h:outputLabel value="Serviço relacionado" for="selServico" />
-		                    <h:panelGroup id="selServico" layout="block">
-			                    <h:selectOneMenu id="tipoProdutoId" value="#{produtoMb.produto.tipoProduto}" title="ProdutoTitle_tipoProdutoId}" 
-			                    	required="false" requiredMessage="ProdutoRequiredMessage_tipoProdutoId}" style="width:250px">
-			                        <f:selectItems value="#{produtoMb.itemsTipoProduto}" var="tp" itemLabel="tp.descricao" itemValue="tp"/>
-			                    </h:selectOneMenu>		                    
-		                    </h:panelGroup>                  
-		                </h:panelGrid>
-		                <hr/>
+						<hr/>						
 					</rich:panel>
 				</div>
 				</td></tr></table>	

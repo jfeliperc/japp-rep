@@ -8,7 +8,7 @@
 	
     <ui:define name="conteudo">
     	<h:form id="frmPessoa">
-	    	<rich:panel header="Configuração de acesso" style="width:100%; height: 95%; "  rendered="#{!acessoMb.mostrarLista}">
+	    	<rich:panel header="Configuração de acesso" style="width:100%; height: 95%; " rendered="#{!acessoMb.mostrarLista}">
 	    		<table><tr><td width="1300px">
 		      	<div style="padding-left: 10px">
 		      		
@@ -88,31 +88,43 @@
 				
 				<rich:panel header="Módulos" style="width:100%; height: 95%; ">					
 					<br/>
-					<rich:dataTable value="#{acessoMb.pessoa.contatos}" var="us" style="width:100%" id="tbModulo">
+					<rich:dataTable value="#{acessoMb.modulos}" var="us" style="width:100%" id="tbModulo">
 		    			<rich:column width="50%">
 		    				<f:facet name="header">Módulo</f:facet>
-		    				<h:outputText value="#{us.login}" />
+		    				<h:outputText value="#{us.rotina1.rotina}" />
 		    			</rich:column>
 		    			<rich:column>
 		    				<f:facet name="header">Permissão</f:facet>
-		    				<h:outputText value="#{us.tipo}" />
+		    				<h:outputText value="#{us.status}" />
 		    			</rich:column>
 		    			<rich:column>
 		    				<f:facet name="header">Ação</f:facet>
+		    				<center>
+		    					<h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Detalhar"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>
+		    					<h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Liberar acesso"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>
+		    					<h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Bloquear acesso"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>		    				
+		    				</center>
 		    			</rich:column>
 		    		</rich:dataTable>	
 				</rich:panel>
 				
 				<rich:panel header="Rotinas" style="width:100%; height: 95%; ">					
 					<br/>
-					<rich:dataTable value="#{acessoMb.pessoa.contatos}" var="us" style="width:100%" id="tbRotina">
+					<rich:dataTable value="#{acessoMb.acessos}" var="us" style="width:100%" id="tbRotina">
 		    			<rich:column width="70%">
 		    				<f:facet name="header">Rotina</f:facet>
-		    				<h:outputText value="#{us.login}" />
+		    				<h:outputText value="#{us.rotina2.rotina}" />
 		    			</rich:column>
 		    			<rich:column>
 		    				<f:facet name="header">Permissão</f:facet>
-		    				<h:outputText value="#{us.tipo}" />
+		    				<h:outputText value="#{us.status}" />
+		    			</rich:column>
+		    			<rich:column>
+		    				<f:facet name="header">Ação</f:facet>
+		    				<center>
+		    					<h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Liberar acesso"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>
+		    					<h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Bloquear acesso"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>		    				
+		    				</center>
 		    			</rich:column>		    			
 		    		</rich:dataTable>	
 				</rich:panel>
@@ -152,6 +164,7 @@
 		    			</rich:column>
 		    			<rich:column>
 		    				<f:facet name="header">Ação</f:facet>
+		    				<center><h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
 		    			</rich:column>
 		    	</rich:dataTable>
 		    	</td></tr></table>

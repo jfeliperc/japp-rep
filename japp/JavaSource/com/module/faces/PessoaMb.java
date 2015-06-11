@@ -83,6 +83,10 @@ public class PessoaMb extends BaseMb{
 		this.pessoa = us;
 		alternaMostraLista();
 	}
+	
+	public void editarContato(Contato us){
+		this.contatoTemp = us;
+	}
 
 	
 	private boolean validarSalvar() {
