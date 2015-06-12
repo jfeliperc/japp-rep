@@ -219,7 +219,7 @@ CREATE TABLE IF NOT EXISTS `japp`.`rotina` (
   `rotina` VARCHAR(45) NULL,
   `descricao` VARCHAR(150) NULL,
   `status` INT NOT NULL,
-  `rotina_pai` INT NOT NULL,  
+  `rotina_pai` INT NULL,  
   PRIMARY KEY (`id`))
 ENGINE = INNODB;
 
@@ -227,7 +227,7 @@ ENGINE = INNODB;
 -- Table `japp`.`acesso`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `japp`.`acesso` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `pessoa_id` INT NOT NULL,
   `status` INT NOT NULL,
   `rotina_master` INT NULL,
@@ -565,19 +565,19 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- ---------------------------------------------------------------------------------------------
-INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`) VALUES ('Cadastros', 'cadastros básicos', 1);
+INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`) VALUES ('Cadastros', 'cadastros bï¿½sicos', 1);
 INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`) VALUES ('Produtos', 'produtos', 1);
 INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`) VALUES ('Cozinha', 'cozinha', 1);
 INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`) VALUES ('Financeiro', 'financeiro', 1);
-INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`) VALUES ('Relatórios', 'ambiente relatórios', 1);
+INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`) VALUES ('Relatï¿½rios', 'ambiente relatï¿½rios', 1);
 INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`) VALUES ('Operacional', 'ambiente operacional', 1);
-INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`) VALUES ('Acesso', 'configuração acesso', 1);
+INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`) VALUES ('Acesso', 'configuraï¿½ï¿½o acesso', 1);
 
 INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`, `rotina_pai`) VALUES ('Empresa', 'cadastro empresa', 1, 1);
 INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`, `rotina_pai`) VALUES ('Pessoas', 'cadastro pessoas', 1, 1);
 INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`, `rotina_pai`) VALUES ('Fornecedores', 'cadastro fornecedores', 1, 1);
 INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`, `rotina_pai`) VALUES ('Clientes', 'cadastro clientes', 1, 1);
-INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`, `rotina_pai`) VALUES ('Serviços', 'cadastro serviços', 1, 1);
+INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`, `rotina_pai`) VALUES ('Serviï¿½os', 'cadastro serviï¿½os', 1, 1);
 
 INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`, `rotina_pai`) VALUES ('Produto', 'cadastro produto', 1, 2);
 INSERT INTO `japp`.`rotina`(`rotina`, `descricao`, `status`, `rotina_pai`) VALUES ('Estoque', 'estoque', 1, 2);
