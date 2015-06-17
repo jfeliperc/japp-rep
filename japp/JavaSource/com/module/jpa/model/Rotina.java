@@ -1,7 +1,9 @@
 package com.module.jpa.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -10,6 +12,7 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="rotina")
 @NamedQuery(name="Rotina.findAll", query="SELECT r FROM Rotina r")
 public class Rotina implements Serializable {
 	private static final long serialVersionUID = 1L;

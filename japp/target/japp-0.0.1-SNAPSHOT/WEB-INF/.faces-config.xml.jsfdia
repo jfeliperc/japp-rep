@@ -37,9 +37,18 @@
    <PROCESS-ITEM-OUTPUT ID="receita::#pages#receita.xhtml"
     NAME="output10" PATH="/pages/receita.xhtml"
     TARGET="rules:#pages#receita.xhtml" TITLE="receita" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="acesso::#pages#acesso.xhtml" NAME="output11"
+   <PROCESS-ITEM-OUTPUT ID="estoque::#pages#estoque.xhtml"
+    NAME="output11" PATH="/pages/estoque.xhtml"
+    TARGET="rules:#pages#estoque.xhtml" TITLE="estoque" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="acesso::#pages#acesso.xhtml" NAME="output12"
     PATH="/pages/acesso.xhtml" TARGET="rules:#pages#acesso.xhtml"
     TITLE="acesso" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="tipoReceita::#pages#tipoReceita.xhtml"
+    NAME="output13" PATH="/pages/tipoReceita.xhtml"
+    TARGET="rules:#pages#tipoReceita.xhtml" TITLE="tipoReceita" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cardapio::#pages#cardapio.xhtml"
+    NAME="output14" PATH="/pages/cardapio.xhtml"
+    TARGET="rules:#pages#cardapio.xhtml" TITLE="cardapio" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#pages#inicio.xhtml"
@@ -66,4 +75,10 @@
   PATH="/pages/acesso.xhtml" SHAPE="304,577,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#pages#inicioRelatorio.xhtml"
   PATH="/pages/inicioRelatorio.xhtml" SHAPE="304,577,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#estoque.xhtml"
+  PATH="/pages/estoque.xhtml" SHAPE="304,609,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#tipoReceita.xhtml"
+  PATH="/pages/tipoReceita.xhtml" SHAPE="304,673,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cardapio.xhtml"
+  PATH="/pages/cardapio.xhtml" SHAPE="304,705,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

@@ -24,7 +24,9 @@ com\module\ejb\ClienteEjb.class
 com\module\jpa\model\Pessoa.class
 com\module\ejb\contract\IReceitaEjb.class
 com\module\jpa\model\Servico.class
+com\module\jpa\dao\FornecedorDao.class
 com\module\ejb\PessoaEjb.class
+com\module\jpa\model\TipoReceita.class
 com\module\jpa\model\Cardapio.class
 com\module\jpa\model\Endereco.class
 com\module\jpa\model\TipoAtividade.class
@@ -32,6 +34,7 @@ com\module\ejb\UsuarioEjb.class
 com\module\jpa\model\FornecProduto.class
 com\module\ejb\AcessoEjb.class
 com\module\faces\AcessoMb.class
+com\module\faces\CardapioMb.class
 com\module\ejb\contract\IAcessoEjb.class
 com\module\faces\FornecedorMb.class
 com\module\faces\geral\JsfUtil.class
@@ -52,6 +55,7 @@ com\module\jpa\model\OrcamentoProduto.class
 com\module\faces\ClienteMb.class
 com\module\ejb\EstoqueEjb.class
 com\module\faces\EstoqueMb.class
+com\module\jpa\dao\RotinaDao.class
 com\module\enums\TipoPessoa.class
 com\module\jpa\dao\EmpresaDao.class
 com\module\jpa\model\PedidoItem.class
@@ -62,12 +66,15 @@ com\module\jpa\model\Pedido.class
 com\module\jpa\dao\GrupoProdutoDao.class
 com\module\faces\geral\EstrMenu.class
 com\module\jpa\model\ReceitaProduto.class
+com\module\ejb\contract\ICardapioEjb.class
 com\module\jpa\model\TipoProduto.class
 com\module\faces\TipoGrupoProdutoMb.class
 com\module\ejb\EmpresaEjb.class
 com\module\jpa\model\CardapioReceita.class
 com\module\jpa\dao\Dao.class
+com\module\jpa\dao\AcessoDao.class
 com\module\jpa\model\Receita.class
+com\module\ejb\CardapioEjb.class
 com\module\jpa\model\AgenteExterno.class
 com\module\faces\ProdutoMb.class
 com\module\enums\TipoUsuario.class

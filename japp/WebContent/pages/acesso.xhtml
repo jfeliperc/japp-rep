@@ -100,9 +100,13 @@
 		    			<rich:column>
 		    				<f:facet name="header">Ação</f:facet>
 		    				<center>
-		    					<h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Detalhar"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>
-		    					<h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Liberar acesso"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>
-		    					<h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Bloquear acesso"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>		    				
+		    					<table><tr><td width="30px">
+		    						<h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Detalhar"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>
+		    					</td><td width="30px">
+		    						<h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Liberar acesso"><h:graphicImage value="/css/img/cadOpen.png" width="20px" height="20px" /></h:commandLink>
+		    					</td><td width="30px">
+		    						<h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Bloquear acesso"><h:graphicImage value="/css/img/cadClose.png" width="20px" height="20px" /></h:commandLink>
+		    					</td></tr></table>		    				
 		    				</center>
 		    			</rich:column>
 		    		</rich:dataTable>	
@@ -122,8 +126,11 @@
 		    			<rich:column>
 		    				<f:facet name="header">Ação</f:facet>
 		    				<center>
-		    					<h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Liberar acesso"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>
-		    					<h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Bloquear acesso"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>		    				
+		    					<table><tr><td width="30px">
+		    						<h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Liberar acesso"><h:graphicImage value="/css/img/cadOpen.png" width="20px" height="20px" /></h:commandLink>
+		    					</td><td width="30px">
+		    						<h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Bloquear acesso"><h:graphicImage value="/css/img/cadClose.png" width="20px" height="20px" /></h:commandLink>
+		    					</td></tr></table>			    				
 		    				</center>
 		    			</rich:column>		    			
 		    		</rich:dataTable>	
