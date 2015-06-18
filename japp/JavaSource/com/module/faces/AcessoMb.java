@@ -97,6 +97,26 @@ public class AcessoMb extends BaseMb{
 		}
 	}
 
+	public void detalharModulo(Acesso modulo){
+		
+	}
+	
+	public void liberarModulo(Acesso modulo){
+		
+	}
+	
+	public void bloquearModulo(Acesso modulo){
+		
+	}
+	
+	public void liberarAcesso(Acesso modulo){
+		
+	}
+	
+	public void bloquearAcesso(Acesso modulo){
+		
+	}
+	
 	public void salvar(){
 		if (validarSalvar()){
 			try {

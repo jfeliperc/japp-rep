@@ -17,6 +17,7 @@ import com.module.jpa.model.Receita;
 import com.module.jpa.model.ReceitaProduto;
 import com.module.jpa.model.Servico;
 import com.module.jpa.model.TipoProduto;
+import com.module.jpa.model.TipoReceita;
 
 
 @ManagedBean
@@ -33,6 +34,7 @@ public class ReceitaMb extends BaseMb{
 	private List<Produto> listProduto;
 	private List<Receita> listReceita;
 	private List<Servico> listServico;
+	private List<TipoReceita> itemsTipoReceita;
 	private List<TipoProduto> itemsTipoProduto;
 	private List<GrupoProduto> itemsGrupoProduto;
 	
@@ -176,6 +178,14 @@ public class ReceitaMb extends BaseMb{
 
 	public void setListServico(List<Servico> listServico) {
 		this.listServico = listServico;
+	}
+
+	public List<TipoReceita> getItemsTipoReceita() {
+		return itemsTipoReceita;
+	}
+
+	public void setItemsTipoReceita(List<TipoReceita> itemsTipoReceita) {
+		this.itemsTipoReceita = itemsTipoReceita;
 	}
 	
 }

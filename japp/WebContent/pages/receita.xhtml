@@ -103,6 +103,22 @@
 									
 								<h:panelGroup style="width:99%;">
 									<fieldset><legend>Ingredientes</legend>
+										<h:panelGrid columns="6" styleClass="gridForm">
+											<h:outputLabel value="Tipo Produto" for="selTipoProd" />
+						                    <h:panelGroup id="selTipoProd" layout="block">
+							                    <h:selectOneMenu id="idTipPro" value="#{receitaMb.receitaProduto.produtoId}" title="Tipo Produto" style="width:250px">
+							                        <f:selectItems value="#{receitaMb.listProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
+							                    </h:selectOneMenu>		                    
+						                    </h:panelGroup>	
+						                    <h:outputLabel value="Grupo Produto" for="selGrpProd" />
+						                    <h:panelGroup id="selGrpProd" layout="block">
+							                    <h:selectOneMenu id="idGrpPro" value="#{receitaMb.receitaProduto.produtoId}" title="Grupo Produto" style="width:250px">
+							                        <f:selectItems value="#{receitaMb.listProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
+							                    </h:selectOneMenu>		                    
+						                    </h:panelGroup>
+						                    <h:panelGroup></h:panelGroup>
+						                    <h:panelGroup></h:panelGroup>	
+										</h:panelGrid>
 										<h:panelGrid columns="4" styleClass="gridForm">
 						                    <h:outputLabel value="Produto" for="idpro" />
 						                    <h:panelGroup id="selProd" layout="block">
@@ -116,16 +132,16 @@
 						                </h:panelGrid>
 						                <h:panelGrid columns="6" styleClass="gridForm">   
 						                    <h:outputLabel value="Comensal" for="qtd" />
-						                    <h:inputText id="qtd" value="#{receitaMb.receitaProduto.quantidade}" title="Quatidade" required="true" size="25"/>
+						                    <h:inputText id="qtd" value="#{receitaMb.receitaProduto.quantidade}" size="25"/>
 						                    <h:outputLabel value="Percapta" for="percap" />
-						                    <h:inputText id="percap" value="#{receitaMb.receitaProduto.quantidade}" title="Quatidade" required="true" size="25"/>
+						                    <h:inputText id="percap" value="#{receitaMb.receitaProduto.quantidade}" size="25"/>
 						                    <h:panelGroup></h:panelGroup><h:panelGroup></h:panelGroup>
 						                    <h:outputLabel value="Total" for="total" />
-						                    <h:inputText id="total" value="#{receitaMb.receitaProduto.quantidade}" title="Quatidade" required="true" size="25"/>
+						                    <h:inputText id="total" value="#{receitaMb.receitaProduto.quantidade}" size="25"/>
 						                    <h:outputLabel value="Custo" for="custo" />
-						                    <h:inputText id="custo" value="#{receitaMb.receitaProduto.quantidade}" title="Quatidade" required="true" size="25"/>
+						                    <h:inputText id="custo" value="#{receitaMb.receitaProduto.quantidade}" size="25"/>
 						                    <h:outputLabel value="Calorias" for="calorias" />
-						                    <h:inputText id="calorias" value="#{receitaMb.receitaProduto.quantidade}" title="Quatidade" required="true" size="25"/>
+						                    <h:inputText id="calorias" value="#{receitaMb.receitaProduto.quantidade}" size="25"/>
 						                </h:panelGrid>
 						                <h:panelGrid columns="2" styleClass="gridForm">     
 						                    <h:outputLabel value="Obs.:" for="obsReceita" />

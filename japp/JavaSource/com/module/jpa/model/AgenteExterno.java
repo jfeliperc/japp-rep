@@ -75,6 +75,7 @@ public class AgenteExterno implements Serializable {
 	private List<Pedido> pedidos;
 
 	public AgenteExterno() {
+		this.tipoPessoa = "PF";
 	}
 
 	public Integer getId() {

@@ -23,6 +23,13 @@ public class ClienteMb extends BaseMb{
 	private AgenteExterno cliente;
 	private List<AgenteExterno> listCliente;
 
+	
+	
+	public ClienteMb() {
+		super();
+		this.cliente = new AgenteExterno();
+	}
+
 	@PostConstruct
 	public void posConstrucao(){
 		limpar();
