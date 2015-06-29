@@ -13,16 +13,18 @@ import com.module.enums.TipoPessoa;
 import com.module.enums.TipoUsuario;
 import com.module.jpa.dao.Dao;
 import com.module.jpa.dao.PessoaDao;
+import com.module.jpa.model.Contato;
 import com.module.jpa.model.Empresa;
 import com.module.jpa.model.Pessoa;
 
 @Stateless
 public class PessoaEjb implements IPessoaEjb {
 
+		
 	@Override
 	public Pessoa cadastrarPessoa(Pessoa pessoa) {
 		
-		Dao<Pessoa> dao = new Dao<Pessoa>();
+		PessoaDao dao = new PessoaDao();
 		if (pessoa.getId() == null){
 			dao.add(pessoa);
 		}else{
@@ -33,8 +35,13 @@ public class PessoaEjb implements IPessoaEjb {
 
 	@Override
 	public Pessoa buscarPessoa(Pessoa pessoa) {
-		Dao<Pessoa> dao = new Dao<Pessoa>();
-		return dao.getById(pessoa.getId());
+		PessoaDao dao = new PessoaDao();
+		pessoa = dao.getById(pessoa.getId());
+		
+//		Dao<Contato> dao = new Dao<Contato>();
+//		pessoa.setContatos(dao.);
+		
+		return pessoa;
 	}
 
 	@Override
@@ -173,6 +180,20 @@ public class PessoaEjb implements IPessoaEjb {
 		
 		return pessoas;
 	}
+
+	@Override
+	public void salvarContatoPessoa(Contato contato) {
+		Dao<Contato> dao = new Dao<Contato>();
+		if (contato.getPessoa() != null){
+			if (contato.getId() == 0){
+				dao.add(contato);
+			}else{
+				dao.update(contato);
+			}
+		}
+	}
+	
+	
 
 
 }

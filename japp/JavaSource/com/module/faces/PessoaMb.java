@@ -72,7 +72,6 @@ public class PessoaMb extends BaseMb{
 				this.pessoa = pessoaEjb.salvarPessoa(this.pessoa);
 			} catch (NoSuchAlgorithmException e) {				
 				addMsgError("Erro ao salvar dados - "+e.getMessage());
-				//e.printStackTrace();
 			}
 			this.pessoas.clear();
 			addMsg("Registro salvo com sucesso.");
@@ -116,11 +115,15 @@ public class PessoaMb extends BaseMb{
 	}
 	
 	public void limparContatos(){
-		
+		this.contatoTemp = new Contato();
 	}
 	
 	public void salvarContatos(){
-		
+		if ((this.pessoa != null)&&(!isIdZeroOrNull(this.pessoa.getId()))){
+			this.contatoTemp.setPessoa(this.pessoa);
+			pessoaEjb.salvarContatoPessoa(contatoTemp);
+			this.pessoa = pessoaEjb.buscarPessoa(this.pessoa);
+		}
 	}
 	
 	public Pessoa getPessoa() {

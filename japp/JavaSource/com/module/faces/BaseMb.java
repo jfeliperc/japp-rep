@@ -42,5 +42,10 @@ public class BaseMb {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, msg,  "");
         FacesContext.getCurrentInstance().addMessage(null, message);     
 	}
+	
+	protected boolean isIdZeroOrNull(Integer id){		
+		return ((id == null)||(id.intValue() == 0));
+		
+	}
 		
 }

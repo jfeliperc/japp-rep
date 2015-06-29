@@ -246,7 +246,7 @@ ENGINE = INNODB;
 -- Table `japp`.`contato`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `japp`.`contato` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `tipo` VARCHAR(45) NULL,
   `descricao` VARCHAR(45) NULL,
   `pessoa_id` INT NOT NULL,
@@ -335,7 +335,7 @@ ENGINE = INNODB;
 -- Table `japp`.`endereco`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `japp`.`endereco` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `tipo_endereco` VARCHAR(45) NULL,
   `uf` VARCHAR(45) NULL,
   `cidade` VARCHAR(2) NULL,  

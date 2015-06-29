@@ -3,6 +3,7 @@ package com.module.ejb.contract;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import com.module.jpa.model.Contato;
 import com.module.jpa.model.Empresa;
 import com.module.jpa.model.Pessoa;
 
@@ -29,5 +30,7 @@ public interface IPessoaEjb {
 	public void excluirPessoa(Pessoa pessoa, boolean exclusaoFisica);
 
 	public List<Pessoa> listarPessoasAcesso(Pessoa pessoa);
+
+	public void salvarContatoPessoa(Contato contatoTemp);
 	
 }
