@@ -12,7 +12,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.module.ejb.contract.IProdutoEjb;
 import com.module.jpa.model.GrupoProduto;
-import com.module.jpa.model.Pessoa;
 import com.module.jpa.model.Produto;
 import com.module.jpa.model.TipoProduto;
 
@@ -31,6 +30,8 @@ public class ProdutoMb extends BaseMb{
 	
 	@PostConstruct
 	public void construcao(){
+		produto = new Produto();
+		
 		itemsTipoProduto = this.produtoEjb.buscarAllTipoProduto();
 		itemsGrupoProduto = this.produtoEjb.buscarAllGrupoProduto();
 	}

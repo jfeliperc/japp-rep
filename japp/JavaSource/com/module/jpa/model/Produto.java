@@ -93,6 +93,8 @@ public class Produto implements Serializable, IGenericModel {
 	private List<ValorProduto> valorProdutos;
 
 	public Produto() {
+		setTipoProduto(new TipoProduto());
+		setGrupoProduto(new GrupoProduto());
 	}
 
 	public Integer getId() {
