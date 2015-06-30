@@ -1,7 +1,10 @@
 package com.module.jpa.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import com.module.faces.geral.IGenericModel;
 
 
 /**
@@ -9,13 +12,15 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQuery(name="Contato.findAll", query="SELECT c FROM Contato c")
-public class Contato implements Serializable {
+@NamedQueries({
+	@NamedQuery(name="Contato.findAll", query="SELECT c FROM Contato c"),
+	@NamedQuery(name="Contato.findByPessoaAll", query="SELECT c FROM Contato c WHERE c.pessoa.id = :idPessoa")})
+public class Contato implements Serializable, IGenericModel {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Integer id;
 
 	private String descricao;
 
@@ -28,11 +33,11 @@ public class Contato implements Serializable {
 	public Contato() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

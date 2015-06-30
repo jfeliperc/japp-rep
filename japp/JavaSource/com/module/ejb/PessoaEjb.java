@@ -35,13 +35,16 @@ public class PessoaEjb implements IPessoaEjb {
 
 	@Override
 	public Pessoa buscarPessoa(Pessoa pessoa) {
-		PessoaDao dao = new PessoaDao();
-		pessoa = dao.getById(pessoa.getId());
-		
-//		Dao<Contato> dao = new Dao<Contato>();
-//		pessoa.setContatos(dao.);
-		
-		return pessoa;
+		if ((pessoa != null)&&(pessoa.getId() != null)){
+			PessoaDao dao = new PessoaDao();
+			pessoa = dao.getById(pessoa.getId());
+
+			pessoa.setContatos(dao.getContatosPessoa(pessoa));
+
+			return pessoa;
+		}else{
+			return null;
+		}
 	}
 
 	@Override

@@ -8,21 +8,19 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.module.jpa.model.Contato;
 import com.module.jpa.model.Pessoa;
 
 public class PessoaDao extends Dao<Pessoa> {
 
-	public Pessoa getByLogin(String login) {
-		
-//		Pessoa pessoa = new Pessoa();
-//		pessoa.setLogin(login);
-//		List<Pessoa> result = (List<Pessoa>) getEm().find(Pessoa.class, pessoa);
-		
+	public PessoaDao() {
+		super(Pessoa.class);
+	}
+
+	public Pessoa getByLogin(String login) {		
 		Pessoa pessoa = (Pessoa)getEm().createNamedQuery("Pessoa.findByLogin")
 				.setParameter("login", login) 
-				.getSingleResult();
-		
-		
+				.getSingleResult();		
 		return pessoa;
 	}
 	
@@ -54,6 +52,14 @@ public class PessoaDao extends Dao<Pessoa> {
 		}
 		
 		return predicate;
+	}
+
+	public List<Contato> getContatosPessoa(Pessoa pessoa) {
+		@SuppressWarnings("unchecked")
+		List<Contato> contatos = getEm().createNamedQuery("Contato.findByPessoaAll")
+				.setParameter("idPessoa", pessoa.getId()) 
+				.getResultList();		
+		return contatos;
 	}
 
 	

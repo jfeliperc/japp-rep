@@ -54,7 +54,8 @@
 	                    <h:inputText id="nomecompleto" value="#{pessoaMb.pessoa.nomecompleto}" title="nome completo" size="100" />
 	                    
 	                    <h:outputLabel value="Data Nascimento" for="datanascimento" />
-	                    <h:inputText id="datanascimento" value="#{pessoaMb.pessoa.datanascimento}" title="data nascimento" >
+	                    <h:inputText id="datanascimento" value="#{pessoaMb.pessoa.datanascimento}" title="data nascimento" 
+	                    		onkeypress="mask(this,'99/99/9999',1,this)">
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
 	                    
@@ -100,9 +101,9 @@
 						</h:selectOneMenu>
 	                    	                    
 	                    <h:outputLabel value="Empresa" for="empresaId" />
-	                    <h:selectOneMenu id="empresaId" value="#{pessoaMb.pessoa.empresa}" title="Selecione a empresa vinculada" style="width:200px" converter="genConverter">
+	                    <h:selectOneMenu id="empresaId" value="#{pessoaMb.pessoa.empresa.id}" title="Selecione a empresa vinculada" style="width:200px" converter="genConverter">
 	                        <f:selectItem itemValue="#{null}" itemLabel=""/>
-	                        <f:selectItems value="#{pessoaMb.empresas}" var="emp" itemValue="#{emp}" itemLabel="#{emp.nomeFantasia}"/>
+	                        <f:selectItems value="#{pessoaMb.empresas}" var="emp" itemValue="#{emp.id}" itemLabel="#{emp.nomeFantasia}"/>
 	                    </h:selectOneMenu>
 	                    
 	                    <h:outputLabel value="Email" for="email" />

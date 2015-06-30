@@ -57,6 +57,8 @@ public class PessoaMb extends BaseMb{
 			if ((this.pessoas != null)&&(!this.pessoas.isEmpty())&&(this.pessoas.size() == 1)){
 				this.pessoa = this.pessoas.get(0);
 				this.pessoas.clear();
+				
+				this.pessoa = pessoaEjb.buscarPessoa(this.pessoa);
 			}else{
 				setMostrarLista((this.pessoas != null)&&(!this.pessoas.isEmpty()));
 			}
@@ -80,6 +82,7 @@ public class PessoaMb extends BaseMb{
 
 	public void editar(Pessoa us){
 		this.pessoa = us;
+		this.pessoa = pessoaEjb.buscarPessoa(this.pessoa);
 		alternaMostraLista();
 	}
 	
