@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.module.faces.geral.IGenericModel;
+
 import java.util.List;
 
 
@@ -14,19 +16,20 @@ import java.util.List;
 @Entity
 @Table(name="rotina")
 @NamedQuery(name="Rotina.findAll", query="SELECT r FROM Rotina r")
-public class Rotina implements Serializable {
+public class Rotina implements Serializable, IGenericModel {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Integer id;
 
 	private String descricao;
 
 	private String rotina;
 
 	@Column(name="rotina_pai")
-	private int rotinaPai;
+	private Integer rotinaPai;
 
 	private int status;
 
@@ -41,11 +44,11 @@ public class Rotina implements Serializable {
 	public Rotina() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -65,11 +68,11 @@ public class Rotina implements Serializable {
 		this.rotina = rotina;
 	}
 
-	public int getRotinaPai() {
+	public Integer getRotinaPai() {
 		return this.rotinaPai;
 	}
 
-	public void setRotinaPai(int rotinaPai) {
+	public void setRotinaPai(Integer rotinaPai) {
 		this.rotinaPai = rotinaPai;
 	}
 
