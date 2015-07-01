@@ -39,6 +39,10 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
 		<class>com.module.jpa.model.ReceitaCardProdutoHi</class>
 		<class>com.module.jpa.model.ReceitaCardapioHi</class>
 		<class>com.module.jpa.model.Rotina</class>
+		<class>com.module.jpa.model.ParcelasNfe</class>
+		<class>com.module.jpa.model.NfEntrada</class>
+		<class>com.module.jpa.model.ItemNfEntrada</class>
+		<class>com.module.jpa.model.CfopNfentrada</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/japp"/>
