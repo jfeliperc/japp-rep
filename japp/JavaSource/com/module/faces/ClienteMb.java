@@ -68,7 +68,9 @@ public class ClienteMb extends BaseMb{
 	}
 	
 	public void excluir(){
-
+		if (validarSalvar()){
+			clienteEjb.excluirCliente(this.cliente);
+		}
 	}
 	
 	public AgenteExterno getCliente() {

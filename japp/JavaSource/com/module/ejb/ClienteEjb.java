@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.module.ejb.contract.IClienteEjb;
 import com.module.enums.TipoPessoa;
-import com.module.jpa.dao.Dao;
+import com.module.jpa.dao.AgenteExternoDao;
 import com.module.jpa.model.AgenteExterno;
 
 @Stateless
@@ -17,7 +17,7 @@ public class ClienteEjb implements IClienteEjb {
 
 	@Override
 	public AgenteExterno cadastrarCliente(AgenteExterno cliente) {
-		Dao<AgenteExterno> daoAgenteExterno = new Dao<AgenteExterno>();
+		AgenteExternoDao daoAgenteExterno = new AgenteExternoDao();
 		
 		cliente.setDataalteracao(new Date());
 		cliente.setAtivo("A");		
@@ -39,19 +39,24 @@ public class ClienteEjb implements IClienteEjb {
 
 	@Override
 	public AgenteExterno buscarCliente(AgenteExterno cliente) {
-		// TODO Auto-generated method stub
-		return null;
+		AgenteExternoDao daoAgenteExterno = new AgenteExternoDao();
+		return daoAgenteExterno.getById(cliente.getId());
 	}
 
 	@Override
 	public List<AgenteExterno> listarClientes(AgenteExterno cliente) {
-		// TODO Auto-generated method stub
-		return null;
+		AgenteExternoDao daoAgenteExterno = new AgenteExternoDao();
+		List<AgenteExterno> res = daoAgenteExterno.findByExample(cliente);
+		return res;
 	}
 
 	@Override
 	public void excluirCliente(AgenteExterno cliente) {
-		// TODO Auto-generated method stub
+		if (cliente.getId() != null){
+			AgenteExternoDao daoAgenteExterno = new AgenteExternoDao();
+			cliente.setAtivo("0");
+			daoAgenteExterno.update(cliente);
+		}
 		
 	}
 
