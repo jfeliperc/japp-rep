@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 import com.module.ejb.contract.IProdutoEjb;
+import com.module.faces.geral.UtilsJapp;
 import com.module.jpa.dao.Dao;
 import com.module.jpa.dao.GrupoProdutoDao;
 import com.module.jpa.dao.ProdutoDao;
@@ -18,13 +19,23 @@ import com.module.jpa.model.TipoProduto;
 @Stateless
 public class ProdutoEjb implements IProdutoEjb {
 
+	
 	@Override
 	public Produto cadastrarProduto(Produto produto) {
 		
+		TipoProdutoDao tipoDao = new TipoProdutoDao();
+		GrupoProdutoDao grupoDao = new GrupoProdutoDao();
+		if (!UtilsJapp.isNullOrZero(produto.getTipoProduto().getId())){
+			produto.setTipoProduto(tipoDao.getById(produto.getTipoProduto().getId()));
+		}
+		if (!UtilsJapp.isNullOrZero(produto.getGrupoProduto().getId())){
+			produto.setGrupoProduto(grupoDao.getById(produto.getGrupoProduto().getId()));
+		}
+				
 		Dao<Produto> dao = new Dao<Produto>();
 		produto.setDataalteracao(new Date());
-		if ((produto.getId() == null)||(0 == produto.getId().intValue())){
-			produto.setId(null);
+		if (UtilsJapp.isNullOrZero(produto.getId())){
+			produto.setId(null);			
 			produto.setDatainclusao(new Date());
 			dao.add(produto);
 		}else{

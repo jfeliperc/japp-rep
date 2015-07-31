@@ -24,7 +24,9 @@ C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\dao\AgenteExterno
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\GrupoProduto.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\geral\IGenericModel.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\FornecedorEjb.java
+C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\ParcelasNfe.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\geral\JsfUtil.java
+C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\ItemNfEntrada.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\IPessoaEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\UsuarioEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\TipoReceita.java
@@ -42,11 +44,12 @@ C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\OrcamentoPr
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\IFornecedorEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\dao\ProdutoDao.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\geral\Menu.java
+C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\IEstoqueEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\ReceitaProduto.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\ReceitaCardapioHi.java
-C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\IEstoqueEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\CardapioEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\AcessoEjb.java
+C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\CfopNfentrada.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\IEmpresaEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\IUsuarioEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\geral\GenericConverter.java
@@ -74,6 +77,7 @@ C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\TipoGrupoProdut
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\ReceitaMb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\Receita.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\ClienteMb.java
+C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\NfEntrada.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\PessoaEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\enums\TipoPessoa.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\dao\IDao.java
