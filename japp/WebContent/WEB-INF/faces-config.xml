@@ -84,6 +84,11 @@
         	<to-view-id>/pages/cardapio.xhtml</to-view-id>
         </navigation-case>    
             
+        <navigation-case>
+        	<from-outcome>servico</from-outcome>
+        	<to-view-id>/pages/servico.xhtml</to-view-id>
+        </navigation-case> 
+        
 	</navigation-rule>
 
     <application>

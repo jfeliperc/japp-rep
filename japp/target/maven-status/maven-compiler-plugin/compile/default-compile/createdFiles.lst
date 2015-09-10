@@ -60,6 +60,7 @@ com\module\jpa\model\OrcamentoProduto.class
 com\module\faces\ClienteMb.class
 com\module\ejb\EstoqueEjb.class
 com\module\faces\EstoqueMb.class
+com\module\faces\geral\UtilsJapp.class
 com\module\jpa\dao\RotinaDao.class
 com\module\enums\TipoPessoa.class
 com\module\jpa\dao\EmpresaDao.class
