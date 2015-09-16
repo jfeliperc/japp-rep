@@ -26,6 +26,7 @@ public class FornecedorEjb implements IFornecedorEjb {
 		AgenteExternoDao dao = new AgenteExternoDao();
 		fornecedor.setDataalteracao(new Date());
 		if (UtilsJapp.isNullOrZero(fornecedor.getId())){
+			fornecedor.setId(null);
 			fornecedor.setTipo("F");
 			fornecedor.setDatainclusao(new Date());
 			dao.add(fornecedor);
@@ -48,7 +49,8 @@ public class FornecedorEjb implements IFornecedorEjb {
 
 	@Override
 	public List<AgenteExterno> listarFornecedores(AgenteExterno fornecedor) {
-		AgenteExternoDao dao = new AgenteExternoDao();		
+		AgenteExternoDao dao = new AgenteExternoDao();	
+		fornecedor.setTipo("F");
 		List<AgenteExterno> result = dao.findByExample(fornecedor);		
 		return result;
 	}

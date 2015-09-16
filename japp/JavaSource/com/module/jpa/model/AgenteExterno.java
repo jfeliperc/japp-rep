@@ -1,7 +1,9 @@
 package com.module.jpa.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +14,13 @@ import java.util.List;
  */
 @Entity
 @Table(name="agente_externo")
-@NamedQuery(name="AgenteExterno.findAll", query="SELECT a FROM AgenteExterno a")
+
+@NamedQueries({
+    @NamedQuery(name = "AgenteExterno.findAll", query = "SELECT a FROM AgenteExterno a"),
+    @NamedQuery(name = "AgenteExterno.findById", query = "SELECT a FROM AgenteExterno a WHERE a.id = :id"),
+    @NamedQuery(name = "AgenteExterno.findByTipo", query = "SELECT a FROM AgenteExterno a WHERE a.tipo = :tipo"),    
+    @NamedQuery(name = "AgenteExterno.findByNome", query = "SELECT a FROM AgenteExterno a WHERE a.nome = :nome")})
+
 public class AgenteExterno implements Serializable {
 	private static final long serialVersionUID = 1L;
 

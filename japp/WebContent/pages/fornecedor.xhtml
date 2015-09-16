@@ -69,21 +69,20 @@
 	                    
 	                    <h:outputLabel value="Status" for="ativo" />
 	                    <h:selectOneMenu value="#{fornecedorMb.fornecedor.ativo}" style="width:150px">
-							<f:selectItem itemLabel="Ativo" itemValue="A"/>
-							<f:selectItem itemLabel="Inativo" itemValue="I"/>
+							<f:selectItem itemLabel="Ativo" itemValue="1"/>
+							<f:selectItem itemLabel="Inativo" itemValue="0"/>
 						</h:selectOneMenu>						
 						
 	                    <h:outputLabel value="Observacao" for="observacao" />
 	                    <h:inputText id="observacao" value="#{fornecedorMb.fornecedor.observacao}" title="Observação" size="110" />
 	                    
+	                    <h:outputLabel value="Data inclusão" for="datainclusao" />
+	                    <h:outputLabel id="datainclusao" value="#{fornecedorMb.fornecedor.datainclusao}" title="Data inclusão" >
+	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+	                    </h:outputLabel>	                    
 	                    
 	                    <h:outputLabel value="Data alteração" for="dataalteracao" />
 	                    <h:outputLabel id="dataalteracao" value="#{fornecedorMb.fornecedor.dataalteracao}" title="Data alteração" >
-	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-	                    </h:outputLabel>
-	                    
-	                    <h:outputLabel value="Data inclusão" for="datainclusao" />
-	                    <h:outputLabel id="datainclusao" value="#{fornecedorMb.fornecedor.datainclusao}" title="Data inclusão" >
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 	                    </h:outputLabel>
 	                    

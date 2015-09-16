@@ -70,7 +70,11 @@
 	                    <h:inputText id="tipodocumento" value="#{pessoaMb.pessoa.tipodocumento}" title="tipo documento" />
 	                    
 	                    <h:outputLabel value="Tipo Pessoa" for="tipoPessoa" />
-	                    <h:inputText id="tipoPessoa" value="#{pessoaMb.pessoa.tipoPessoa}" title="Tipo Pessoa" required="false"/>
+	                    <h:selectOneMenu value="#{pessoaMb.pessoa.tipoPessoa}" style="width:150px">
+							<f:selectItem itemLabel="Pessoa Física" itemValue="PF"/>
+							<f:selectItem itemLabel="Pessoa Jurídica" itemValue="PJ"/>
+							<a4j:ajax event="change" render="pnlCadCli"></a4j:ajax>
+						</h:selectOneMenu>
 	                    
 	                    <h:outputLabel value="login" for="login" />
 	                    <h:inputText id="login" value="#{pessoaMb.pessoa.login}" title="login" />
@@ -82,17 +86,17 @@
 	                    </h:panelGroup>
 	                    
 	                    <h:outputLabel value="Validade Login" for="validadeLogin" />
-	                    <h:inputText id="validadeLogin" value="#{pessoaMb.pessoa.validadeLogin}" title="Validade Login" >
+	                    <h:outputLabel id="validadeLogin" value="#{pessoaMb.pessoa.validadeLogin}" title="Validade Login" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
-	                    </h:inputText>
+	                    </h:outputLabel>
 	                    
 	                    <h:outputLabel value="Tipo Usuário" for="tipoUsuario" />
 	                    <h:inputText id="tipoUsuario" value="#{pessoaMb.pessoa.tipoUsuario}" title="Tipo Usuario" required="false"/>
 	                    
 	                    <h:outputLabel value="Data Último Acesso" for="dataultimoacesso" />
-	                    <h:inputText id="dataultimoacesso" value="#{pessoaMb.pessoa.dataultimoacesso}" title="Data Último Acesso}" >
+	                    <h:outputLabel id="dataultimoacesso" value="#{pessoaMb.pessoa.dataultimoacesso}" title="Data Último Acesso}" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
-	                    </h:inputText>
+	                    </h:outputLabel>
 	                    	                    
 	                    <h:outputLabel value="Status" for="tipo" />
 	                    <h:selectOneMenu value="#{pessoaMb.pessoa.tipo}" style="width:150px" id="tipo">

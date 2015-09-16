@@ -46,6 +46,7 @@ public class ClienteEjb implements IClienteEjb {
 	@Override
 	public List<AgenteExterno> listarClientes(AgenteExterno cliente) {
 		AgenteExternoDao daoAgenteExterno = new AgenteExternoDao();
+		cliente.setTipo("C");
 		List<AgenteExterno> res = daoAgenteExterno.findByExample(cliente);
 		return res;
 	}

@@ -36,21 +36,24 @@
 							<a4j:ajax event="change" render="pnlCadCli"></a4j:ajax>
 						</h:selectOneMenu>	
 						
-						<h:outputLabel value="Data Alteracao" for="dataalteracao" />
-	                    <h:inputText id="dataalteracao" value="#{clienteMb.cliente.dataalteracao}" title="dataalteracao" >
-	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-	                    </h:inputText>
-	                    
-	                    <h:outputLabel value="Data Inclusao" for="datainclusao" />
-	                    <h:inputText id="datainclusao" value="#{clienteMb.cliente.datainclusao}" title="datainclusao" >
-	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-	                    </h:inputText>
-	                    
 	                    <h:outputLabel value="Status" for="ativo" />
 	                    <h:selectOneMenu value="#{clienteMb.cliente.ativo}" style="width:150px">
 							<f:selectItem itemLabel="Ativo" itemValue="A"/>
 							<f:selectItem itemLabel="Inativo" itemValue="I"/>
-						</h:selectOneMenu>                    
+						</h:selectOneMenu> 						
+	                    <h:panelGroup></h:panelGroup>
+	                    <h:panelGroup></h:panelGroup>
+	                    
+	                    <h:outputLabel value="Data Inclusao" for="datainclusao" />
+	                    <h:outputLabel id="datainclusao" value="#{clienteMb.cliente.datainclusao}" title="datainclusao" >
+	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+	                    </h:outputLabel>
+	                                   
+						<h:outputLabel value="Data Alteracao" for="dataalteracao" />
+	                    <h:outputLabel id="dataalteracao" value="#{clienteMb.cliente.dataalteracao}" title="dataalteracao" >
+	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+	                    </h:outputLabel>
+	                        
 					</h:panelGrid>
 					<hr/>	
 	                <h:panelGrid columns="4" styleClass="gridForm" rendered="#{clienteMb.cliente.tipoPessoa == 'PF'}">   	                    
