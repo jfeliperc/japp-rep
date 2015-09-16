@@ -53,9 +53,9 @@
 	                    <h:panelGrid columns="6" styleClass="gridForm">
 	                    	<h:outputLabel value="Tipo de Receita" for="tipoReceita" />
 	                    	<h:panelGroup id="seltipoReceita" layout="block">
-			                    <h:selectOneMenu id="tipoProdutoId" value="#{receitaMb.receita.servicoId}" title="Tipo Receita" 
+			                    <h:selectOneMenu id="tipoProdutoId" value="#{receitaMb.receita.tipoReceita.id}" title="Tipo Receita" 
 			                    	required="false" requiredMessage="Campo Serviço é obrigatório" style="width:250px">
-			                        <f:selectItems value="#{receitaMb.listServico}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
+			                        <f:selectItems value="#{receitaMb.itemsTipoReceita}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
 			                    </h:selectOneMenu>		                    
 		                    </h:panelGroup>
 		                    
@@ -107,13 +107,13 @@
 											<h:outputLabel value="Tipo Produto" for="selTipoProd" />
 						                    <h:panelGroup id="selTipoProd" layout="block">
 							                    <h:selectOneMenu id="idTipPro" value="#{receitaMb.receitaProduto.produtoId}" title="Tipo Produto" style="width:250px">
-							                        <f:selectItems value="#{receitaMb.listProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
+							                        <f:selectItems value="#{receitaMb.itemsTipoProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
 							                    </h:selectOneMenu>		                    
 						                    </h:panelGroup>	
 						                    <h:outputLabel value="Grupo Produto" for="selGrpProd" />
 						                    <h:panelGroup id="selGrpProd" layout="block">
 							                    <h:selectOneMenu id="idGrpPro" value="#{receitaMb.receitaProduto.produtoId}" title="Grupo Produto" style="width:250px">
-							                        <f:selectItems value="#{receitaMb.listProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
+							                        <f:selectItems value="#{receitaMb.itemsGrupoProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
 							                    </h:selectOneMenu>		                    
 						                    </h:panelGroup>
 						                    <h:panelGroup></h:panelGroup>
@@ -170,7 +170,7 @@
 							
 								<h:panelGroup style="width:99%">
 									<fieldset><legend>Descrição</legend>
-										<h:inputTextarea value="#{receitaMb.receita.descricao}" rows="13" cols="210" />
+										<h:inputTextarea value="#{receitaMb.receita.descricao}" rows="13" cols="200" />
 									</fieldset>
 								</h:panelGroup>
 							
