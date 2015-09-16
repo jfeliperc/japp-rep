@@ -73,7 +73,7 @@ public class ProdutoEjb implements IProdutoEjb {
 	public List<TipoProduto> buscarTipoProduto(TipoProduto tipoProduto) {
 		TipoProdutoDao dao = new TipoProdutoDao();
 		List<TipoProduto> ret = new ArrayList<TipoProduto>();
-		tipoProduto.setId(tipoProduto.getId() != null && tipoProduto.getId().intValue() == 0 ? null : tipoProduto.getId());
+		tipoProduto.setId(UtilsJapp.isNullOrZero(tipoProduto.getId()) ? null : tipoProduto.getId());
 		if ((tipoProduto.getId() == null)
 				&&((tipoProduto.getNome() == null)||("".equals(tipoProduto.getNome())))
 				&&((tipoProduto.getDescricao() == null)||("".equals(tipoProduto.getDescricao())))){
@@ -88,7 +88,7 @@ public class ProdutoEjb implements IProdutoEjb {
 	public List<GrupoProduto> buscarGrupoProduto(GrupoProduto grupoProduto) {
 		GrupoProdutoDao dao = new GrupoProdutoDao();
 		List<GrupoProduto> ret = new ArrayList<GrupoProduto>();
-		grupoProduto.setId(grupoProduto.getId() != null && grupoProduto.getId().intValue() == 0 ? null : grupoProduto.getId());
+		grupoProduto.setId(UtilsJapp.isNullOrZero(grupoProduto.getId()) ? null : grupoProduto.getId());
 		if ((grupoProduto.getId() == null)				
 				&&((grupoProduto.getNome() == null)||("".equals(grupoProduto.getNome())))
 				&&((grupoProduto.getDescricao() == null)||("".equals(grupoProduto.getDescricao())))
@@ -105,7 +105,7 @@ public class ProdutoEjb implements IProdutoEjb {
 		TipoProdutoDao dao = new TipoProdutoDao();
 		try {
 			tipoProduto.setDataalteracao(new Date());
-			if ((tipoProduto.getId() != null)&&(tipoProduto.getId().intValue() > 0)){			
+			if (!UtilsJapp.isNullOrZero(tipoProduto.getId())){			
 				dao.update(tipoProduto);			
 			}else{
 				tipoProduto.setDatainclusao(new Date());
@@ -123,7 +123,7 @@ public class ProdutoEjb implements IProdutoEjb {
 		GrupoProdutoDao dao = new GrupoProdutoDao();
 		try {			
 			grupoProduto.setDataalteracao(new Date());
-			if ((grupoProduto.getId() != null)&&(grupoProduto.getId().intValue() > 0)){				
+			if (!UtilsJapp.isNullOrZero(grupoProduto.getId())){					
 				dao.update(grupoProduto);
 			}else{
 				grupoProduto.setDatainclusao(new Date());

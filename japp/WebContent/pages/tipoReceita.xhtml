@@ -17,11 +17,11 @@
 				      		<span class="btn-group navbar-left">
 					      		<h:panelGroup id="botoesPanel2" layout="block">		      			
 				      				<table><tr><td width="20px">
-				      				<h:commandLink action="#{receitaMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+				      				<h:commandLink action="#{tipoReceitaMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
 				      				</td><td width="20px">
-				      				<h:commandLink action="#{receitaMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>	
+				      				<h:commandLink action="#{tipoReceitaMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>	
 				      				</td><td width="20px">
-				      				<h:commandLink action="#{receitaMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>      				
+				      				<h:commandLink action="#{tipoReceitaMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>      				
 				      				</td></tr></table>		      				
 					      		</h:panelGroup>
 				      		</span>
@@ -40,14 +40,14 @@
 			      						            	
 					      	<h:panelGrid columns="2" styleClass="gridForm" cellspacing="5px" cellpadding="5">
 			                    <h:outputLabel value="Id" for="id" />
-			                    <h:inputText id="idtp" value="#{tipoGrupoProdutoMb.tipoProduto.id}" title="#{bundle.ProdutoTitle_id}" required="false"/>
+			                    <h:inputText id="idtp" value="#{tipoReceitaMb.tipoReceita.id}" required="false"/>
 			                    <h:outputLabel value="Nome" for="nome" />
-			                    <h:inputText id="nometp" value="#{tipoGrupoProdutoMb.tipoProduto.nome}" title="#{bundle.ProdutoTitle_nome}" required="false" size="100"/>
+			                    <h:inputText id="nometp" value="#{tipoReceitaMb.tipoReceita.nome}" required="false" size="100"/>
 			                    <h:outputLabel value="Descrição" for="descricao" />
-			                    <h:inputText id="descricaotp" value="#{tipoGrupoProdutoMb.tipoProduto.descricao}" title="#{bundle.ProdutoTitle_nome}" required="false" size="100"/>			                    
+			                    <h:inputText id="descricaotp" value="#{tipoReceitaMb.tipoReceita.descricao}" required="false" size="100"/>			                    
 			                </h:panelGrid>
 			                <br/>
-							<rich:dataTable value="#{tipoGrupoProdutoMb.listTipoProduto}" var="us" style="width:100%" id="tbTipo">
+							<rich:dataTable value="#{tipoReceitaMb.listTipoReceita}" var="us" style="width:100%" id="tbTipo">
 				    			<rich:column>
 				    				<f:facet name="header">id</f:facet>
 				    				<h:outputText value="#{us.id}" />
@@ -62,7 +62,7 @@
 				    			</rich:column>
 				    			<rich:column>
 				    				<f:facet name="header">Ação</f:facet>
-				    				<center><h:commandLink action="#{pessoaMb.editar(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
+				    				<center><h:commandLink action="#{tipoReceitaMb.editar(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
 				    			</rich:column>
 				    		</rich:dataTable>       
 												

@@ -2,30 +2,25 @@ package com.module.ejb.contract;
 
 import java.util.List;
 
-import com.module.jpa.model.GrupoProduto;
-import com.module.jpa.model.Produto;
-import com.module.jpa.model.TipoProduto;
+import com.module.jpa.model.Receita;
+import com.module.jpa.model.TipoReceita;
 
 public interface IReceitaEjb {
 
-	public Produto cadastrarProduto(Produto produto);
+	public Receita cadastrarReceita(Receita receita);
 	
-	public Produto buscarProduto(Produto produto);
+	public Receita buscarReceita(Receita receita);
 	
-	public List<Produto> listarProdutos(Produto produto);
+	public List<Receita> listarReceitas(Receita receita);
 	
-	public void excluirProduto(Produto produto);
+	public void excluirReceita(Receita receita);
 
-	public List<TipoProduto> buscarTipoProduto(TipoProduto tipoProduto);
+	public List<Receita> buscarAllReceitas();
 
-	public List<GrupoProduto> buscarGrupoProduto(GrupoProduto grupoProduto);
+	public List<TipoReceita> buscarAllTipoReceitas();
+	
+	public List<TipoReceita> buscarTipoReceita(TipoReceita tipoReceita);
 
-	public TipoProduto salvarTipoProduto(TipoProduto tipoProduto);
-
-	public GrupoProduto salvarGrupoProduto(GrupoProduto grupoProduto);
-
-	public List<GrupoProduto> buscarAllGrupoProduto();
-
-	public List<TipoProduto> buscarAllTipoProduto();
+	public TipoReceita salvarTipoReceita(TipoReceita tipoReceita);
 	
 }

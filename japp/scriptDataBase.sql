@@ -408,6 +408,21 @@ CONSTRAINT `fk_pedido_item_produto_id` FOREIGN KEY (`produto_id`) REFERENCES `ja
 ) ENGINE=INNODB;
 
 -- ------------------------------------------------------------------------
+
+-- -----------------------------------------------------
+-- Table `japp`.`tipo_receita`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `japp`.`tipo_receita` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NOT NULL,
+  `descricao` VARCHAR(45) NULL,
+  `datainclusao` DATETIME NULL,
+  `dataalteracao` DATETIME NULL,
+  PRIMARY KEY (`id`),
+  INDEX `idx_id_tiporeceita` (`id` ASC),
+  INDEX `idx_nome_tiporeceita` (`nome` ASC))
+ENGINE = INNODB;
+
 -- -----------------------------------------------------
 -- Table `japp`.`receita`
 -- -----------------------------------------------------

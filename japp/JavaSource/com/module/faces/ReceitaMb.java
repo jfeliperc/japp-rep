@@ -11,6 +11,7 @@ import javax.faces.bean.SessionScoped;
 import org.apache.commons.lang3.StringUtils;
 
 import com.module.ejb.contract.IProdutoEjb;
+import com.module.ejb.contract.IReceitaEjb;
 import com.module.jpa.model.GrupoProduto;
 import com.module.jpa.model.Produto;
 import com.module.jpa.model.Receita;
@@ -26,6 +27,9 @@ public class ReceitaMb extends BaseMb{
 
 	@EJB
 	private IProdutoEjb produtoEjb;
+	
+	@EJB
+	private IReceitaEjb receitaEjb;
 
 	private Produto produto;
 	private Receita receita;
@@ -40,8 +44,9 @@ public class ReceitaMb extends BaseMb{
 	
 	@PostConstruct
 	public void construcao(){
-		itemsTipoProduto = this.produtoEjb.buscarAllTipoProduto();
-		itemsGrupoProduto = this.produtoEjb.buscarAllGrupoProduto();
+		this.itemsTipoProduto = new ArrayList<TipoProduto>();
+		this.itemsGrupoProduto = new ArrayList<GrupoProduto>();
+		this.itemsTipoReceita = new ArrayList<TipoReceita>();
 		this.listReceitaProduto = new ArrayList<ReceitaProduto>();
 		this.receita = new Receita();
 		this.receitaProduto = new ReceitaProduto();
@@ -57,6 +62,7 @@ public class ReceitaMb extends BaseMb{
 		this.listProduto = new ArrayList<Produto>();
 		this.itemsTipoProduto = produtoEjb.buscarAllTipoProduto();
 		this.itemsGrupoProduto = produtoEjb.buscarAllGrupoProduto();
+		this.itemsTipoReceita = receitaEjb.buscarAllTipoReceitas();
 		this.produto.setId(null);
 	}
 	
