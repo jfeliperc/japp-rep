@@ -56,12 +56,14 @@
 								</h:selectOneMenu>
 			                    			                    
 			                    <h:outputLabel value="Data Inclusao" for="datainclusao" />
-			                    <rich:calendar value="#{empresaMb.empresa.datainclusao}" id="datainclusao" 
-									enableManualInput="true" datePattern="dd/MM/yyyy" />
+			                    <h:outputLabel id="datainclusao" value="#{empresaMb.empresa.datainclusao}" >
+			                        <f:convertDateTime pattern="dd/MM/yyyy" />
+			                    </h:outputLabel>
 			                    
 			                    <h:outputLabel value="Data Alteracao" for="dataalteracao" />
-			                    <rich:calendar value="#{empresaMb.empresa.dataalteracao}" id="dataalteracao" 
-									enableManualInput="true" datePattern="dd/MM/yyyy"/>
+			                    <h:outputLabel id="dataalteracao" value="#{empresaMb.empresa.dataalteracao}" >
+			                        <f:convertDateTime pattern="dd/MM/yyyy" />
+			                    </h:outputLabel>
 								
 			                    	
 			                </h:panelGrid>
@@ -113,10 +115,14 @@
 								</h:selectOneMenu>
 			                    			                    
 			                    <h:outputLabel value="Data Inclusao" for="datainclusao" />
-			                    <rich:calendar value="#{empresaMb.filial.datainclusao}" id="datainclusaoFil" enableManualInput="true" datePattern="dd/MM/yyyy"/>
+			                    <h:outputLabel id="datainclusaoFil" value="#{empresaMb.filial.datainclusao}" >
+			                        <f:convertDateTime pattern="dd/MM/yyyy" />
+			                    </h:outputLabel>
 			                    
 			                    <h:outputLabel value="Data Alteracao" for="dataalteracao" />
-			                    <rich:calendar value="#{empresaMb.filial.dataalteracao}" id="dataalteracaoFil" enableManualInput="true" datePattern="dd/MM/yyyy"/>
+			                    <h:outputLabel id="dataalteracaoFil" value="#{empresaMb.filial.dataalteracao}" >
+			                        <f:convertDateTime pattern="dd/MM/yyyy" />
+			                    </h:outputLabel>
 												      
 			                </h:panelGrid>
 			                <br/>

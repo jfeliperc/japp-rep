@@ -89,6 +89,11 @@
         	<to-view-id>/pages/servico.xhtml</to-view-id>
         </navigation-case> 
         
+        <navigation-case>
+        	<from-outcome>atividade</from-outcome>
+        	<to-view-id>/pages/atividade.xhtml</to-view-id>
+        </navigation-case>
+        
 	</navigation-rule>
 
     <application>

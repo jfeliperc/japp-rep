@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.module.ejb.contract.IPessoaEjb;
 import com.module.enums.TipoPessoa;
 import com.module.enums.TipoUsuario;
+import com.module.faces.geral.UtilsJapp;
 import com.module.jpa.dao.Dao;
 import com.module.jpa.dao.PessoaDao;
 import com.module.jpa.model.Contato;
@@ -22,10 +23,9 @@ public class PessoaEjb implements IPessoaEjb {
 
 		
 	@Override
-	public Pessoa cadastrarPessoa(Pessoa pessoa) {
-		
+	public Pessoa cadastrarPessoa(Pessoa pessoa) {		
 		PessoaDao dao = new PessoaDao();
-		if (pessoa.getId() == null){
+		if (UtilsJapp.isNullOrZero(pessoa.getId())){
 			dao.add(pessoa);
 		}else{
 			dao.update(pessoa);
@@ -35,7 +35,7 @@ public class PessoaEjb implements IPessoaEjb {
 
 	@Override
 	public Pessoa buscarPessoa(Pessoa pessoa) {
-		if ((pessoa != null)&&(pessoa.getId() != null)){
+		if ((pessoa != null)&&(!UtilsJapp.isNullOrZero(pessoa.getId()))){
 			PessoaDao dao = new PessoaDao();
 			pessoa = dao.getById(pessoa.getId());
 
@@ -49,10 +49,8 @@ public class PessoaEjb implements IPessoaEjb {
 
 	@Override
 	public List<Pessoa> listarPessoas(Pessoa pessoa) {
-		PessoaDao dao = new PessoaDao();
-		
-		List<Pessoa> result = dao.findByExample(pessoa);
-		
+		PessoaDao dao = new PessoaDao();		
+		List<Pessoa> result = dao.findByExample(pessoa);		
 		return result;
 	}
 
@@ -166,9 +164,12 @@ public class PessoaEjb implements IPessoaEjb {
 			pessoa.setPass(GeralEjb.convertPasswordToMD5(pessoa.getPass()));
 		}
 		
-		if (pessoa.getId() == null){
+		if (UtilsJapp.isNullOrZero(pessoa.getId())){
+			pessoa.setId(null);
 			pessoa.setDatainclusao(new Date());
-			pessoa.setEmpresa(null);
+			if ((pessoa.getEmpresa() == null)||(UtilsJapp.isNullOrZero(pessoa.getEmpresa().getId()))){
+				pessoa.setEmpresa(null);
+			}
 			daoPessoa.add(pessoa);
 		}else{
 			daoPessoa.update(pessoa);

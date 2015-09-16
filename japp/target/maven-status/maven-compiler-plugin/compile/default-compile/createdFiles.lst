@@ -18,8 +18,11 @@ com\module\jpa\model\AtividadeServico.class
 com\module\ejb\contract\IEmpresaEjb.class
 com\module\jpa\dao\TipoProdutoDao.class
 com\module\jpa\model\ParcelasNfe.class
+com\module\ejb\ServicoEjb.class
+com\module\ejb\contract\IServicoEjb.class
 com\module\jpa\model\Estoque.class
 com\module\jpa\dao\ProdutoDao.class
+com\module\jpa\dao\ServicoDao.class
 com\module\faces\geral\IGenericModel.class
 com\module\jpa\model\Empresa.class
 com\module\ejb\contract\IClienteEjb.class
@@ -30,6 +33,7 @@ com\module\ejb\contract\IReceitaEjb.class
 com\module\jpa\model\Servico.class
 com\module\jpa\dao\FornecedorDao.class
 com\module\ejb\PessoaEjb.class
+com\module\faces\ServicoMb.class
 com\module\jpa\model\TipoReceita.class
 com\module\jpa\model\Cardapio.class
 com\module\jpa\model\Endereco.class

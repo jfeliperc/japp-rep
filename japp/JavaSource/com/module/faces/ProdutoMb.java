@@ -28,16 +28,23 @@ public class ProdutoMb extends BaseMb{
 	private List<TipoProduto> itemsTipoProduto;
 	private List<GrupoProduto> itemsGrupoProduto;
 	
+	private TipoProduto tipo;
+	private GrupoProduto grupo;
+	
+	
 	@PostConstruct
 	public void construcao(){
 		produto = new Produto();
-		
+		tipo = new TipoProduto();
+		grupo = new GrupoProduto();
 		itemsTipoProduto = this.produtoEjb.buscarAllTipoProduto();
 		itemsGrupoProduto = this.produtoEjb.buscarAllGrupoProduto();
 	}
 	
 	public ProdutoMb(){		
 		this.produto = new Produto();
+		tipo = new TipoProduto();
+		grupo = new GrupoProduto();
 		this.itemsTipoProduto = new ArrayList<TipoProduto>();   
 	}
 
@@ -56,6 +63,8 @@ public class ProdutoMb extends BaseMb{
 			
 			if ((this.listProduto != null)&&(!this.listProduto.isEmpty())&&(this.listProduto.size() == 1)){
 				this.produto = this.listProduto.get(0);
+				this.tipo = this.produto.getTipoProduto();
+				this.grupo = this.produto.getGrupoProduto();
 				this.listProduto.clear();
 			}else{
 				setMostrarLista((this.listProduto != null)&&(!this.listProduto.isEmpty()));
@@ -69,6 +78,8 @@ public class ProdutoMb extends BaseMb{
 	
 	public void salvar(){
 		if (validarSalvar()){
+			this.produto.setTipoProduto(this.tipo);
+			this.produto.setGrupoProduto(this.grupo);
 			this.produto = this.produtoEjb.cadastrarProduto(this.produto);
 		}
 	}
@@ -88,6 +99,8 @@ public class ProdutoMb extends BaseMb{
 
 	public void editar(Produto us){
 		this.produto = us;
+		this.tipo = this.produto.getTipoProduto();
+		this.grupo = this.produto.getGrupoProduto();
 		alternaMostraLista();
 	}
 
@@ -127,6 +140,22 @@ public class ProdutoMb extends BaseMb{
 
 	public void setItemsGrupoProduto(List<GrupoProduto> itemsGrupoProduto) {
 		this.itemsGrupoProduto = itemsGrupoProduto;
+	}
+
+	public TipoProduto getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoProduto tipo) {
+		this.tipo = tipo;
+	}
+
+	public GrupoProduto getGrupo() {
+		return grupo;
+	}
+
+	public void setGrupo(GrupoProduto grupo) {
+		this.grupo = grupo;
 	}
 	
 }

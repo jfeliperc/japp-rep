@@ -79,12 +79,12 @@ public class Produto implements Serializable, IGenericModel {
 	private List<PedidoItem> pedidoItems;
 
 	//bi-directional many-to-one association to GrupoProduto
-	@ManyToOne(fetch = FetchType.EAGER) 
+	@ManyToOne(fetch = FetchType.LAZY) 
 	@JoinColumn(name="grupo_produto_id")
 	private GrupoProduto grupoProduto;
 
 	//bi-directional many-to-one association to TipoProduto
-	@ManyToOne(fetch = FetchType.EAGER) 
+	@ManyToOne(fetch = FetchType.LAZY) 
 	@JoinColumn(name="tipo_produto_id")
 	private TipoProduto tipoProduto;
 

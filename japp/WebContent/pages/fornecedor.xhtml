@@ -78,14 +78,14 @@
 	                    
 	                    
 	                    <h:outputLabel value="Data alteração" for="dataalteracao" />
-	                    <h:inputText id="dataalteracao" value="#{fornecedorMb.fornecedor.dataalteracao}" title="Data alteração" >
+	                    <h:outputLabel id="dataalteracao" value="#{fornecedorMb.fornecedor.dataalteracao}" title="Data alteração" >
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-	                    </h:inputText>
+	                    </h:outputLabel>
 	                    
 	                    <h:outputLabel value="Data inclusão" for="datainclusao" />
-	                    <h:inputText id="datainclusao" value="#{fornecedorMb.fornecedor.datainclusao}" title="Data inclusão" >
+	                    <h:outputLabel id="datainclusao" value="#{fornecedorMb.fornecedor.datainclusao}" title="Data inclusão" >
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-	                    </h:inputText>
+	                    </h:outputLabel>
 	                    
 	                </h:panelGrid>
 	                

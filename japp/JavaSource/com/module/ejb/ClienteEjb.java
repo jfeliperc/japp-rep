@@ -29,7 +29,7 @@ public class ClienteEjb implements IClienteEjb {
 		
 		if (cliente.getId() == null){
 			cliente.setDatainclusao(new Date());
-			
+			cliente.setTipo("C");
 			daoAgenteExterno.add(cliente);
 		}else{
 			daoAgenteExterno.update(cliente);

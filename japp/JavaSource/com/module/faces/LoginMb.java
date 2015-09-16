@@ -134,7 +134,7 @@ public class LoginMb extends BaseMb{
 		
 		EstrMenu itemCozinha = new EstrMenu("Cozinha");
 		Menu receitas = new Menu("receita","Receita","Cadastro de receitas");
-		Menu cardapio = new Menu("cadCardapio","Cardápio","Cadastro de cardápio");
+		Menu cardapio = new Menu("cardapio","Cardápio","Cadastro de cardápio");
 		itemCozinha.getSubmenus().add(receitas);
 		itemCozinha.getSubmenus().add(cardapio);
 		

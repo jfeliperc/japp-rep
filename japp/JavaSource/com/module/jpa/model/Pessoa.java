@@ -97,7 +97,7 @@ public class Pessoa implements Serializable, IGenericModel {
 	private List<Orcamento> orcamentos;
 
 	//bi-directional many-to-one association to Empresa
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
     //@JoinColumn(name="id")
 	private Empresa empresa;
 

@@ -61,8 +61,8 @@ public class FornecedorMb extends BaseMb{
 	
 	private boolean validarSalvar() {
 		boolean ret = true;
-		if (StringUtils.isBlank(this.fornecedor.getNome())){
-			addMsgError("O campo Nome é obrigatório");
+		if (StringUtils.isBlank(this.fornecedor.getRazaoSocial())){
+			addMsgError("O campo Razão Social é obrigatório");
 			ret = false;
 		}
 		if (StringUtils.isBlank(this.fornecedor.getCnpj())){

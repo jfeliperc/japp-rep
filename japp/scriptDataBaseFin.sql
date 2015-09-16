@@ -75,7 +75,7 @@ icmsentrada NUMERIC(7,2) NOT NULL,
 icmssaida NUMERIC(7,2) NOT NULL,
 cfop VARCHAR(5) NOT NULL,
 PRIMARY KEY (id),
-CONSTRAINT `fk_nfent_item_nfent` FOREIGN KEY (`nfentrada`) REFERENCES nf_entrada (id) ON DELETE NO ACTION ON UPDATE NO ACTION
+CONSTRAINT `fk_nfent_item_nfent` FOREIGN KEY (`nfentrada`) REFERENCES nf_entrada (id) 
 );
 
 -- tabela:parcelasnfe será a tabela detalhes das parcelas da nf.
@@ -88,7 +88,7 @@ documento VARCHAR(15) NOT NULL,
 vencimento DATE NOT NULL,
 valor NUMERIC(15,2) NOT NULL,
 PRIMARY KEY (id),
-CONSTRAINT `fk_nfent_parc_nfent` FOREIGN KEY (`nfentrada`) REFERENCES nf_entrada (id) ON DELETE NO ACTION ON UPDATE NO ACTION
+CONSTRAINT `fk_nfent_parc_nfent` FOREIGN KEY (`nfentrada`) REFERENCES nf_entrada (id) 
 );
 
 -- tabela:cfop_nfentrada será a tabela detalhes das cfop´s contidas na nf.
@@ -98,5 +98,5 @@ cfop_nfentrada INTEGER NOT NULL,
 nfentrada INTEGER NOT NULL,
 cfop VARCHAR(5) NOT NULL,
 PRIMARY KEY (id),
-CONSTRAINT `fk_nfent_cfop_nfent` FOREIGN KEY (`nfentrada`) REFERENCES nf_entrada (id) ON DELETE NO ACTION ON UPDATE NO ACTION
+CONSTRAINT `fk_nfent_cfop_nfent` FOREIGN KEY (`nfentrada`) REFERENCES nf_entrada (id) 
 );

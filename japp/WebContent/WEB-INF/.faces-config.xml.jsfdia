@@ -52,6 +52,9 @@
    <PROCESS-ITEM-OUTPUT ID="servico::#pages#servico.xhtml"
     NAME="output15" PATH="/pages/servico.xhtml"
     TARGET="rules:#pages#servico.xhtml" TITLE="servico" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="atividade::#pages#atividade.xhtml"
+    NAME="output16" PATH="/pages/atividade.xhtml"
+    TARGET="rules:#pages#atividade.xhtml" TITLE="atividade" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#pages#inicio.xhtml"
@@ -86,4 +89,6 @@
   PATH="/pages/cardapio.xhtml" SHAPE="304,705,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#pages#servico.xhtml"
   PATH="/pages/servico.xhtml" SHAPE="304,737,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#atividade.xhtml"
+  PATH="/pages/atividade.xhtml" SHAPE="304,769,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

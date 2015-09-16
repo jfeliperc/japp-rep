@@ -13,6 +13,7 @@ C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\GeralEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\CardapioMb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\BaseMb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\dao\ReceitaDao.java
+C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\ServicoEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\dao\AcessoDao.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\dao\Dao.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\Endereco.java
@@ -20,14 +21,15 @@ C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\PessoaMb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\AgenteExterno.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\ProdutoEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\ReceitaEjb.java
-C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\dao\AgenteExternoDao.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\GrupoProduto.java
+C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\dao\AgenteExternoDao.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\geral\IGenericModel.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\FornecedorEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\ParcelasNfe.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\geral\JsfUtil.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\ItemNfEntrada.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\IPessoaEjb.java
+C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\IServicoEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\UsuarioEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\TipoReceita.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\LoginMb.java
@@ -45,8 +47,8 @@ C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\IFornece
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\dao\ProdutoDao.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\geral\Menu.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\IEstoqueEjb.java
-C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\ReceitaProduto.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\ReceitaCardapioHi.java
+C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\ReceitaProduto.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\CardapioEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\AcessoEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\CfopNfentrada.java
@@ -61,6 +63,7 @@ C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\geral\EstrMenu.
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\Produto.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\Empresa.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\Pessoa.java
+C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\ServicoMb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\ValorProduto.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\TipoProduto.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\CardapioReceita.java
@@ -88,3 +91,4 @@ C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\dao\RotinaDao.jav
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\Contato.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\EmpresaEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\geral\ListenerJapp.java
+C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\dao\ServicoDao.java

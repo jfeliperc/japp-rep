@@ -33,7 +33,7 @@ public class PessoaMb extends BaseMb{
 	private Boolean renovarSenha;
 	private Contato contatoTemp;
 	private List<Contato> listContatoTemp;
-	
+	private Empresa empresa;
 		
 	public PessoaMb() {
 		super();
@@ -43,6 +43,7 @@ public class PessoaMb extends BaseMb{
 	@PostConstruct
 	public void posConstrucao(){
 		this.empresas = empresaEjb.listarEmpresas(new Empresa());
+		this.empresa = new Empresa();
 	}
 
 	public void solicitarCadastroPessoa(){
@@ -52,6 +53,7 @@ public class PessoaMb extends BaseMb{
 		
 	public void buscar(){
 		try {
+			this.pessoa.setEmpresa(this.empresa);
 			this.pessoas = pessoaEjb.listarPessoas(this.pessoa);
 			
 			if ((this.pessoas != null)&&(!this.pessoas.isEmpty())&&(this.pessoas.size() == 1)){
@@ -71,6 +73,7 @@ public class PessoaMb extends BaseMb{
 	public void salvar(){
 		if (validarSalvar()){
 			try {
+				this.pessoa.setEmpresa(this.empresa);
 				this.pessoa = pessoaEjb.salvarPessoa(this.pessoa);
 			} catch (NoSuchAlgorithmException e) {				
 				addMsgError("Erro ao salvar dados - "+e.getMessage());
@@ -83,6 +86,7 @@ public class PessoaMb extends BaseMb{
 	public void editar(Pessoa us){
 		this.pessoa = us;
 		this.pessoa = pessoaEjb.buscarPessoa(this.pessoa);
+		this.empresa = this.pessoa.getEmpresa();
 		alternaMostraLista();
 	}
 	
@@ -114,7 +118,7 @@ public class PessoaMb extends BaseMb{
 		this.pessoa = new Pessoa();
 		this.contatoTemp = new Contato();
 		this.pessoas = new ArrayList<Pessoa>();
-				
+		this.empresa = new Empresa();		
 	}
 	
 	public void limparContatos(){
@@ -175,6 +179,14 @@ public class PessoaMb extends BaseMb{
 
 	public void setListContatoTemp(List<Contato> listContatoTemp) {
 		this.listContatoTemp = listContatoTemp;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 }

@@ -52,7 +52,7 @@
 	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
 	                	<hr/>
 		            </h:panelGroup>
-			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
+			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5" id="gridForm">
 	                    <h:outputLabel value="Id" for="id" />
 	                    <h:inputText id="id" value="#{produtoMb.produto.id}" title="ProdutoTitle_id}" required="false" 
 	                    	requiredMessage="ProdutoRequiredMessage_id}"/>
@@ -92,7 +92,7 @@
 	                    
 	                    <h:outputLabel value="Tipo" for="tipoProdutoId" />
 	                    <h:panelGroup id="selPanel" layout="block">
-		                    <h:selectOneMenu id="tipoProdutoId" value="#{produtoMb.produto.tipoProduto.id}" title="Tipo de Produto" converter="genConverter" style="width:200px">
+		                    <h:selectOneMenu id="tipoProdutoId" value="#{produtoMb.tipo.id}" title="Tipo de Produto" converter="genConverter" style="width:200px">
 		                        <f:selectItem itemLabel="" itemValue="#{null}"/>
 		                        <f:selectItems value="#{produtoMb.itemsTipoProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
 		                    </h:selectOneMenu>		                    
@@ -100,21 +100,21 @@
 	                    
 	                    <h:outputLabel value="Grupo" for="grupoProdutoId" />
 	                    <h:panelGroup id="selPanelG" layout="block">
-		                    <h:selectOneMenu id="grupoProdutoId" value="#{produtoMb.produto.grupoProduto.id}" title="Grupo de Produto" converter="genConverter" style="width:200px">
+		                    <h:selectOneMenu id="grupoProdutoId" value="#{produtoMb.grupo.id}" title="Grupo de Produto" converter="genConverter" style="width:200px">
 		                        <f:selectItem itemLabel="" itemValue="#{null}"/>
 		                        <f:selectItems value="#{produtoMb.itemsGrupoProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
 		                    </h:selectOneMenu>
 	                    </h:panelGroup>
 	                    
-	                    <h:outputLabel value="datainclusao" for="datainclusao" />
-	                    <h:inputText id="datainclusao" value="#{produtoMb.produto.datainclusao}" title="ProdutoTitle_datainclusao}" >
+	                    <h:outputLabel value="Data Inclusão" for="datainclusao" />
+	                    <h:outputLabel id="datainclusao" value="#{produtoMb.produto.datainclusao}" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
-	                    </h:inputText>
+	                    </h:outputLabel>
 	                    
-	                    <h:outputLabel value="dataalteracao" for="dataalteracao" />
-	                    <h:inputText id="dataalteracao" value="#{produtoMb.produto.dataalteracao}" title="ProdutoTitle_dataalteracao}" >
+	                    <h:outputLabel value="Data Alteração" for="dataalteracao" />
+	                    <h:outputLabel id="dataalteracao" value="#{produtoMb.produto.dataalteracao}" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
-	                    </h:inputText>
+	                    </h:outputLabel>
 	                    
 	                </h:panelGrid>
                 	    
