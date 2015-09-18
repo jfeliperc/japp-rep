@@ -7,6 +7,7 @@ C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\dao\PessoaDao.jav
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\IAcessoEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\FornecedorMb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\geral\FilterJapp.java
+C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\TipoReceitaMb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\AtividadeServico.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\IClienteEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\GeralEjb.java
@@ -44,8 +45,8 @@ C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\dao\CardapioDao.j
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\ClienteEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\OrcamentoProduto.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\IFornecedorEjb.java
-C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\dao\ProdutoDao.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\geral\Menu.java
+C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\dao\ProdutoDao.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\IEstoqueEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\ReceitaCardapioHi.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\ReceitaProduto.java
@@ -56,6 +57,7 @@ C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\IEmpresa
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\IUsuarioEjb.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\faces\geral\GenericConverter.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\ejb\contract\ICardapioEjb.java
+C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\dao\TipoReceitaDao.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\Cardapio.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\jpa\model\Atividade.java
 C:\ProjetosPart\Github\japp-rep\japp\JavaSource\com\module\enums\TipoUsuario.java

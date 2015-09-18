@@ -26,17 +26,17 @@
 	                	<hr/>
 		            </h:panelGroup>
 			      	<h:panelGrid columns="4" styleClass="gridForm">
-	                    <h:outputLabel value="Id" for="id" />
+	                    <h:panelGroup><h:outputLabel value="Id" for="id" /></h:panelGroup>
 	                    <h:inputText id="id" value="#{clienteMb.cliente.id}" title="Identificação interna" />
 	                    	                    
-	                    <h:outputLabel value="Tipo" for="tipo" />
+	                    <h:panelGroup><h:outputLabel value="Tipo" for="tipo" /></h:panelGroup>
 	                    <h:selectOneMenu value="#{clienteMb.cliente.tipoPessoa}" style="width:150px">
 							<f:selectItem itemLabel="Pessoa Física" itemValue="PF"/>
 							<f:selectItem itemLabel="Pessoa Jurídica" itemValue="PJ"/>
 							<a4j:ajax event="change" render="pnlCadCli"></a4j:ajax>
 						</h:selectOneMenu>	
 						
-	                    <h:outputLabel value="Status" for="ativo" />
+	                    <h:panelGroup><h:outputLabel value="Status" for="ativo" /></h:panelGroup>
 	                    <h:selectOneMenu value="#{clienteMb.cliente.ativo}" style="width:150px">
 							<f:selectItem itemLabel="Ativo" itemValue="A"/>
 							<f:selectItem itemLabel="Inativo" itemValue="I"/>
@@ -44,12 +44,12 @@
 	                    <h:panelGroup></h:panelGroup>
 	                    <h:panelGroup></h:panelGroup>
 	                    
-	                    <h:outputLabel value="Data Inclusao" for="datainclusao" />
+	                    <h:panelGroup><h:outputLabel value="Data Inclusao" for="datainclusao" /></h:panelGroup>
 	                    <h:outputLabel id="datainclusao" value="#{clienteMb.cliente.datainclusao}" title="datainclusao" >
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 	                    </h:outputLabel>
 	                                   
-						<h:outputLabel value="Data Alteracao" for="dataalteracao" />
+						<h:panelGroup><h:outputLabel value="Data Alteracao" for="dataalteracao" /></h:panelGroup>
 	                    <h:outputLabel id="dataalteracao" value="#{clienteMb.cliente.dataalteracao}" title="dataalteracao" >
 	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
 	                    </h:outputLabel>
@@ -58,7 +58,7 @@
 					<hr/>	
 	                <h:panelGrid columns="4" styleClass="gridForm" rendered="#{clienteMb.cliente.tipoPessoa == 'PF'}">   	                    
 	                    <h:outputLabel value="Cpf" for="cpf" />
-	                    <h:inputText id="cpf" value="#{clienteMb.cliente.cpf}" title="Cpf" size="50" />
+	                    <h:inputText id="cpf" value="#{clienteMb.cliente.cpf}" title="CPF" size="50" onkeypress="mask(this,'999.999.999-99',1,this)" />
 	                    
 	                    <h:outputLabel value="Nome" for="nome" />
 	                    <h:inputText id="nome" value="#{clienteMb.cliente.nome}" title="nome" size="100" />
@@ -67,24 +67,26 @@
 	                    <h:inputText id="nomecompleto" value="#{clienteMb.cliente.nomecompleto}" title="nomecompleto" size="120" />
 	                    	                    
 	                    <h:outputLabel value="Data Nascimento" for="datanascimento" />
-	                    <h:inputText id="datanascimento" value="#{clienteMb.cliente.datanascimento}" title="datanascimento" >
-	                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+	                    <h:inputText id="datanascimento" value="#{clienteMb.cliente.datanascimento}" title="data nascimento" 
+	                    		onkeypress="mask(this,'99/99/9999',1,this)">
+	                        <f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
+	                    
 	                </h:panelGrid>	
 	                
 	                <h:panelGrid columns="4" styleClass="gridForm" id="pgPJ" rendered="#{clienteMb.cliente.tipoPessoa == 'PJ'}">     
 	                    <h:outputLabel value="Cnpj" for="cnpj" />
-	                    <h:inputText id="cnpj" value="#{clienteMb.cliente.cnpj}" title="Cnpj" size="50" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
+	                    <h:inputText id="cnpj" value="#{clienteMb.cliente.cnpj}" title="Cnpj" size="50" disabled="#{clienteMb.cliente.ativo == 'PF'}" styleClass="cpf"
+			                    	onkeypress="mask(this,'99.999.999/9999-99',1,this)" />
+	                    <h:panelGroup></h:panelGroup>
+	                    <h:panelGroup></h:panelGroup>
 	                    	                    	                    
 	                    <h:outputLabel value="Razao Social" for="razaoSocial" />
-	                    <h:inputText id="razaoSocial" value="#{clienteMb.cliente.razaoSocial}" title="razaoSocial" size="120" disabled="#{clienteMb.cliente.ativo == 'PJ'}"/>
+	                    <h:inputText id="razaoSocial" value="#{clienteMb.cliente.razaoSocial}" title="razaoSocial" size="90" disabled="#{clienteMb.cliente.ativo == 'PJ'}"/>
 	                    
 	                    <h:outputLabel value="Nome Fantasia" for="nomeFantasia" />
-	                    <h:inputText id="nomeFantasia" value="#{clienteMb.cliente.nomeFantasia}" title="nomeFantasia" size="120" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
-	                    
-	                    <h:outputLabel value="Documento" for="documento" />
-	                    <h:inputText id="documento" value="#{clienteMb.cliente.documento}" title="documento"  disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
-	                    
+	                    <h:inputText id="nomeFantasia" value="#{clienteMb.cliente.nomeFantasia}" title="nomeFantasia" size="90" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
+	                    	                     
 	                    <h:outputLabel value="Inscricao Est." for="inscricaoEst" />
 	                    <h:inputText id="inscricaoEst" value="#{clienteMb.cliente.inscricaoEst}" title="inscricaoEst" size="50" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
 	                    
@@ -92,7 +94,10 @@
 	                    <h:inputText id="inscricaoMun" value="#{clienteMb.cliente.inscricaoMun}" title="inscricaoMun" size="50" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
 	                    
 	                    <h:outputLabel value="Observacao" for="observacao" />
-	                    <h:inputText id="observacao" value="#{clienteMb.cliente.observacao}" title="observacao" size="130" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>	                    
+	                    <h:inputText id="observacao" value="#{clienteMb.cliente.observacao}" title="observacao" size="100" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
+	                    <h:panelGroup></h:panelGroup>
+	                    <h:panelGroup></h:panelGroup>
+	                    	                    
 	                </h:panelGrid>
 	                
 	                <br/><br/><hr/>

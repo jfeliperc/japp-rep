@@ -3,7 +3,9 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets">
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich">
     <h:head>
         <title>JCook</title>
 		
@@ -30,14 +32,20 @@
             <ui:insert name="menu">
                 <ui:include src="t_menu.xhtml" />
             </ui:insert>
-            
+         
+         	<ui:insert name="menuOper">
+                <ui:include src="t_menuOper.xhtml" />
+            </ui:insert>
+         	
             <table>
             	<tr>
-            		<td class="conteudoCtrBody">            	
+            		<!--
+            		<td class="conteudoCtrBody">
 	            		<h:panelGroup rendered="true">
 			           		<ui:include src="t_menu_vert.xhtml" />
-			           	</h:panelGroup>
+			           	</h:panelGroup>			           	
 	            	</td>
+	            	-->
 	            	<td class="conteudoBody">
 	            		<h:panelGroup>	
 			           		<ui:insert name="conteudo"/>

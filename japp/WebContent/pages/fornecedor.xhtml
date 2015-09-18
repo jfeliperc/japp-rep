@@ -47,13 +47,14 @@
 	                    <h:panelGroup></h:panelGroup>
 	                    	                    
 	                    <h:outputLabel value="Razão Social" for="razaoSocial" />
-	                    <h:inputText id="razaoSocial" value="#{fornecedorMb.fornecedor.razaoSocial}" title="razaoSocial" size="100"/>
+	                    <h:inputText id="razaoSocial" value="#{fornecedorMb.fornecedor.razaoSocial}" title="razaoSocial" size="90"/>
 	                    
 	                    <h:outputLabel value="Nome Fantasia" for="nomeFantasia" />
 	                    <h:inputText id="nomeFantasia" value="#{fornecedorMb.fornecedor.nomeFantasia}" title="nomeFantasia" size="90"/>
 	                    
 	                    <h:outputLabel value="Cnpj" for="cnpj" />
-	                    <h:inputText id="cnpj" value="#{fornecedorMb.fornecedor.cnpj}" title="cnpj" size="70" />
+	                    <h:inputText id="cnpj" value="#{fornecedorMb.fornecedor.cnpj}" title="Cnpj" size="50" styleClass="CNPJ"
+			                    	onkeypress="mask(this,'99.999.999/9999-99',1,this)" />
 	                    
 	                    <h:outputLabel value="Inscricao Est." for="inscricaoEst" />
 	                    <h:inputText id="inscricaoEst" value="#{fornecedorMb.fornecedor.inscricaoEst}" title="inscricaoEst" size="50" />
@@ -74,7 +75,7 @@
 						</h:selectOneMenu>						
 						
 	                    <h:outputLabel value="Observacao" for="observacao" />
-	                    <h:inputText id="observacao" value="#{fornecedorMb.fornecedor.observacao}" title="Observação" size="110" />
+	                    <h:inputText id="observacao" value="#{fornecedorMb.fornecedor.observacao}" title="Observação" size="100" />
 	                    
 	                    <h:outputLabel value="Data inclusão" for="datainclusao" />
 	                    <h:outputLabel id="datainclusao" value="#{fornecedorMb.fornecedor.datainclusao}" title="Data inclusão" >
@@ -94,7 +95,7 @@
 		    </rich:panel>
 		    
 		    <rich:panel header="Lista de fornecedores" style="width:100%; height: 95%; " rendered="#{fornecedorMb.mostrarLista}">
-		    	<table><tr><td width="1300px">
+		    	<table><tr><td width="90%">
 		    	<div style="padding-left: 10px">
 			      	<nav class="navbar navbar-default" style="min-height: 30px !important;">
 		  				<div class="container-fluid">
