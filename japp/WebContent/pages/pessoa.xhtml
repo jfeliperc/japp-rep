@@ -75,27 +75,21 @@
 							<a4j:ajax event="change" render="pnlCadCli"></a4j:ajax>
 						</h:selectOneMenu>
 	                    
+	                    <h:outputLabel value="Email" for="email" />
+	                    <h:inputText id="email" value="#{pessoaMb.pessoa.email}" title="Nome" size="70"/>
+	                    
 	                    <h:outputLabel value="login" for="login" />
 	                    <h:inputText id="login" value="#{pessoaMb.pessoa.login}" title="login" />
+	                    <h:panelGroup></h:panelGroup>
+	                    <h:panelGroup></h:panelGroup>
 	                    
 	                    <h:outputLabel value="Senha" for="pass" />
 	                    <h:panelGroup>
 		                    <h:selectBooleanCheckbox value="#{pessoaMb.renovarSenha}" title="Renovar senha no próximo login" label="Renovar senha no próximo login" layout="lineDirection" />
 		                    <h:outputLabel value="Renovar senha no próximo login" />
 	                    </h:panelGroup>
-	                    
-	                    <h:outputLabel value="Validade Login" for="validadeLogin" />
-	                    <h:outputLabel id="validadeLogin" value="#{pessoaMb.pessoa.validadeLogin}" title="Validade Login" >
-	                        <f:convertDateTime pattern="dd/MM/yyyy" />
-	                    </h:outputLabel>
-	                    
-	                    <h:outputLabel value="Tipo Usuário" for="tipoUsuario" />
-	                    <h:inputText id="tipoUsuario" value="#{pessoaMb.pessoa.tipoUsuario}" title="Tipo Usuario" required="false"/>
-	                    
-	                    <h:outputLabel value="Data Último Acesso" for="dataultimoacesso" />
-	                    <h:outputLabel id="dataultimoacesso" value="#{pessoaMb.pessoa.dataultimoacesso}" title="Data Último Acesso}" >
-	                        <f:convertDateTime pattern="dd/MM/yyyy" />
-	                    </h:outputLabel>
+	                    <h:panelGroup></h:panelGroup>
+	                    <h:panelGroup></h:panelGroup>
 	                    	                    
 	                    <h:outputLabel value="Status" for="tipo" />
 	                    <h:selectOneMenu value="#{pessoaMb.pessoa.tipo}" style="width:150px" id="tipo">
@@ -109,15 +103,21 @@
 	                        <f:selectItems value="#{pessoaMb.empresas}" var="emp" itemValue="#{emp.id}" itemLabel="#{emp.nomeFantasia}"/>
 	                    </h:selectOneMenu>
 	                    
-	                    <h:outputLabel value="Email" for="email" />
-	                    <h:inputText id="email" value="#{pessoaMb.pessoa.email}" title="Nome" size="70"/>
-	                    <h:panelGroup></h:panelGroup>
-	                    <h:panelGroup></h:panelGroup>
+	                    <h:outputLabel value="Validade Login" for="validadeLogin" />
+	                    <h:outputLabel id="validadeLogin" value="#{pessoaMb.pessoa.validadeLogin}" title="Validade Login" >
+	                        <f:convertDateTime pattern="dd/MM/yyyy" />
+	                    </h:outputLabel>
+	                     
+	                    <h:outputLabel value="Data Último Acesso" for="dataultimoacesso" />
+	                    <h:outputLabel id="dataultimoacesso" value="#{pessoaMb.pessoa.dataultimoacesso}" title="Data Último Acesso}" >
+	                        <f:convertDateTime pattern="dd/MM/yyyy" />
+	                    </h:outputLabel>
 	                    
 	                    <h:outputLabel value="Data Inclusão" for="datainclusao" />
 	                    <h:outputLabel id="datainclusao" value="#{pessoaMb.pessoa.datainclusao}" title="Data Inclusao" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:outputLabel>
+	                    
 	                    <h:outputLabel value="Data Alteração" for="dataalteracao" />
 	                    <h:outputLabel id="dataalteracao" value="#{pessoaMb.pessoa.dataalteracao}" title="Data Alteracao" >
 	                        <f:convertDateTime pattern="dd/MM/yyyy" />

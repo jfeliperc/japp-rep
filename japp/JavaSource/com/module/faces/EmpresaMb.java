@@ -48,7 +48,11 @@ public class EmpresaMb extends BaseMb{
 			this.listEmpresa.clear();
 			
 			this.listFiliais = empresaEjb.listarFiliais(this.empresa);
+		}else if ((this.listEmpresa == null)||(this.listEmpresa.isEmpty())){
+			addMsg("Nenhuma empresa encontrada na busca.");
+			limpar();
 		}
+		
 	}
 	
 	public void salvar(){

@@ -61,6 +61,8 @@ public class PessoaMb extends BaseMb{
 				this.pessoas.clear();
 				
 				this.pessoa = pessoaEjb.buscarPessoa(this.pessoa);
+			}else if ((this.pessoas == null)||(this.pessoas.isEmpty())){
+				addMsg("Nenhuma pessoa encontrada na busca.");
 			}else{
 				setMostrarLista((this.pessoas != null)&&(!this.pessoas.isEmpty()));
 			}

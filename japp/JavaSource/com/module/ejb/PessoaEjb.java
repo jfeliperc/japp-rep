@@ -189,7 +189,7 @@ public class PessoaEjb implements IPessoaEjb {
 	public void salvarContatoPessoa(Contato contato) {
 		Dao<Contato> dao = new Dao<Contato>();
 		if (contato.getPessoa() != null){
-			if (contato.getId() == 0){
+			if (UtilsJapp.isNullOrZero(contato.getId())){
 				dao.add(contato);
 			}else{
 				dao.update(contato);
