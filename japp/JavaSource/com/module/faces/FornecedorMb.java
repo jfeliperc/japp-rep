@@ -14,6 +14,7 @@ import com.module.ejb.contract.IEmpresaEjb;
 import com.module.ejb.contract.IFornecedorEjb;
 import com.module.jpa.model.AgenteExterno;
 import com.module.jpa.model.Empresa;
+import com.module.jpa.model.Pessoa;
 
 
 @ManagedBean
@@ -50,6 +51,11 @@ public class FornecedorMb extends BaseMb{
 		if ((this.listFornecedor != null)&&(!this.listFornecedor.isEmpty())&&(this.listFornecedor.size() == 1)){
 			this.fornecedor = this.listFornecedor.get(0);
 			this.listFornecedor.clear();
+		}else if ((this.listFornecedor == null)||(this.listFornecedor.isEmpty())){
+			addMsg("Nenhum fornecedor encontrado na busca.");
+			limpar();
+		}else{
+			setMostrarLista((this.listFornecedor != null)&&(!this.listFornecedor.isEmpty()));
 		}
 	}
 	
@@ -72,6 +78,12 @@ public class FornecedorMb extends BaseMb{
 		return ret;
 	}
 
+	public void editar(AgenteExterno us){
+		this.fornecedor = us;
+		this.fornecedor = fornecedorEjb.buscarFornecedor(this.fornecedor);		
+		alternaMostraLista();
+	}
+	
 	public void excluir(){
 
 	}

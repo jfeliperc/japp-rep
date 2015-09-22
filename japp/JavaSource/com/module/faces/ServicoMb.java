@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import com.module.ejb.contract.IServicoEjb;
+import com.module.jpa.model.Atividade;
 import com.module.jpa.model.Servico;
 
 
@@ -22,6 +23,8 @@ public class ServicoMb extends BaseMb{
 	private Servico servico;	
 	private List<Servico> listServico;
 	
+	private Atividade atividadeTemp;
+	
 	@PostConstruct
 	public void construcao(){
 		
@@ -33,7 +36,8 @@ public class ServicoMb extends BaseMb{
 
 	public void limpar(){
 		this.servico = new Servico();
-		this.listServico = new ArrayList<Servico>();  
+		this.listServico = new ArrayList<Servico>(); 
+		this.atividadeTemp = new Atividade();
 	}
 	
 	public void buscar(){
@@ -69,6 +73,26 @@ public class ServicoMb extends BaseMb{
 	public void excluir(){
 
 	}
+	
+	public void limparAtividade(){
+		
+	}
+	
+	public void buscarAtividade(){
+
+	}
+
+	public void salvarAtividade(){
+
+	}
+
+	public void excluirAtividade(){
+
+	}
+	
+	public void editarAtividade(Atividade us){
+		this.atividadeTemp = us;
+	}
 
 	public Servico getServico() {
 		return servico;
@@ -85,7 +109,13 @@ public class ServicoMb extends BaseMb{
 	public void setListServico(List<Servico> listServico) {
 		this.listServico = listServico;
 	}
-	
-	
+
+	public Atividade getAtividadeTemp() {
+		return atividadeTemp;
+	}
+
+	public void setAtividadeTemp(Atividade atividadeTemp) {
+		this.atividadeTemp = atividadeTemp;
+	}
 	
 }

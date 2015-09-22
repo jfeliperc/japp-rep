@@ -16,7 +16,7 @@ public class AtividadeServico implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Integer id;
 
 	//bi-directional many-to-one association to Atividade
 	@ManyToOne
@@ -29,11 +29,11 @@ public class AtividadeServico implements Serializable {
 	public AtividadeServico() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

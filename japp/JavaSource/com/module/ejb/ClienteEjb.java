@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.module.ejb.contract.IClienteEjb;
 import com.module.enums.TipoPessoa;
+import com.module.faces.geral.UtilsJapp;
 import com.module.jpa.dao.AgenteExternoDao;
 import com.module.jpa.model.AgenteExterno;
 
@@ -19,15 +20,17 @@ public class ClienteEjb implements IClienteEjb {
 	public AgenteExterno cadastrarCliente(AgenteExterno cliente) {
 		AgenteExternoDao daoAgenteExterno = new AgenteExternoDao();
 		
-		cliente.setDataalteracao(new Date());
-		cliente.setAtivo("A");		
-		if (!StringUtils.isBlank(cliente.getCpf())){
-			cliente.setTipoPessoa(TipoPessoa.PF.getValor());
-		}else{
-			cliente.setTipoPessoa(TipoPessoa.PJ.getValor());
+		cliente.setDataalteracao(new Date());	
+		if (StringUtils.isBlank(cliente.getTipoPessoa())){
+			if (!StringUtils.isBlank(cliente.getCpf())){
+				cliente.setTipoPessoa(TipoPessoa.PF.getValor());
+			}else{
+				cliente.setTipoPessoa(TipoPessoa.PJ.getValor());
+			}
 		}
-		
-		if (cliente.getId() == null){
+
+		if (UtilsJapp.isNullOrZero(cliente.getId())){
+			cliente.setId(null);
 			cliente.setDatainclusao(new Date());
 			cliente.setTipo("C");
 			daoAgenteExterno.add(cliente);

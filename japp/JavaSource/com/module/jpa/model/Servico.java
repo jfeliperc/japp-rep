@@ -37,6 +37,10 @@ public class Servico implements Serializable {
 	@OneToMany(mappedBy="servico")
 	private List<Orcamento> orcamentos;
 
+	//bi-directional many-to-one association to AtividadeServico
+	@OneToMany(mappedBy="servico")
+	private List<Atividade> atividades;
+	
 	public Servico() {
 	}
 
@@ -78,6 +82,14 @@ public class Servico implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public List<Atividade> getAtividades() {
+		return atividades;
+	}
+
+	public void setAtividades(List<Atividade> atividades) {
+		this.atividades = atividades;
 	}
 
 	public List<AtividadeServico> getAtividadeServicos() {

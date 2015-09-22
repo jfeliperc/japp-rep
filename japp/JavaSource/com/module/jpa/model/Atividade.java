@@ -17,7 +17,7 @@ public class Atividade implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Integer id;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataalteracao;
@@ -29,23 +29,25 @@ public class Atividade implements Serializable {
 
 	private String nome;
 
-	//bi-directional many-to-one association to TipoAtividade
 	@ManyToOne
 	@JoinColumn(name="tipo_atividade_id")
 	private TipoAtividade tipoAtividade;
 
-	//bi-directional many-to-one association to AtividadeServico
 	@OneToMany(mappedBy="atividade")
 	private List<AtividadeServico> atividadeServicos;
 
+	@ManyToOne
+	@JoinColumn(name="servico_id")
+	private Servico servico;
+	
 	public Atividade() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -87,6 +89,14 @@ public class Atividade implements Serializable {
 
 	public void setTipoAtividade(TipoAtividade tipoAtividade) {
 		this.tipoAtividade = tipoAtividade;
+	}
+
+	public Servico getServico() {
+		return servico;
+	}
+
+	public void setServico(Servico servico) {
+		this.servico = servico;
 	}
 
 	public List<AtividadeServico> getAtividadeServicos() {

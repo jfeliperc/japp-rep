@@ -33,7 +33,7 @@
 								  <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">Opções<span class="caret"/></a>
 								  <ul class="dropdown-menu">
 								    <li><h:commandLink styleClass="btn btn-link" action="#{servicoMb.alternaMostraLista()}" value="Ver Lista" /></li>
-								    <li><h:commandLink styleClass="btn btn-link" action="atividade" value="Atividades" /></li>					    
+								    <!-- <li><h:commandLink styleClass="btn btn-link" action="atividade" value="Atividades" /></li>  -->					    
 								  </ul>
 								</div>								
 				      		</span>			      		
@@ -48,35 +48,38 @@
 		            </h:panelGroup>
 			      	<h:panelGrid columns="2" styleClass="gridForm" cellspacing="5px" cellpadding="5">
 	                    <h:outputLabel value="Id" for="id" />
-	                    <h:inputText id="idtp" value="#{servicoMb.servico.id}" title="Id" required="false"/>
+	                    <h:inputText id="idtpSrv" value="#{servicoMb.servico.id}" title="Id" required="false"/>
 	                    <h:outputLabel value="Nome" for="nome" />
-	                    <h:inputText id="nometp" value="#{servicoMb.servico.nome}" title="Nome" required="false" size="100"/>
+	                    <h:inputText id="nometpSrv" value="#{servicoMb.servico.nome}" title="Nome" required="false" size="100"/>
 	                    <h:outputLabel value="Descrição" for="descricao" />
-	                    <h:inputText id="descricaotp" value="#{servicoMb.servico.descricao}" title="Descrição" required="false" size="100"/>			                    
+	                    <h:inputText id="descricaotpSrv" value="#{servicoMb.servico.descricao}" title="Descrição" required="false" size="100"/>			                    
 	                </h:panelGrid>
 	                <br/><br/>				    
 				</div>	
 				
 				<rich:panel header="Atividades" style="width:100%; height: 95%; ">
-					<h:panelGrid columns="2" styleClass="gridForm" cellspacing="0px" cellpadding="0">
-						<h:outputLabel value="Tipo" for="tipoC" />
-						<h:selectOneMenu id="tipoC" value="#{pessoaMb.contatoTemp.tipo}" title="Selecione o tipo de contato" style="width:300px">
-	                        <f:selectItem itemLabel="Email" itemValue="email"/>
-	                        <f:selectItem itemLabel="Telefone" itemValue="telefone"/>
-	                        <f:selectItem itemLabel="Outro" itemValue="outro"/>
-	                 	</h:selectOneMenu>
-	                	<h:outputLabel value="Descrição" for="descricaoC" />
-	                	<h:inputText id="descricaoC" value="#{pessoaMb.contatoTemp.descricao}" title="Descrição do contato" size="100" />
-	                	<h:panelGroup>
-		                	<h:commandLink action="#{pessoaMb.limparContatos()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
-		                	<h:commandLink action="#{pessoaMb.salvarContatos()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
-		                </h:panelGroup>	
-					</h:panelGrid>
-					<br/>
-					<rich:dataTable value="#{pessoaMb.pessoa.contatos}" var="us" style="width:100%" id="tbContato">
+					<h:panelGroup id="botoesPanel2" layout="block">		      			
+	      				<table><tr><td width="20px">
+	      				<h:commandLink action="#{servicoMb.limparAtividade()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+	      				</td><td width="20px">
+	      				<h:commandLink action="#{servicoMb.salvarAtividade()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+	      				</td><td width="20px">
+	      				<h:commandLink action="#{servicoMb.excluirAtividade()}" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
+	      				</td></tr></table>		      				
+		      		</h:panelGroup>
+					<h:panelGrid columns="2" styleClass="gridForm" cellspacing="5px" cellpadding="5">
+	                    <h:outputLabel value="Id" for="id" />
+	                    <h:inputText id="idtpAtv" value="#{servicoMb.atividadeTemp.id}" required="false"/>
+	                    <h:outputLabel value="Nome" for="nome" />
+	                    <h:inputText id="nometpAtv" value="#{servicoMb.atividadeTemp.nome}" required="false" size="100"/>
+	                    <h:outputLabel value="Descrição" for="descricao" />
+	                    <h:inputText id="descricaotpAtv" value="#{servicoMb.atividadeTemp.descricao}" required="false" size="100"/>			                    
+	                </h:panelGrid>
+	                <br/>
+					<rich:dataTable value="#{servicoMb.servico.atividades}" var="us" style="width:100%" id="tbatividades">
 		    			<rich:column>
-		    				<f:facet name="header">Tipo</f:facet>
-		    				<h:outputText value="#{us.tipo}" />
+		    				<f:facet name="header">Nome</f:facet>
+		    				<h:outputText value="#{us.nome}" />
 		    			</rich:column>
 		    			<rich:column>
 		    				<f:facet name="header">Descrição</f:facet>
@@ -84,7 +87,8 @@
 		    			</rich:column>
 		    			<rich:column>
 		    				<f:facet name="header">Ação</f:facet>
-		    				<center><h:commandLink action="#{pessoaMb.editarContato(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
+		    				<center><h:commandLink action="#{servicoMb.editarAtividade(us)}" value="" title="Editar dados deste registro">
+		    					<h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
 		    			</rich:column>
 		    		</rich:dataTable>	
 				</rich:panel>

@@ -128,13 +128,13 @@ CREATE TABLE IF NOT EXISTS `japp`.`atividade` (
   `nome` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(45) NULL,
   `tipo_atividade_id` INT NOT NULL,
+  `servico_id` INT NULL,
   `datainclusao` DATETIME NULL,
   `dataalteracao` DATETIME NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_produto_tipo_atividade_idx` (`tipo_atividade_id` ASC),
-  CONSTRAINT `fk_atividade_tipo_atividade`
-    FOREIGN KEY (`tipo_atividade_id`)
-    REFERENCES `japp`.`tipo_atividade` (`id`))
+  CONSTRAINT `fk_atividade_tipo_atividade` FOREIGN KEY (`tipo_atividade_id`) REFERENCES `japp`.`tipo_atividade` (`id`),
+  CONSTRAINT `fk_atividade_servico_srv_aux` FOREIGN KEY (`servico_id`) REFERENCES `japp`.`servico` (`id`))
 ENGINE = INNODB;
 
 -- -----------------------------------------------------
@@ -159,12 +159,8 @@ CREATE TABLE IF NOT EXISTS `japp`.`atividade_servico` (
   PRIMARY KEY (`id`),
   INDEX `fk_atividade_servico_atv_idx` (`atividade_id` ASC),
   INDEX `fk_atividade_servico_srv_idx` (`servico_id` ASC),
-  CONSTRAINT `fk_atividade_servico_atv`
-    FOREIGN KEY (`atividade_id`)
-    REFERENCES `japp`.`atividade` (`id`),
-  CONSTRAINT `fk_atividade_servico_srv`
-    FOREIGN KEY (`servico_id`)
-    REFERENCES `japp`.`servico` (`id`))	
+  CONSTRAINT `fk_atividade_servico_atv` FOREIGN KEY (`atividade_id`) REFERENCES `japp`.`atividade` (`id`),
+  CONSTRAINT `fk_atividade_servico_srv` FOREIGN KEY (`servico_id`) REFERENCES `japp`.`servico` (`id`))	
 ENGINE = INNODB;
 
 -- -----------------------------------------------------
@@ -337,7 +333,7 @@ CREATE TABLE IF NOT EXISTS `japp`.`agente_externo` (
   `tipo_pessoa`  VARCHAR(3) NOT NULL,
   `nome` VARCHAR(45) NULL,
   `nomecompleto` VARCHAR(45) NULL,
-  `razao_social` VARCHAR(45) NOT NULL,
+  `razao_social` VARCHAR(45) NULL,
   `nome_fantasia` VARCHAR(45) NULL,  
   `datanascimento` DATETIME NULL,
   `cpf` VARCHAR(45) NULL,
