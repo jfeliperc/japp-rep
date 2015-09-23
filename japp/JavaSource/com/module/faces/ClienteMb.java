@@ -13,7 +13,6 @@ import org.apache.commons.lang3.StringUtils;
 import com.module.ejb.contract.IClienteEjb;
 import com.module.enums.TipoPessoa;
 import com.module.jpa.model.AgenteExterno;
-import com.module.jpa.model.Servico;
 
 @ManagedBean
 @SessionScoped
@@ -24,8 +23,6 @@ public class ClienteMb extends BaseMb{
 
 	private AgenteExterno cliente;
 	private List<AgenteExterno> listCliente;
-
-	
 	
 	public ClienteMb() {
 		super();
@@ -34,6 +31,7 @@ public class ClienteMb extends BaseMb{
 
 	@PostConstruct
 	public void posConstrucao(){
+		super.posConstrucao();
 		limpar();
 	}
 	
@@ -43,9 +41,11 @@ public class ClienteMb extends BaseMb{
 	}
 	
 	public void buscar(){
+		this.cliente.setEmpresa(getEmpresaAux());
 		this.listCliente = clienteEjb.listarClientes(cliente);
 		if ((this.listCliente != null)&&(!this.listCliente.isEmpty())&&(this.listCliente.size() == 1)){
 			this.cliente = this.listCliente.get(0);
+			setEmpresaAux(this.cliente.getEmpresa());
 			this.listCliente.clear();		
 		}else if ((this.listCliente == null)||(this.listCliente.isEmpty())){
 			addMsg("Nenhum cliente encontrado na busca.");
@@ -86,6 +86,7 @@ public class ClienteMb extends BaseMb{
 	
 	public void salvar(){
 		if (validarSalvar()){
+			this.cliente.setEmpresa(getEmpresaAux());
 			this.cliente = clienteEjb.cadastrarCliente(this.cliente);
 		}
 	}
@@ -98,6 +99,7 @@ public class ClienteMb extends BaseMb{
 	
 	public void editar(AgenteExterno us){
 		this.cliente = us;
+		setEmpresaAux(this.cliente.getEmpresa());
 		alternaMostraLista();
 	}
 	

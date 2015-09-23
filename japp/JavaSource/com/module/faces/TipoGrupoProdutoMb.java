@@ -27,7 +27,8 @@ public class TipoGrupoProdutoMb extends BaseMb{
 	private List<GrupoProduto> listGrupoProdutoPai;
 	
 	@PostConstruct
-	public void construcao(){
+	public void posConstrucao(){
+		super.posConstrucao();
 		this.listGrupoProdutoPai = produtoEjb.buscarAllGrupoProduto();		
 	}
 	

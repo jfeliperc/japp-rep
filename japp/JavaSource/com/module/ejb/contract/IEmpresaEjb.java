@@ -19,5 +19,7 @@ public interface IEmpresaEjb {
 	public void salvarEmpresa(Empresa empresa);
 
 	public Empresa buscarEmpresaMaster();
+
+	public List<Empresa> listarAllEmpresas();
 	
 }

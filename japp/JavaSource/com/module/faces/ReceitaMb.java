@@ -52,11 +52,13 @@ public class ReceitaMb extends BaseMb{
 	private GrupoProduto grupoProdutoAux;
 	
 	@PostConstruct
-	public void construcao(){
+	public void posConstrucao(){
+		super.posConstrucao();
 		limpar();	
 	}
 	
 	public ReceitaMb(){		
+		super();
 		this.produto = new Produto();
 		this.itemsTipoProduto = new ArrayList<TipoProduto>();   
 	}
@@ -82,10 +84,23 @@ public class ReceitaMb extends BaseMb{
 	}
 	
 	public void buscar(){
-		this.listProduto = produtoEjb.listarProdutos(this.produto);
-		if ((this.listProduto != null)&&(!this.listProduto.isEmpty())&&(this.listProduto.size() == 1)){
-			this.produto = this.listProduto.get(0);
-			this.listProduto.clear();
+				
+		try {
+			this.produto.setEmpresa(getEmpresaAux());
+			this.listProduto = produtoEjb.listarProdutos(this.produto);
+			
+			if ((this.listProduto != null)&&(!this.listProduto.isEmpty())&&(this.listProduto.size() == 1)){
+				this.produto = this.listProduto.get(0);
+				this.tipoProdutoAux = this.produto.getTipoProduto();
+				this.grupoProdutoAux = this.produto.getGrupoProduto();
+				setEmpresaAux(this.produto.getEmpresa());
+				this.listProduto.clear();
+			}else{
+				setMostrarLista((this.listProduto != null)&&(!this.listProduto.isEmpty()));
+			}
+			
+		} catch (Exception e) {
+			addMsgError("Erro ao buscar pessoa(s) - "+e.getMessage());
 		}
 	}
 	

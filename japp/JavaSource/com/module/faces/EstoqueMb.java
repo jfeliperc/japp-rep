@@ -11,7 +11,6 @@ import javax.faces.bean.SessionScoped;
 import org.apache.commons.lang3.StringUtils;
 
 import com.module.ejb.contract.IEstoqueEjb;
-import com.module.ejb.contract.IProdutoEjb;
 import com.module.jpa.model.Estoque;
 import com.module.jpa.model.GrupoProduto;
 import com.module.jpa.model.Produto;
@@ -32,8 +31,8 @@ public class EstoqueMb extends BaseMb{
 	private List<GrupoProduto> itemsGrupoProduto;
 	
 	@PostConstruct
-	public void construcao(){
-		
+	public void posConstrucao(){
+		super.posConstrucao();
 	}
 	
 	public EstoqueMb(){		

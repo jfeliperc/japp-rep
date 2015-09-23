@@ -65,6 +65,7 @@ CREATE TABLE IF NOT EXISTS `japp`.`produto` (
   `aliq_icms` DOUBLE NULL,
   `fator_coaccao` DOUBLE NULL,
   `indice_coaccao` DOUBLE NULL,
+  `empresa_id` INT NULL, 
   `datainclusao` DATETIME NULL,
   `dataalteracao` DATETIME NULL,
   PRIMARY KEY (`id`),
@@ -72,7 +73,8 @@ INDEX `idx_id_produto` (`id` ASC),
 INDEX `idx_nome_produto` (`nome` ASC),  
 INDEX `fk_produto_tipo_produto_idx` (`tipo_produto_id` ASC),
   CONSTRAINT `fk_produto_tipo_produto` FOREIGN KEY (`tipo_produto_id`) REFERENCES `japp`.`tipo_produto` (`id`),
-  CONSTRAINT `fk_produto_grupo_produto` FOREIGN KEY (`grupo_produto_id`) REFERENCES `japp`.`grupo_produto` (`id`)  )
+  CONSTRAINT `fk_produto_grupo_produto` FOREIGN KEY (`grupo_produto_id`) REFERENCES `japp`.`grupo_produto` (`id`),  
+  CONSTRAINT `fk_empresa_produto` FOREIGN KEY (`empresa_id`) REFERENCES `japp`.`empresa` (`id`))
 ENGINE = INNODB;
 
 -- -----------------------------------------------------
@@ -102,10 +104,11 @@ CREATE TABLE IF NOT EXISTS `japp`.`estoque` (
   `datacontagem` VARCHAR(45) NULL,
   `quantidade` VARCHAR(45) NULL,
   `status` VARCHAR(45) NULL,
+  `empresa_id` INT NULL, 
   PRIMARY KEY (`id`),
   INDEX `fk_estoque_produto_idx` (`produto_id` ASC),
-  CONSTRAINT `fk_estoque_produto`
-    FOREIGN KEY (`produto_id`) REFERENCES `japp`.`produto` (`id`))
+  CONSTRAINT `fk_estoque_produto` FOREIGN KEY (`produto_id`) REFERENCES `japp`.`produto` (`id`),  
+  CONSTRAINT `fk_empresa_estoque` FOREIGN KEY (`empresa_id`) REFERENCES `japp`.`empresa` (`id`))
 ENGINE = INNODB;
 
 -- -----------------------------------------------------
@@ -144,9 +147,11 @@ CREATE TABLE IF NOT EXISTS `japp`.`servico` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(45) NULL,
+  `empresa_id` INT NULL, 
   `datainclusao` DATETIME NULL,
   `dataalteracao` DATETIME NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),  
+  CONSTRAINT `fk_empresa_servico` FOREIGN KEY (`empresa_id`) REFERENCES `japp`.`empresa` (`id`))
 ENGINE = INNODB;
 
 -- -----------------------------------------------------
@@ -188,9 +193,7 @@ CREATE TABLE IF NOT EXISTS `japp`.`pessoa` (
   PRIMARY KEY (`id`),
   INDEX `id_pessoa_idx` (`id` ASC),
   INDEX `login_pessoa_idx` (`login` ASC),
-  CONSTRAINT `fk_empresa_pessoa`
-    FOREIGN KEY (`empresa_id`)
-    REFERENCES `japp`.`empresa` (`id`))
+  CONSTRAINT `fk_empresa_pessoa` FOREIGN KEY (`empresa_id`) REFERENCES `japp`.`empresa` (`id`))
   ENGINE = INNODB;
 
 -- -----------------------------------------------------
@@ -431,11 +434,13 @@ CREATE TABLE IF NOT EXISTS `japp`.`receita` (
   `tempo_medio` VARCHAR(25) NULL,
   `receita_origem` INT NULL,
   `tipo_receita` INT NULL,
+  `empresa_id` INT NULL, 
   `datainclusao` DATETIME NULL,
   `dataalteracao` DATETIME NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_receita_pessoa` FOREIGN KEY (`pessoa_id`) REFERENCES `japp`.`pessoa` (`id`),
-  CONSTRAINT `fk_receita_servico` FOREIGN KEY (`servico_id`) REFERENCES `japp`.`servico` (`id`))	
+  CONSTRAINT `fk_receita_servico` FOREIGN KEY (`servico_id`) REFERENCES `japp`.`servico` (`id`),  
+  CONSTRAINT `fk_receita_empresa` FOREIGN KEY (`empresa_id`) REFERENCES `japp`.`empresa` (`id`))	
 ENGINE = INNODB;
 
 -- -----------------------------------------------------
@@ -471,11 +476,13 @@ CREATE TABLE IF NOT EXISTS `japp`.`cardapio` (
   `tempo_medio` VARCHAR(25) NULL,
   `cardapio_origem` INT NULL,
   `tipo_cardapio` INT NULL,
+  `empresa_id` INT NULL, 
   `datainclusao` DATETIME NULL,
   `dataalteracao` DATETIME NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_cardapio_pessoa` FOREIGN KEY (`pessoa_id`) REFERENCES `japp`.`pessoa` (`id`),
-  CONSTRAINT `fk_cardapio_servico` FOREIGN KEY (`servico_id`) REFERENCES `japp`.`servico` (`id`))	
+  CONSTRAINT `fk_cardapio_servico` FOREIGN KEY (`servico_id`) REFERENCES `japp`.`servico` (`id`),  
+  CONSTRAINT `fk_cardapio_empresa` FOREIGN KEY (`empresa_id`) REFERENCES `japp`.`empresa` (`id`))	
 ENGINE = INNODB;
 
 -- -----------------------------------------------------

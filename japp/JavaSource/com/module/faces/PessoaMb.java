@@ -11,7 +11,6 @@ import javax.faces.bean.SessionScoped;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.module.ejb.contract.IEmpresaEjb;
 import com.module.ejb.contract.IPessoaEjb;
 import com.module.jpa.model.Contato;
 import com.module.jpa.model.Empresa;
@@ -23,17 +22,12 @@ public class PessoaMb extends BaseMb{
 
 	@EJB
 	private IPessoaEjb pessoaEjb;
-	
-	@EJB
-	private IEmpresaEjb empresaEjb;
-	
+		
 	private Pessoa pessoa;
 	private List<Pessoa> pessoas;
-	private List<Empresa> empresas;
 	private Boolean renovarSenha;
 	private Contato contatoTemp;
 	private List<Contato> listContatoTemp;
-	private Empresa empresa;
 		
 	public PessoaMb() {
 		super();
@@ -42,18 +36,18 @@ public class PessoaMb extends BaseMb{
 	
 	@PostConstruct
 	public void posConstrucao(){
-		this.empresas = empresaEjb.listarEmpresas(new Empresa());
-		this.empresa = new Empresa();
+		super.posConstrucao();
+		setEmpresaAux(new Empresa());
 	}
 
 	public void solicitarCadastroPessoa(){
 		pessoaEjb.solicitarCadastro(pessoa);
-        addMsg("Solicitaï¿½ï¿½o de cadastro registrada.");
+        addMsg("Solicitação de cadastro registrada.");
 	}
 		
 	public void buscar(){
 		try {
-			this.pessoa.setEmpresa(this.empresa);
+			this.pessoa.setEmpresa(getEmpresaAux());
 			this.pessoas = pessoaEjb.listarPessoas(this.pessoa);
 			
 			if ((this.pessoas != null)&&(!this.pessoas.isEmpty())&&(this.pessoas.size() == 1)){
@@ -61,6 +55,7 @@ public class PessoaMb extends BaseMb{
 				this.pessoas.clear();
 				
 				this.pessoa = pessoaEjb.buscarPessoa(this.pessoa);
+				setEmpresaAux(this.pessoa.getEmpresa());
 			}else if ((this.pessoas == null)||(this.pessoas.isEmpty())){
 				addMsg("Nenhuma pessoa encontrada na busca.");
 			}else{
@@ -75,7 +70,7 @@ public class PessoaMb extends BaseMb{
 	public void salvar(){
 		if (validarSalvar()){
 			try {
-				this.pessoa.setEmpresa(this.empresa);
+				this.pessoa.setEmpresa(getEmpresaAux());
 				this.pessoa = pessoaEjb.salvarPessoa(this.pessoa);
 			} catch (NoSuchAlgorithmException e) {				
 				addMsgError("Erro ao salvar dados - "+e.getMessage());
@@ -88,7 +83,7 @@ public class PessoaMb extends BaseMb{
 	public void editar(Pessoa us){
 		this.pessoa = us;
 		this.pessoa = pessoaEjb.buscarPessoa(this.pessoa);
-		this.empresa = this.pessoa.getEmpresa();
+		setEmpresaAux(this.pessoa.getEmpresa());
 		alternaMostraLista();
 	}
 	
@@ -100,11 +95,11 @@ public class PessoaMb extends BaseMb{
 	private boolean validarSalvar() {
 		boolean ret = true;
 		if (StringUtils.isBlank(this.pessoa.getNomecompleto())){
-			addMsgError("O campo Nome Completo ï¿½ obrigatï¿½rio");
+			addMsgError("O campo Nome Completo é obrigatï¿½rio");
 			ret = false;
 		}
 		if (StringUtils.isBlank(this.pessoa.getCpf())){
-			addMsgError("O campo CPF ï¿½ obrigatï¿½rio");
+			addMsgError("O campo CPF é obrigatï¿½rio");
 			ret = false;
 		}
 		return ret;
@@ -120,7 +115,7 @@ public class PessoaMb extends BaseMb{
 		this.pessoa = new Pessoa();
 		this.contatoTemp = new Contato();
 		this.pessoas = new ArrayList<Pessoa>();
-		this.empresa = new Empresa();		
+		setEmpresaAux(new Empresa());		
 	}
 	
 	public void limparContatos(){
@@ -181,14 +176,6 @@ public class PessoaMb extends BaseMb{
 
 	public void setListContatoTemp(List<Contato> listContatoTemp) {
 		this.listContatoTemp = listContatoTemp;
-	}
-
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
 	}
 
 }

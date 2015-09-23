@@ -69,7 +69,7 @@
 	                    <h:inputText id="tipodocumento" value="#{pessoaMb.pessoa.tipodocumento}" title="tipo documento" />
 	                    
 	                    <h:outputLabel value="Tipo Pessoa" for="tipoPessoa" />
-	                    <h:selectOneMenu value="#{pessoaMb.pessoa.tipoPessoa}" style="width:150px">
+	                    <h:selectOneMenu value="#{pessoaMb.pessoa.tipoPessoa}" style="width:150px" id="tipoPessoa">
 							<f:selectItem itemLabel="Pessoa Física" itemValue="PF"/>
 							<f:selectItem itemLabel="Pessoa Jurídica" itemValue="PJ"/>
 							<a4j:ajax event="change" render="pnlCadCli"></a4j:ajax>
@@ -85,7 +85,8 @@
 	                    
 	                    <h:outputLabel value="Senha" for="pass" />
 	                    <h:panelGroup>
-		                    <h:selectBooleanCheckbox value="#{pessoaMb.renovarSenha}" title="Renovar senha no próximo login" label="Renovar senha no próximo login" layout="lineDirection" />
+		                    <h:selectBooleanCheckbox value="#{pessoaMb.renovarSenha}" title="Renovar senha no próximo login" 
+		                    	label="Renovar senha no próximo login" layout="lineDirection" id="pass"/>
 		                    <h:outputLabel value="Renovar senha no próximo login" />
 	                    </h:panelGroup>
 	                    <h:panelGroup></h:panelGroup>
@@ -98,7 +99,7 @@
 						</h:selectOneMenu>
 	                    	                    
 	                    <h:outputLabel value="Empresa" for="empresaId" />
-	                    <h:selectOneMenu id="empresaId" value="#{pessoaMb.empresa.id}" title="Selecione a empresa vinculada" style="width:200px" converter="genConverter">
+	                    <h:selectOneMenu id="empresaId" value="#{pessoaMb.empresaAux.id}" title="Selecione a empresa vinculada" style="width:250px" converter="genConverter">
 	                        <f:selectItem itemValue="#{null}" itemLabel=""/>
 	                        <f:selectItems value="#{pessoaMb.empresas}" var="emp" itemValue="#{emp.id}" itemLabel="#{emp.nomeFantasia}"/>
 	                    </h:selectOneMenu>

@@ -37,17 +37,19 @@ public class Receita implements Serializable {
 	@Column(name="tempo_medio")
 	private String tempoMedio;
 
-	//bi-directional many-to-one association to ReceitaProduto
 	@OneToMany(mappedBy="receita")
 	private List<ReceitaProduto> receitaProdutos;
 	
-	//bi-directional many-to-one association to TipoReceita
 	@ManyToOne(fetch = FetchType.EAGER) 
 	@JoinColumn(name="tipo_receita_id")
 	private TipoReceita tipoReceita;
 
 	@Column(name="calorias")
 	private Double calorias;
+	
+	@ManyToOne(fetch = FetchType.LAZY) 
+	@JoinColumn(name="empresa_id")
+	private Empresa empresa;
 	
 	public Receita() {
 	}
@@ -152,6 +154,14 @@ public class Receita implements Serializable {
 		receitaProduto.setReceita(null);
 
 		return receitaProduto;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 }

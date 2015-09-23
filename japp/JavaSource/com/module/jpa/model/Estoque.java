@@ -1,6 +1,7 @@
 package com.module.jpa.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -31,10 +32,13 @@ public class Estoque implements Serializable {
 
 	private String status;
 
-	//bi-directional many-to-one association to Produto
 	@ManyToOne
 	private Produto produto;
 
+	@ManyToOne(fetch = FetchType.LAZY) 
+	@JoinColumn(name="empresa_id")
+	private Empresa empresa;
+	
 	public Estoque() {
 	}
 
@@ -102,4 +106,11 @@ public class Estoque implements Serializable {
 		this.custoMedio = custoMedio;
 	}
 
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
 }

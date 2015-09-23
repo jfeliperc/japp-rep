@@ -1,5 +1,6 @@
 package com.module.jpa.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -12,6 +13,11 @@ import com.module.jpa.model.Empresa;
 
 public class EmpresaDao extends Dao<Empresa> {
 
+	public List<Empresa> getAllEmpresas() {		
+		List<Empresa> empresas = (ArrayList<Empresa>)getEm().createNamedQuery("Empresa.findAll").getResultList();		
+		return empresas;
+	}
+	
 	public List<Empresa> findByExample(Empresa empresa) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 	    CriteriaQuery<Empresa> c = cb.createQuery(Empresa.class);	    

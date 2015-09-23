@@ -40,34 +40,36 @@
 	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
 	                	<hr/>
 		            </h:panelGroup>
-			      	<h:panelGrid columns="4" styleClass="gridForm" width="90%">
+			      	<h:panelGrid columns="4" styleClass="gridForm" width="93%">
 	                    <h:outputLabel value="id" for="id" />
 	                    <h:inputText id="id" value="#{fornecedorMb.fornecedor.id}" title="Id" />
 	                    <h:panelGroup></h:panelGroup>
 	                    <h:panelGroup></h:panelGroup>
 	                    	                    
 	                    <h:outputLabel value="Razão Social" for="razaoSocial" />
-	                    <h:inputText id="razaoSocial" value="#{fornecedorMb.fornecedor.razaoSocial}" title="razaoSocial" size="90"/>
+	                    <h:inputText id="razaoSocial" value="#{fornecedorMb.fornecedor.razaoSocial}" title="razaoSocial" size="80"/>
 	                    
 	                    <h:outputLabel value="Nome Fantasia" for="nomeFantasia" />
-	                    <h:inputText id="nomeFantasia" value="#{fornecedorMb.fornecedor.nomeFantasia}" title="nomeFantasia" size="90"/>
+	                    <h:inputText id="nomeFantasia" value="#{fornecedorMb.fornecedor.nomeFantasia}" title="nomeFantasia" size="80"/>
 	                    
 	                    <h:outputLabel value="Cnpj" for="cnpj" />
 	                    <h:inputText id="cnpj" value="#{fornecedorMb.fornecedor.cnpj}" title="Cnpj" size="50" styleClass="CNPJ"
 			                    	onkeypress="mask(this,'99.999.999/9999-99',1,this)" />
+	                    <h:panelGroup></h:panelGroup>
+	                    <h:panelGroup></h:panelGroup>
 	                    
 	                    <h:outputLabel value="Inscricao Est." for="inscricaoEst" />
 	                    <h:inputText id="inscricaoEst" value="#{fornecedorMb.fornecedor.inscricaoEst}" title="inscricaoEst" size="50" />
 	                    
 	                    <h:outputLabel value="Inscricao Mun." for="inscricaoMun" />
 	                    <h:inputText id="inscricaoMun" value="#{fornecedorMb.fornecedor.inscricaoMun}" title="inscricaoMun" size="50" />
-	                    
-	                    <h:outputLabel value="empresa" for="empresa" />
-	                    <h:selectOneMenu id="empresa" value="#{fornecedorMb.fornecedor.empresa}" converter="genConverter" title="Empresa" style="width:200px">
+	                    	                    	                    
+	                    <h:outputLabel value="Empresa" for="empresaId" />
+	                    <h:selectOneMenu id="empresaId" value="#{fornecedorMb.empresaAux.id}" title="Selecione a empresa vinculada" style="width:250px" converter="genConverter">
 	                        <f:selectItem itemValue="#{null}" itemLabel=""/>
-	                        <f:selectItems value="#{fornecedorMb.empresas}" var="emp" itemValue="#{emp}" itemLabel="#{emp.nomeFantasia}"/>
+	                        <f:selectItems value="#{fornecedorMb.empresas}" var="emp" itemValue="#{emp.id}" itemLabel="#{emp.nomeFantasia}"/>
 	                    </h:selectOneMenu>
-	                    
+	                    	                    
 	                    <h:outputLabel value="Status" for="ativo" />
 	                    <h:selectOneMenu value="#{fornecedorMb.fornecedor.ativo}" style="width:150px">
 							<f:selectItem itemLabel="Ativo" itemValue="1"/>
@@ -75,7 +77,9 @@
 						</h:selectOneMenu>						
 						
 	                    <h:outputLabel value="Observacao" for="observacao" />
-	                    <h:inputText id="observacao" value="#{fornecedorMb.fornecedor.observacao}" title="Observação" size="100" />
+	                    <h:inputText id="observacao" value="#{fornecedorMb.fornecedor.observacao}" title="Observação" size="90" />
+	                    <h:panelGroup></h:panelGroup>
+	                    <h:panelGroup></h:panelGroup>
 	                    
 	                    <h:outputLabel value="Data inclusão" for="datainclusao" />
 	                    <h:outputLabel id="datainclusao" value="#{fornecedorMb.fornecedor.datainclusao}" title="Data inclusão" >

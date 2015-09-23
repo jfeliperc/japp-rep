@@ -49,10 +49,19 @@
 			      	<h:panelGrid columns="2" styleClass="gridForm" cellspacing="5px" cellpadding="5">
 	                    <h:outputLabel value="Id" for="id" />
 	                    <h:inputText id="idtpSrv" value="#{servicoMb.servico.id}" title="Id" required="false"/>
+	                    
 	                    <h:outputLabel value="Nome" for="nome" />
-	                    <h:inputText id="nometpSrv" value="#{servicoMb.servico.nome}" title="Nome" required="false" size="100"/>
+	                    <h:inputText id="nometpSrv" value="#{servicoMb.servico.nome}" title="Nome" required="false" size="70"/>
+	                    
 	                    <h:outputLabel value="Descrição" for="descricao" />
-	                    <h:inputText id="descricaotpSrv" value="#{servicoMb.servico.descricao}" title="Descrição" required="false" size="100"/>			                    
+	                    <h:inputText id="descricaotpSrv" value="#{servicoMb.servico.descricao}" title="Descrição" required="false" size="80"/>
+	                    	                    	                    	                    
+	                    <h:outputLabel value="Empresa" for="empresaId" />
+	                    <h:selectOneMenu id="empresaId" value="#{servicoMb.empresaAux.id}" title="Selecione a empresa vinculada" style="width:250px" converter="genConverter">
+	                        <f:selectItem itemValue="#{null}" itemLabel=""/>
+	                        <f:selectItems value="#{servicoMb.empresas}" var="emp" itemValue="#{emp.id}" itemLabel="#{emp.nomeFantasia}"/>
+	                    </h:selectOneMenu>	                    	 
+	                    			                    
 	                </h:panelGrid>
 	                <br/><br/>				    
 				</div>	
@@ -68,12 +77,16 @@
 	      				</td></tr></table>		      				
 		      		</h:panelGroup>
 					<h:panelGrid columns="2" styleClass="gridForm" cellspacing="5px" cellpadding="5">
+	                    
 	                    <h:outputLabel value="Id" for="id" />
 	                    <h:inputText id="idtpAtv" value="#{servicoMb.atividadeTemp.id}" required="false"/>
+	                    
 	                    <h:outputLabel value="Nome" for="nome" />
-	                    <h:inputText id="nometpAtv" value="#{servicoMb.atividadeTemp.nome}" required="false" size="100"/>
+	                    <h:inputText id="nometpAtv" value="#{servicoMb.atividadeTemp.nome}" required="false" size="70"/>
+	                    
 	                    <h:outputLabel value="Descrição" for="descricao" />
-	                    <h:inputText id="descricaotpAtv" value="#{servicoMb.atividadeTemp.descricao}" required="false" size="100"/>			                    
+	                    <h:inputText id="descricaotpAtv" value="#{servicoMb.atividadeTemp.descricao}" required="false" size="80"/>	
+	                    		                    
 	                </h:panelGrid>
 	                <br/>
 					<rich:dataTable value="#{servicoMb.servico.atividades}" var="us" style="width:100%" id="tbatividades">

@@ -57,29 +57,45 @@ public class Empresa implements Serializable, IGenericModel {
 	@Column(name="razao_social")
 	private String razaoSocial;
 
-	//bi-directional many-to-one association to AgenteExterno
 	@OneToMany(mappedBy="empresa")
 	private List<AgenteExterno> agenteExternos;
 
-	//bi-directional many-to-one association to Endereco
 	@OneToMany(mappedBy="empresa")
 	private List<Endereco> enderecos;
 
-	//bi-directional many-to-one association to Orcamento
 	@OneToMany(mappedBy="empresa")
 	private List<Orcamento> orcamentos;
 
-	//bi-directional many-to-one association to Pedido
 	@OneToMany(mappedBy="empresa")
 	private List<Pedido> pedidos;
 
-	//bi-directional many-to-one association to Pessoa
 	@OneToMany(mappedBy="empresa")
 	private List<Pessoa> pessoas;
 
+	@OneToMany(mappedBy="empresa")
+	private List<Produto> produtos;
+	
+	@OneToMany(mappedBy="empresa")
+	private List<Servico> servicos;
+	
+	@OneToMany(mappedBy="empresa")
+	private List<Receita> receitas;
+	
 	public Empresa() {
+	
 	}
 
+
+	@Override
+	public Integer getId() {		
+		return getEmpresaId();
+	}
+
+	@Override
+	public void setId(Integer id) {
+		setEmpresaId(id);
+	}
+	
 	public Integer getEmpresaId() {
 		return empresaId;
 	}
@@ -271,15 +287,71 @@ public class Empresa implements Serializable, IGenericModel {
 
 		return pessoa;
 	}
-
-	@Override
-	public Integer getId() {		
-		return getEmpresaId();
+	
+	public List<Produto> getProdutos() {
+		return produtos;
 	}
 
-	@Override
-	public void setId(Integer id) {
-		setEmpresaId(id);
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+	
+	public Produto addProduto(Produto produto) {
+		getProdutos().add(produto);
+		produto.setEmpresa(this);
+
+		return produto;
 	}
 
+	public Produto removeProduto(Produto produto) {
+		getProdutos().remove(produto);
+		produto.setEmpresa(null);
+
+		return produto;
+	}
+
+	public List<Servico> getServicos() {
+		return servicos;
+	}
+
+	public void setServicos(List<Servico> servicos) {
+		this.servicos = servicos;
+	}
+
+	public Servico addServico(Servico servico) {
+		getServicos().add(servico);
+		servico.setEmpresa(this);
+
+		return servico;
+	}
+
+	public Servico removeServico(Servico servico) {
+		getServicos().remove(servico);
+		servico.setEmpresa(null);
+
+		return servico;
+	}
+
+	public List<Receita> getReceitas() {
+		return receitas;
+	}
+
+	public void setReceitas(List<Receita> receitas) {
+		this.receitas = receitas;
+	}
+
+
+	public Receita addReceita(Receita receita) {
+		getReceitas().add(receita);
+		receita.setEmpresa(this);
+
+		return receita;
+	}
+
+	public Receita removeReceita(Receita receita) {
+		getReceitas().remove(receita);
+		receita.setEmpresa(null);
+
+		return receita;
+	}
 }

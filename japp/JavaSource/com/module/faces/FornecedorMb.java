@@ -14,7 +14,6 @@ import com.module.ejb.contract.IEmpresaEjb;
 import com.module.ejb.contract.IFornecedorEjb;
 import com.module.jpa.model.AgenteExterno;
 import com.module.jpa.model.Empresa;
-import com.module.jpa.model.Pessoa;
 
 
 @ManagedBean
@@ -38,6 +37,7 @@ public class FornecedorMb extends BaseMb{
 	
 	@PostConstruct
 	public void posConstrucao(){
+		super.posConstrucao();
 		this.empresas = empresaEjb.listarEmpresas(new Empresa());
 	}
 	
@@ -47,9 +47,11 @@ public class FornecedorMb extends BaseMb{
 	}
 	
 	public void buscar(){
+		this.fornecedor.setEmpresa(getEmpresaAux());
 		this.listFornecedor = fornecedorEjb.listarFornecedores(fornecedor);
 		if ((this.listFornecedor != null)&&(!this.listFornecedor.isEmpty())&&(this.listFornecedor.size() == 1)){
 			this.fornecedor = this.listFornecedor.get(0);
+			setEmpresaAux(this.fornecedor.getEmpresa());
 			this.listFornecedor.clear();
 		}else if ((this.listFornecedor == null)||(this.listFornecedor.isEmpty())){
 			addMsg("Nenhum fornecedor encontrado na busca.");
@@ -61,6 +63,7 @@ public class FornecedorMb extends BaseMb{
 	
 	public void salvar(){
 		if (validarSalvar()){
+			this.fornecedor.setEmpresa(getEmpresaAux());
 			this.fornecedor = fornecedorEjb.cadastrarFornecedor(this.fornecedor);
 		}
 	}
@@ -80,7 +83,8 @@ public class FornecedorMb extends BaseMb{
 
 	public void editar(AgenteExterno us){
 		this.fornecedor = us;
-		this.fornecedor = fornecedorEjb.buscarFornecedor(this.fornecedor);		
+		this.fornecedor = fornecedorEjb.buscarFornecedor(this.fornecedor);	
+		setEmpresaAux(this.fornecedor.getEmpresa());	
 		alternaMostraLista();
 	}
 	

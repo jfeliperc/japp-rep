@@ -39,6 +39,7 @@ public class AcessoMb extends BaseMb{
 	
 	@PostConstruct
 	public void posConstrucao(){
+		super.posConstrucao();
 		limpar();
 	}
 		

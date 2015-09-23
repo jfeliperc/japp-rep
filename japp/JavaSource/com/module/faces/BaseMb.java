@@ -1,18 +1,44 @@
 package com.module.faces;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import com.module.ejb.contract.IEmpresaEjb;
+import com.module.jpa.model.Empresa;
+
 @ManagedBean
 @SessionScoped
 public class BaseMb {
+	
+	@EJB
+	private IEmpresaEjb empresaEjb;
 	
 	private String msg;
 	
 	private boolean mostrarLista;
 
+	protected List<Empresa> empresas;
+	
+	protected Empresa empresaAux;
+
+	
+	public BaseMb() {
+		super();
+	}
+
+	@PostConstruct
+	public void posConstrucao(){
+		this.empresaAux = new Empresa();
+		this.empresas = empresaEjb.listarAllEmpresas();
+	}
+	
 	public String getMsg() {
 		return msg;
 	}
@@ -31,6 +57,22 @@ public class BaseMb {
 	
 	public void alternaMostraLista(){
 		this.mostrarLista = !this.mostrarLista;
+	}
+
+	public List<Empresa> getEmpresas() {
+		return empresas;
+	}
+
+	public void setEmpresas(List<Empresa> empresas) {
+		this.empresas = empresas;
+	}
+
+	public Empresa getEmpresaAux() {
+		return empresaAux;
+	}
+
+	public void setEmpresaAux(Empresa empresaAux) {
+		this.empresaAux = empresaAux;
 	}
 
 	protected void addMsgError(String msg){

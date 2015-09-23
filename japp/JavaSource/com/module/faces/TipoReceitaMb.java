@@ -9,7 +9,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import com.module.ejb.contract.IReceitaEjb;
-import com.module.jpa.model.Receita;
 import com.module.jpa.model.TipoReceita;
 
 
@@ -25,7 +24,7 @@ public class TipoReceitaMb extends BaseMb{
 	
 	@PostConstruct
 	public void construcao(){
-		
+		super.posConstrucao();
 	}
 	
 	public TipoReceitaMb(){		

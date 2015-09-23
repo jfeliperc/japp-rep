@@ -34,7 +34,6 @@ public class TipoProduto implements Serializable, IGenericModel {
 
 	private String nome;
 
-	//bi-directional many-to-one association to Produto
 	@OneToMany(mappedBy="tipoProduto")
 	private List<Produto> produtos;
 

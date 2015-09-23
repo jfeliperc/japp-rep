@@ -33,7 +33,8 @@ public class ProdutoMb extends BaseMb{
 	
 	
 	@PostConstruct
-	public void construcao(){
+	public void posConstrucao(){
+		super.posConstrucao();
 		produto = new Produto();
 		tipo = new TipoProduto();
 		grupo = new GrupoProduto();
@@ -41,7 +42,8 @@ public class ProdutoMb extends BaseMb{
 		itemsGrupoProduto = this.produtoEjb.buscarAllGrupoProduto();
 	}
 	
-	public ProdutoMb(){		
+	public ProdutoMb(){	
+		super();
 		this.produto = new Produto();
 		tipo = new TipoProduto();
 		grupo = new GrupoProduto();
@@ -59,12 +61,14 @@ public class ProdutoMb extends BaseMb{
 	public void buscar(){
 		
 		try {
+			this.produto.setEmpresa(getEmpresaAux());
 			this.listProduto = produtoEjb.listarProdutos(this.produto);
 			
 			if ((this.listProduto != null)&&(!this.listProduto.isEmpty())&&(this.listProduto.size() == 1)){
 				this.produto = this.listProduto.get(0);
 				this.tipo = this.produto.getTipoProduto();
 				this.grupo = this.produto.getGrupoProduto();
+				setEmpresaAux(this.produto.getEmpresa());
 				this.listProduto.clear();
 			}else{
 				setMostrarLista((this.listProduto != null)&&(!this.listProduto.isEmpty()));
@@ -80,6 +84,7 @@ public class ProdutoMb extends BaseMb{
 		if (validarSalvar()){
 			this.produto.setTipoProduto(this.tipo);
 			this.produto.setGrupoProduto(this.grupo);
+			this.produto.setEmpresa(getEmpresaAux());
 			this.produto = this.produtoEjb.cadastrarProduto(this.produto);
 		}
 	}
@@ -87,11 +92,11 @@ public class ProdutoMb extends BaseMb{
 	private boolean validarSalvar() {
 		boolean ret = true;
 		if (StringUtils.isBlank(this.produto.getNome())){
-			addMsgError("O campo Nome ï¿½ obrigatï¿½rio");
+			addMsgError("O campo Nome é obrigatório");
 			ret = false;
 		}
 		if (StringUtils.isBlank(this.produto.getDescricao())){
-			addMsgError("O campo Descriï¿½ï¿½o ï¿½ obrigatï¿½rio");
+			addMsgError("O campo Descrição é obrigatório");
 			ret = false;
 		}
 		return ret;
@@ -101,6 +106,7 @@ public class ProdutoMb extends BaseMb{
 		this.produto = us;
 		this.tipo = this.produto.getTipoProduto();
 		this.grupo = this.produto.getGrupoProduto();
+		setEmpresaAux(this.produto.getEmpresa());
 		alternaMostraLista();
 	}
 

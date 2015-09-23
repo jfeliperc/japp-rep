@@ -35,17 +35,18 @@ public class Servico implements Serializable {
 
 	private String nome;
 
-	//bi-directional many-to-one association to AtividadeServico
 	@OneToMany(mappedBy="servico")
 	private List<AtividadeServico> atividadeServicos;
 
-	//bi-directional many-to-one association to Orcamento
 	@OneToMany(mappedBy="servico")
 	private List<Orcamento> orcamentos;
 
-	//bi-directional many-to-one association to AtividadeServico
 	@OneToMany(mappedBy="servico")
 	private List<Atividade> atividades;
+	
+	@ManyToOne(fetch = FetchType.LAZY) 
+	@JoinColumn(name="empresa_id")
+	private Empresa empresa;
 	
 	public Servico() {
 	}
@@ -140,6 +141,14 @@ public class Servico implements Serializable {
 		orcamento.setServico(null);
 
 		return orcamento;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 }

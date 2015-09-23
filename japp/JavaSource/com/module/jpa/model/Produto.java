@@ -62,37 +62,35 @@ public class Produto implements Serializable, IGenericModel {
 	@Column(name="calorias")
 	private Double calorias;
 
-	//bi-directional many-to-one association to Estoque
 	@OneToMany(mappedBy="produto")
 	private List<Estoque> estoques;
 
-	//bi-directional many-to-one association to FornecProduto
 	@OneToMany(mappedBy="produto")
 	private List<FornecProduto> fornecProdutos;
 
-	//bi-directional many-to-many association to Orcamento
 	@ManyToMany(mappedBy="produtos")
 	private List<Orcamento> orcamentos;
 
-	//bi-directional many-to-one association to PedidoItem
 	@OneToMany(mappedBy="produto")
 	private List<PedidoItem> pedidoItems;
 
-	//bi-directional many-to-one association to GrupoProduto
 	@ManyToOne(fetch = FetchType.LAZY) 
 	@JoinColumn(name="grupo_produto_id")
 	private GrupoProduto grupoProduto;
 
-	//bi-directional many-to-one association to TipoProduto
 	@ManyToOne(fetch = FetchType.LAZY) 
 	@JoinColumn(name="tipo_produto_id")
 	private TipoProduto tipoProduto;
 
-	//bi-directional many-to-one association to ValorProduto
 	@OneToMany(mappedBy="produto")
 	private List<ValorProduto> valorProdutos;
+	
+	@ManyToOne(fetch = FetchType.LAZY) 
+	@JoinColumn(name="empresa_id")
+	private Empresa empresa;
 
 	public Produto() {
+		super();
 		setTipoProduto(new TipoProduto());
 		setGrupoProduto(new GrupoProduto());
 	}
@@ -327,6 +325,14 @@ public class Produto implements Serializable, IGenericModel {
 
 	public void setCalorias(Double calorias) {
 		this.calorias = calorias;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 	

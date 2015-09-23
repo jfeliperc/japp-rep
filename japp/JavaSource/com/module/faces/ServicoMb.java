@@ -26,8 +26,8 @@ public class ServicoMb extends BaseMb{
 	private Atividade atividadeTemp;
 	
 	@PostConstruct
-	public void construcao(){
-		
+	public void posConstrucao(){
+		super.posConstrucao();		
 	}
 	
 	public ServicoMb(){		

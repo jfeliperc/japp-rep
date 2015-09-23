@@ -8,6 +8,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 import com.module.ejb.contract.IEmpresaEjb;
+import com.module.faces.geral.UtilsJapp;
 import com.module.jpa.dao.Dao;
 import com.module.jpa.dao.EmpresaDao;
 import com.module.jpa.model.Empresa;
@@ -39,8 +40,11 @@ public class EmpresaEjb implements IEmpresaEjb, Serializable {
 
 	@Override
 	public Empresa buscarEmpresa(Empresa empresa) {
-		
-		return null;
+		Empresa retorno = null;
+		if (!UtilsJapp.isNullOrZero(empresa.getId())){
+			retorno = this.dao.getById(empresa.getId());
+		}
+		return retorno;
 	}
 
 	@Override
@@ -87,6 +91,11 @@ public class EmpresaEjb implements IEmpresaEjb, Serializable {
 		}
 		
 		return retorno;
+	}
+
+	@Override
+	public List<Empresa> listarAllEmpresas() {
+		return this.dao.getAllEmpresas();
 	}
 
 

@@ -27,8 +27,8 @@ public class CardapioMb extends BaseMb{
 	private List<Cardapio> listCardapio;
 	
 	@PostConstruct
-	public void construcao(){
-		
+	public void posConstrucao(){
+		super.posConstrucao();
 	}
 	
 	public CardapioMb(){		

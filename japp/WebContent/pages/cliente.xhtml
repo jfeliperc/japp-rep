@@ -46,7 +46,7 @@
 		            </h:panelGroup>
 		            <h:panelGroup id="cabecalhoCliente" layout="block">
 		            	<table><tr><td width="70%">
-					      	<h:panelGrid columns="6" styleClass="gridForm">
+					      	<h:panelGrid columns="4" styleClass="gridForm">
 			                    <h:panelGroup><h:outputLabel value="Id" for="id" /></h:panelGroup>
 			                    <h:inputText id="id" value="#{clienteMb.cliente.id}" title="Identificação interna" />
 			                    	                    
@@ -56,7 +56,13 @@
 									<f:selectItem itemLabel="Pessoa Jurídica" itemValue="PJ"/>
 									<a4j:ajax event="change" render="pnlCadCli"></a4j:ajax>
 								</h:selectOneMenu>	
-								
+									                    
+			                    <h:outputLabel value="Empresa" for="empresaId" />
+			                    <h:selectOneMenu id="empresaId" value="#{clienteMb.empresaAux.id}" title="Selecione a empresa vinculada" style="width:250px" converter="genConverter">
+			                        <f:selectItem itemValue="#{null}" itemLabel=""/>
+			                        <f:selectItems value="#{clienteMb.empresas}" var="emp" itemValue="#{emp.id}" itemLabel="#{emp.nomeFantasia}"/>
+			                    </h:selectOneMenu>
+	                    
 			                    <h:panelGroup><h:outputLabel value="Status" for="ativo" /></h:panelGroup>
 			                    <h:selectOneMenu value="#{clienteMb.cliente.ativo}" style="width:150px" id="ativo">
 									<f:selectItem itemLabel="Ativo" itemValue="1"/>
