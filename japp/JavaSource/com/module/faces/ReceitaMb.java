@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.module.ejb.contract.IProdutoEjb;
 import com.module.ejb.contract.IReceitaEjb;
+import com.module.ejb.contract.IServicoEjb;
 import com.module.jpa.model.GrupoProduto;
 import com.module.jpa.model.Produto;
 import com.module.jpa.model.Receita;
@@ -30,6 +31,9 @@ public class ReceitaMb extends BaseMb{
 	
 	@EJB
 	private IReceitaEjb receitaEjb;
+	
+	@EJB
+	private IServicoEjb servicoEjb;
 
 	private Produto produto;
 	private Receita receita;
@@ -63,6 +67,7 @@ public class ReceitaMb extends BaseMb{
 		this.itemsTipoProduto = produtoEjb.buscarAllTipoProduto();
 		this.itemsGrupoProduto = produtoEjb.buscarAllGrupoProduto();
 		this.itemsTipoReceita = receitaEjb.buscarAllTipoReceitas();
+		this.listServico = servicoEjb.buscarAllServicos();
 		this.produto.setId(null);
 	}
 	
@@ -83,11 +88,11 @@ public class ReceitaMb extends BaseMb{
 	private boolean validarSalvar() {
 		boolean ret = true;
 		if (StringUtils.isBlank(this.produto.getNome())){
-			addMsgError("O campo Nome ï¿½ obrigatï¿½rio");
+			addMsgError("O campo Nome é obrigatório");
 			ret = false;
 		}
 		if (StringUtils.isBlank(this.produto.getDescricao())){
-			addMsgError("O campo Descriï¿½ï¿½o ï¿½ obrigatï¿½rio");
+			addMsgError("O campo Descriééo é obrigatório");
 			ret = false;
 		}
 		return ret;

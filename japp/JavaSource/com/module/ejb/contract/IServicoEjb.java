@@ -11,6 +11,6 @@ public interface IServicoEjb {
 
 	Servico salvarServico(Servico servico);
 
-	
+	List<Servico> buscarAllServicos();
 	
 }

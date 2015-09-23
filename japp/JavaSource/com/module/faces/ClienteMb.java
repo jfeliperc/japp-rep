@@ -11,7 +11,9 @@ import javax.faces.bean.SessionScoped;
 import org.apache.commons.lang3.StringUtils;
 
 import com.module.ejb.contract.IClienteEjb;
+import com.module.enums.TipoPessoa;
 import com.module.jpa.model.AgenteExterno;
+import com.module.jpa.model.Servico;
 
 @ManagedBean
 @SessionScoped
@@ -44,19 +46,40 @@ public class ClienteMb extends BaseMb{
 		this.listCliente = clienteEjb.listarClientes(cliente);
 		if ((this.listCliente != null)&&(!this.listCliente.isEmpty())&&(this.listCliente.size() == 1)){
 			this.cliente = this.listCliente.get(0);
-			this.listCliente.clear();
+			this.listCliente.clear();		
+		}else if ((this.listCliente == null)||(this.listCliente.isEmpty())){
+			addMsg("Nenhum cliente encontrado na busca.");
+			limpar();
+		}else{
+			setMostrarLista((this.listCliente != null)&&(!this.listCliente.isEmpty()));
 		}
+		
 	}
 	
 	private boolean validarSalvar() {
 		boolean ret = true;
-		if (StringUtils.isBlank(this.cliente.getNome())){
-			addMsgError("O campo Nome é obrigatório");
-			ret = false;
-		}
-		if (StringUtils.isBlank(this.cliente.getCpf())){
-			addMsgError("O campo CPF é obrigatório");
-			ret = false;
+		if (TipoPessoa.PF.getValor().equals(this.cliente.getTipoPessoa())){
+			if (StringUtils.isBlank(this.cliente.getNome())){
+				addMsgError("O campo Nome é obrigatório");
+				ret = false;
+			}
+			if (StringUtils.isBlank(this.cliente.getCpf())){
+				addMsgError("O campo CPF é obrigatório");
+				ret = false;
+			}
+		}else{
+			if (StringUtils.isBlank(this.cliente.getRazaoSocial())){
+				addMsgError("O campo Razão social é obrigatório");
+				ret = false;
+			}
+			if (StringUtils.isBlank(this.cliente.getNomeFantasia())){
+				addMsgError("O campo Nome Fantasia é obrigatório");
+				ret = false;
+			}
+			if (StringUtils.isBlank(this.cliente.getCnpj())){
+				addMsgError("O campo CNPJ é obrigatório");
+				ret = false;
+			}
 		}
 		return ret;
 	}
@@ -72,6 +95,12 @@ public class ClienteMb extends BaseMb{
 			clienteEjb.excluirCliente(this.cliente);
 		}
 	}
+	
+	public void editar(AgenteExterno us){
+		this.cliente = us;
+		alternaMostraLista();
+	}
+	
 	
 	public AgenteExterno getCliente() {
 		return cliente;

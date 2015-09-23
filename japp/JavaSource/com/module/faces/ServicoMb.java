@@ -41,7 +41,17 @@ public class ServicoMb extends BaseMb{
 	}
 	
 	public void buscar(){
-		this.listServico = servicoEjb.buscarServico(this.servico);
+		this.listServico = servicoEjb.buscarServico(this.servico);		
+		if ((this.listServico != null)&&(!this.listServico.isEmpty())&&(this.listServico.size() == 1)){
+			this.servico = this.listServico.get(0);
+			this.listServico.clear();
+		}else if ((this.listServico == null)||(this.listServico.isEmpty())){
+			addMsg("Nenhum serviço encontrado na busca.");
+			limpar();
+		}else{
+			setMostrarLista((this.listServico != null)&&(!this.listServico.isEmpty()));
+		}
+		
 	}
 	
 	public void salvar(){
@@ -53,7 +63,6 @@ public class ServicoMb extends BaseMb{
 	
 	public void editar(Servico us){
 		this.servico = us;
-		//buscar();
 		alternaMostraLista();
 	}
 	

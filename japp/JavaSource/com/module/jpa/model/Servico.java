@@ -1,7 +1,9 @@
 package com.module.jpa.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +13,11 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Servico.findAll", query="SELECT s FROM Servico s")
+@NamedQueries({
+    @NamedQuery(name = "Servico.findAll", query = "SELECT a FROM Servico a"),
+    @NamedQuery(name = "Servico.findById", query = "SELECT a FROM Servico a WHERE a.id = :id"),
+    @NamedQuery(name = "Servico.findByDescricao", query = "SELECT a FROM Servico a WHERE a.descricao = :descricao"),    
+    @NamedQuery(name = "Servico.findByNome", query = "SELECT a FROM Servico a WHERE a.nome = :nome")})
 public class Servico implements Serializable {
 	private static final long serialVersionUID = 1L;
 

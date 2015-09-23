@@ -72,7 +72,7 @@ public class FornecedorMb extends BaseMb{
 			ret = false;
 		}
 		if (StringUtils.isBlank(this.fornecedor.getCnpj())){
-			addMsgError("O campo CPF é obrigatório");
+			addMsgError("O campo CNPJ é obrigatório");
 			ret = false;
 		}
 		return ret;

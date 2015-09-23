@@ -18,11 +18,9 @@ public class AtividadeServico implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-	//bi-directional many-to-one association to Atividade
 	@ManyToOne
 	private Atividade atividade;
 
-	//bi-directional many-to-one association to Servico
 	@ManyToOne
 	private Servico servico;
 

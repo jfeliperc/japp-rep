@@ -12,7 +12,6 @@ import javax.persistence.criteria.Root;
 import org.apache.commons.lang3.StringUtils;
 
 import com.module.jpa.model.AgenteExterno;
-import com.module.jpa.model.Pessoa;
 
 public class AgenteExternoDao extends Dao<AgenteExterno> {
 

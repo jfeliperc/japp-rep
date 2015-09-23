@@ -103,25 +103,25 @@
 	                
 	                <h:panelGrid columns="4" styleClass="gridForm" id="pgPJ" rendered="#{clienteMb.cliente.tipoPessoa == 'PJ'}">     
 	                    <h:outputLabel value="Cnpj" for="cnpj" />
-	                    <h:inputText id="cnpj" value="#{clienteMb.cliente.cnpj}" title="Cnpj" size="50" disabled="#{clienteMb.cliente.ativo == 'PF'}" styleClass="cpf"
+	                    <h:inputText id="cnpj" value="#{clienteMb.cliente.cnpj}" title="Cnpj" size="50" styleClass="cpf"
 			                    	onkeypress="mask(this,'99.999.999/9999-99',1,this)" />
 	                    <h:panelGroup></h:panelGroup>
 	                    <h:panelGroup></h:panelGroup>
 	                    	                    	                    
 	                    <h:outputLabel value="Razao Social" for="razaoSocial" />
-	                    <h:inputText id="razaoSocial" value="#{clienteMb.cliente.razaoSocial}" title="razaoSocial" size="70" disabled="#{clienteMb.cliente.ativo == 'PJ'}"/>
+	                    <h:inputText id="razaoSocial" value="#{clienteMb.cliente.razaoSocial}" title="razaoSocial" size="70" />
 	                    
 	                    <h:outputLabel value="Nome Fantasia" for="nomeFantasia" />
-	                    <h:inputText id="nomeFantasia" value="#{clienteMb.cliente.nomeFantasia}" title="nomeFantasia" size="70" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
+	                    <h:inputText id="nomeFantasia" value="#{clienteMb.cliente.nomeFantasia}" title="nomeFantasia" size="70" />
 	                    	                     
 	                    <h:outputLabel value="Inscricao Est." for="inscricaoEst" />
-	                    <h:inputText id="inscricaoEst" value="#{clienteMb.cliente.inscricaoEst}" title="inscricaoEst" size="40" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
+	                    <h:inputText id="inscricaoEst" value="#{clienteMb.cliente.inscricaoEst}" title="inscricaoEst" size="40" />
 	                    
 	                    <h:outputLabel value="Inscricao Mun." for="inscricaoMun" />
-	                    <h:inputText id="inscricaoMun" value="#{clienteMb.cliente.inscricaoMun}" title="inscricaoMun" size="40" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
+	                    <h:inputText id="inscricaoMun" value="#{clienteMb.cliente.inscricaoMun}" title="inscricaoMun" size="40" />
 	                    
 	                    <h:outputLabel value="Observacao" for="observacao" />
-	                    <h:inputText id="observacao" value="#{clienteMb.cliente.observacao}" title="observacao" size="90" disabled="#{clienteMb.cliente.ativo == 'PF'}"/>
+	                    <h:inputText id="observacao" value="#{clienteMb.cliente.observacao}" title="observacao" size="90" />
 	                    <h:panelGroup></h:panelGroup>
 	                    <h:panelGroup></h:panelGroup>
 	                    	                    
@@ -165,7 +165,7 @@
 					</rich:column>
 					<rich:column>
 						<f:facet name="header">Ação</f:facet>
-						<center><h:commandLink action="#{servicoMb.editar(us)}" value="" title="Editar dados deste registro">
+						<center><h:commandLink action="#{clienteMb.editar(us)}" value="" title="Editar dados deste registro">
 										<h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
 					</rich:column>
 				</rich:dataTable>  
