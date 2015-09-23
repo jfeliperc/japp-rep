@@ -46,14 +46,14 @@ public class ReceitaMb extends BaseMb{
 	private List<TipoProduto> itemsTipoProduto;
 	private List<GrupoProduto> itemsGrupoProduto;
 	
+	private Servico servicoAux;
+	private TipoReceita tipoReceitaAux;
+	private TipoProduto tipoProdutoAux;
+	private GrupoProduto grupoProdutoAux;
+	
 	@PostConstruct
 	public void construcao(){
-		this.itemsTipoProduto = new ArrayList<TipoProduto>();
-		this.itemsGrupoProduto = new ArrayList<GrupoProduto>();
-		this.itemsTipoReceita = new ArrayList<TipoReceita>();
-		this.listReceitaProduto = new ArrayList<ReceitaProduto>();
-		this.receita = new Receita();
-		this.receitaProduto = new ReceitaProduto();
+		limpar();	
 	}
 	
 	public ReceitaMb(){		
@@ -63,12 +63,22 @@ public class ReceitaMb extends BaseMb{
 
 	public void limpar(){
 		this.produto = new Produto();
+		this.produto.setId(null);
+		
 		this.listProduto = new ArrayList<Produto>();
 		this.itemsTipoProduto = produtoEjb.buscarAllTipoProduto();
 		this.itemsGrupoProduto = produtoEjb.buscarAllGrupoProduto();
 		this.itemsTipoReceita = receitaEjb.buscarAllTipoReceitas();
 		this.listServico = servicoEjb.buscarAllServicos();
-		this.produto.setId(null);
+		
+		this.receita = new Receita();
+		this.receitaProduto = new ReceitaProduto();
+		this.servicoAux = new Servico();
+		this.tipoReceitaAux = new TipoReceita();
+		this.tipoProdutoAux = new TipoProduto();
+		this.grupoProdutoAux = new GrupoProduto();			
+
+		this.listReceitaProduto = new ArrayList<ReceitaProduto>();
 	}
 	
 	public void buscar(){
@@ -92,7 +102,7 @@ public class ReceitaMb extends BaseMb{
 			ret = false;
 		}
 		if (StringUtils.isBlank(this.produto.getDescricao())){
-			addMsgError("O campo Descriééo é obrigatório");
+			addMsgError("O campo Descrição é obrigatório");
 			ret = false;
 		}
 		return ret;
@@ -100,6 +110,10 @@ public class ReceitaMb extends BaseMb{
 
 	public void editar(Receita us){
 		this.receita = us;
+	}
+	
+	public void editarProduto(ReceitaProduto prod){
+		this.produto = prod.getProduto();
 	}
 	
 	public void excluir(){
@@ -197,6 +211,38 @@ public class ReceitaMb extends BaseMb{
 
 	public void setItemsTipoReceita(List<TipoReceita> itemsTipoReceita) {
 		this.itemsTipoReceita = itemsTipoReceita;
+	}
+
+	public Servico getServicoAux() {
+		return servicoAux;
+	}
+
+	public void setServicoAux(Servico servicoAux) {
+		this.servicoAux = servicoAux;
+	}
+
+	public TipoReceita getTipoReceitaAux() {
+		return tipoReceitaAux;
+	}
+
+	public void setTipoReceitaAux(TipoReceita tipoReceitaAux) {
+		this.tipoReceitaAux = tipoReceitaAux;
+	}
+
+	public TipoProduto getTipoProdutoAux() {
+		return tipoProdutoAux;
+	}
+
+	public void setTipoProdutoAux(TipoProduto tipoProdutoAux) {
+		this.tipoProdutoAux = tipoProdutoAux;
+	}
+
+	public GrupoProduto getGrupoProdutoAux() {
+		return grupoProdutoAux;
+	}
+
+	public void setGrupoProdutoAux(GrupoProduto grupoProdutoAux) {
+		this.grupoProdutoAux = grupoProdutoAux;
 	}
 	
 }

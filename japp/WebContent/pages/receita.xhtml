@@ -53,15 +53,15 @@
 	                    <h:panelGrid columns="6" styleClass="gridForm">
 	                    	<h:outputLabel value="Tipo de Receita" for="tipoReceita" />
 	                    	<h:panelGroup id="seltipoReceita" layout="block">
-			                    <h:selectOneMenu id="tipoProdutoId" value="#{receitaMb.receita.tipoReceita.id}" title="Tipo Receita" 
-			                    	required="false" requiredMessage="Campo Serviço é obrigatório" style="width:250px">
+			                    <h:selectOneMenu id="tipoProdutoId" value="#{receitaMb.tipoReceitaAux.id}" title="Tipo Receita" 
+			                    	required="false" requiredMessage="Campo Tipo Receita é obrigatório" style="width:250px">
 			                        <f:selectItems value="#{receitaMb.itemsTipoReceita}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
 			                    </h:selectOneMenu>		                    
 		                    </h:panelGroup>
 		                    
 		                    <h:outputLabel value="Serviço relacionado" for="selServico" />
 		                    <h:panelGroup id="selServico" layout="block">
-			                    <h:selectOneMenu id="somServico" value="#{receitaMb.receita.servicoId}" title="Serviço" 
+			                    <h:selectOneMenu id="somServico" value="#{receitaMb.servicoAux.id}" title="Serviço" 
 			                    	required="false" requiredMessage="Campo Serviço é obrigatório" style="width:250px">
 			                        <f:selectItems value="#{receitaMb.listServico}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
 			                    </h:selectOneMenu>		                    
@@ -106,23 +106,24 @@
 										<h:panelGrid columns="6" styleClass="gridForm">
 											<h:outputLabel value="Tipo Produto" for="selTipoProd" />
 						                    <h:panelGroup id="selTipoProd" layout="block">
-							                    <h:selectOneMenu id="idTipPro" value="#{receitaMb.receitaProduto.produtoId}" title="Tipo Produto" style="width:250px">
+							                    <h:selectOneMenu id="idTipPro" value="#{receitaMb.tipoProdutoAux.id}" title="Tipo Produto" style="width:250px">
 							                        <f:selectItems value="#{receitaMb.itemsTipoProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
 							                    </h:selectOneMenu>		                    
 						                    </h:panelGroup>	
 						                    <h:outputLabel value="Grupo Produto" for="selGrpProd" />
 						                    <h:panelGroup id="selGrpProd" layout="block">
-							                    <h:selectOneMenu id="idGrpPro" value="#{receitaMb.receitaProduto.produtoId}" title="Grupo Produto" style="width:250px">
+							                    <h:selectOneMenu id="idGrpPro" value="#{receitaMb.grupoProdutoAux.id}" title="Grupo Produto" style="width:250px">
 							                        <f:selectItems value="#{receitaMb.itemsGrupoProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
 							                    </h:selectOneMenu>		                    
 						                    </h:panelGroup>
 						                    <h:panelGroup></h:panelGroup>
 						                    <h:panelGroup></h:panelGroup>	
 										</h:panelGrid>
+										<hr/>
 										<h:panelGrid columns="4" styleClass="gridForm">
 						                    <h:outputLabel value="Produto" for="idpro" />
 						                    <h:panelGroup id="selProd" layout="block">
-							                    <h:selectOneMenu id="idpro" value="#{receitaMb.receitaProduto.produtoId}" title="Produto" 
+							                    <h:selectOneMenu id="idpro" value="#{receitaMb.produto.id}" title="Produto" 
 							                    	required="false" requiredMessage="Campo Produto é obrigatório" style="width:250px">
 							                        <f:selectItems value="#{receitaMb.listProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
 							                    </h:selectOneMenu>		                    
@@ -132,16 +133,16 @@
 						                </h:panelGrid>
 						                <h:panelGrid columns="6" styleClass="gridForm">   
 						                    <h:outputLabel value="Comensal" for="qtd" />
-						                    <h:inputText id="qtd" value="#{receitaMb.receitaProduto.quantidade}" size="25"/>
+						                    <h:inputText id="qtd" value="#{receitaMb.receitaProduto.comensal}" size="25"/>
 						                    <h:outputLabel value="Percapta" for="percap" />
-						                    <h:inputText id="percap" value="#{receitaMb.receitaProduto.quantidade}" size="25"/>
+						                    <h:inputText id="percap" value="#{receitaMb.receitaProduto.percapta}" size="25"/>
 						                    <h:panelGroup></h:panelGroup><h:panelGroup></h:panelGroup>
 						                    <h:outputLabel value="Total" for="total" />
-						                    <h:inputText id="total" value="#{receitaMb.receitaProduto.quantidade}" size="25"/>
+						                    <h:inputText id="total" value="#{receitaMb.receitaProduto.total}" size="25"/>
 						                    <h:outputLabel value="Custo" for="custo" />
-						                    <h:inputText id="custo" value="#{receitaMb.receitaProduto.quantidade}" size="25"/>
+						                    <h:inputText id="custo" value="#{receitaMb.receitaProduto.custo}" size="25"/>
 						                    <h:outputLabel value="Calorias" for="calorias" />
-						                    <h:inputText id="calorias" value="#{receitaMb.receitaProduto.quantidade}" size="25"/>
+						                    <h:inputText id="calorias" value="#{receitaMb.receitaProduto.calorias}" size="25"/>
 						                </h:panelGrid>
 						                <h:panelGrid columns="2" styleClass="gridForm">     
 						                    <h:outputLabel value="Obs.:" for="obsReceita" />
@@ -162,7 +163,8 @@
 							    			</rich:column>					    			
 							    			<rich:column>
 							    				<f:facet name="header">Ação</f:facet>
-							    				<center><h:commandLink action="#{receitaMb.editar(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
+							    				<center><h:commandLink action="#{receitaMb.editarProduto(us)}" value="" title="Editar dados deste registro">
+							    					<h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
 							    			</rich:column>
 							    		</rich:dataTable>
 						    		</fieldset>

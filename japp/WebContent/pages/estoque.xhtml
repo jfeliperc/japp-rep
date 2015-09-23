@@ -52,35 +52,53 @@
 	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
 	                	<hr/>
 		            </h:panelGroup>
+		            
+		            
+		            <h:panelGrid columns="6" styleClass="gridForm">
+						<h:outputLabel value="Tipo Produto" for="selTipoProd" />
+	                    <h:panelGroup id="selTipoProd" layout="block">
+		                    <h:selectOneMenu id="idTipPro" value="#{receitaMb.tipoProdutoAux.id}" title="Tipo Produto" style="width:250px">
+		                        <f:selectItems value="#{receitaMb.itemsTipoProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
+		                    </h:selectOneMenu>		                    
+	                    </h:panelGroup>	
+	                    <h:outputLabel value="Grupo Produto" for="selGrpProd" />
+	                    <h:panelGroup id="selGrpProd" layout="block">
+		                    <h:selectOneMenu id="idGrpPro" value="#{receitaMb.grupoProdutoAux.id}" title="Grupo Produto" style="width:250px">
+		                        <f:selectItems value="#{receitaMb.itemsGrupoProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
+		                    </h:selectOneMenu>		                    
+	                    </h:panelGroup>
+	                    <h:panelGroup></h:panelGroup>
+	                    <h:panelGroup></h:panelGroup>	
+					</h:panelGrid>
+					<hr/>
+					<h:panelGrid columns="6" styleClass="gridForm">
+	                    <h:outputLabel value="Produto" for="idpro" />
+	                    <h:panelGroup id="selProd" layout="block">
+		                    <h:selectOneMenu id="idpro" value="#{receitaMb.produto.id}" title="Produto" 
+		                    	required="false" requiredMessage="Campo Produto é obrigatório" style="width:250px">
+		                        <f:selectItems value="#{receitaMb.listProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
+		                    </h:selectOneMenu>		                    
+	                    </h:panelGroup>						                    
+	                    <h:panelGroup></h:panelGroup>
+	                    <h:panelGroup></h:panelGroup>		                    
+	                    <h:panelGroup></h:panelGroup>
+	                    <h:panelGroup></h:panelGroup>
+	                </h:panelGrid>		            
+		            
 			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
 	                    	
 	                    <h:outputLabel value="Nome" for="nome" />
 	                    <h:inputText id="nome" value="#{produtoMb.produto.nome}" title="Nome" required="false" 
-	                    	requiredMessage="ProdutoRequiredMessage_nome}" size="100"/>
+	                    	requiredMessage="ProdutoRequiredMessage_nome}" size="70"/>
 	                    
 	                    <h:outputLabel value="Descricao" for="descricao" />
-	                    <h:inputText id="descricao" value="#{produtoMb.produto.descricao}" title="Descricao" size="100" />
+	                    <h:inputText id="descricao" value="#{produtoMb.produto.descricao}" title="Descricao" size="70" />
 	                    
 	                    <h:outputLabel value="Cód. Externo" for="cod_externo" />
 	                    <h:inputText id="cod_externo" value="#{produtoMb.produto.codExterno}" title="Código Externo" />
-	                    <h:panelGroup></h:panelGroup>
-	                    <h:panelGroup></h:panelGroup>	
 	                    
-	                    <h:outputLabel value="Tipo" for="tipoProdutoId" />
-	                    <h:panelGroup id="selPanel" layout="block">
-		                    <h:selectOneMenu id="tipoProdutoId" value="#{produtoMb.produto.tipoProduto.id}" title="Tipo de Produto" converter="genConverter" style="width:200px">
-		                        <f:selectItem itemLabel="" itemValue="#{null}"/>
-		                        <f:selectItems value="#{produtoMb.itemsTipoProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
-		                    </h:selectOneMenu>		                    
-	                    </h:panelGroup>
-	                    
-	                    <h:outputLabel value="Grupo" for="grupoProdutoId" />
-	                    <h:panelGroup id="selPanelG" layout="block">
-		                    <h:selectOneMenu id="grupoProdutoId" value="#{produtoMb.produto.grupoProduto.id}" title="Grupo de Produto" converter="genConverter" style="width:200px">
-		                        <f:selectItem itemLabel="" itemValue="#{null}"/>
-		                        <f:selectItems value="#{produtoMb.itemsGrupoProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
-		                    </h:selectOneMenu>
-	                    </h:panelGroup>
+						<h:outputLabel value="Medida" for="medida" />
+	                    <h:inputText id="medida" value="#{produtoMb.produto.codExterno}" title="Medida" />	                    
 	                    
 	                </h:panelGrid>
 	                
@@ -111,7 +129,8 @@
 			    			</rich:column>
 			    			<rich:column>
 			    				<f:facet name="header">Ação</f:facet>
-			    				<center><h:commandLink action="#{receitaMb.editar(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
+			    				<center><h:commandLink action="#{receitaMb.editar(us)}" value="" title="Editar dados deste registro">
+			    					<h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
 			    			</rich:column>
 			    		</rich:dataTable>  
                 	    

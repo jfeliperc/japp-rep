@@ -16,27 +16,39 @@ public class ReceitaProduto implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Integer id;
 
 	private String observacao;
 
-	@Column(name="produto_id")
-	private int produtoId;
-
-	private short quantidade;
-
-	//bi-directional many-to-one association to Receita
 	@ManyToOne
 	private Receita receita;
-
+	
+	@Column(name="produto_id")
+	private Integer produtoId;
+	
+	@Transient
+	private Produto produto;
+	
+	private short quantidade;
+	
+	private Double comensal;
+	
+	private Double percapta;
+	
+	private Double total;
+	
+	private Double custo;
+	
+	private Double calorias;
+	
 	public ReceitaProduto() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -46,14 +58,6 @@ public class ReceitaProduto implements Serializable {
 
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
-	}
-
-	public int getProdutoId() {
-		return this.produtoId;
-	}
-
-	public void setProdutoId(int produtoId) {
-		this.produtoId = produtoId;
 	}
 
 	public short getQuantidade() {
@@ -70,6 +74,62 @@ public class ReceitaProduto implements Serializable {
 
 	public void setReceita(Receita receita) {
 		this.receita = receita;
+	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
+	public Double getComensal() {
+		return comensal;
+	}
+
+	public void setComensal(Double comensal) {
+		this.comensal = comensal;
+	}
+
+	public Double getPercapta() {
+		return percapta;
+	}
+
+	public void setPercapta(Double percapta) {
+		this.percapta = percapta;
+	}
+
+	public Double getTotal() {
+		return total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+
+	public Double getCusto() {
+		return custo;
+	}
+
+	public void setCusto(Double custo) {
+		this.custo = custo;
+	}
+
+	public Double getCalorias() {
+		return calorias;
+	}
+
+	public void setCalorias(Double calorias) {
+		this.calorias = calorias;
+	}
+
+	public Integer getProdutoId() {
+		return produtoId;
+	}
+
+	public void setProdutoId(Integer produtoId) {
+		this.produtoId = produtoId;
 	}
 
 }
