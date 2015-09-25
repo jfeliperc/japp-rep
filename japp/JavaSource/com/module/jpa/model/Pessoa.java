@@ -80,25 +80,19 @@ public class Pessoa implements Serializable, IGenericModel {
 	@Column(name="validade_login")
 	private Date validadeLogin;
 
-	//bi-directional many-to-one association to Acesso
 	@OneToMany(mappedBy="pessoa")
 	private List<Acesso> acessos;
 
-	//bi-directional many-to-one association to Contato
 	@OneToMany(mappedBy="pessoa")
 	private List<Contato> contatos;
 
-	//bi-directional many-to-one association to Endereco
 	@OneToMany(mappedBy="pessoa")
 	private List<Endereco> enderecos;
 
-	//bi-directional many-to-one association to Orcamento
 	@OneToMany(mappedBy="pessoa")
 	private List<Orcamento> orcamentos;
 
-	//bi-directional many-to-one association to Empresa
 	@ManyToOne(fetch = FetchType.EAGER)
-    //@JoinColumn(name="id")
 	private Empresa empresa;
 
 	public Pessoa() {

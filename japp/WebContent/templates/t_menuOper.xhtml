@@ -2,47 +2,37 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:a4j="http://richfaces.org/a4j" 
-    xmlns:rich="http://richfaces.org/rich">
+	xmlns:p="http://primefaces.org/ui">
  
     <h:form id="frmMenuOper">
-	    <rich:toolbar>		        
-	          	<rich:dropDownMenu>	        		
-	       		<f:facet name="label">
-	                  <h:panelGroup><h:outputText value="Geral" /></h:panelGroup>	                   
-	               </f:facet>
-	               <rich:menuItem action="empresa" label="Empresa"/>
-	               <rich:menuItem action="pessoa" label="Pessoas"/>
-	               <rich:menuItem action="fornecedor" label="Fornecedores"/>	                
-	               <rich:menuItem action="cliente" label="Clientes"/>	                
-	               <rich:menuItem action="servico" label="Serviços"/>  
-	               <rich:menuItem action="produto" label="Produto"/>   
-	           </rich:dropDownMenu> 
-	           <rich:dropDownMenu>	        		
-	       		<f:facet name="label">
-	                  <h:panelGroup><h:outputText value="Movimentação" /></h:panelGroup>	                   
-	               </f:facet>
-	               <rich:menuGroup value="Estoque" label="Estoque">
-	                <rich:menuItem action="estoque" label="Estoque"/>
-	                <rich:menuItem action="entradaEst" label="Entrada"/>
-	                <rich:menuItem action="saidaEst" label="Saída"/>
-	                <rich:menuItem action="pedido" label="Pedidos"/>
-	               </rich:menuGroup>
-	               <rich:menuGroup value="Cozinha" label="Cozinha">
-	                <rich:menuItem action="receita" label="Receita"/>
-	                <rich:menuItem action="cardapio" label="Cardápio"/>
-	               </rich:menuGroup>   
-	           </rich:dropDownMenu>
-	           <rich:dropDownMenu>	        		
-	       		<f:facet name="label">
-	                  <h:panelGroup><h:outputText value="Financeiro" /></h:panelGroup>	                   
-	               </f:facet>
-	               <rich:menuItem action="dev" label="Contas"/>
-	               <rich:menuItem action="dev" label="Receitas"/>
-	               <rich:menuItem action="dev" label="Despesas"/>	                
-	               <rich:menuItem action="dev" label="Notas Fiscais"/>	   
-	           </rich:dropDownMenu> 
-	    </rich:toolbar>
+	    <p:menubar>		        
+	          	<p:submenu label="Geral" >
+	               <p:menuitem action="empresa" value="Empresa"/>
+	               <p:menuitem action="pessoa" value="Pessoas"/>
+	               <p:menuitem action="fornecedor" value="Fornecedores"/>	                
+	               <p:menuitem action="cliente" value="Clientes"/>	                
+	               <p:menuitem action="servico" value="Serviços"/>  
+	               <p:menuitem action="produto" value="Produto"/>   
+	           </p:submenu> 
+	           <p:submenu label="Movimentação" >
+	               <p:submenu label="Estoque">
+	                <p:menuitem action="estoque" value="Estoque"/>
+	                <p:menuitem action="entradaEst" value="Entrada"/>
+	                <p:menuitem action="saidaEst" value="Saída"/>
+	                <p:menuitem action="pedido" value="Pedidos"/>
+	               </p:submenu>
+	               <p:submenu label="Cozinha">
+	                <p:menuitem action="receita" value="Receita"/>
+	                <p:menuitem action="cardapio" value="Cardápio"/>
+	               </p:submenu>   
+	           </p:submenu> 
+	           <p:submenu label="Financeiro">
+	               <p:menuitem action="dev" value="Contas"/>
+	               <p:menuitem action="dev" value="Receitas"/>
+	               <p:menuitem action="dev" value="Despesas"/>	                
+	               <p:menuitem action="dev" value="Notas Fiscais"/>	   
+	           </p:submenu> 
+	    </p:menubar>
     </h:form>
     <br/>
  

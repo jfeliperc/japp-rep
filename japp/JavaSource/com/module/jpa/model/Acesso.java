@@ -26,18 +26,15 @@ public class Acesso implements Serializable, IGenericModel {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-	//bi-directional many-to-one association to Pessoa
 	@ManyToOne
 	private Pessoa pessoa;
 
 	private int status;
 
-	//bi-directional many-to-one association to Rotina
 	@ManyToOne
 	@JoinColumn(name="rotina_master")
 	private Rotina rotina1;
 
-	//bi-directional many-to-one association to Rotina
 	@ManyToOne
 	@JoinColumn(name="rotina_slave")
 	private Rotina rotina2;

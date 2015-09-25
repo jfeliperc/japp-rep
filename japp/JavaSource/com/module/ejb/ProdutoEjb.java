@@ -22,19 +22,21 @@ public class ProdutoEjb implements IProdutoEjb {
 	
 	@Override
 	public Produto cadastrarProduto(Produto produto) {
-		
-//		TipoProdutoDao tipoDao = new TipoProdutoDao();
-//		GrupoProdutoDao grupoDao = new GrupoProdutoDao();
-//		if (!UtilsJapp.isNullOrZero(produto.getTipoProduto().getId())){
-//			produto.setTipoProduto(tipoDao.getById(produto.getTipoProduto().getId()));
-//		}
-//		if (!UtilsJapp.isNullOrZero(produto.getGrupoProduto().getId())){
-//			produto.setGrupoProduto(grupoDao.getById(produto.getGrupoProduto().getId()));
-//		}
-				
+						
 		Dao<Produto> dao = new Dao<Produto>();
 		produto.setDataalteracao(new Date());
 		if (UtilsJapp.isNullOrZero(produto.getId())){
+			
+			if ((produto.getEmpresa() == null)||(UtilsJapp.isNullOrZero(produto.getEmpresa().getId()))){
+				produto.setEmpresa(null);
+			}
+			if ((produto.getTipoProduto() == null)||(UtilsJapp.isNullOrZero(produto.getTipoProduto().getId()))){
+				produto.setTipoProduto(null);
+			}
+			if ((produto.getGrupoProduto() == null)||(UtilsJapp.isNullOrZero(produto.getGrupoProduto().getId()))){
+				produto.setGrupoProduto(null);
+			}
+			
 			produto.setId(null);			
 			produto.setDatainclusao(new Date());
 			dao.add(produto);

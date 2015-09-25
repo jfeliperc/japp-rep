@@ -3,12 +3,11 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:a4j="http://richfaces.org/a4j" 
-    xmlns:rich="http://richfaces.org/rich">
+	xmlns:p="http://primefaces.org/ui">
 	
     <ui:define name="conteudo">
     	<h:form id="frmPessoa">
-	    	<rich:panel header="Configuração de acesso" style="width:100%; height: 95%; " rendered="#{!acessoMb.mostrarLista}">
+	    	<p:panel header="Configuração de acesso" style="width:100%; height: 95%; " rendered="#{!acessoMb.mostrarLista}">
 	    		<table><tr><td width="1300px">
 		      	<div style="padding-left: 10px">
 		      		
@@ -38,7 +37,7 @@
 	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
 	                	<hr/>
 		            </h:panelGroup>
-			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5" >
+			      	<h:panelGrid columns="4" styleClass="gridForm" >
 	                    
 	                    <h:outputLabel value="Id" for="id" />
 	                    <h:inputText id="id" value="#{acessoMb.pessoa.id}" title="id" disabled="#{acessoMb.pessoa.id != null}"/>	                    
@@ -46,10 +45,10 @@
 	                    <h:panelGroup></h:panelGroup>
 	                    
 	                    <h:outputLabel value="Nome" for="nome" />
-	                    <h:inputText id="nome" value="#{acessoMb.pessoa.nome}" title="nome" size="70" disabled="#{acessoMb.pessoa.nome != null}"/>
+	                    <h:inputText id="nome" value="#{acessoMb.pessoa.nome}" title="nome" size="50" disabled="#{acessoMb.pessoa.nome != null}"/>
 	                    
 	                    <h:outputLabel value="Nome Completo" for="nomecompleto" />
-	                    <h:inputText id="nomecompleto" value="#{acessoMb.pessoa.nomecompleto}" title="nomecompleto}" size="80" />
+	                    <h:inputText id="nomecompleto" value="#{acessoMb.pessoa.nomecompleto}" title="nomecompleto}" size="60" />
 	                    
 	                    <h:outputLabel value="Data Nascimento" for="datanascimento" />
 	                    <h:inputText id="datanascimento" value="#{acessoMb.pessoa.datanascimento}" title="datanascimento" >
@@ -82,24 +81,24 @@
 	                    <h:inputText id="empresaId" value="#{acessoMb.pessoa.empresa.nomeFantasia}" title="empresa" disabled="true"/>
 	                    
 	                    <h:outputLabel value="Email" for="email" />
-	                    <h:inputText id="email" value="#{acessoMb.pessoa.email}" title="Email" size="70"/>
+	                    <h:inputText id="email" value="#{acessoMb.pessoa.email}" title="Email" size="60"/>
 	                    
 	                </h:panelGrid>
 	                <br/><br/>				    
 				</div>	
 				
-				<rich:panel header="Módulos" style="width:100%; height: 95%; ">					
+				<p:panel header="Módulos" style="width:100%; height: 95%; ">					
 					<br/>
-					<rich:dataTable value="#{acessoMb.modulos}" var="us" style="width:100%" id="tbModulo">
-		    			<rich:column width="50%">
+					<p:dataTable value="#{acessoMb.modulos}" var="us" style="width:100%" id="tbModulo">
+		    			<p:column width="50%">
 		    				<f:facet name="header">Módulo</f:facet>
 		    				<h:outputText value="#{us.rotina1.rotina}" />
-		    			</rich:column>
-		    			<rich:column>
+		    			</p:column>
+		    			<p:column>
 		    				<f:facet name="header">Permissão</f:facet>
 		    				<h:outputText value="#{us.status}" />
-		    			</rich:column>
-		    			<rich:column>
+		    			</p:column>
+		    			<p:column>
 		    				<f:facet name="header">Ação</f:facet>
 		    				<center>
 		    					<table><tr><td width="30px">
@@ -110,22 +109,22 @@
 		    						<h:commandLink action="#{acessoMb.bloquearModulo(us)}" value="" title="Bloquear acesso"><h:graphicImage value="/css/img/cadClose.png" width="20px" height="20px" /></h:commandLink>
 		    					</td></tr></table>		    				
 		    				</center>
-		    			</rich:column>
-		    		</rich:dataTable>	
-				</rich:panel>
+		    			</p:column>
+		    		</p:dataTable>	
+				</p:panel>
 				
-				<rich:panel header="Rotinas" style="width:100%; height: 95%; ">					
+				<p:panel header="Rotinas" style="width:100%; height: 95%; ">					
 					<br/>
-					<rich:dataTable value="#{acessoMb.acessos}" var="us" style="width:100%" id="tbRotina">
-		    			<rich:column width="70%">
+					<p:dataTable value="#{acessoMb.acessos}" var="us" style="width:100%" id="tbRotina">
+		    			<p:column width="70%">
 		    				<f:facet name="header">Rotina</f:facet>
 		    				<h:outputText value="#{us.rotina2.rotina}" />
-		    			</rich:column>
-		    			<rich:column>
+		    			</p:column>
+		    			<p:column>
 		    				<f:facet name="header">Permissão</f:facet>
 		    				<h:outputText value="#{us.status}" />
-		    			</rich:column>
-		    			<rich:column>
+		    			</p:column>
+		    			<p:column>
 		    				<f:facet name="header">Ação</f:facet>
 		    				<center>
 		    					<table><tr><td width="30px">
@@ -134,14 +133,14 @@
 		    						<h:commandLink action="#{acessoMb.bloquearAcesso(us)}" value="" title="Bloquear acesso"><h:graphicImage value="/css/img/cadClose.png" width="20px" height="20px" /></h:commandLink>
 		    					</td></tr></table>			    				
 		    				</center>
-		    			</rich:column>		    			
-		    		</rich:dataTable>	
-				</rich:panel>
+		    			</p:column>		    			
+		    		</p:dataTable>	
+				</p:panel>
 				
 				</td></tr></table>	
-		    </rich:panel>
+		    </p:panel>
 		    
-		    <rich:panel header="Lista de pessoas" style="width:100%; height: 95%; " rendered="#{acessoMb.mostrarLista}">
+		    <p:panel header="Lista de pessoas" style="width:100%; height: 95%; " rendered="#{acessoMb.mostrarLista}">
 		    	<table><tr><td width="1300px">
 		    	<div style="padding-left: 10px">
 			      	<nav class="navbar navbar-default" style="min-height: 30px !important;">
@@ -154,30 +153,30 @@
 				      	</div>
 				    </nav>	
 				</div> 
-		    	<rich:dataTable value="#{acessoMb.pessoas}" var="us" style="width:100%" id="tbPessoas">
-		    			<rich:column>
+		    	<p:dataTable value="#{acessoMb.pessoas}" var="us" style="width:100%" id="tbPessoas">
+		    			<p:column>
 		    				<f:facet name="header">Nome</f:facet>
 		    				<h:outputText value="#{us.nome}" />
-		    			</rich:column>
-		    			<rich:column>
+		    			</p:column>
+		    			<p:column>
 		    				<f:facet name="header">CPF</f:facet>
 		    				<h:outputText value="#{us.cpf}" />
-		    			</rich:column>
-		    			<rich:column>
+		    			</p:column>
+		    			<p:column>
 		    				<f:facet name="header">Login</f:facet>
 		    				<h:outputText value="#{us.login}" />
-		    			</rich:column>
-		    			<rich:column>
+		    			</p:column>
+		    			<p:column>
 		    				<f:facet name="header">Email</f:facet>
 		    				<h:outputText value="#{us.email}" />
-		    			</rich:column>
-		    			<rich:column>
+		    			</p:column>
+		    			<p:column>
 		    				<f:facet name="header">Ação</f:facet>
 		    				<center><h:commandLink action="#{acessoMb.editarPessoa(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
-		    			</rich:column>
-		    	</rich:dataTable>
+		    			</p:column>
+		    	</p:dataTable>
 		    	</td></tr></table>
-		    </rich:panel>
+		    </p:panel>
    
 	    	
 		</h:form>

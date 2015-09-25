@@ -3,13 +3,14 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:a4j="http://richfaces.org/a4j" 
-    xmlns:rich="http://richfaces.org/rich">
+	xmlns:p="http://primefaces.org/ui">
 	
     <ui:define name="conteudo">
     	<h:form id="frmPessoa">
-	    	<rich:panel header="Cadastro de pessoas" style="width:100%; height: 95%; " rendered="#{!pessoaMb.mostrarLista}">
+    	   	
+	    	<p:panel header="Cadastro de pessoas" style="width:100%; height: 95%; " rendered="#{!pessoaMb.mostrarLista}">
 	    		<table><tr><td width="90%">
+		      	
 		      	<div style="padding-left: 10px">
 		      				      		
 		      		<nav class="navbar navbar-default" style="min-height: 30px !important;">
@@ -35,23 +36,23 @@
 				      		</span>
 				      	</div>
 				    </nav>	
-		      		
-		      		
+		      				      		
 			      	<h:panelGroup id="messagePanel" layout="block">
 	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
 	                	<hr/>
 		            </h:panelGroup>
-			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
+			      				      	
+			      	<h:panelGrid columns="4" styleClass="gridForm">
 	                    <h:outputLabel value="Id" for="id" />
 	                    <h:inputText id="id" value="#{pessoaMb.pessoa.id}" title="id" required="false"/>
 	                    <h:panelGroup></h:panelGroup>
 	                    <h:panelGroup></h:panelGroup>
 	                    	                    
 	                    <h:outputLabel value="Nome" for="nome" />
-	                    <h:inputText id="nome" value="#{pessoaMb.pessoa.nome}" title="nome" size="70"/>
+	                    <h:inputText id="nome" value="#{pessoaMb.pessoa.nome}" title="nome" size="40"/>
 	                    
 	                    <h:outputLabel value="Nome Completo" for="nomecompleto" />
-	                    <h:inputText id="nomecompleto" value="#{pessoaMb.pessoa.nomecompleto}" title="nome completo" size="100" />
+	                    <h:inputText id="nomecompleto" value="#{pessoaMb.pessoa.nomecompleto}" title="nome completo" size="50" />
 	                    
 	                    <h:outputLabel value="Data Nascimento" for="datanascimento" />
 	                    <h:inputText id="datanascimento" value="#{pessoaMb.pessoa.datanascimento}" title="data nascimento" 
@@ -72,11 +73,10 @@
 	                    <h:selectOneMenu value="#{pessoaMb.pessoa.tipoPessoa}" style="width:150px" id="tipoPessoa">
 							<f:selectItem itemLabel="Pessoa Física" itemValue="PF"/>
 							<f:selectItem itemLabel="Pessoa Jurídica" itemValue="PJ"/>
-							<a4j:ajax event="change" render="pnlCadCli"></a4j:ajax>
 						</h:selectOneMenu>
 	                    
 	                    <h:outputLabel value="Email" for="email" />
-	                    <h:inputText id="email" value="#{pessoaMb.pessoa.email}" title="Nome" size="70"/>
+	                    <h:inputText id="email" value="#{pessoaMb.pessoa.email}" title="Nome" size="50"/>
 	                    
 	                    <h:outputLabel value="login" for="login" />
 	                    <h:inputText id="login" value="#{pessoaMb.pessoa.login}" title="login" />
@@ -92,8 +92,8 @@
 	                    <h:panelGroup></h:panelGroup>
 	                    <h:panelGroup></h:panelGroup>
 	                    	                    
-	                    <h:outputLabel value="Status" for="tipo" />
-	                    <h:selectOneMenu value="#{pessoaMb.pessoa.tipo}" style="width:150px" id="tipo">
+	                    <h:outputLabel value="Status" for="ativo" />
+	                    <h:selectOneMenu value="#{pessoaMb.pessoa.tipo}" style="width:150px" id="ativo">
 							<f:selectItem itemLabel="Ativo" itemValue="1"/>
 							<f:selectItem itemLabel="Inativo" itemValue="0"/>
 						</h:selectOneMenu>
@@ -128,41 +128,47 @@
 	                <br/><br/>				    
 				</div>	
 				
-				<rich:panel header="Contatos" style="width:100%; height: 95%; ">
-					<h:panelGrid columns="2" styleClass="gridForm" cellspacing="0px" cellpadding="0">
+				<p:panel header="Contatos" style="width:100%; height: 95%; ">
+					<h:panelGrid columns="2" styleClass="gridForm" cellspacing="0px" cellpadding="0" style="border:none; padding: 0px 0px;">
+						
+						<h:panelGroup>
+		                	<h:commandLink action="#{pessoaMb.limparContatos()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+		                	<h:commandLink action="#{pessoaMb.salvarContatos()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+		                </h:panelGroup>		                
+	                    <h:panelGroup></h:panelGroup>
+						
 						<h:outputLabel value="Tipo" for="tipoC" />
 						<h:selectOneMenu id="tipoC" value="#{pessoaMb.contatoTemp.tipo}" title="Selecione o tipo de contato" style="width:300px">
 	                        <f:selectItem itemLabel="Email" itemValue="email"/>
 	                        <f:selectItem itemLabel="Telefone" itemValue="telefone"/>
 	                        <f:selectItem itemLabel="Outro" itemValue="outro"/>
 	                 	</h:selectOneMenu>
+	                	
 	                	<h:outputLabel value="Descrição" for="descricaoC" />
 	                	<h:inputText id="descricaoC" value="#{pessoaMb.contatoTemp.descricao}" title="Descrição do contato" size="100" />
-	                	<h:panelGroup>
-		                	<h:commandLink action="#{pessoaMb.limparContatos()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
-		                	<h:commandLink action="#{pessoaMb.salvarContatos()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
-		                </h:panelGroup>	
+		                	
 					</h:panelGrid>
 					<br/>
-					<rich:dataTable value="#{pessoaMb.pessoa.contatos}" var="us" style="width:100%" id="tbContato">
-		    			<rich:column>
+					<p:dataTable value="#{pessoaMb.pessoa.contatos}" var="us" style="width:100%" id="tbContato">
+		    			<p:column>
 		    				<f:facet name="header">Tipo</f:facet>
 		    				<h:outputText value="#{us.tipo}" />
-		    			</rich:column>
-		    			<rich:column>
+		    			</p:column>
+		    			<p:column>
 		    				<f:facet name="header">Descrição</f:facet>
 		    				<h:outputText value="#{us.descricao}" />
-		    			</rich:column>
-		    			<rich:column>
+		    			</p:column>
+		    			<p:column>
 		    				<f:facet name="header">Ação</f:facet>
-		    				<center><h:commandLink action="#{pessoaMb.editarContato(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
-		    			</rich:column>
-		    		</rich:dataTable>	
-				</rich:panel>
+		    				<center><h:commandLink action="#{pessoaMb.editarContato(us)}" value="" title="Editar dados deste registro">
+		    					<h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
+		    			</p:column>
+		    		</p:dataTable>	
+				</p:panel>
 				</td></tr></table>	
-		    </rich:panel>
+		    </p:panel>
 		    
-		    <rich:panel header="Lista de pessoas" style="width:100%; height: 95%; " rendered="#{pessoaMb.mostrarLista}">
+		    <p:panel header="Lista de pessoas" style="width:100%; height: 95%; " rendered="#{pessoaMb.mostrarLista}">
 		    	<table><tr><td width="1300px">
 		    	<div style="padding-left: 10px">
 			      	<nav class="navbar navbar-default" style="min-height: 30px !important;">
@@ -175,30 +181,31 @@
 				      	</div>
 				    </nav>	
 				</div>    
-		    	<rich:dataTable value="#{pessoaMb.pessoas}" var="us" style="width:100%" id="tbPessoas">
-		    			<rich:column>
+		    	<p:dataTable value="#{pessoaMb.pessoas}" var="us" style="width:100%" id="tbPessoas">
+		    			<p:column>
 		    				<f:facet name="header">Nome</f:facet>
 		    				<h:outputText value="#{us.nomecompleto}" />
-		    			</rich:column>
-		    			<rich:column>
+		    			</p:column>
+		    			<p:column>
 		    				<f:facet name="header">CPF</f:facet>
 		    				<h:outputText value="#{us.cpf}" />
-		    			</rich:column>
-		    			<rich:column>
+		    			</p:column>
+		    			<p:column>
 		    				<f:facet name="header">Login</f:facet>
 		    				<h:outputText value="#{us.login}" />
-		    			</rich:column>
-		    			<rich:column>
+		    			</p:column>
+		    			<p:column>
 		    				<f:facet name="header">Email</f:facet>
 		    				<h:outputText value="#{us.email}" />
-		    			</rich:column>
-		    			<rich:column>
+		    			</p:column>
+		    			<p:column>
 		    				<f:facet name="header">Ação</f:facet>
-				      		<center><h:commandLink action="#{pessoaMb.editar(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
-		    			</rich:column>
-		    	</rich:dataTable>
+				      		<center><h:commandLink action="#{pessoaMb.editar(us)}" value="" title="Editar dados deste registro">
+				      			<h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
+		    			</p:column>
+		    	</p:dataTable>
 		    	</td></tr></table>
-		    </rich:panel>
+		    </p:panel>
    
 	    	
 		</h:form>

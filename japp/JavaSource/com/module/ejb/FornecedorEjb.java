@@ -26,6 +26,11 @@ public class FornecedorEjb implements IFornecedorEjb {
 		AgenteExternoDao dao = new AgenteExternoDao();
 		fornecedor.setDataalteracao(new Date());
 		if (UtilsJapp.isNullOrZero(fornecedor.getId())){
+			
+			if ((fornecedor.getEmpresa() == null)||(UtilsJapp.isNullOrZero(fornecedor.getEmpresa().getId()))){
+				fornecedor.setEmpresa(null);
+			}
+			
 			fornecedor.setId(null);
 			fornecedor.setTipo("F");
 			fornecedor.setDatainclusao(new Date());

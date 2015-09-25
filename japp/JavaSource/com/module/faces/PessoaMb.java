@@ -37,7 +37,7 @@ public class PessoaMb extends BaseMb{
 	@PostConstruct
 	public void posConstrucao(){
 		super.posConstrucao();
-		setEmpresaAux(new Empresa());
+		empresaAux = new Empresa();
 	}
 
 	public void solicitarCadastroPessoa(){
@@ -55,10 +55,11 @@ public class PessoaMb extends BaseMb{
 				this.pessoas.clear();
 				
 				this.pessoa = pessoaEjb.buscarPessoa(this.pessoa);
-				setEmpresaAux(this.pessoa.getEmpresa());
+				empresaAux = this.pessoa.getEmpresa();
 			}else if ((this.pessoas == null)||(this.pessoas.isEmpty())){
 				addMsg("Nenhuma pessoa encontrada na busca.");
-			}else{
+			}else{				
+				empresaAux = new Empresa();
 				setMostrarLista((this.pessoas != null)&&(!this.pessoas.isEmpty()));
 			}
 			
@@ -83,7 +84,7 @@ public class PessoaMb extends BaseMb{
 	public void editar(Pessoa us){
 		this.pessoa = us;
 		this.pessoa = pessoaEjb.buscarPessoa(this.pessoa);
-		setEmpresaAux(this.pessoa.getEmpresa());
+		empresaAux = this.pessoa.getEmpresa() == null ? new Empresa() : this.pessoa.getEmpresa();
 		alternaMostraLista();
 	}
 	
@@ -115,7 +116,7 @@ public class PessoaMb extends BaseMb{
 		this.pessoa = new Pessoa();
 		this.contatoTemp = new Contato();
 		this.pessoas = new ArrayList<Pessoa>();
-		setEmpresaAux(new Empresa());		
+		empresaAux = new Empresa();		
 	}
 	
 	public void limparContatos(){

@@ -3,12 +3,11 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:a4j="http://richfaces.org/a4j" 
-    xmlns:rich="http://richfaces.org/rich">
+	xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="conteudo">
     	<h:form>
-	    	<rich:panel header="Cadastro de atividades" style="width:99%; height: 95%; ">
+	    	<p:panel header="Cadastro de atividades" style="width:99%; height: 95%; ">
 		      	<table><tr><td width="1300px">
 		      	<div style="padding-left: 10px">		      	
 			      	
@@ -25,8 +24,8 @@
 			      	<h:panelGroup id="messagePanel" layout="block">
 	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>	                	
 		            </h:panelGroup>
-			      	<rich:tabPanel>
-			      		<rich:tab header="Atividades">
+			      	<p:tabView>
+			      		<p:tab title="Atividades">
 			      			<h:panelGroup id="botoesPanel2" layout="block">		      			
 			      				<table><tr><td width="20px">
 			      				<h:commandLink action="#{servicoMb.limparAtividade()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
@@ -47,28 +46,28 @@
 			                    <h:inputText id="descricaotp" value="#{servicoMb.atividadeTemp.descricao}" required="false" size="100"/>			                    
 			                </h:panelGrid>
 			                <br/>
-							<rich:dataTable value="#{servicoMb.servico.atividades}" var="us" style="width:100%" id="tbContato">
-				    			<rich:column>
+							<p:dataTable value="#{servicoMb.servico.atividades}" var="us" style="width:100%" id="tbContato">
+				    			<p:column>
 				    				<f:facet name="header">Nome</f:facet>
 				    				<h:outputText value="#{us.nome}" />
-				    			</rich:column>
-				    			<rich:column>
+				    			</p:column>
+				    			<p:column>
 				    				<f:facet name="header">Descrição</f:facet>
 				    				<h:outputText value="#{us.descricao}" />
-				    			</rich:column>
-				    			<rich:column>
+				    			</p:p:column>
+				    			<p:column>
 				    				<f:facet name="header">Ação</f:facet>
 				    				<center><h:commandLink action="#{servicoMb.editarAtividade(us)}" value="" title="Editar dados deste registro">
 				    					<h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
-				    			</rich:column>
-				    		</rich:dataTable>	
+				    			</p:column>
+				    		</p:dataTable>	
 							<br/><hr/>
-			      		</rich:tab>
-			      	</rich:tabPanel>
+			      		</p:tab>
+			      	</p:tabView>
 			      	
 				</div>	
 				</td></tr></table>
-		    </rich:panel>
+		    </p:panel>
 	    </h:form>
     </ui:define>
     

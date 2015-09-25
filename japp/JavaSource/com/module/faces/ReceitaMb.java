@@ -93,7 +93,7 @@ public class ReceitaMb extends BaseMb{
 				this.produto = this.listProduto.get(0);
 				this.tipoProdutoAux = this.produto.getTipoProduto();
 				this.grupoProdutoAux = this.produto.getGrupoProduto();
-				setEmpresaAux(this.produto.getEmpresa());
+				empresaAux = this.produto.getEmpresa();
 				this.listProduto.clear();
 			}else{
 				setMostrarLista((this.listProduto != null)&&(!this.listProduto.isEmpty()));

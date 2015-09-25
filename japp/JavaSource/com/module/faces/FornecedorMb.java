@@ -1,5 +1,6 @@
 package com.module.faces;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.module.ejb.contract.IEmpresaEjb;
 import com.module.ejb.contract.IFornecedorEjb;
+import com.module.faces.geral.UtilsJapp;
 import com.module.jpa.model.AgenteExterno;
 import com.module.jpa.model.Empresa;
 
@@ -24,9 +26,7 @@ public class FornecedorMb extends BaseMb{
 	private IFornecedorEjb fornecedorEjb;
 	@EJB
 	private IEmpresaEjb empresaEjb;
-	
-	private List<Empresa> empresas;
-		
+			
 	private AgenteExterno fornecedor;
 	private List<AgenteExterno> listFornecedor;
 
@@ -38,34 +38,45 @@ public class FornecedorMb extends BaseMb{
 	@PostConstruct
 	public void posConstrucao(){
 		super.posConstrucao();
-		this.empresas = empresaEjb.listarEmpresas(new Empresa());
 	}
 	
 	public void limpar(){
 		this.fornecedor = new AgenteExterno();
 		this.listFornecedor = new ArrayList<AgenteExterno>();
+		empresaAux = new Empresa();
 	}
 	
-	public void buscar(){
-		this.fornecedor.setEmpresa(getEmpresaAux());
+	public void buscar(){		
+		this.fornecedor.setEmpresa(empresaAux);
+		
 		this.listFornecedor = fornecedorEjb.listarFornecedores(fornecedor);
+		
 		if ((this.listFornecedor != null)&&(!this.listFornecedor.isEmpty())&&(this.listFornecedor.size() == 1)){
 			this.fornecedor = this.listFornecedor.get(0);
-			setEmpresaAux(this.fornecedor.getEmpresa());
+			empresaAux = this.fornecedor.getEmpresa();
 			this.listFornecedor.clear();
 		}else if ((this.listFornecedor == null)||(this.listFornecedor.isEmpty())){
 			addMsg("Nenhum fornecedor encontrado na busca.");
 			limpar();
 		}else{
+			empresaAux = new Empresa();
 			setMostrarLista((this.listFornecedor != null)&&(!this.listFornecedor.isEmpty()));
 		}
 	}
 	
 	public void salvar(){
+		
 		if (validarSalvar()){
-			this.fornecedor.setEmpresa(getEmpresaAux());
-			this.fornecedor = fornecedorEjb.cadastrarFornecedor(this.fornecedor);
+			try {
+				this.fornecedor.setEmpresa(empresaAux);
+				this.fornecedor = fornecedorEjb.cadastrarFornecedor(this.fornecedor);
+			} catch (Exception e) {				
+				addMsgError("Erro ao salvar dados - "+e.getMessage());
+			}
+			this.listFornecedor.clear();
+			addMsg("Registro salvo com sucesso.");
 		}
+		
 	}
 	
 	private boolean validarSalvar() {
@@ -84,7 +95,7 @@ public class FornecedorMb extends BaseMb{
 	public void editar(AgenteExterno us){
 		this.fornecedor = us;
 		this.fornecedor = fornecedorEjb.buscarFornecedor(this.fornecedor);	
-		setEmpresaAux(this.fornecedor.getEmpresa());	
+		empresaAux = this.fornecedor.getEmpresa();	
 		alternaMostraLista();
 	}
 	
@@ -107,14 +118,5 @@ public class FornecedorMb extends BaseMb{
 	public void setListFornecedor(List<AgenteExterno> listFornecedor) {
 		this.listFornecedor = listFornecedor;
 	}
-
-	public List<Empresa> getEmpresas() {
-		return empresas;
-	}
-
-	public void setEmpresas(List<Empresa> empresas) {
-		this.empresas = empresas;
-	}
-
 	
 }

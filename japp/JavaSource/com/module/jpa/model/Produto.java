@@ -74,18 +74,18 @@ public class Produto implements Serializable, IGenericModel {
 	@OneToMany(mappedBy="produto")
 	private List<PedidoItem> pedidoItems;
 
-	@ManyToOne(fetch = FetchType.LAZY) 
+	@ManyToOne(fetch = FetchType.EAGER) 
 	@JoinColumn(name="grupo_produto_id")
 	private GrupoProduto grupoProduto;
 
-	@ManyToOne(fetch = FetchType.LAZY) 
+	@ManyToOne(fetch = FetchType.EAGER) 
 	@JoinColumn(name="tipo_produto_id")
 	private TipoProduto tipoProduto;
 
 	@OneToMany(mappedBy="produto")
 	private List<ValorProduto> valorProdutos;
 	
-	@ManyToOne(fetch = FetchType.LAZY) 
+	@ManyToOne(fetch = FetchType.EAGER) 
 	@JoinColumn(name="empresa_id")
 	private Empresa empresa;
 

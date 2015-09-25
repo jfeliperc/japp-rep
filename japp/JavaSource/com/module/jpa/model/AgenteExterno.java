@@ -70,20 +70,22 @@ public class AgenteExterno implements Serializable {
 
 	private String tipodocumento;
 
-	//bi-directional many-to-one association to Empresa
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER) 
+	@JoinColumn(name="empresa_id")
 	private Empresa empresa;
 
-	//bi-directional many-to-one association to FornecProduto
 	@OneToMany(mappedBy="agenteExterno")
 	private List<FornecProduto> fornecProdutos;
 
-	//bi-directional many-to-one association to Pedido
 	@OneToMany(mappedBy="agenteExterno")
 	private List<Pedido> pedidos;
 
 	public AgenteExterno() {
 		this.tipoPessoa = "PF";
+		
+		if (this.empresa == null){
+			this.empresa = new Empresa();
+		}
 	}
 
 	public Integer getId() {

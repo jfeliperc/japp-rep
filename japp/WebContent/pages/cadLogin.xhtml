@@ -3,12 +3,11 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:a4j="http://richfaces.org/a4j" 
-    xmlns:rich="http://richfaces.org/rich">
+	xmlns:p="http://primefaces.org/ui">
 	
     <ui:define name="conteudo">    
     	<h:form id="fCadLogin">	    	   
-	    	<rich:panel header="Solicitação de cadastro" style="width:100%; height: 95%; ">
+	    	<p:panel header="Solicitação de cadastro" style="width:100%; height: 95%; ">
 		      	<table><tr><td width="1300px">
 		      	<div style="padding-left: 10px">
 			      	<h:panelGroup id="botoesPanel" layout="block">		      			
@@ -25,13 +24,15 @@
 		            </h:panelGroup>
 			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
 	                    	                    
-	                    <label for="exampleInputEmail1">Login</label>
+	                    <label for="cInpLogin">Login</label>
 						<h:inputText value="#{pessoaMb.pessoa.login}" id="cInpLogin"/>
-						<label for="exampleInputEmail1">Nome Completo</label>
+						<label for="cInpNome">Nome Completo</label>
 						<h:inputText value="#{pessoaMb.pessoa.nomecompleto}" id="cInpNome" size="80"/>
-						<label for="exampleInputEmail1">Data Nascimento</label>
-						<rich:calendar value="#{pessoaMb.pessoa.datanascimento}" id="cInpDatNasc" 
-							enableManualInput="true" datePattern="dd/MM/yyyy"/>
+						<label for="cInpDatNasc">Data Nascimento</label>
+						<h:inputText id="cInpDatNasc" value="#{pessoaMb.pessoa.datanascimento}" title="data nascimento" 
+	                    		onkeypress="mask(this,'99/99/9999',1,this)">
+	                        <f:convertDateTime pattern="dd/MM/yyyy" />
+	                    </h:inputText>
 						
 						<label for="exampleInputEmail1">CPF</label>
 						<h:panelGroup>
@@ -57,7 +58,7 @@
 	                			    
 				</div>	
 				</td></tr></table>
-		    </rich:panel>		    
+		    </p:panel>		    
 		</h:form>	    
     </ui:define>
     

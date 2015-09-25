@@ -13,6 +13,7 @@ import com.module.jpa.model.Empresa;
 
 public class EmpresaDao extends Dao<Empresa> {
 
+	@SuppressWarnings("unchecked")
 	public List<Empresa> getAllEmpresas() {		
 		List<Empresa> empresas = (ArrayList<Empresa>)getEm().createNamedQuery("Empresa.findAll").getResultList();		
 		return empresas;

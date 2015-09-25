@@ -7,10 +7,12 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.model.SelectItem;
 
 import org.apache.commons.lang3.StringUtils;
 
 import com.module.ejb.contract.IProdutoEjb;
+import com.module.jpa.model.Empresa;
 import com.module.jpa.model.GrupoProduto;
 import com.module.jpa.model.Produto;
 import com.module.jpa.model.TipoProduto;
@@ -28,6 +30,8 @@ public class ProdutoMb extends BaseMb{
 	private List<TipoProduto> itemsTipoProduto;
 	private List<GrupoProduto> itemsGrupoProduto;
 	
+	private List<SelectItem> sisTipoProduto;
+	
 	private TipoProduto tipo;
 	private GrupoProduto grupo;
 	
@@ -40,37 +44,47 @@ public class ProdutoMb extends BaseMb{
 		grupo = new GrupoProduto();
 		itemsTipoProduto = this.produtoEjb.buscarAllTipoProduto();
 		itemsGrupoProduto = this.produtoEjb.buscarAllGrupoProduto();
+		
+		sisTipoProduto = new ArrayList<SelectItem>();
+		for (TipoProduto tipo : itemsTipoProduto) {
+			SelectItem si = new SelectItem(tipo, tipo.getNome(), tipo.getDescricao());
+			sisTipoProduto.add(si);
+		}
 	}
 	
 	public ProdutoMb(){	
 		super();
-		this.produto = new Produto();
 		tipo = new TipoProduto();
 		grupo = new GrupoProduto();
-		this.itemsTipoProduto = new ArrayList<TipoProduto>();   
+		empresaAux = new Empresa();
+		this.produto = new Produto();
 	}
 
 	public void limpar(){
 		this.produto = new Produto();
+		tipo = new TipoProduto();
+		grupo = new GrupoProduto();
 		this.listProduto = new ArrayList<Produto>();
 		this.itemsTipoProduto = produtoEjb.buscarAllTipoProduto();
 		this.itemsGrupoProduto = produtoEjb.buscarAllGrupoProduto();
 		this.produto.setId(null);
+		empresaAux = new Empresa();
 	}
 	
 	public void buscar(){
 		
 		try {
-			this.produto.setEmpresa(getEmpresaAux());
+			this.produto.setEmpresa(empresaAux);
 			this.listProduto = produtoEjb.listarProdutos(this.produto);
 			
 			if ((this.listProduto != null)&&(!this.listProduto.isEmpty())&&(this.listProduto.size() == 1)){
 				this.produto = this.listProduto.get(0);
 				this.tipo = this.produto.getTipoProduto();
 				this.grupo = this.produto.getGrupoProduto();
-				setEmpresaAux(this.produto.getEmpresa());
+				empresaAux = this.produto.getEmpresa();
 				this.listProduto.clear();
 			}else{
+				empresaAux = new Empresa();
 				setMostrarLista((this.listProduto != null)&&(!this.listProduto.isEmpty()));
 			}
 			
@@ -106,7 +120,7 @@ public class ProdutoMb extends BaseMb{
 		this.produto = us;
 		this.tipo = this.produto.getTipoProduto();
 		this.grupo = this.produto.getGrupoProduto();
-		setEmpresaAux(this.produto.getEmpresa());
+		empresaAux = this.produto.getEmpresa();
 		alternaMostraLista();
 	}
 
@@ -162,6 +176,10 @@ public class ProdutoMb extends BaseMb{
 
 	public void setGrupo(GrupoProduto grupo) {
 		this.grupo = grupo;
+	}
+
+	public List<SelectItem> getSisTipoProduto() {
+		return sisTipoProduto;
 	}
 	
 }

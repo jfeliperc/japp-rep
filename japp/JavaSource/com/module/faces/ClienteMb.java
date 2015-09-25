@@ -45,7 +45,7 @@ public class ClienteMb extends BaseMb{
 		this.listCliente = clienteEjb.listarClientes(cliente);
 		if ((this.listCliente != null)&&(!this.listCliente.isEmpty())&&(this.listCliente.size() == 1)){
 			this.cliente = this.listCliente.get(0);
-			setEmpresaAux(this.cliente.getEmpresa());
+			empresaAux = this.cliente.getEmpresa();
 			this.listCliente.clear();		
 		}else if ((this.listCliente == null)||(this.listCliente.isEmpty())){
 			addMsg("Nenhum cliente encontrado na busca.");
@@ -99,7 +99,7 @@ public class ClienteMb extends BaseMb{
 	
 	public void editar(AgenteExterno us){
 		this.cliente = us;
-		setEmpresaAux(this.cliente.getEmpresa());
+		empresaAux = this.cliente.getEmpresa();
 		alternaMostraLista();
 	}
 	

@@ -69,6 +69,9 @@ public class AgenteExternoDao extends Dao<AgenteExterno> {
 		}		
 		if (!StringUtils.isBlank(agente.getDocumento())){
 			predicate = cb.and(predicate, cb.equal(raiz.get("documento"), agente.getDocumento()));
+		}		
+		if (!StringUtils.isBlank(agente.getTipo())){
+			predicate = cb.and(predicate, cb.equal(raiz.get("tipo"), agente.getTipo()));
 		}
 		return predicate;
 	}

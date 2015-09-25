@@ -70,6 +70,10 @@ public class TipoGrupoProdutoMb extends BaseMb{
 
 	}
 	
+	public void editarTipoProduto(TipoProduto us){
+		this.tipoProduto = us;
+	}
+	
 	public void limparGrupoProduto(){
 		this.grupoProduto = new GrupoProduto();
 		this.listGrupoProduto = new ArrayList<GrupoProduto>();
@@ -101,6 +105,10 @@ public class TipoGrupoProdutoMb extends BaseMb{
 
 	public void excluirGrupoProduto(){
 
+	}
+	
+	public void editarGrupoProduto(GrupoProduto us){
+		this.grupoProduto = us;
 	}
 
 	public TipoProduto getTipoProduto() {

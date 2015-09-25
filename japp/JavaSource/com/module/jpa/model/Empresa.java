@@ -82,7 +82,7 @@ public class Empresa implements Serializable, IGenericModel {
 	private List<Receita> receitas;
 	
 	public Empresa() {
-	
+		this.empresaId = null;
 	}
 
 

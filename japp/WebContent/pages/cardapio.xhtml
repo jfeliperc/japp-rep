@@ -3,15 +3,14 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:a4j="http://richfaces.org/a4j" 
-    xmlns:rich="http://richfaces.org/rich">
+	xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="conteudo">
     	<h:form id="frmReceita">
-	    	<rich:panel header="Cadastro de Cardápio" style="width:99%; height: 95%; ">
+	    	<p:panel header="Cadastro de Cardápio" style="width:99%; height: 95%; ">
 	    		<table><tr><td width="1300px">
 		      	<div>
-			      	<rich:panel header="Cardápio" style="width:99%; height: 95%; ">
+			      	<p:panel header="Cardápio" style="width:99%; height: 95%; ">
 				      	<h:panelGroup id="botoesPanel" layout="block">		      			
 		      				<table><tr><td width="20px">
 		      				<h:commandLink action="#{empresaMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
@@ -29,7 +28,7 @@
 		                    <h:outputLabel value="id" for="id" />
 		                    <h:inputText id="id" value="#{empresaMb.empresa.empresaId}" title="Id" required="false" />
 		                    <h:outputLabel value="Título do Cardápio" for="titCardapio" />
-		                    <h:inputText id="titCardapio" value="#{empresaMb.empresa.razaoSocial}" title="Título do cardápio" required="true" size="150"/>
+		                    <h:inputText id="titCardapio" value="#{empresaMb.empresa.razaoSocial}" title="Título do cardápio" required="true" size="100"/>
 		                </h:panelGrid>
 		                <h:panelGrid columns="2" styleClass="gridForm">    
 		                    <h:outputLabel value="Resumo" for="nomeFantasia" />
@@ -44,49 +43,49 @@
 			                        <f:selectItem itemValue="02" itemLabel="Seg. -> Sex."/>
 			                        <f:selectItem itemValue="03" itemLabel="Mesmo dia várias semanas"/>
 			                        <f:selectItem itemValue="04" itemLabel="Período"/>
-			                        <a4j:ajax event="change" render="pnlDataPeriodo"></a4j:ajax>
+			                        <p:ajax event="change" update="pnlDataPeriodo" />
 			                    </h:selectOneMenu>		                    
 		                    </h:panelGroup>
 		                    <h:outputLabel value="Data" for="dataCardapio" />
 		                    <h:panelGroup id="pnlDataPeriodo" layout="block">
-		                    	<rich:calendar id="dataCardapio" value="#{empresaMb.empresa.nomeFantasia}" title="Data referência cardápio" rendered="true"/>
+		                    	<p:calendar id="dataCardapio" value="#{empresaMb.empresa.nomeFantasia}" title="Data referência cardápio" rendered="true"/>
 		                    	
-		                    	<rich:calendar id="dataIniCardapio" value="#{empresaMb.empresa.nomeFantasia}" title="Data inicial" rendered="false"/>
+		                    	<p:calendar id="dataIniCardapio" value="#{empresaMb.empresa.nomeFantasia}" title="Data inicial" rendered="false"/>
 		                    	<h:outputLabel value="à" for="dataCardapio"  rendered="false"/>
-		                    	<rich:calendar id="dataFimCardapio" value="#{empresaMb.empresa.nomeFantasia}" title="Data final" rendered="false"/>		                    
+		                    	<p:calendar id="dataFimCardapio" value="#{empresaMb.empresa.nomeFantasia}" title="Data final" rendered="false"/>		                    
 		                    </h:panelGroup>		                    
 		                       
 		                </h:panelGrid>
 		                <hr/>
-		                <rich:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbGrupos">
-			    			<rich:column>
+		                <p:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbGrupos">
+			    			<p:column>
 			    				<f:facet name="header">id</f:facet>
 			    				<h:outputText value="#{us.id}" />
-			    			</rich:column>
-			    			<rich:column>
+			    			</p:column>
+			    			<p:column>
 			    				<f:facet name="header">Título</f:facet>
 			    				<h:outputText value="#{us.nome}" />
-			    			</rich:column>
-			    			<rich:column>
+			    			</p:column>
+			    			<p:column>
 			    				<f:facet name="header">Resumo</f:facet>
 			    				<h:outputText value="#{us.descricao}" />
-			    			</rich:column>
-			    			<rich:column>
+			    			</p:column>
+			    			<p:column>
 			    				<f:facet name="header">Replicação</f:facet>
 			    				<h:outputText value="#{us.descricao}" />
-			    			</rich:column>
-			    			<rich:column>
+			    			</p:column>
+			    			<p:column>
 			    				<f:facet name="header">Data</f:facet>
 			    				<h:outputText value="#{us.descricao}" />
-			    			</rich:column>
-			    			<rich:column>
+			    			</p:column>
+			    			<p:column>
 			    				<f:facet name="header">Ação</f:facet>
-			    			</rich:column>
-			    		</rich:dataTable>                	
+			    			</p:column>
+			    		</p:dataTable>                	
 						<hr/>
-					</rich:panel>	
+					</p:panel>	
 					<hr/>
-					<rich:panel header="Detalhe" style="width:99%; height: 95%; ">
+					<p:panel header="Detalhe" style="width:99%; height: 95%; ">
 						<h:panelGroup id="botoesPanelDetalhe" layout="block">		      			
 		      				<table><tr><td width="20px">
 		      				<h:commandLink action="#{empresaMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
@@ -104,23 +103,23 @@
 						                    <h:outputLabel value="Obs.:" for="nomeFantasia" />
 						                    <h:inputText id="obsReceita" value="#{empresaMb.empresa.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="90"/>	                    
 						                </h:panelGrid>
-										<rich:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbIngredientes">
-							    			<rich:column>
+										<p:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbIngredientes">
+							    			<p:column>
 							    				<f:facet name="header">id</f:facet>
 							    				<h:outputText value="#{us.id}" />
-							    			</rich:column>
-							    			<rich:column>
+							    			</p:column>
+							    			<p:column>
 							    				<f:facet name="header">Receita</f:facet>
 							    				<h:outputText value="#{us.nome}" />
-							    			</rich:column>
-							    			<rich:column>
+							    			</p:column>
+							    			<p:column>
 							    				<f:facet name="header">Obs.</f:facet>
 							    				<h:outputText value="#{us.descricao}" />
-							    			</rich:column>					    			
-							    			<rich:column>
+							    			</p:column>					    			
+							    			<p:column>
 							    				<f:facet name="header">Ação</f:facet>
-							    			</rich:column>
-							    		</rich:dataTable>
+							    			</p:column>
+							    		</p:dataTable>
 						    		</fieldset>
 								</h:panelGroup>
 							</td><td valign="top" width="50%">	
@@ -132,10 +131,10 @@
 							</td></tr>
 						</table>
 						<hr/>						
-					</rich:panel>
+					</p:panel>
 				</div>
 				</td></tr></table>	
-		    </rich:panel>
+		    </p:panel>
 		</h:form>
     </ui:define>
     

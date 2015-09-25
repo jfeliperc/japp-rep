@@ -36,7 +36,8 @@
 }
 
 td, th {
-	padding: 5px !important;
+	padding-left: 4px !important;
+	padding-top: 5px !important;
 }
 
 .conteudoCtrBody{
@@ -61,4 +62,11 @@ td, th {
 
 .list-group-submenu {
   margin-left:20px;
+}
+
+.ui-panelgrid-cell {
+    /* border-width: 1px; */
+    /* border-style: solid; */
+    /* border-color: inherit; */
+    padding: 3px 8px;
 }

@@ -3,12 +3,11 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:a4j="http://richfaces.org/a4j" 
-    xmlns:rich="http://richfaces.org/rich">
+	xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="conteudo">
     	<h:form>
-	    	<rich:panel header="Cadastro de tipos de receitas" style="width:99%; height: 95%; ">
+	    	<p:panel header="Cadastro de tipos de receitas" style="width:99%; height: 95%; ">
 		      	<table><tr><td width="90%">
 		      	<div style="padding-left: 10px">		      	
 			      	
@@ -47,30 +46,30 @@
 			                    <h:inputText id="descricaotp" value="#{tipoReceitaMb.tipoReceita.descricao}" required="false" size="100"/>			                    
 			                </h:panelGrid>
 			                <br/>
-							<rich:dataTable value="#{tipoReceitaMb.listTipoReceita}" var="us" style="width:100%" id="tbTipo">
-				    			<rich:column>
+							<p:dataTable value="#{tipoReceitaMb.listTipoReceita}" var="us" style="width:100%" id="tbTipo">
+				    			<p:column>
 				    				<f:facet name="header">id</f:facet>
 				    				<h:outputText value="#{us.id}" />
-				    			</rich:column>
-				    			<rich:column>
+				    			</p:column>
+				    			<p:column>
 				    				<f:facet name="header">Nome</f:facet>
 				    				<h:outputText value="#{us.nome}" />
-				    			</rich:column>
-				    			<rich:column>
+				    			</p:column>
+				    			<p:column>
 				    				<f:facet name="header">Descrição</f:facet>
 				    				<h:outputText value="#{us.descricao}" />
-				    			</rich:column>
-				    			<rich:column>
+				    			</p:column>
+				    			<p:column>
 				    				<f:facet name="header">Ação</f:facet>
 				    				<center><h:commandLink action="#{tipoReceitaMb.editar(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
-				    			</rich:column>
-				    		</rich:dataTable>       
+				    			</p:column>
+				    		</p:dataTable>       
 												
 							<br/><hr/>
 			      		
 				</div>	
 				</td></tr></table>
-		    </rich:panel>
+		    </p:panel>
 	    </h:form>
     </ui:define>
     

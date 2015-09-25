@@ -12,17 +12,8 @@ import javax.faces.convert.FacesConverter;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Id;
 
-/**
- * Converter simples para ser usado nos selectOneMenu do jsf
- * 
- * Fonte: http://www.rponte.com.br/2008/07/26/entity-converters-pra-da-e-vender/
- * 
- * @author Levy Moreira
- *
- */
 @FacesConverter(value="genConverter")
 public class GenericConverter implements Converter {
-
 
 	public Object getAsObject(FacesContext ctx, UIComponent component,
 			String value) {

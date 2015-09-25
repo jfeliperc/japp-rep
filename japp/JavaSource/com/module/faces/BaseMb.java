@@ -1,6 +1,5 @@
 package com.module.faces;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -28,9 +27,15 @@ public class BaseMb {
 	
 	protected Empresa empresaAux;
 
+	private String themeFace;
 	
 	public BaseMb() {
 		super();
+		this.themeFace = "humanity";
+		//this.themeFace = "pepper-grinder"; 
+		//this.themeFace = "afterwork";
+		//this.themeFace = "glass-x";
+		//this.themeFace = "overcast";
 	}
 
 	@PostConstruct
@@ -88,6 +93,14 @@ public class BaseMb {
 	protected boolean isIdZeroOrNull(Integer id){		
 		return ((id == null)||(id.intValue() == 0));
 		
+	}
+
+	public String getThemeFace() {
+		return themeFace;
+	}
+
+	public void setThemeFace(String themeFace) {
+		this.themeFace = themeFace;
 	}
 		
 }
