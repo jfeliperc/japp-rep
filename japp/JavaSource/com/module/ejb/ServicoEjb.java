@@ -35,6 +35,11 @@ public class ServicoEjb implements IServicoEjb, Serializable {
 		if (UtilsJapp.isNullOrZero(servico.getId())){
 			servico.setDatainclusao(new Date());
 			servico.setId(null);
+			
+			if ((servico.getEmpresa() == null)||(UtilsJapp.isNullOrZero(servico.getEmpresa().getId()))){
+				servico.setEmpresa(null);
+			}
+			
 			this.dao.add(servico);
 		}else{
 			this.dao.update(servico);

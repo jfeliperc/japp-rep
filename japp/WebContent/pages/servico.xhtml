@@ -28,14 +28,10 @@
 				      		</span>
 				      		
 				      		<span class="btn-group navbar-right">				      			
-						        <div class="btn-group">
-								  <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">Opções<span class="caret"/></a>
-								  <ul class="dropdown-menu">
-								    <li><h:commandLink styleClass="btn btn-link" action="#{servicoMb.alternaMostraLista()}" value="Ver Lista" /></li>
-								    <!-- <li><h:commandLink styleClass="btn btn-link" action="atividade" value="Atividades" /></li>  -->					    
-								  </ul>
-								</div>								
-				      		</span>			      		
+						        <span class="btn-group">
+									<h:commandLink styleClass="btn btn-link" action="#{servicoMb.alternaMostraLista()}" value="Ver Lista" />
+								</span>						        							
+				      		</span>
 				      		
 				      	</div>
 				    </nav>	
@@ -46,20 +42,20 @@
 	                	<hr/>
 		            </h:panelGroup>
 			      	<h:panelGrid columns="2" styleClass="gridForm" cellspacing="5px" cellpadding="5">
-	                    <h:outputLabel value="Id" for="id" />
+	                    <h:outputLabel value="Id" for="idtpSrv" />
 	                    <h:inputText id="idtpSrv" value="#{servicoMb.servico.id}" title="Id" required="false"/>
 	                    
-	                    <h:outputLabel value="Nome" for="nome" />
+	                    <h:outputLabel value="Nome" for="nometpSrv" />
 	                    <h:inputText id="nometpSrv" value="#{servicoMb.servico.nome}" title="Nome" required="false" size="70"/>
 	                    
-	                    <h:outputLabel value="Descrição" for="descricao" />
+	                    <h:outputLabel value="Descrição" for="descricaotpSrv" />
 	                    <h:inputText id="descricaotpSrv" value="#{servicoMb.servico.descricao}" title="Descrição" required="false" size="80"/>
 	                    	                    	                    	                    
 	                    <h:outputLabel value="Empresa" for="empresaId" />
-	                    <h:selectOneMenu id="empresaId" value="#{servicoMb.empresaAux.id}" title="Selecione a empresa vinculada" style="width:250px" converter="genConverter">
-	                        <f:selectItem itemValue="#{null}" itemLabel=""/>
+	                    <p:selectOneMenu id="empresaId" value="#{servicoMb.empresaAux.id}" title="Selecione a empresa vinculada" style="width:250px">
+	                        <f:selectItem itemValue="0" itemLabel=""/>
 	                        <f:selectItems value="#{servicoMb.empresas}" var="emp" itemValue="#{emp.id}" itemLabel="#{emp.nomeFantasia}"/>
-	                    </h:selectOneMenu>	                    	 
+	                    </p:selectOneMenu>	                    	 
 	                    			                    
 	                </h:panelGrid>
 	                <br/><br/>				    
@@ -77,13 +73,13 @@
 		      		</h:panelGroup>
 					<h:panelGrid columns="2" styleClass="gridForm" cellspacing="5px" cellpadding="5">
 	                    
-	                    <h:outputLabel value="Id" for="id" />
+	                    <h:outputLabel value="Id" for="idtpAtv" />
 	                    <h:inputText id="idtpAtv" value="#{servicoMb.atividadeTemp.id}" required="false"/>
 	                    
-	                    <h:outputLabel value="Nome" for="nome" />
+	                    <h:outputLabel value="Nome" for="nometpAtv" />
 	                    <h:inputText id="nometpAtv" value="#{servicoMb.atividadeTemp.nome}" required="false" size="70"/>
 	                    
-	                    <h:outputLabel value="Descrição" for="descricao" />
+	                    <h:outputLabel value="Descrição" for="descricaotpAtv" />
 	                    <h:inputText id="descricaotpAtv" value="#{servicoMb.atividadeTemp.descricao}" required="false" size="80"/>	
 	                    		                    
 	                </h:panelGrid>

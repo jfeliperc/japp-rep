@@ -167,9 +167,11 @@ public class PessoaEjb implements IPessoaEjb {
 		if (UtilsJapp.isNullOrZero(pessoa.getId())){
 			pessoa.setId(null);
 			pessoa.setDatainclusao(new Date());
+			
 			if ((pessoa.getEmpresa() == null)||(UtilsJapp.isNullOrZero(pessoa.getEmpresa().getId()))){
 				pessoa.setEmpresa(null);
 			}
+			
 			daoPessoa.add(pessoa);
 		}else{
 			daoPessoa.update(pessoa);

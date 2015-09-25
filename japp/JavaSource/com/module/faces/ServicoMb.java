@@ -10,7 +10,9 @@ import javax.faces.bean.SessionScoped;
 
 import com.module.ejb.contract.IServicoEjb;
 import com.module.jpa.model.Atividade;
+import com.module.jpa.model.Empresa;
 import com.module.jpa.model.Servico;
+import com.sun.media.sound.EmergencySoundbank;
 
 
 @ManagedBean
@@ -30,14 +32,18 @@ public class ServicoMb extends BaseMb{
 		super.posConstrucao();		
 	}
 	
-	public ServicoMb(){		
-		limpar();
+	public ServicoMb(){	
+		this.servico = new Servico();
+		this.listServico = new ArrayList<Servico>(); 
+		this.atividadeTemp = new Atividade();
 	}
 
 	public void limpar(){
 		this.servico = new Servico();
 		this.listServico = new ArrayList<Servico>(); 
 		this.atividadeTemp = new Atividade();
+		empresaAux = new Empresa();
+		super.recarregarListEmpresa();
 	}
 	
 	public void buscar(){
@@ -56,6 +62,7 @@ public class ServicoMb extends BaseMb{
 	
 	public void salvar(){
 		if (validarSalvarServico()){
+			this.servico.setEmpresa(empresaAux);
 			this.servico = servicoEjb.salvarServico(this.servico);
 			buscar();
 		}
@@ -63,6 +70,7 @@ public class ServicoMb extends BaseMb{
 	
 	public void editar(Servico us){
 		this.servico = us;
+		empresaAux = this.servico.getEmpresa() == null ? new Empresa() : this.servico.getEmpresa();
 		alternaMostraLista();
 	}
 	

@@ -44,6 +44,10 @@ public class BaseMb {
 		this.empresas = empresaEjb.listarAllEmpresas();
 	}
 	
+	protected void recarregarListEmpresa(){
+		this.empresas = empresaEjb.listarAllEmpresas();
+	}
+	
 	public String getMsg() {
 		return msg;
 	}

@@ -18,6 +18,28 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 CREATE SCHEMA IF NOT EXISTS `japp` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `japp` ;
 
+
+-- -----------------------------------------------------
+-- Table `japp`.`empresa`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `japp`.`empresa` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `razao_social` VARCHAR(45) NOT NULL,
+  `nome_fantasia` VARCHAR(45) NULL,
+  `cnpj` VARCHAR(45) NULL,
+  `inscricao_est` VARCHAR(45) NULL,
+  `inscricao_mun` VARCHAR(45) NULL,
+  `matriz` INT(6) COMMENT 'refere-se ao id da propria tab empresa',
+  `tipo` INT(2) COMMENT '1 = matriz; 2 = filial',
+  `ativo` TINYINT(1),   
+  `datainclusao` DATETIME NULL,
+  `dataalteracao` DATETIME NULL,
+  PRIMARY KEY (`id`),
+  INDEX `idx_id_empresa` (`id` ASC),
+  INDEX `idx_rs_empresa` (`razao_social` ASC),
+  INDEX `idx_nf_empresa` (`nome_fantasia` ASC))
+ENGINE = INNODB;
+
 -- -----------------------------------------------------
 -- Table `japp`.`tipo_produto`
 -- -----------------------------------------------------
@@ -89,8 +111,7 @@ CREATE TABLE IF NOT EXISTS `japp`.`valor_produto` (
   PRIMARY KEY (`id`),
 INDEX `idx_id_valor_produto` (`id` ASC),
 INDEX `idx_produto_id` (`produto_id` ASC),  
-  CONSTRAINT `fk_produto`
-    FOREIGN KEY (`produto_id`) REFERENCES `japp`.`produto` (`id`))
+  CONSTRAINT `fk_produto` FOREIGN KEY (`produto_id`) REFERENCES `japp`.`produto` (`id`))
 ENGINE = INNODB;
 
 -- -----------------------------------------------------
@@ -283,26 +304,6 @@ CREATE TABLE IF NOT EXISTS `japp`.`orcamento_produto` (
     REFERENCES `japp`.`produto` (`id`))
 ENGINE = INNODB;
 
--- -----------------------------------------------------
--- Table `japp`.`empresa`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `japp`.`empresa` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `razao_social` VARCHAR(45) NOT NULL,
-  `nome_fantasia` VARCHAR(45) NULL,
-  `cnpj` VARCHAR(45) NULL,
-  `inscricao_est` VARCHAR(45) NULL,
-  `inscricao_mun` VARCHAR(45) NULL,
-  `matriz` INT(6) COMMENT 'refere-se ao id da propria tab empresa',
-  `tipo` INT(2) COMMENT '1 = matriz; 2 = filial',
-  `ativo` TINYINT(1),   
-  `datainclusao` DATETIME NULL,
-  `dataalteracao` DATETIME NULL,
-  PRIMARY KEY (`id`),
-  INDEX `idx_id_empresa` (`id` ASC),
-  INDEX `idx_rs_empresa` (`razao_social` ASC),
-  INDEX `idx_nf_empresa` (`nome_fantasia` ASC))
-ENGINE = INNODB;
 
 -- -----------------------------------------------------
 -- Table `japp`.`endereco`
