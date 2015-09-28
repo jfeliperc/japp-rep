@@ -67,7 +67,14 @@
 	                    <h:inputText id="descricao" value="#{produtoMb.produto.descricao}" title="Descricao" size="50" />
 	                    
 	                    <h:outputLabel value="Un. Medida" for="medida" />
-	                    <h:inputText id="medida" value="#{produtoMb.produto.medida}" title="Un. Medida" />
+	                    <h:panelGroup id="pnlGrpMedida" style="border:none; padding: 0px 0px;">
+		                    <h:selectOneMenu id="medida" value="#{produtoMb.produto.medida}" title="Un. Medida" style="width:200px">
+		                        <f:selectItem itemValue="Un" itemLabel="Unidade" noSelectionOption="true"/>
+		                        <f:selectItem itemValue="Cx" itemLabel="Caixa" />
+		                        <f:selectItem itemValue="Fr" itemLabel="Fardo" />
+		                        <f:selectItem itemValue="Kg" itemLabel="Kg" />		      
+		                    </h:selectOneMenu>		                    
+	                    </h:panelGroup>                    
 	                    
 	                    <h:outputLabel value="Cód. Externo" for="cod_externo" />
 	                    <h:inputText id="cod_externo" value="#{produtoMb.produto.codExterno}" title="Código Externo" />
@@ -91,7 +98,7 @@
 	                    <h:inputText id="indiceCoacao" value="#{produtoMb.produto.indiceCoaccao}" title="Índice Coacção" />	                    
 	                    	                    
 	                    <h:outputLabel value="Empresa" for="empresaId" />
-	                    <h:selectOneMenu id="empresaId" value="#{produtoMb.empresaAux}" title="Selecione a empresa vinculada" style="width:250px" converter="genConverter">
+	                    <h:selectOneMenu id="empresaId" value="#{produtoMb.empresaAux}" title="Selecione a empresa vinculada" style="width:250px">
 	                        <f:selectItem itemValue="#{null}" itemLabel=""/>
 	                        <f:selectItems value="#{produtoMb.empresas}" var="emp" itemValue="#{emp}" itemLabel="#{emp.nomeFantasia}"/>
 	                    </h:selectOneMenu>	                    

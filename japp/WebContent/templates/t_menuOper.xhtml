@@ -5,7 +5,25 @@
 	xmlns:p="http://primefaces.org/ui">
  
     <h:form id="frmMenuOper">
-	    <p:menubar>		        
+	    
+	    <p:menubar>
+	        <p:submenu label="Ambiente" icon="ui-icon-document">
+	            <p:menuitem value="Relatórios" action="#{loginMb.alternaAmbiente('R')}" update="frmMenuOper"/>
+	            <p:separator />
+	            <p:menuitem value="Operacional" action="#{loginMb.alternaAmbiente('O')}" update="frmMenuOper"/>
+	            <p:separator />	            
+	        	<p:menuitem value="Sair" action="#{loginMb.executarLogout()}" icon="ui-icon-close" />
+	        </p:submenu>
+	 
+	        <p:submenu label="Configurações" icon="ui-icon-pencil">
+	            <p:menuitem value="Acesso" action="acesso" icon="ui-icon-arrowreturnthick-1-w" />
+	        </p:submenu>
+
+	    </p:menubar>
+	    <br/>
+	    
+	    
+	    <p:menubar rendered="#{loginMb.tipoMenu == 'O'}">		        
 	          	<p:submenu label="Geral" >
 	               <p:menuitem action="empresa" value="Empresa"/>
 	               <p:menuitem action="pessoa" value="Pessoas"/>
@@ -31,6 +49,34 @@
 	               <p:menuitem action="dev" value="Receitas"/>
 	               <p:menuitem action="dev" value="Despesas"/>	                
 	               <p:menuitem action="dev" value="Notas Fiscais"/>	   
+	           </p:submenu> 
+	    </p:menubar>
+	    
+	    <p:menubar rendered="#{loginMb.tipoMenu == 'R'}">		        
+	          	<p:submenu label="Listagens" >
+	               <p:menuitem action="pessoa" value="Pessoas"/>
+	               <p:menuitem action="fornecedor" value="Fornecedores"/>	                
+	               <p:menuitem action="cliente" value="Clientes"/>	                
+	               <p:menuitem action="servico" value="Serviços"/>  
+	               <p:menuitem action="produto" value="Produto"/>   
+	           </p:submenu> 
+	           <p:submenu label="Movimentação" >
+	               <p:submenu label="Estoque">
+	                <p:menuitem action="estoque" value="Estoque"/>
+	                <p:menuitem action="entradaEst" value="Entrada"/>
+	                <p:menuitem action="saidaEst" value="Saída"/>
+	                <p:menuitem action="pedido" value="Pedidos"/>
+	               </p:submenu>
+	               <p:submenu label="Cozinha">
+	                <p:menuitem action="receita" value="Receita"/>
+	                <p:menuitem action="cardapio" value="Cardápio"/>
+	               </p:submenu>
+	               <p:submenu label="Financeiro">
+		               <p:menuitem action="dev" value="Contas"/>
+		               <p:menuitem action="dev" value="Receitas"/>
+		               <p:menuitem action="dev" value="Despesas"/>	                
+		               <p:menuitem action="dev" value="Notas Fiscais"/>	   
+		           </p:submenu>   
 	           </p:submenu> 
 	    </p:menubar>
     </h:form>

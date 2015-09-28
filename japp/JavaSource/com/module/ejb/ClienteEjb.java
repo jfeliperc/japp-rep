@@ -28,11 +28,18 @@ public class ClienteEjb implements IClienteEjb {
 				cliente.setTipoPessoa(TipoPessoa.PJ.getValor());
 			}
 		}
+		
+		
 
 		if (UtilsJapp.isNullOrZero(cliente.getId())){
 			cliente.setId(null);
 			cliente.setDatainclusao(new Date());
 			cliente.setTipo("C");
+
+			if ((cliente.getEmpresa() == null)||(UtilsJapp.isNullOrZero(cliente.getEmpresa().getId()))){
+				cliente.setEmpresa(null);
+			}
+						
 			daoAgenteExterno.add(cliente);
 		}else{
 			daoAgenteExterno.update(cliente);

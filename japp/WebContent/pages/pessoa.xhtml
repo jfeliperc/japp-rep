@@ -63,11 +63,18 @@
 	                    <h:outputLabel value="CPF" for="cpf" />
 	                    <h:inputText id="cpf" value="#{pessoaMb.pessoa.cpf}" title="cpf}" onkeypress="mask(this,'999.999.999-99',1,this)" />
 	                    
+	                    <h:outputLabel value="Tipo Documento" for="tipodocumento" />
+	                    <h:panelGroup id="pnlGrpTipodocumento" style="border:none; padding: 0px 0px;">
+		                    <h:selectOneMenu id="tipodocumento" value="#{pessoaMb.pessoa.tipodocumento}" title="Tipo documento" style="width:200px">
+		                        <f:selectItem itemValue="RG" itemLabel="Identidade" noSelectionOption="true"/>
+		                        <f:selectItem itemValue="TE" itemLabel="Título Eleitor" />
+		                        <f:selectItem itemValue="CNH" itemLabel="CNH" />
+		                        <f:selectItem itemValue="CTR" itemLabel="Cart. Trabalho" />		      
+		                    </h:selectOneMenu>		                    
+	                    </h:panelGroup>
+	                    
 	                    <h:outputLabel value="Documento" for="documento" />
 	                    <h:inputText id="documento" value="#{pessoaMb.pessoa.documento}" title="documento}" />
-	                    
-	                    <h:outputLabel value="Tipo Documento" for="tipodocumento" />
-	                    <h:inputText id="tipodocumento" value="#{pessoaMb.pessoa.tipodocumento}" title="tipo documento" />
 	                    
 	                    <h:outputLabel value="Tipo Pessoa" for="tipoPessoa" />
 	                    <h:selectOneMenu value="#{pessoaMb.pessoa.tipoPessoa}" style="width:150px" id="tipoPessoa">
@@ -99,7 +106,7 @@
 						</h:selectOneMenu>
 	                    	                    
 	                    <h:outputLabel value="Empresa" for="empresaId" />
-	                    <h:selectOneMenu id="empresaId" value="#{pessoaMb.empresaAux.id}" title="Selecione a empresa vinculada" style="width:250px" converter="genConverter">
+	                    <h:selectOneMenu id="empresaId" value="#{pessoaMb.empresaAux.id}" title="Selecione a empresa vinculada" style="width:250px" >
 	                        <f:selectItem itemValue="#{null}" itemLabel=""/>
 	                        <f:selectItems value="#{pessoaMb.empresas}" var="emp" itemValue="#{emp.id}" itemLabel="#{emp.nomeFantasia}"/>
 	                    </h:selectOneMenu>
@@ -133,7 +140,7 @@
 						
 						<h:panelGroup>
 		                	<h:commandLink action="#{pessoaMb.limparContatos()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
-		                	<h:commandLink action="#{pessoaMb.salvarContatos()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+		                	<h:commandLink action="#{pessoaMb.salvarContatos()}" value="" ><h:graphicImage value="/css/img/adicionar.png" width="20px" height="20px" /></h:commandLink>
 		                </h:panelGroup>		                
 	                    <h:panelGroup></h:panelGroup>
 						

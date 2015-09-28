@@ -8,10 +8,9 @@ import javax.ejb.Stateless;
 
 import com.module.ejb.contract.IReceitaEjb;
 import com.module.faces.geral.UtilsJapp;
-import com.module.jpa.dao.TipoProdutoDao;
+import com.module.jpa.dao.ReceitaDao;
 import com.module.jpa.dao.TipoReceitaDao;
 import com.module.jpa.model.Receita;
-import com.module.jpa.model.TipoProduto;
 import com.module.jpa.model.TipoReceita;
 
 @Stateless
@@ -25,8 +24,8 @@ public class ReceitaEjb implements IReceitaEjb {
 
 	@Override
 	public Receita buscarReceita(Receita receita) {
-		// TODO Auto-generated method stub
-		return null;
+		ReceitaDao dao = new ReceitaDao();
+		return dao.getById(receita.getId());
 	}
 
 	@Override
@@ -43,8 +42,8 @@ public class ReceitaEjb implements IReceitaEjb {
 
 	@Override
 	public List<Receita> buscarAllReceitas() {
-		// TODO Auto-generated method stub
-		return null;
+		ReceitaDao dao = new ReceitaDao();
+		return dao.getAll();
 	}
 
 	@Override

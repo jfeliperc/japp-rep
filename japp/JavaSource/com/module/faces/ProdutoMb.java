@@ -79,9 +79,9 @@ public class ProdutoMb extends BaseMb{
 			
 			if ((this.listProduto != null)&&(!this.listProduto.isEmpty())&&(this.listProduto.size() == 1)){
 				this.produto = this.listProduto.get(0);
-				this.tipo = this.produto.getTipoProduto();
-				this.grupo = this.produto.getGrupoProduto();
-				empresaAux = this.produto.getEmpresa();
+				this.tipo = this.produto.getTipoProduto() != null ? this.produto.getTipoProduto() : new TipoProduto() ;
+				this.grupo = this.produto.getGrupoProduto() != null ? this.produto.getGrupoProduto() : new GrupoProduto();
+				empresaAux = this.produto.getEmpresa() != null ? this.produto.getEmpresa() : new Empresa();
 				this.listProduto.clear();
 			}else{
 				empresaAux = new Empresa();
@@ -106,11 +106,11 @@ public class ProdutoMb extends BaseMb{
 	private boolean validarSalvar() {
 		boolean ret = true;
 		if (StringUtils.isBlank(this.produto.getNome())){
-			addMsgError("O campo Nome é obrigatório");
+			addMsgError("O campo Nome ï¿½ obrigatï¿½rio");
 			ret = false;
 		}
 		if (StringUtils.isBlank(this.produto.getDescricao())){
-			addMsgError("O campo Descrição é obrigatório");
+			addMsgError("O campo Descriï¿½ï¿½o ï¿½ obrigatï¿½rio");
 			ret = false;
 		}
 		return ret;

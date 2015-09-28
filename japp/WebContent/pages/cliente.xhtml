@@ -57,7 +57,7 @@
 								</h:selectOneMenu>	
 									                    
 			                    <h:outputLabel value="Empresa" for="empresaId" />
-			                    <h:selectOneMenu id="empresaId" value="#{clienteMb.empresaAux.id}" title="Selecione a empresa vinculada" style="width:250px" converter="genConverter">
+			                    <h:selectOneMenu id="empresaId" value="#{clienteMb.empresaAux.id}" title="Selecione a empresa vinculada" style="width:250px">
 			                        <f:selectItem itemValue="#{null}" itemLabel=""/>
 			                        <f:selectItems value="#{clienteMb.empresas}" var="emp" itemValue="#{emp.id}" itemLabel="#{emp.nomeFantasia}"/>
 			                    </h:selectOneMenu>

@@ -31,8 +31,12 @@ public class Cardapio implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date datainclusao;
 
+	private String titulo;
+	
 	private String descricao;
 
+	private String observacao;
+	
 	@Column(name="pessoa_id")
 	private int pessoaId;
 
@@ -45,14 +49,22 @@ public class Cardapio implements Serializable {
 	@Column(name="tipo_cardapio")
 	private int tipoCardapio;
 
-	//bi-directional many-to-one association to CardapioReceita
 	@OneToMany(mappedBy="cardapio")
 	private List<CardapioReceita> cardapioReceitas;
 
-	//bi-directional many-to-one association to ReceitaCardapioHi
 	@OneToMany(mappedBy="cardapio")
 	private List<ReceitaCardapioHi> receitaCardapioHis;
 
+	@Transient
+	private Date dataPrevisaoIni;
+
+	@Transient
+	private Date dataPrevisaoFim;
+	
+	@Transient
+	private String tipoReplicacao;
+	
+	
 	public Cardapio() {
 	}
 
@@ -178,6 +190,46 @@ public class Cardapio implements Serializable {
 		receitaCardapioHi.setCardapio(null);
 
 		return receitaCardapioHi;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
+	public Date getDataPrevisaoIni() {
+		return dataPrevisaoIni;
+	}
+
+	public void setDataPrevisaoIni(Date dataPrevisaoIni) {
+		this.dataPrevisaoIni = dataPrevisaoIni;
+	}
+
+	public Date getDataPrevisaoFim() {
+		return dataPrevisaoFim;
+	}
+
+	public void setDataPrevisaoFim(Date dataPrevisaoFim) {
+		this.dataPrevisaoFim = dataPrevisaoFim;
+	}
+
+	public String getTipoReplicacao() {
+		return tipoReplicacao;
+	}
+
+	public void setTipoReplicacao(String tipoReplicacao) {
+		this.tipoReplicacao = tipoReplicacao;
 	}
 
 }

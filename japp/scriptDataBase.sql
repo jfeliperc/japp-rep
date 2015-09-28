@@ -46,7 +46,7 @@ ENGINE = INNODB;
 CREATE TABLE IF NOT EXISTS `japp`.`tipo_produto` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
-  `descricao` VARCHAR(45) NULL,
+  `descricao` VARCHAR(150) NULL,
   `datainclusao` DATETIME NULL,
   `dataalteracao` DATETIME NULL,
   PRIMARY KEY (`id`),
@@ -60,7 +60,7 @@ ENGINE = INNODB;
 CREATE TABLE IF NOT EXISTS `japp`.`grupo_produto` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
-  `descricao` VARCHAR(45) NULL,
+  `descricao` VARCHAR(150) NULL,
   `grupo_pai` INT NULL,
   `datainclusao` DATETIME NULL,
   `dataalteracao` DATETIME NULL,
@@ -75,7 +75,7 @@ ENGINE = INNODB;
 CREATE TABLE IF NOT EXISTS `japp`.`produto` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
-  `descricao` VARCHAR(45) NULL,
+  `descricao` VARCHAR(150) NULL,
   `cod_externo` VARCHAR(45) NULL,
   `medida` VARCHAR(45) NULL,
   `qtd_minima` DOUBLE NULL,
@@ -138,7 +138,7 @@ ENGINE = INNODB;
 CREATE TABLE IF NOT EXISTS `japp`.`tipo_atividade` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
-  `descricao` VARCHAR(45) NULL,
+  `descricao` VARCHAR(150) NULL,
   `datainclusao` DATETIME NULL,
   `dataalteracao` DATETIME NULL,
   PRIMARY KEY (`id`))
@@ -150,7 +150,7 @@ ENGINE = INNODB;
 CREATE TABLE IF NOT EXISTS `japp`.`atividade` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
-  `descricao` VARCHAR(45) NULL,
+  `descricao` VARCHAR(150) NULL,
   `tipo_atividade_id` INT NOT NULL,
   `servico_id` INT NULL,
   `datainclusao` DATETIME NULL,
@@ -167,7 +167,7 @@ ENGINE = INNODB;
 CREATE TABLE IF NOT EXISTS `japp`.`servico` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
-  `descricao` VARCHAR(45) NULL,
+  `descricao` VARCHAR(150) NULL,
   `empresa_id` INT NULL, 
   `datainclusao` DATETIME NULL,
   `dataalteracao` DATETIME NULL,
@@ -251,7 +251,7 @@ ENGINE = INNODB;
 CREATE TABLE IF NOT EXISTS `japp`.`contato` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `tipo` VARCHAR(45) NULL,
-  `descricao` VARCHAR(45) NULL,
+  `descricao` VARCHAR(150) NULL,
   `pessoa_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_contato_pessoa1_idx` (`pessoa_id` ASC),
@@ -276,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `japp`.`orcamento` (
   `garantia` VARCHAR(45) NULL,
   `valormaoobra` VARCHAR(45) NULL,
   `valortotal` VARCHAR(45) NULL,
-  `descricao` VARCHAR(45) NULL,
+  `descricao` VARCHAR(150) NULL,
   `tipoorcamento` VARCHAR(45) NULL,
   `datainclusao` VARCHAR(45) NULL,
   `dataalteracao` VARCHAR(45) NULL,
@@ -411,7 +411,7 @@ CONSTRAINT `fk_pedido_item_produto_id` FOREIGN KEY (`produto_id`) REFERENCES `ja
 CREATE TABLE IF NOT EXISTS `japp`.`tipo_receita` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
-  `descricao` VARCHAR(45) NULL,
+  `descricao` VARCHAR(150) NULL,
   `datainclusao` DATETIME NULL,
   `dataalteracao` DATETIME NULL,
   PRIMARY KEY (`id`),
@@ -468,7 +468,9 @@ CREATE TABLE IF NOT EXISTS `japp`.`cardapio` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `pessoa_id` INT NULL COMMENT 'pessoa responsavel',
   `servico_id` INT NULL,
+  `titulo` VARCHAR(45) NULL,
   `descricao` VARCHAR(255) NULL,
+  `observacao` VARCHAR(255) NULL,
   `dataexecucao` DATETIME NULL,
   `tempo_medio` VARCHAR(25) NULL,
   `cardapio_origem` INT NULL,

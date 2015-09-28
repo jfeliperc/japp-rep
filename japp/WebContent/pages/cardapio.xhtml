@@ -6,6 +6,19 @@
 	xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="conteudo">
+    	
+    	<style>    		
+			.ui-picklist .ui-picklist-list {
+			    height: 200px;
+			    list-style-type: none;
+			    margin: 0;
+			    overflow: auto;
+			    padding: 0;
+			    width: 500px;
+			    text-align: left;
+			}
+    	</style>
+    	
     	<h:form id="frmReceita">
 	    	<p:panel header="Cadastro de Cardápio" style="width:99%; height: 95%; ">
 	    		<table><tr><td width="1300px">
@@ -13,70 +26,54 @@
 			      	<p:panel header="Cardápio" style="width:99%; height: 95%; ">
 				      	<h:panelGroup id="botoesPanel" layout="block">		      			
 		      				<table><tr><td width="20px">
-		      				<h:commandLink action="#{empresaMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+		      				<h:commandLink action="#{cardapioMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
 		      				</td><td width="20px">
-		      				<h:commandLink action="#{empresaMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>	
+		      				<h:commandLink action="#{cardapioMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>	
 		      				</td><td width="20px">
-		      				<h:commandLink action="#{produtoMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>      				
+		      				<h:commandLink action="#{cardapioMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>      				
+		      				</td><td width="40px">		      					
+		                    	<p:commandButton value="Replicar" type="button" onclick="PF('dlgReplica').show();" rendered="#{cardapioMb.cardapio.id >= 0}"/>
 		      				</td></tr></table>		      				
 			      		</h:panelGroup>
 				      	<h:panelGroup id="messagePanel" layout="block">
 		                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
 		                	<hr/>
 			            </h:panelGroup>
-				      	<h:panelGrid columns="4" styleClass="gridForm">
+				      	<h:panelGrid columns="2" styleClass="gridForm">
 		                    <h:outputLabel value="id" for="id" />
-		                    <h:inputText id="id" value="#{empresaMb.empresa.empresaId}" title="Id" required="false" />
+		                    <h:inputText id="id" value="#{cardapioMb.cardapio.id}" title="Id" required="false" />
+		                    
 		                    <h:outputLabel value="Título do Cardápio" for="titCardapio" />
-		                    <h:inputText id="titCardapio" value="#{empresaMb.empresa.razaoSocial}" title="Título do cardápio" required="true" size="100"/>
+		                    <h:inputText id="titCardapio" value="#{cardapioMb.cardapio.titulo}" title="Título do cardápio" required="true" size="70"/>
+		                   
+		                    <h:outputLabel value="Resumo" for="descCardapio" />
+		                    <h:inputText id="descCardapio" value="#{cardapioMb.cardapio.descricao}" size="100"/>
+		                    
+		                    <h:outputLabel value="Previsão de Execução" for="prevCardapio" />
+		                    <h:inputText id="prevCardapio" value="#{cardapioMb.cardapio.dataexecucao}" title="data previsão" 
+		                    		onkeypress="mask(this,'99/99/9999',1,this)">
+		                        <f:convertDateTime pattern="dd/MM/yyyy" />
+		                    </h:inputText>
+		                    
 		                </h:panelGrid>
-		                <h:panelGrid columns="2" styleClass="gridForm">    
-		                    <h:outputLabel value="Resumo" for="nomeFantasia" />
-		                    <h:inputText id="nomeFantasia" value="#{empresaMb.empresa.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="150"/>
-		                </h:panelGrid>
-		                <h:panelGrid columns="4" styleClass="gridForm">    	                    
-		                    <h:outputLabel value="Replicação" for="replicacao" />
-		                    <h:panelGroup id="selReplicacao" layout="block">
-			                    <h:selectOneMenu id="somReplicacao" value="#{produtoMb.produto.tipoProduto}" title="Tipo de replicação" style="width:250px">
-			                        <f:selectItem itemValue="00" itemLabel="Sem replicação"/>
-			                        <f:selectItem itemValue="01" itemLabel="Todos os dias"/>
-			                        <f:selectItem itemValue="02" itemLabel="Seg. -> Sex."/>
-			                        <f:selectItem itemValue="03" itemLabel="Mesmo dia várias semanas"/>
-			                        <f:selectItem itemValue="04" itemLabel="Período"/>
-			                        <p:ajax event="change" update="pnlDataPeriodo" />
-			                    </h:selectOneMenu>		                    
-		                    </h:panelGroup>
-		                    <h:outputLabel value="Data" for="dataCardapio" />
-		                    <h:panelGroup id="pnlDataPeriodo" layout="block">
-		                    	<p:calendar id="dataCardapio" value="#{empresaMb.empresa.nomeFantasia}" title="Data referência cardápio" rendered="true"/>
-		                    	
-		                    	<p:calendar id="dataIniCardapio" value="#{empresaMb.empresa.nomeFantasia}" title="Data inicial" rendered="false"/>
-		                    	<h:outputLabel value="à" for="dataCardapio"  rendered="false"/>
-		                    	<p:calendar id="dataFimCardapio" value="#{empresaMb.empresa.nomeFantasia}" title="Data final" rendered="false"/>		                    
-		                    </h:panelGroup>		                    
-		                       
-		                </h:panelGrid>
+		                
 		                <hr/>
-		                <p:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbGrupos">
+		                <p:dataTable value="#{cardapioMb.listCardapio}" var="us" style="width:100%" id="tbGrupos">
 			    			<p:column>
 			    				<f:facet name="header">id</f:facet>
 			    				<h:outputText value="#{us.id}" />
 			    			</p:column>
 			    			<p:column>
 			    				<f:facet name="header">Título</f:facet>
-			    				<h:outputText value="#{us.nome}" />
+			    				<h:outputText value="#{us.descricao}" />
 			    			</p:column>
 			    			<p:column>
 			    				<f:facet name="header">Resumo</f:facet>
-			    				<h:outputText value="#{us.descricao}" />
+			    				<h:outputText value="#{us.datainclusao}" />
 			    			</p:column>
 			    			<p:column>
-			    				<f:facet name="header">Replicação</f:facet>
-			    				<h:outputText value="#{us.descricao}" />
-			    			</p:column>
-			    			<p:column>
-			    				<f:facet name="header">Data</f:facet>
-			    				<h:outputText value="#{us.descricao}" />
+			    				<f:facet name="header">Data Previsão</f:facet>
+			    				<h:outputText value="#{us.dataexecucao}" />
 			    			</p:column>
 			    			<p:column>
 			    				<f:facet name="header">Ação</f:facet>
@@ -86,55 +83,72 @@
 					</p:panel>	
 					<hr/>
 					<p:panel header="Detalhe" style="width:99%; height: 95%; ">
-						<h:panelGroup id="botoesPanelDetalhe" layout="block">		      			
-		      				<table><tr><td width="20px">
-		      				<h:commandLink action="#{empresaMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
-		      				</td><td width="20px">
-		      				<h:commandLink action="#{produtoMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>      				
-		      				</td></tr></table>		      				
-			      		</h:panelGroup>
-						<table>
-							<tr><td valign="top" width="50%">					
-								<h:panelGroup style="width:50%">
-									<fieldset><legend>Ingredientes</legend>
-										<h:panelGrid columns="2" styleClass="gridForm">
-						                    <h:outputLabel value="Receita" for="id" />
-						                    <h:inputText id="idpro" value="#{empresaMb.empresa.empresaId}" title="EmpresaTitle_id}" required="false" />
-						                    <h:outputLabel value="Obs.:" for="nomeFantasia" />
-						                    <h:inputText id="obsReceita" value="#{empresaMb.empresa.nomeFantasia}" title="EmpresaTitle_nomeFantasia}" size="90"/>	                    
-						                </h:panelGrid>
-										<p:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbIngredientes">
-							    			<p:column>
-							    				<f:facet name="header">id</f:facet>
-							    				<h:outputText value="#{us.id}" />
-							    			</p:column>
-							    			<p:column>
-							    				<f:facet name="header">Receita</f:facet>
-							    				<h:outputText value="#{us.nome}" />
-							    			</p:column>
-							    			<p:column>
-							    				<f:facet name="header">Obs.</f:facet>
-							    				<h:outputText value="#{us.descricao}" />
-							    			</p:column>					    			
-							    			<p:column>
-							    				<f:facet name="header">Ação</f:facet>
-							    			</p:column>
-							    		</p:dataTable>
-						    		</fieldset>
-								</h:panelGroup>
-							</td><td valign="top" width="50%">	
-								<h:panelGroup style="width:50%">
-									<fieldset><legend>Descrição</legend>
-										<h:inputTextarea value="" rows="18" cols="110" />
-									</fieldset>
-								</h:panelGroup>
-							</td></tr>
-						</table>
+				
+						<h:panelGroup style="width:80%" id="pgReceitasFrom">
+							<fieldset><legend>Receitas</legend>
+								<h:panelGrid columns="2" styleClass="gridForm_">
+				                	<h:outputLabel value="Tipo de Receita" for="tipoReceita" />
+			                    	<h:panelGroup id="seltipoReceita" layout="block">
+					                    <h:selectOneMenu id="tipoProdutoId" value="#{receitaMb.tipoReceitaAux.id}" title="Tipo Receita" 
+					                    	required="false" requiredMessage="Campo Tipo Receita é obrigatório" style="width:250px">
+					                        <f:selectItems value="#{receitaMb.itemsTipoReceita}" var="tp" itemLabel="#{tp.nome}" itemValue="#{tp.id}"/>
+					                    </h:selectOneMenu>		                    
+				                    </h:panelGroup>
+				                	<hr/>
+				                </h:panelGrid>
+								
+								<p:pickList id="PojoPickList" value="#{cardapioMb.listReceitaSelecao}" var="rece" effect="bounce"
+							                itemValue="#{rece}" itemLabel="#{rece.descricao}" showSourceControls="true" showTargetControls="true" 
+							                showCheckbox="true" responsive="true"
+							                showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains">
+							 
+							        <f:facet name="sourceCaption">Opções</f:facet>
+							        <f:facet name="targetCaption">Menu</f:facet>
+							
+							        <p:column>
+							            <h:outputText value="#{rece.descricao}" />
+							        </p:column>
+							    </p:pickList>
+								
+								
+				    		</fieldset>
+						</h:panelGroup>		
+
 						<hr/>						
 					</p:panel>
 				</div>
 				</td></tr></table>	
 		    </p:panel>
+		    
+		    <p:dialog header="Replicação de cardápio" widgetVar="dlgReplica" modal="true" height="300" width="600" showEffect="explode" hideEffect="bounce">
+			    <h:panelGrid columns="2" styleClass="gridForm">    	                    
+	                    <h:outputLabel value="Replicação" for="replicacao" />
+	                    <h:panelGroup id="selReplicacao" layout="block">
+		                    <h:selectOneMenu id="replicacao" value="#{cardapioMb.cardapio.tipoReplicacao}" title="Tipo de replicação" style="width:250px">
+		                        <f:selectItem itemValue="00" itemLabel="Dia Único"/>
+		                        <f:selectItem itemValue="01" itemLabel="Todos os dias"/>
+		                        <f:selectItem itemValue="02" itemLabel="Seg. -> Sex."/>
+		                        <f:selectItem itemValue="03" itemLabel="Mesmo dia várias semanas"/>
+		                        <f:selectItem itemValue="04" itemLabel="Período"/>
+		                        <p:ajax event="change" update="pnlDataPeriodo" />
+		                    </h:selectOneMenu>		                    
+	                    </h:panelGroup>
+	                    
+	                    <h:outputLabel value="Data" for="dataCardapio" />
+	                    <h:panelGroup id="pnlDataPeriodo" layout="block">
+	                    	<p:calendar id="dataCardapio" value="#{cardapioMb.cardapio.dataexecucao}" title="Data referência cardápio" rendered="#{cardapioMb.cardapio.tipoReplicacao == '00'}"/>
+	                    	
+	                    	<p:calendar id="dataIniCardapio" value="#{cardapioMb.cardapio.dataPrevisaoIni}" title="Data inicial" rendered="#{cardapioMb.cardapio.tipoReplicacao != '00'}"/>
+	                    	<h:outputLabel value="à" for="dataCardapio"  rendered="#{cardapioMb.cardapio.tipoReplicacao != '00'}"/>
+	                    	<p:calendar id="dataFimCardapio" value="#{cardapioMb.cardapio.dataPrevisaoFim}" title="Data final" rendered="#{cardapioMb.cardapio.tipoReplicacao != '00'}"/>		                    
+	                    </h:panelGroup>		                    
+	                    
+	                    <p:commandButton value="Replicar" type="button" />
+	                    <h:panelGroup></h:panelGroup>
+	                       
+	                </h:panelGrid>
+			</p:dialog> 
+		    
 		</h:form>
     </ui:define>
     

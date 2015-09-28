@@ -70,3 +70,12 @@ td, th {
     /* border-color: inherit; */
     padding: 3px 8px;
 }
+
+.ui-picklist .ui-picklist-list {
+    height: 200px;
+    list-style-type: none;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+    width: 500px;
+}

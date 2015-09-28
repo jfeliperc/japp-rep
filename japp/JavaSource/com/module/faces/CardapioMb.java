@@ -1,11 +1,15 @@
 package com.module.faces;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
+import org.primefaces.event.DragDropEvent;
+import org.primefaces.model.DualListModel;
 
 import com.module.ejb.contract.ICardapioEjb;
 import com.module.jpa.model.Cardapio;
@@ -24,19 +28,34 @@ public class CardapioMb extends BaseMb{
 	private Receita receita;
 	private List<Produto> listProduto;
 	private List<Receita> listReceita;
+	private List<Receita> listReceitaSelect;
+	private DualListModel<Receita> listReceitaSelecao;
 	private List<Cardapio> listCardapio;
+	
 	
 	@PostConstruct
 	public void posConstrucao(){
 		super.posConstrucao();
+		this.listReceita = new ArrayList<Receita>();
+		this.listReceitaSelect = new ArrayList<Receita>();
+		setexemplo();
+		this.listReceitaSelecao = new DualListModel<Receita>(listReceita, listReceitaSelect);
 	}
 	
-	public CardapioMb(){		
-		
+	public CardapioMb(){
+		this.cardapio = new Cardapio();
+		this.listReceita = new ArrayList<Receita>();
+		this.listReceitaSelect = new ArrayList<Receita>();
+		setexemplo();
+		this.listReceitaSelecao = new DualListModel<Receita>(listReceita, listReceitaSelect);
 	}
 
 	public void limpar(){
-		
+		this.cardapio = new Cardapio();
+		this.listReceita = new ArrayList<Receita>();
+		this.listReceitaSelect = new ArrayList<Receita>();
+		setexemplo();
+		this.listReceitaSelecao = new DualListModel<Receita>(listReceita, listReceitaSelect);
 	}
 	
 	public void buscar(){
@@ -75,6 +94,12 @@ public class CardapioMb extends BaseMb{
 	public void salvarDetalhe(){
 		
 	}
+	
+	public void onDrop(DragDropEvent ddEvent) {
+        Receita receita = ((Receita) ddEvent.getData());  
+        listReceitaSelect.add(receita);
+        listReceita.remove(receita);
+    }
 	
 	public Cardapio getCardapio() {
 		return cardapio;
@@ -115,5 +140,42 @@ public class CardapioMb extends BaseMb{
 	public void setListCardapio(List<Cardapio> listCardapio) {
 		this.listCardapio = listCardapio;
 	}
+
+	public List<Receita> getListReceitaSelect() {
+		return listReceitaSelect;
+	}
+
+	public void setListReceitaSelect(List<Receita> listReceitaSelect) {
+		this.listReceitaSelect = listReceitaSelect;
+	}
+
+	public DualListModel<Receita> getListReceitaSelecao() {
+		return listReceitaSelecao;
+	}
+
+	public void setListReceitaSelecao(DualListModel<Receita> listReceitaSelecao) {
+		this.listReceitaSelecao = listReceitaSelecao;
+	}
 	
+	public void setexemplo(){
+		Receita rec = new Receita();
+		rec.setId(1);
+		rec.setDescricao("testerererere 001");
+		rec.setResumo("res teste 01");
+		
+		Receita rec2 = new Receita();
+		rec2.setId(2);
+		rec2.setDescricao("teste 002");
+		rec2.setResumo("res teste 02");
+		
+		Receita rec3 = new Receita();
+		rec3.setId(3);
+		rec3.setDescricao("teserererererererte 003");
+		rec3.setResumo("res teste 03");
+		
+		listReceita = new ArrayList<Receita>();
+		listReceita.add(rec);
+		listReceita.add(rec2);
+		listReceita.add(rec3);
+	}
 }

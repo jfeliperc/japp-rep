@@ -43,6 +43,8 @@ public class LoginMb extends BaseMb{
 	
 	private boolean renovarSenha;
 	
+	private String tipoMenu;
+	
 	public LoginMb() {
 		super();
 	}
@@ -63,6 +65,8 @@ public class LoginMb extends BaseMb{
 		this.pass = null;
 		this.newPass = null;
 		this.confNewPass = null;
+		
+		this.tipoMenu = "O";
 	}
 
 	public String executarLogin(){
@@ -82,7 +86,7 @@ public class LoginMb extends BaseMb{
 				
 				ret = "inicio";
 			}else{
-				setMsg("Login e/ou senha inválido(s).");
+				setMsg("Login e/ou senha invï¿½lido(s).");
 				ret = "login";
 			}
 		} catch (NoSuchAlgorithmException e) {
@@ -110,10 +114,10 @@ public class LoginMb extends BaseMb{
 		
 		EstrMenu itemGeral = new EstrMenu("Geral");
 		Menu empresa = new Menu("empresa","Empresa","Cadastro da empresa");
-		Menu pessoas = new Menu("pessoa","Pessoas","Cadastro de pessoas/usuários");
+		Menu pessoas = new Menu("pessoa","Pessoas","Cadastro de pessoas/usuï¿½rios");
 		Menu fornec = new Menu("fornecedor","Fornecedores","Cadastro de fornecedores");
 		Menu cli = new Menu("cliente","Clientes","Cadastro de clientes");
-		Menu serv = new Menu("servico","Serviços","Cadastro de serviços");
+		Menu serv = new Menu("servico","Serviï¿½os","Cadastro de serviï¿½os");
 		itemGeral.getSubmenus().add(empresa);
 		itemGeral.getSubmenus().add(pessoas);
 		itemGeral.getSubmenus().add(fornec);
@@ -124,7 +128,7 @@ public class LoginMb extends BaseMb{
 		Menu produto = new Menu("produto","Produto","Cadastro de produto");
 		Menu estoque = new Menu("estoque","Estoque","Controle de estoque");
 		Menu entProd = new Menu("entradaEst","Entrada","Entrada de produtos");
-		Menu saidaProd = new Menu("saidaEst","Saída","Saída de produtos");
+		Menu saidaProd = new Menu("saidaEst","Saï¿½da","Saï¿½da de produtos");
 		Menu pedido = new Menu("pedido","Pedidos","Pedidos de produtos");
 		itemProdutos.getSubmenus().add(produto);
 		itemProdutos.getSubmenus().add(estoque);
@@ -134,7 +138,7 @@ public class LoginMb extends BaseMb{
 		
 		EstrMenu itemCozinha = new EstrMenu("Cozinha");
 		Menu receitas = new Menu("receita","Receita","Cadastro de receitas");
-		Menu cardapio = new Menu("cardapio","Cardápio","Cadastro de cardápio");
+		Menu cardapio = new Menu("cardapio","Cardï¿½pio","Cadastro de cardï¿½pio");
 		itemCozinha.getSubmenus().add(receitas);
 		itemCozinha.getSubmenus().add(cardapio);
 		
@@ -152,6 +156,15 @@ public class LoginMb extends BaseMb{
 		this.menu.add(itemProdutos);
 		this.menu.add(itemCozinha);
 		this.menu.add(itemFinanceiro);
+	}
+	
+	public String alternaAmbiente(String ambiente){
+		this.tipoMenu = ambiente;
+		if ("R".equals(ambiente)){
+			return "relatorio";
+		}else{		
+			return "inicio";
+		}
 	}
 	
 	public String navegarMenu(String opcao){
@@ -245,6 +258,14 @@ public class LoginMb extends BaseMb{
 
 	public void setMenu(List<EstrMenu> menu) {
 		this.menu = menu;
+	}
+
+	public String getTipoMenu() {
+		return tipoMenu;
+	}
+
+	public void setTipoMenu(String tipoMenu) {
+		this.tipoMenu = tipoMenu;
 	}
 	
 }

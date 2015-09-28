@@ -42,7 +42,7 @@ public class PessoaMb extends BaseMb{
 
 	public void solicitarCadastroPessoa(){
 		pessoaEjb.solicitarCadastro(pessoa);
-        addMsg("Solicitação de cadastro registrada.");
+        addMsg("Solicitaï¿½ï¿½o de cadastro registrada.");
 	}
 		
 	public void buscar(){
@@ -55,7 +55,7 @@ public class PessoaMb extends BaseMb{
 				this.pessoas.clear();
 				
 				this.pessoa = pessoaEjb.buscarPessoa(this.pessoa);
-				empresaAux = this.pessoa.getEmpresa();
+				empresaAux = this.pessoa.getEmpresa() == null ? new Empresa() : this.pessoa.getEmpresa();
 			}else if ((this.pessoas == null)||(this.pessoas.isEmpty())){
 				addMsg("Nenhuma pessoa encontrada na busca.");
 			}else{				
@@ -96,11 +96,11 @@ public class PessoaMb extends BaseMb{
 	private boolean validarSalvar() {
 		boolean ret = true;
 		if (StringUtils.isBlank(this.pessoa.getNomecompleto())){
-			addMsgError("O campo Nome Completo é obrigatï¿½rio");
+			addMsgError("O campo Nome Completo ï¿½ obrigatï¿½rio");
 			ret = false;
 		}
 		if (StringUtils.isBlank(this.pessoa.getCpf())){
-			addMsgError("O campo CPF é obrigatï¿½rio");
+			addMsgError("O campo CPF ï¿½ obrigatï¿½rio");
 			ret = false;
 		}
 		return ret;
