@@ -85,16 +85,12 @@
 				                </h:panelGrid>
 								
 								<p:pickList id="PojoPickList2" value="#{servicoMb.listAtividadeSelecao}" var="ativ" effect="bounce"
-							                itemValue="#{ativ}" itemLabel="#{ativ.descricao}" showSourceControls="true" showTargetControls="true" 
+							                itemValue="#{ativ}" itemLabel="#{ativ.descricao}" showSourceControls="false" showTargetControls="false" 
 							                showCheckbox="true" responsive="true" rendered="#{not empty servicoMb.listAtividade}"
-							                showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains">
-							 
+							                converter="AtividadeConverter"
+							                showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains">							 
 							        <f:facet name="sourceCaption">Opções</f:facet>
 							        <f:facet name="targetCaption">Atividades relacionadas</f:facet>
-							
-							        <p:column>
-							            <h:outputText value="#{ativ.descricao}" />
-							        </p:column>
 							    </p:pickList>								
 				        </p:tab>
 				        <p:tab title="Clientes">
@@ -106,16 +102,12 @@
 					      		<br/><hr/>
 								
 								<p:pickList id="PojoPickList" value="#{servicoMb.listClienteSelecao}" var="clie" effect="bounce"
-							                itemValue="#{clie}" itemLabel="#{clie.nome}" showSourceControls="true" showTargetControls="true" 
+							                itemValue="#{clie}" itemLabel="#{clie.nome}" showSourceControls="false" showTargetControls="false" 
 							                showCheckbox="true" responsive="true" rendered="#{not empty servicoMb.listCliente}"
-							                showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains">
-							 
+							                converter="ClienteConverter"
+							                showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains">							 
 							        <f:facet name="sourceCaption">Opções</f:facet>
-							        <f:facet name="targetCaption">Clientes relacionados</f:facet>
-							
-							        <p:column>
-							            <h:outputText value="#{clie.nome}" />
-							        </p:column>
+							        <f:facet name="targetCaption">Clientes relacionados</f:facet>							
 							    </p:pickList>								
 				        </p:tab>
 				        

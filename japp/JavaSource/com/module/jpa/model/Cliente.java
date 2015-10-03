@@ -19,6 +19,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.apache.commons.lang3.StringUtils;
+
 
 /**
  * The persistent class for the agente_externo database table.
@@ -187,6 +189,9 @@ public class Cliente implements Serializable {
 	}
 
 	public String getNome() {
+		if (StringUtils.isBlank(this.nome) && StringUtils.isNotBlank(this.nomeFantasia)){
+			return this.nomeFantasia;
+		}
 		return this.nome;
 	}
 
@@ -195,6 +200,9 @@ public class Cliente implements Serializable {
 	}
 
 	public String getNomeFantasia() {
+		if (StringUtils.isBlank(this.nomeFantasia) && StringUtils.isNotBlank(this.nome)){
+			return this.nome;
+		}
 		return this.nomeFantasia;
 	}
 

@@ -6,7 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import org.primefaces.model.DualListModel;
 
@@ -20,7 +20,7 @@ import com.module.jpa.model.Servico;
 
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class ServicoMb extends BaseMb{
 
 	@EJB
@@ -71,6 +71,9 @@ public class ServicoMb extends BaseMb{
 
 		this.listCliente = clienteEjb.buscarAllClientes();
 		this.listAtividade = atividadeEjb.buscarAllAtividades();
+		
+		this.listAtividadeSelect = new ArrayList<Atividade>();
+		this.listClienteSelect = new ArrayList<Cliente>();
 		
 		this.listAtividadeSelecao = new DualListModel<Atividade>(listAtividade, listAtividadeSelect);
 		this.listClienteSelecao = new DualListModel<Cliente>(listCliente, listClienteSelect);
@@ -175,7 +178,7 @@ public class ServicoMb extends BaseMb{
 	}
 
 	public List<Atividade> getListAtividadeSelect() {
-		return listAtividadeSelect;
+		return listAtividadeSelect == null ? new ArrayList<Atividade>() : listAtividadeSelect;
 	}
 
 	public void setListAtividadeSelect(List<Atividade> listAtividadeSelect) {
@@ -200,7 +203,7 @@ public class ServicoMb extends BaseMb{
 	}
 
 	public List<Cliente> getListClienteSelect() {
-		return listClienteSelect;
+		return listClienteSelect == null ? new ArrayList<Cliente>() : listClienteSelect;
 	}
 
 	public void setListClienteSelect(List<Cliente> listClienteSelect) {

@@ -140,7 +140,7 @@
 					      		</span>
 					      		<br/><hr/>
 				        		
-								<h:panelGrid columns="2" styleClass="gridForm_">
+								<h:panelGrid columns="2" styleClass="gridForm_" rendered="false">
 				                	<h:outputLabel value="Tipo de Serviço" for="tipoServicoId" />
 			                    	<h:panelGroup id="seltipoServiço" layout="block">
 					                    <h:selectOneMenu id="tipoServicoId" value="#{receitaMb.tipoReceitaAux.id}" title="Tipo Receita" 
@@ -152,16 +152,12 @@
 				                </h:panelGrid>
 								
 								<p:pickList id="PojoPickList" value="#{clienteMb.listServicoSelecao}" var="serv" effect="bounce"
-							                itemValue="#{serv}" itemLabel="#{serv.descricao}" showSourceControls="true" showTargetControls="true" 
+							                itemValue="#{serv}" itemLabel="#{serv.descricao}" showSourceControls="false" showTargetControls="false" 
 							                showCheckbox="true" responsive="true" rendered="#{not empty clienteMb.listServico}"
-							                showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains">
-							 
+							                converter="ServicoConverter"
+							                showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains">							 
 							        <f:facet name="sourceCaption">Opções</f:facet>
 							        <f:facet name="targetCaption">Serviços relacionados</f:facet>
-							
-							        <p:column>
-							            <h:outputText value="#{serv.descricao}" />
-							        </p:column>
 							    </p:pickList>
 								
 				        </p:tab>

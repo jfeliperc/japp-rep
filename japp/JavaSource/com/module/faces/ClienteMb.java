@@ -51,6 +51,7 @@ public class ClienteMb extends BaseMb{
 		this.listCliente = new ArrayList<Cliente>();
 		
 		this.listServico = servicoEjb.buscarAllServicos();
+		this.listServicoSelect = new ArrayList<Servico>();
 		
 		this.listServicoSelecao = new DualListModel<Servico>(listServico, listServicoSelect);
 	}
