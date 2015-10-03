@@ -49,7 +49,10 @@ public class EmpresaEjb implements IEmpresaEjb, Serializable {
 
 	@Override
 	public List<Empresa> listarEmpresas(Empresa empresa) {
-		List<Empresa> retorno = new ArrayList<Empresa>();		
+		List<Empresa> retorno = new ArrayList<Empresa>();
+		
+		empresa.setEmpresaId(1);
+		
 		retorno = this.dao.findByExample(empresa);
 		return retorno;
 	}

@@ -1,6 +1,5 @@
 package com.module.faces;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +12,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.module.ejb.contract.IEmpresaEjb;
 import com.module.ejb.contract.IFornecedorEjb;
-import com.module.faces.geral.UtilsJapp;
-import com.module.jpa.model.AgenteExterno;
 import com.module.jpa.model.Empresa;
+import com.module.jpa.model.Fornecedor;
 
 
 @ManagedBean
@@ -27,8 +25,8 @@ public class FornecedorMb extends BaseMb{
 	@EJB
 	private IEmpresaEjb empresaEjb;
 			
-	private AgenteExterno fornecedor;
-	private List<AgenteExterno> listFornecedor;
+	private Fornecedor fornecedor;
+	private List<Fornecedor> listFornecedor;
 
 	public FornecedorMb(){
 		super();
@@ -41,8 +39,8 @@ public class FornecedorMb extends BaseMb{
 	}
 	
 	public void limpar(){
-		this.fornecedor = new AgenteExterno();
-		this.listFornecedor = new ArrayList<AgenteExterno>();
+		this.fornecedor = new Fornecedor();
+		this.listFornecedor = new ArrayList<Fornecedor>();
 		empresaAux = new Empresa();
 	}
 	
@@ -82,17 +80,17 @@ public class FornecedorMb extends BaseMb{
 	private boolean validarSalvar() {
 		boolean ret = true;
 		if (StringUtils.isBlank(this.fornecedor.getRazaoSocial())){
-			addMsgError("O campo Razão Social é obrigatório");
+			addMsgError("O campo Razï¿½o Social ï¿½ obrigatï¿½rio");
 			ret = false;
 		}
 		if (StringUtils.isBlank(this.fornecedor.getCnpj())){
-			addMsgError("O campo CNPJ é obrigatório");
+			addMsgError("O campo CNPJ ï¿½ obrigatï¿½rio");
 			ret = false;
 		}
 		return ret;
 	}
 
-	public void editar(AgenteExterno us){
+	public void editar(Fornecedor us){
 		this.fornecedor = us;
 		this.fornecedor = fornecedorEjb.buscarFornecedor(this.fornecedor);	
 		empresaAux = this.fornecedor.getEmpresa();	
@@ -103,19 +101,19 @@ public class FornecedorMb extends BaseMb{
 
 	}
 	
-	public AgenteExterno getFornecedor() {
+	public Fornecedor getFornecedor() {
 		return fornecedor;
 	}
 
-	public void setFornecedor(AgenteExterno fornecedor) {
+	public void setFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
 	}
 
-	public List<AgenteExterno> getListFornecedor() {
+	public List<Fornecedor> getListFornecedor() {
 		return listFornecedor;
 	}
 
-	public void setListFornecedor(List<AgenteExterno> listFornecedor) {
+	public void setListFornecedor(List<Fornecedor> listFornecedor) {
 		this.listFornecedor = listFornecedor;
 	}
 	

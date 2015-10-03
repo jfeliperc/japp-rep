@@ -9,6 +9,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.module.faces.geral.UtilsJapp;
 import com.module.jpa.model.Empresa;
 
 public class EmpresaDao extends Dao<Empresa> {
@@ -37,6 +38,9 @@ public class EmpresaDao extends Dao<Empresa> {
 
 	private Predicate prepararPredicatesByExample(Empresa empresa, CriteriaBuilder cb, Root<Empresa> raiz) {
 		Predicate predicate = cb.and();
+		if (!UtilsJapp.isNullOrZero(empresa.getEmpresaId())){
+			predicate = cb.and(predicate, cb.equal(raiz.get("empresaId"), empresa.getEmpresaId()));
+		}
 		if ((empresa.getNomeFantasia() != null)&&(!"".equals(empresa.getNomeFantasia()))){
 			predicate = cb.and(predicate, cb.equal(raiz.get("nomeFantasia"), empresa.getNomeFantasia()));
 		}

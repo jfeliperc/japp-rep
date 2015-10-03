@@ -34,16 +34,19 @@
 				      				</td></tr></table>		      				
 					      		</h:panelGroup>
 				      		</span>
-				      		
+				      						      		
 				      		<span class="btn-group navbar-right">				      			
-						        <div class="btn-group">
-								  <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">Opções<span class="caret"/></a>
-								  <ul class="dropdown-menu">
-								    <li><h:commandLink styleClass="btn btn-link" action="#{produtoMb.alternaMostraLista()}" value="Ver Lista" /></li>
-								    <li><h:commandLink styleClass="btn btn-link" action="tipoGrupoProduto" value="Grupo/Tipo Produto" /></li>					    
-								  </ul>
+						        <div class="btn-group">									
+									<p:commandButton id="dynBtnOpc" value="Opções" type="button" icon="ui-icon-extlink"/>
+								    <p:menu overlay="true" trigger="dynBtnOpc" my="left top" at="left bottom">
+								        <p:menuitem value="Fechamento" action="#{produtoMb.alternaMostraLista()}" update="messagePanel" ajax="false"/>
+								        <p:menuitem value="Implantação" action="tipoGrupoProduto" update="messagePanel" ajax="false"/>			
+								        <p:menuitem value="Transferência" action="tipoGrupoProduto" update="messagePanel" ajax="false"/>						        								        
+								    </p:menu>
+									
 								</div>								
 				      		</span>
+				      		
 				      	</div>
 				    </nav>	
 				    	

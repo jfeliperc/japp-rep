@@ -72,24 +72,27 @@ public class LoginMb extends BaseMb{
 	public String executarLogin(){
 		FacesContext context = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
-        session.setAttribute("AUTHENTICATED", "True");
+        
 		String ret = "inicio";
         try {
-			if (pessoaEjb.validarLogin(login, pass, empresa)){
-				
-				Pessoa pessoa = new Pessoa();
-				pessoa.setLogin(login);
-				pessoa.setPass(pass);
-				pessoa = pessoaEjb.buscarPorLogin(login);
-				
-				session.setAttribute("userLog", pessoa);
+//			if (pessoaEjb.validarLogin(login, pass, empresa)){
+//				
+//				Pessoa pessoa = new Pessoa();
+//				pessoa.setLogin(login);
+//				pessoa.setPass(pass);
+//				pessoa = pessoaEjb.buscarPorLogin(login);
+//				
+//				session.setAttribute("userLog", pessoa);
 				
 				ret = "inicio";
-			}else{
-				setMsg("Login e/ou senha inv�lido(s).");
-				ret = "login";
-			}
-		} catch (NoSuchAlgorithmException e) {
+				session.setAttribute("AUTHENTICATED", "True");
+//			}else{
+//				setMsg("Login e/ou senha inv�lido(s).");
+//				ret = "login";
+//				session.setAttribute("AUTHENTICATED", null);
+//			}
+//		} catch (NoSuchAlgorithmException e) {
+		} catch (Exception e) {	
 			addMsgError("Erro ao validar dados - "+e.getMessage());
 			//e.printStackTrace();
 		}

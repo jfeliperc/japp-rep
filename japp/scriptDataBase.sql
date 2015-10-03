@@ -190,6 +190,20 @@ CREATE TABLE IF NOT EXISTS `japp`.`atividade_servico` (
 ENGINE = INNODB;
 
 -- -----------------------------------------------------
+-- Table `japp`.`cliente_servico`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `japp`.`cliente_servico` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `cliente_id` INT NOT NULL,
+  `servico_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_cliente_servico_cl_idx` (`cliente_id` ASC),
+  INDEX `fk_cliente_servico_srv_idx` (`servico_id` ASC),
+  CONSTRAINT `fk_cliente_servico_atv` FOREIGN KEY (`cliente_id`) REFERENCES `japp`.`cliente` (`id`),
+  CONSTRAINT `fk_cliente_servico_srv` FOREIGN KEY (`servico_id`) REFERENCES `japp`.`servico` (`id`))	
+ENGINE = INNODB;
+
+-- -----------------------------------------------------
 -- Table `japp`.`pessoa`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `japp`.`pessoa` (
@@ -325,9 +339,9 @@ CREATE TABLE IF NOT EXISTS `japp`.`endereco` (
 ENGINE = INNODB;
 
 -- -----------------------------------------------------
--- Table `japp`.`fornec_cliente`
+-- Table `japp`.`fornecedor`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `japp`.`agente_externo` (
+CREATE TABLE IF NOT EXISTS `japp`.`fornecedor` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `tipo` VARCHAR(1) NOT NULL COMMENT 'F = Fornecedor; C = Cliente',
   `tipo_pessoa`  VARCHAR(3) NOT NULL,
@@ -348,9 +362,38 @@ CREATE TABLE IF NOT EXISTS `japp`.`agente_externo` (
   `datainclusao` DATETIME NULL,
   `dataalteracao` DATETIME NULL,
   PRIMARY KEY (`id`),
-  INDEX `agente_externo_idx` (`id` ASC),
+  INDEX `fornecedor_idx` (`id` ASC),
   INDEX `fk_empresa_id_idx` (`empresa_id` ASC),
   CONSTRAINT `fk_empresa_id` FOREIGN KEY (`empresa_id`) REFERENCES `japp`.`empresa` (`id`) ON UPDATE NO ACTION)
+ENGINE = INNODB;
+
+-- -----------------------------------------------------
+-- Table `japp`.`cliente`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `japp`.`cliente` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `tipo` VARCHAR(1) NOT NULL COMMENT 'F = Fornecedor; C = Cliente',
+  `tipo_pessoa`  VARCHAR(3) NOT NULL,
+  `nome` VARCHAR(45) NULL,
+  `nomecompleto` VARCHAR(45) NULL,
+  `razao_social` VARCHAR(45) NULL,
+  `nome_fantasia` VARCHAR(45) NULL,  
+  `datanascimento` DATETIME NULL,
+  `cpf` VARCHAR(45) NULL,
+  `cnpj` VARCHAR(45) NULL,
+  `inscricao_est` VARCHAR(45) NULL,
+  `inscricao_mun` VARCHAR(45) NULL,  
+  `tipodocumento` VARCHAR(10) NULL,
+  `documento` VARCHAR(45) NULL,    
+  `empresa_id` INT NULL COMMENT 'empresa/filial relacionada a este fornecedor/cliente', 
+  `ativo` TINYINT(1),    
+  `observacao` VARCHAR(255) NULL,  
+  `datainclusao` DATETIME NULL,
+  `dataalteracao` DATETIME NULL,
+  PRIMARY KEY (`id`),
+  INDEX `cliente_idx` (`id` ASC),
+  INDEX `fk_empresa_cli_id_idx` (`empresa_id` ASC),
+  CONSTRAINT `fk_empresa_cli_id` FOREIGN KEY (`empresa_id`) REFERENCES `japp`.`empresa` (`id`) ON UPDATE NO ACTION)
 ENGINE = INNODB;
 
 -- -----------------------------------------------------
@@ -363,7 +406,7 @@ CREATE TABLE IF NOT EXISTS `japp`.`fornec_produto` (
   PRIMARY KEY (`id`),
   INDEX `fornec_cliente_idx` (`id` ASC),
   INDEX `fk_produto_id_idx` (`produto_id` ASC),
-  CONSTRAINT `fk_fornecedor_id` FOREIGN KEY (`fornecedor_id`) REFERENCES `japp`.`agente_externo` (`id`),
+  CONSTRAINT `fk_fornecedor_id` FOREIGN KEY (`fornecedor_id`) REFERENCES `japp`.`fornecedor` (`id`),
   CONSTRAINT `fk_produto_id` FOREIGN KEY (`produto_id`) REFERENCES `japp`.`produto` (`id`)	)
 ENGINE = INNODB;
 
@@ -386,7 +429,7 @@ CREATE TABLE `japp`.`pedido` (
 `destpais` VARCHAR(15) DEFAULT NULL,
 PRIMARY KEY (`id`),
 CONSTRAINT `fk_pedido_empresa` FOREIGN KEY (`empresa_id`) REFERENCES `japp`.`empresa` (`id`) ON UPDATE NO ACTION,
-CONSTRAINT `fk_pedido_agente_externo` FOREIGN KEY (`fornecedor_id`) REFERENCES `japp`.`agente_externo` (`id`) ON UPDATE NO ACTION
+CONSTRAINT `fk_pedido_fornecedor` FOREIGN KEY (`fornecedor_id`) REFERENCES `japp`.`fornecedor` (`id`) ON UPDATE NO ACTION
 ) ENGINE=INNODB;
 
  

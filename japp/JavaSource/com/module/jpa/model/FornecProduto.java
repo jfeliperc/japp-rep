@@ -18,12 +18,10 @@ public class FornecProduto implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
-	//bi-directional many-to-one association to AgenteExterno
 	@ManyToOne
 	@JoinColumn(name="fornecedor_id")
-	private AgenteExterno agenteExterno;
+	private Fornecedor fornecedor;
 
-	//bi-directional many-to-one association to Produto
 	@ManyToOne
 	private Produto produto;
 
@@ -38,12 +36,12 @@ public class FornecProduto implements Serializable {
 		this.id = id;
 	}
 
-	public AgenteExterno getAgenteExterno() {
-		return this.agenteExterno;
+	public Fornecedor getFornecedor() {
+		return this.fornecedor;
 	}
 
-	public void setAgenteExterno(AgenteExterno agenteExterno) {
-		this.agenteExterno = agenteExterno;
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
 	}
 
 	public Produto getProduto() {

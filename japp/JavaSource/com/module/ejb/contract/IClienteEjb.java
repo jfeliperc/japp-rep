@@ -2,18 +2,22 @@ package com.module.ejb.contract;
 
 import java.util.List;
 
-import com.module.jpa.model.AgenteExterno;
+import com.module.jpa.model.Cliente;
 
 public interface IClienteEjb {
 
-	public AgenteExterno cadastrarCliente(AgenteExterno cliente);
+	public Cliente cadastrarCliente(Cliente cliente);
 	
-	public AgenteExterno buscarCliente(AgenteExterno cliente);
+	public Cliente buscarCliente(Cliente cliente);
 	
-	public List<AgenteExterno> listarClientes(AgenteExterno cliente);
+	public List<Cliente> listarClientes(Cliente cliente);
 	
-	public void excluirCliente(AgenteExterno cliente);
+	public void excluirCliente(Cliente cliente);
 
 	public int buscarQtdCliente();
+
+	public Cliente buscarServicoCliente(Cliente cliente);
+
+	public List<Cliente> buscarAllClientes();
 	
 }

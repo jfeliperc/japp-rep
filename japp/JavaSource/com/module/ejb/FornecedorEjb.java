@@ -7,10 +7,9 @@ import javax.ejb.Stateless;
 
 import com.module.ejb.contract.IFornecedorEjb;
 import com.module.faces.geral.UtilsJapp;
-import com.module.jpa.dao.AgenteExternoDao;
 import com.module.jpa.dao.Dao;
 import com.module.jpa.dao.FornecedorDao;
-import com.module.jpa.model.AgenteExterno;
+import com.module.jpa.model.Fornecedor;
 
 @Stateless
 public class FornecedorEjb implements IFornecedorEjb {
@@ -22,8 +21,8 @@ public class FornecedorEjb implements IFornecedorEjb {
     }
 	
 	@Override
-	public AgenteExterno cadastrarFornecedor(AgenteExterno fornecedor) {
-		AgenteExternoDao dao = new AgenteExternoDao();
+	public Fornecedor cadastrarFornecedor(Fornecedor fornecedor) {
+		FornecedorDao dao = new FornecedorDao();
 		fornecedor.setDataalteracao(new Date());
 		if (UtilsJapp.isNullOrZero(fornecedor.getId())){
 			
@@ -42,9 +41,9 @@ public class FornecedorEjb implements IFornecedorEjb {
 	}
 
 	@Override
-	public AgenteExterno buscarFornecedor(AgenteExterno fornecedor) {
+	public Fornecedor buscarFornecedor(Fornecedor fornecedor) {
 		if ((fornecedor != null)&&(!UtilsJapp.isNullOrZero(fornecedor.getId()))){
-			AgenteExternoDao dao = new AgenteExternoDao();
+			FornecedorDao dao = new FornecedorDao();
 			fornecedor = dao.getById(fornecedor.getId());
 			return fornecedor;
 		}else{
@@ -53,16 +52,16 @@ public class FornecedorEjb implements IFornecedorEjb {
 	}
 
 	@Override
-	public List<AgenteExterno> listarFornecedores(AgenteExterno fornecedor) {
-		AgenteExternoDao dao = new AgenteExternoDao();	
+	public List<Fornecedor> listarFornecedores(Fornecedor fornecedor) {
+		FornecedorDao dao = new FornecedorDao();	
 		fornecedor.setTipo("F");
-		List<AgenteExterno> result = dao.findByExample(fornecedor);		
+		List<Fornecedor> result = dao.findByExample(fornecedor);		
 		return result;
 	}
 
 	@Override
-	public void excluirFornecedor(AgenteExterno fornecedor) {
-		Dao<AgenteExterno> dao = new Dao<AgenteExterno>();
+	public void excluirFornecedor(Fornecedor fornecedor) {
+		Dao<Fornecedor> dao = new Dao<Fornecedor>();
 		if (!UtilsJapp.isNullOrZero(fornecedor.getId())){
 			fornecedor.setAtivo("0");
 			dao.update(fornecedor);
@@ -71,7 +70,7 @@ public class FornecedorEjb implements IFornecedorEjb {
 
 	@Override
 	public int buscarQtdFornecedor() {
-		Dao<AgenteExterno> daoFornecedor = new Dao<AgenteExterno>();
+		Dao<Fornecedor> daoFornecedor = new Dao<Fornecedor>();
 		return daoFornecedor.count();
 	}
 

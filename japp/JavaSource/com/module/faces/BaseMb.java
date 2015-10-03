@@ -77,7 +77,10 @@ public class BaseMb {
 	}
 
 	public Empresa getEmpresaAux() {
-		return empresaAux;
+		if (empresaAux == null){
+			setEmpresaAux(new Empresa());
+		}
+		return  this.empresaAux;
 	}
 
 	public void setEmpresaAux(Empresa empresaAux) {

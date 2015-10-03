@@ -14,7 +14,8 @@ import com.module.faces.geral.IGenericModel;
 @Entity
 @NamedQueries({
 	@NamedQuery(name="Contato.findAll", query="SELECT c FROM Contato c"),
-	@NamedQuery(name="Contato.findByPessoaAll", query="SELECT c FROM Contato c WHERE c.pessoa.id = :idPessoa")})
+	@NamedQuery(name="Contato.findByPessoaAll", query="SELECT c FROM Contato c WHERE c.pessoa.id = :idPessoa"),
+	@NamedQuery(name="Contato.removeByPessoaAll", query="DELETE FROM Contato c WHERE c.pessoa.id = :idPessoa")})
 public class Contato implements Serializable, IGenericModel {
 	private static final long serialVersionUID = 1L;
 
@@ -26,7 +27,6 @@ public class Contato implements Serializable, IGenericModel {
 
 	private String tipo;
 
-	//bi-directional many-to-one association to Pessoa
 	@ManyToOne
 	private Pessoa pessoa;
 

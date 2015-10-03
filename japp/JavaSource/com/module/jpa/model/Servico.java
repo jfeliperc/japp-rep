@@ -39,6 +39,9 @@ public class Servico implements Serializable {
 	private List<AtividadeServico> atividadeServicos;
 
 	@OneToMany(mappedBy="servico")
+	private List<ClienteServico> clienteServicos;
+	
+	@OneToMany(mappedBy="servico")
 	private List<Orcamento> orcamentos;
 
 	@OneToMany(mappedBy="servico")
@@ -47,6 +50,9 @@ public class Servico implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY) 
 	@JoinColumn(name="empresa_id")
 	private Empresa empresa;
+	
+	@Transient
+	private List<Cliente> clientes;
 	
 	public Servico() {
 	}
@@ -143,12 +149,44 @@ public class Servico implements Serializable {
 		return orcamento;
 	}
 
+
+	public List<ClienteServico> getClienteServicos() {
+		return this.clienteServicos;
+	}
+
+	public void setClienteServicos(List<ClienteServico> clienteServicos) {
+		this.clienteServicos = clienteServicos;
+	}
+
+	public ClienteServico addClienteServico(ClienteServico clienteServicos) {
+		getClienteServicos().add(clienteServicos);
+		clienteServicos.setServico(this);
+
+		return clienteServicos;
+	}
+
+	public ClienteServico removeClienteServico(ClienteServico clienteServicos) {
+		getClienteServicos().remove(clienteServicos);
+		clienteServicos.setServico(null);
+
+		return clienteServicos;
+	}
+
+	
 	public Empresa getEmpresa() {
 		return empresa;
 	}
 
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
+	}
+
+	public List<Cliente> getClientes() {
+		return clientes;
+	}
+
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
 	}
 
 }

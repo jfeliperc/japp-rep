@@ -8,35 +8,35 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import com.module.jpa.model.AgenteExterno;
+import com.module.jpa.model.Fornecedor;
 
-public class FornecedorDao extends Dao<AgenteExterno> {
+public class FornecedorDao extends Dao<Fornecedor> {
 
-	public List<AgenteExterno> findByExample(AgenteExterno fornecedor) {
+	public List<Fornecedor> findByExample(Fornecedor fornecedor) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
-	    CriteriaQuery<AgenteExterno> c = cb.createQuery(AgenteExterno.class);	    
+	    CriteriaQuery<Fornecedor> c = cb.createQuery(Fornecedor.class);	    
 	    
-	    Root<AgenteExterno> raiz = c.from(AgenteExterno.class);
+	    Root<Fornecedor> raiz = c.from(Fornecedor.class);
 	    c.select(raiz);	  
 	    Predicate predicate = prepararPredicatesByExample(fornecedor, cb, raiz);
 	    c.where(predicate);
 	    
-	    TypedQuery<AgenteExterno> query = em.createQuery(c);
-	    List<AgenteExterno> emps = query.getResultList();
+	    TypedQuery<Fornecedor> query = em.createQuery(c);
+	    List<Fornecedor> emps = query.getResultList();
 		
 		return emps;
 	}
 
-	private Predicate prepararPredicatesByExample(AgenteExterno agente, CriteriaBuilder cb, Root<AgenteExterno> raiz) {
+	private Predicate prepararPredicatesByExample(Fornecedor fornecedor, CriteriaBuilder cb, Root<Fornecedor> raiz) {
 		Predicate predicate = cb.and();
-		if ((agente.getNome() != null)&&(!"".equals(agente.getNome()))){
-			predicate = cb.and(predicate, cb.equal(raiz.get("nome"), agente.getNome()));
+		if ((fornecedor.getNome() != null)&&(!"".equals(fornecedor.getNome()))){
+			predicate = cb.and(predicate, cb.equal(raiz.get("nome"), fornecedor.getNome()));
 		}
-		if ((agente.getNomecompleto() != null)&&(!"".equals(agente.getNomecompleto()))){
-			predicate = cb.and(predicate, cb.equal(raiz.get("nomecompleto"), agente.getNomecompleto()));
+		if ((fornecedor.getNomecompleto() != null)&&(!"".equals(fornecedor.getNomecompleto()))){
+			predicate = cb.and(predicate, cb.equal(raiz.get("nomecompleto"), fornecedor.getNomecompleto()));
 		}
-		if ((agente.getCpf() != null)&&(!"".equals(agente.getCpf()))){
-			predicate = cb.and(predicate, cb.equal(raiz.get("cpf"), agente.getCpf()));
+		if ((fornecedor.getCpf() != null)&&(!"".equals(fornecedor.getCpf()))){
+			predicate = cb.and(predicate, cb.equal(raiz.get("cpf"), fornecedor.getCpf()));
 		}
 		
 		return predicate;

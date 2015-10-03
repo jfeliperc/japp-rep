@@ -52,53 +52,76 @@
 	                    <h:inputText id="descricaotpSrv" value="#{servicoMb.servico.descricao}" title="Descrição" required="false" size="80"/>
 	                    	                    	                    	                    
 	                    <h:outputLabel value="Empresa" for="empresaId" />
-	                    <p:selectOneMenu id="empresaId" value="#{servicoMb.empresaAux.id}" title="Selecione a empresa vinculada" style="width:250px">
+	                    <h:selectOneMenu id="empresaId" value="#{servicoMb.empresaAux.id}" title="Selecione a empresa vinculada" style="width:250px">
 	                        <f:selectItem itemValue="0" itemLabel=""/>
 	                        <f:selectItems value="#{servicoMb.empresas}" var="emp" itemValue="#{emp.id}" itemLabel="#{emp.nomeFantasia}"/>
-	                    </p:selectOneMenu>	                    	 
+	                    </h:selectOneMenu>	                    	 
 	                    			                    
 	                </h:panelGrid>
 	                <br/><br/>				    
 				</div>	
 				
-				<p:panel header="Atividades" style="width:100%; height: 95%; ">
-					<h:panelGroup id="botoesPanel2" layout="block">		      			
-	      				<table><tr><td width="20px">
-	      				<h:commandLink action="#{servicoMb.limparAtividade()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
-	      				</td><td width="20px">
-	      				<h:commandLink action="#{servicoMb.salvarAtividade()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
-	      				</td><td width="20px">
-	      				<h:commandLink action="#{servicoMb.excluirAtividade()}" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
-	      				</td></tr></table>		      				
-		      		</h:panelGroup>
-					<h:panelGrid columns="2" styleClass="gridForm" cellspacing="5px" cellpadding="5">
-	                    
-	                    <h:outputLabel value="Id" for="idtpAtv" />
-	                    <h:inputText id="idtpAtv" value="#{servicoMb.atividadeTemp.id}" required="false"/>
-	                    
-	                    <h:outputLabel value="Nome" for="nometpAtv" />
-	                    <h:inputText id="nometpAtv" value="#{servicoMb.atividadeTemp.nome}" required="false" size="70"/>
-	                    
-	                    <h:outputLabel value="Descrição" for="descricaotpAtv" />
-	                    <h:inputText id="descricaotpAtv" value="#{servicoMb.atividadeTemp.descricao}" required="false" size="80"/>	
-	                    		                    
-	                </h:panelGrid>
-	                <br/>
-					<p:dataTable value="#{servicoMb.servico.atividades}" var="us" style="width:100%" id="tbatividades">
-		    			<p:column>
-		    				<f:facet name="header">Nome</f:facet>
-		    				<h:outputText value="#{us.nome}" />
-		    			</p:column>
-		    			<p:column>
-		    				<f:facet name="header">Descrição</f:facet>
-		    				<h:outputText value="#{us.descricao}" />
-		    			</p:column>
-		    			<p:column>
-		    				<f:facet name="header">Ação</f:facet>
-		    				<center><h:commandLink action="#{servicoMb.editarAtividade(us)}" value="" title="Editar dados deste registro">
-		    					<h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
-		    			</p:column>
-		    		</p:dataTable>	
+				<p:panel header="Relacionamentos" style="width:100%; height: 95%; ">
+					
+					
+					<p:accordionPanel multiple="false">
+				        <p:tab title="Atividades">
+								
+								<span class="btn-group navbar-right">				      			
+							        <span class="btn-group">
+										<h:commandLink styleClass="btn btn-link" action="atividade" value="Cadastro Atividades" />
+									</span>						        							
+					      		</span>
+					      		
+								<h:panelGrid columns="2" styleClass="gridForm_" rendered="false">
+				                	<h:outputLabel value="Tipo de Atividade" for="tipoServicoId2" />
+			                    	<h:panelGroup id="seltipoServiço2" layout="block">
+					                    <h:selectOneMenu id="tipoServicoId2" value="#{receitaMb.tipoReceitaAux.id}" title="Tipo Receita" 
+					                    	required="false" requiredMessage="Campo Tipo Receita é obrigatório" style="width:250px">
+					                        <f:selectItems value="#{receitaMb.itemsTipoReceita}" var="tp" itemLabel="#{tp.nome}" itemValue="#{tp.id}"/>
+					                    </h:selectOneMenu>		                    
+				                    </h:panelGroup>
+				                	<hr/>
+				                </h:panelGrid>
+								
+								<p:pickList id="PojoPickList2" value="#{servicoMb.listAtividadeSelecao}" var="ativ" effect="bounce"
+							                itemValue="#{ativ}" itemLabel="#{ativ.descricao}" showSourceControls="true" showTargetControls="true" 
+							                showCheckbox="true" responsive="true" rendered="#{not empty servicoMb.listAtividade}"
+							                showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains">
+							 
+							        <f:facet name="sourceCaption">Opções</f:facet>
+							        <f:facet name="targetCaption">Atividades relacionadas</f:facet>
+							
+							        <p:column>
+							            <h:outputText value="#{ativ.descricao}" />
+							        </p:column>
+							    </p:pickList>								
+				        </p:tab>
+				        <p:tab title="Clientes">
+								<span class="btn-group navbar-right">				      			
+							        <span class="btn-group">
+										<h:commandLink styleClass="btn btn-link" action="cliente" value="Cadastro Clientes" />
+									</span>						        							
+					      		</span>
+					      		<br/><hr/>
+								
+								<p:pickList id="PojoPickList" value="#{servicoMb.listClienteSelecao}" var="clie" effect="bounce"
+							                itemValue="#{clie}" itemLabel="#{clie.nome}" showSourceControls="true" showTargetControls="true" 
+							                showCheckbox="true" responsive="true" rendered="#{not empty servicoMb.listCliente}"
+							                showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains">
+							 
+							        <f:facet name="sourceCaption">Opções</f:facet>
+							        <f:facet name="targetCaption">Clientes relacionados</f:facet>
+							
+							        <p:column>
+							            <h:outputText value="#{clie.nome}" />
+							        </p:column>
+							    </p:pickList>								
+				        </p:tab>
+				        
+				    </p:accordionPanel>
+					
+						
 				</p:panel>
 								
 				</td></tr></table>	

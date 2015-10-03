@@ -31,8 +31,8 @@ public class Receita implements Serializable {
 
 	private String resumo;
 
-	@Column(name="servico_id")
-	private int servicoId;
+	@ManyToOne(fetch = FetchType.LAZY) 
+	private Servico servico;
 
 	@Column(name="tempo_medio")
 	private String tempoMedio;
@@ -102,12 +102,12 @@ public class Receita implements Serializable {
 		this.resumo = resumo;
 	}
 
-	public int getServicoId() {
-		return this.servicoId;
+	public Servico getServico() {
+		return this.servico;
 	}
 
-	public void setServicoId(int servicoId) {
-		this.servicoId = servicoId;
+	public void setServico(Servico servico) {
+		this.servico = servico;
 	}
 
 	public String getTempoMedio() {

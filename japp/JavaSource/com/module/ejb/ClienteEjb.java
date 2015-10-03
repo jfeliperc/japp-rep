@@ -1,5 +1,6 @@
 package com.module.ejb;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,15 +11,18 @@ import org.apache.commons.lang3.StringUtils;
 import com.module.ejb.contract.IClienteEjb;
 import com.module.enums.TipoPessoa;
 import com.module.faces.geral.UtilsJapp;
-import com.module.jpa.dao.AgenteExternoDao;
-import com.module.jpa.model.AgenteExterno;
+import com.module.jpa.dao.ClienteDao;
+import com.module.jpa.dao.ClienteServicoDao;
+import com.module.jpa.model.Cliente;
+import com.module.jpa.model.ClienteServico;
+import com.module.jpa.model.Servico;
 
 @Stateless
 public class ClienteEjb implements IClienteEjb {
 
 	@Override
-	public AgenteExterno cadastrarCliente(AgenteExterno cliente) {
-		AgenteExternoDao daoAgenteExterno = new AgenteExternoDao();
+	public Cliente cadastrarCliente(Cliente cliente) {
+		ClienteDao daoCliente = new ClienteDao();
 		
 		cliente.setDataalteracao(new Date());	
 		if (StringUtils.isBlank(cliente.getTipoPessoa())){
@@ -40,33 +44,33 @@ public class ClienteEjb implements IClienteEjb {
 				cliente.setEmpresa(null);
 			}
 						
-			daoAgenteExterno.add(cliente);
+			daoCliente.add(cliente);
 		}else{
-			daoAgenteExterno.update(cliente);
+			daoCliente.update(cliente);
 		}
 		return cliente;
 	}
 
 	@Override
-	public AgenteExterno buscarCliente(AgenteExterno cliente) {
-		AgenteExternoDao daoAgenteExterno = new AgenteExternoDao();
-		return daoAgenteExterno.getById(cliente.getId());
+	public Cliente buscarCliente(Cliente cliente) {
+		ClienteDao daoCliente = new ClienteDao();
+		return daoCliente.getById(cliente.getId());
 	}
 
 	@Override
-	public List<AgenteExterno> listarClientes(AgenteExterno cliente) {
-		AgenteExternoDao daoAgenteExterno = new AgenteExternoDao();
+	public List<Cliente> listarClientes(Cliente cliente) {
+		ClienteDao daoCliente = new ClienteDao();
 		cliente.setTipo("C");
-		List<AgenteExterno> res = daoAgenteExterno.findByExample(cliente);
+		List<Cliente> res = daoCliente.findByExample(cliente);
 		return res;
 	}
 
 	@Override
-	public void excluirCliente(AgenteExterno cliente) {
+	public void excluirCliente(Cliente cliente) {
 		if (cliente.getId() != null){
-			AgenteExternoDao daoAgenteExterno = new AgenteExternoDao();
+			ClienteDao daoCliente = new ClienteDao();
 			cliente.setAtivo("0");
-			daoAgenteExterno.update(cliente);
+			daoCliente.update(cliente);
 		}
 		
 	}
@@ -75,6 +79,25 @@ public class ClienteEjb implements IClienteEjb {
 	public int buscarQtdCliente() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public Cliente buscarServicoCliente(Cliente cliente) {
+		ClienteServicoDao dao = new ClienteServicoDao();
+		List<ClienteServico> servicos = dao.findByCliente(cliente);
+		cliente.setServicos(new ArrayList<Servico>());
+		
+		for (ClienteServico clienteServico : servicos) {
+			cliente.getServicos().add(clienteServico.getServico());
+		}
+		
+		return cliente;
+	}
+
+	@Override
+	public List<Cliente> buscarAllClientes() {
+		ClienteDao daoCliente = new ClienteDao();
+		return daoCliente.buscarTodosClientes();
 	}
 
 	

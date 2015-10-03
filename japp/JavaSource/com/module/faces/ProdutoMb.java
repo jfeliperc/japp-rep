@@ -118,9 +118,9 @@ public class ProdutoMb extends BaseMb{
 
 	public void editar(Produto us){
 		this.produto = us;
-		this.tipo = this.produto.getTipoProduto();
-		this.grupo = this.produto.getGrupoProduto();
-		empresaAux = this.produto.getEmpresa();
+		this.tipo = this.produto.getTipoProduto() == null ? new TipoProduto() : this.produto.getTipoProduto();
+		this.grupo = this.produto.getGrupoProduto() == null ? new GrupoProduto() : this.produto.getGrupoProduto();
+		empresaAux = this.produto.getEmpresa() == null ? new Empresa() : this.produto.getEmpresa();
 		alternaMostraLista();
 	}
 

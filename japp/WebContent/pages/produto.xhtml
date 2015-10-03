@@ -98,9 +98,9 @@
 	                    <h:inputText id="indiceCoacao" value="#{produtoMb.produto.indiceCoaccao}" title="Índice Coacção" />	                    
 	                    	                    
 	                    <h:outputLabel value="Empresa" for="empresaId" />
-	                    <h:selectOneMenu id="empresaId" value="#{produtoMb.empresaAux}" title="Selecione a empresa vinculada" style="width:250px">
+	                    <h:selectOneMenu id="empresaId" value="#{produtoMb.empresaAux.id}" title="Selecione a empresa vinculada" style="width:250px">
 	                        <f:selectItem itemValue="#{null}" itemLabel=""/>
-	                        <f:selectItems value="#{produtoMb.empresas}" var="emp" itemValue="#{emp}" itemLabel="#{emp.nomeFantasia}"/>
+	                        <f:selectItems value="#{produtoMb.empresas}" var="emp" itemValue="#{emp.id}" itemLabel="#{emp.nomeFantasia}"/>
 	                    </h:selectOneMenu>	                    
 	                    <h:panelGroup></h:panelGroup>
 	                    <h:panelGroup></h:panelGroup>

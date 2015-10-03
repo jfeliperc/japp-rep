@@ -32,5 +32,11 @@ public interface IPessoaEjb {
 	public List<Pessoa> listarPessoasAcesso(Pessoa pessoa);
 
 	public void salvarContatoPessoa(Contato contatoTemp);
+
+	public void removeAllContatos(Pessoa pessoa);
+
+	public void salvarListContatoPessoa(Pessoa pessoa,List<Contato> contatosTemp);
+
+	public List<Contato> buscarContatos(Pessoa pessoa);
 	
 }

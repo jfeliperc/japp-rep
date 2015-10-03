@@ -28,13 +28,10 @@
 				      		</span>
 				      		
 				      		<span class="btn-group navbar-right">				      			
-						        <div class="btn-group">
-								  <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">Opções<span class="caret"/></a>
-								  <ul class="dropdown-menu">
-								    <li><h:commandLink styleClass="btn btn-link" action="#{clienteMb.alternaMostraLista()}" value="Ver Lista" /></li>					    
-								  </ul>
-								</div>								
-				      		</span>			      		
+						        <span class="btn-group">
+									<h:commandLink styleClass="btn btn-link" action="#{clienteMb.alternaMostraLista()}" value="Ver Lista" />
+								</span>						        							
+				      		</span>
 				      		
 				      	</div>
 				    </nav>
@@ -133,6 +130,43 @@
 	                </h:panelGrid>
 	                
 	                <br/><br/><hr/>
+	                
+	                <p:accordionPanel multiple="true">
+				        <p:tab title="Serviços">
+				        		<span class="btn-group navbar-right">				      			
+							        <span class="btn-group">
+										<h:commandLink styleClass="btn btn-link" action="servico" value="Cadastro Serviços" />
+									</span>						        							
+					      		</span>
+					      		<br/><hr/>
+				        		
+								<h:panelGrid columns="2" styleClass="gridForm_">
+				                	<h:outputLabel value="Tipo de Serviço" for="tipoServicoId" />
+			                    	<h:panelGroup id="seltipoServiço" layout="block">
+					                    <h:selectOneMenu id="tipoServicoId" value="#{receitaMb.tipoReceitaAux.id}" title="Tipo Receita" 
+					                    	required="false" requiredMessage="Campo Tipo Receita é obrigatório" style="width:250px">
+					                        <f:selectItems value="#{receitaMb.itemsTipoReceita}" var="tp" itemLabel="#{tp.nome}" itemValue="#{tp.id}"/>
+					                    </h:selectOneMenu>		                    
+				                    </h:panelGroup>
+				                	<hr/>
+				                </h:panelGrid>
+								
+								<p:pickList id="PojoPickList" value="#{clienteMb.listServicoSelecao}" var="serv" effect="bounce"
+							                itemValue="#{serv}" itemLabel="#{serv.descricao}" showSourceControls="true" showTargetControls="true" 
+							                showCheckbox="true" responsive="true" rendered="#{not empty clienteMb.listServico}"
+							                showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains">
+							 
+							        <f:facet name="sourceCaption">Opções</f:facet>
+							        <f:facet name="targetCaption">Serviços relacionados</f:facet>
+							
+							        <p:column>
+							            <h:outputText value="#{serv.descricao}" />
+							        </p:column>
+							    </p:pickList>
+								
+				        </p:tab>
+				        
+				    </p:accordionPanel>
 					
 				</div>	
 		    </p:panel>

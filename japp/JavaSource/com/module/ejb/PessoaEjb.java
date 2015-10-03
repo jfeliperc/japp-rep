@@ -12,6 +12,7 @@ import com.module.ejb.contract.IPessoaEjb;
 import com.module.enums.TipoPessoa;
 import com.module.enums.TipoUsuario;
 import com.module.faces.geral.UtilsJapp;
+import com.module.jpa.dao.ContatoDao;
 import com.module.jpa.dao.Dao;
 import com.module.jpa.dao.PessoaDao;
 import com.module.jpa.model.Contato;
@@ -174,6 +175,9 @@ public class PessoaEjb implements IPessoaEjb {
 			
 			daoPessoa.add(pessoa);
 		}else{
+			if ((pessoa.getEmpresa() == null)||(UtilsJapp.isNullOrZero(pessoa.getEmpresa().getId()))){
+				pessoa.setEmpresa(null);
+			}
 			daoPessoa.update(pessoa);
 		}
 		return pessoa;
@@ -197,6 +201,36 @@ public class PessoaEjb implements IPessoaEjb {
 				dao.update(contato);
 			}
 		}
+	}
+
+	@Override
+	public void removeAllContatos(Pessoa pessoa) {
+		ContatoDao dao = new ContatoDao();
+		if (!UtilsJapp.isNullOrZero(pessoa.getId())){
+			dao.removeAllByPessoa(pessoa);
+		}
+	}
+
+	@Override
+	public void salvarListContatoPessoa(Pessoa pessoa,List<Contato> contatosTemp) {
+		ContatoDao dao = new ContatoDao();
+		if (!UtilsJapp.isNullOrZero(pessoa.getId())){
+			for (Contato contato : contatosTemp) {
+				contato.setId(null);
+				contato.setPessoa(pessoa);
+				dao.add(contato);
+			}
+		}
+	}
+
+	@Override
+	public List<Contato> buscarContatos(Pessoa pessoa) {
+		ContatoDao dao = new ContatoDao();
+		if (!UtilsJapp.isNullOrZero(pessoa.getId())){
+			return dao.getContatosPessoa(pessoa);
+		}
+		return null;
+		
 	}
 	
 	

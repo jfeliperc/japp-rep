@@ -12,8 +12,11 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
 		
 		<class>com.module.jpa.model.Acesso</class>
 		<class>com.module.jpa.model.AgenteExterno</class>
+		<class>com.module.jpa.model.Cliente</class>
+		<class>com.module.jpa.model.Fornecedor</class>
 		<class>com.module.jpa.model.Atividade</class>
 		<class>com.module.jpa.model.AtividadeServico</class>
+		<class>com.module.jpa.model.ClienteServico</class>
 		<class>com.module.jpa.model.Contato</class>
 		<class>com.module.jpa.model.Empresa</class>
 		<class>com.module.jpa.model.Endereco</class>

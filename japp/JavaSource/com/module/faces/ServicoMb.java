@@ -8,11 +8,15 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.primefaces.model.DualListModel;
+
+import com.module.ejb.contract.IAtividadeEjb;
+import com.module.ejb.contract.IClienteEjb;
 import com.module.ejb.contract.IServicoEjb;
 import com.module.jpa.model.Atividade;
+import com.module.jpa.model.Cliente;
 import com.module.jpa.model.Empresa;
 import com.module.jpa.model.Servico;
-import com.sun.media.sound.EmergencySoundbank;
 
 
 @ManagedBean
@@ -21,21 +25,41 @@ public class ServicoMb extends BaseMb{
 
 	@EJB
 	private IServicoEjb servicoEjb;
-
+	
+	@EJB
+	private IAtividadeEjb atividadeEjb;
+	
+	@EJB
+	private IClienteEjb clienteEjb;
+	
 	private Servico servico;	
 	private List<Servico> listServico;
+
+	private List<Atividade> listAtividade;
+	private List<Atividade> listAtividadeSelect;
+	private DualListModel<Atividade> listAtividadeSelecao;
+	
+	private List<Cliente> listCliente;
+	private List<Cliente> listClienteSelect;
+	private DualListModel<Cliente> listClienteSelecao;
 	
 	private Atividade atividadeTemp;
 	
 	@PostConstruct
 	public void posConstrucao(){
-		super.posConstrucao();		
+		super.posConstrucao();
+
+		this.listAtividadeSelecao = new DualListModel<Atividade>(listAtividade, listAtividadeSelect);
+		this.listClienteSelecao = new DualListModel<Cliente>(listCliente, listClienteSelect);
 	}
 	
 	public ServicoMb(){	
 		this.servico = new Servico();
 		this.listServico = new ArrayList<Servico>(); 
 		this.atividadeTemp = new Atividade();
+
+		this.listAtividadeSelecao = new DualListModel<Atividade>(listAtividade, listAtividadeSelect);
+		this.listClienteSelecao = new DualListModel<Cliente>(listCliente, listClienteSelect);
 	}
 
 	public void limpar(){
@@ -43,7 +67,14 @@ public class ServicoMb extends BaseMb{
 		this.listServico = new ArrayList<Servico>(); 
 		this.atividadeTemp = new Atividade();
 		empresaAux = new Empresa();
-		super.recarregarListEmpresa();
+		super.recarregarListEmpresa();		
+
+		this.listCliente = clienteEjb.buscarAllClientes();
+		this.listAtividade = atividadeEjb.buscarAllAtividades();
+		
+		this.listAtividadeSelecao = new DualListModel<Atividade>(listAtividade, listAtividadeSelect);
+		this.listClienteSelecao = new DualListModel<Cliente>(listCliente, listClienteSelect);
+		
 	}
 	
 	public void buscar(){
@@ -52,7 +83,7 @@ public class ServicoMb extends BaseMb{
 			this.servico = this.listServico.get(0);
 			this.listServico.clear();
 		}else if ((this.listServico == null)||(this.listServico.isEmpty())){
-			addMsg("Nenhum serviço encontrado na busca.");
+			addMsg("Nenhum serviï¿½o encontrado na busca.");
 			limpar();
 		}else{
 			setMostrarLista((this.listServico != null)&&(!this.listServico.isEmpty()));
@@ -78,11 +109,11 @@ public class ServicoMb extends BaseMb{
 		boolean ret = true;
 		if ((this.servico.getNome() == null)||("".equals(this.servico.getNome()))){
 			ret = false;
-			addMsgError("Campo nome é obrigatório. ");
+			addMsgError("Campo nome ï¿½ obrigatï¿½rio. ");
 		}
 		if ((this.servico.getDescricao() == null)||("".equals(this.servico.getDescricao()))){
 			ret = false;
-			addMsgError("Campo descrição é obrigatório. ");
+			addMsgError("Campo descriï¿½ï¿½o ï¿½ obrigatï¿½rio. ");
 		}
 		return ret;
 	}
@@ -133,6 +164,55 @@ public class ServicoMb extends BaseMb{
 
 	public void setAtividadeTemp(Atividade atividadeTemp) {
 		this.atividadeTemp = atividadeTemp;
+	}
+
+	public List<Atividade> getListAtividade() {
+		return listAtividade;
+	}
+
+	public void setListAtividade(List<Atividade> listAtividade) {
+		this.listAtividade = listAtividade;
+	}
+
+	public List<Atividade> getListAtividadeSelect() {
+		return listAtividadeSelect;
+	}
+
+	public void setListAtividadeSelect(List<Atividade> listAtividadeSelect) {
+		this.listAtividadeSelect = listAtividadeSelect;
+	}
+
+	public DualListModel<Atividade> getListAtividadeSelecao() {
+		return listAtividadeSelecao;
+	}
+
+	public void setListAtividadeSelecao(
+			DualListModel<Atividade> listAtividadeSelecao) {
+		this.listAtividadeSelecao = listAtividadeSelecao;
+	}
+
+	public List<Cliente> getListCliente() {
+		return listCliente;
+	}
+
+	public void setListCliente(List<Cliente> listCliente) {
+		this.listCliente = listCliente;
+	}
+
+	public List<Cliente> getListClienteSelect() {
+		return listClienteSelect;
+	}
+
+	public void setListClienteSelect(List<Cliente> listClienteSelect) {
+		this.listClienteSelect = listClienteSelect;
+	}
+
+	public DualListModel<Cliente> getListClienteSelecao() {
+		return listClienteSelecao;
+	}
+
+	public void setListClienteSelecao(DualListModel<Cliente> listClienteSelecao) {
+		this.listClienteSelecao = listClienteSelecao;
 	}
 	
 }

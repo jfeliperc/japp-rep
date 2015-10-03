@@ -9,10 +9,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import org.apache.commons.lang3.StringUtils;
+import org.primefaces.model.DualListModel;
 
 import com.module.ejb.contract.IClienteEjb;
+import com.module.ejb.contract.IServicoEjb;
 import com.module.enums.TipoPessoa;
-import com.module.jpa.model.AgenteExterno;
+import com.module.faces.geral.UtilsJapp;
+import com.module.jpa.model.Cliente;
+import com.module.jpa.model.Servico;
 
 @ManagedBean
 @SessionScoped
@@ -21,12 +25,19 @@ public class ClienteMb extends BaseMb{
 	@EJB
 	private IClienteEjb clienteEjb;
 
-	private AgenteExterno cliente;
-	private List<AgenteExterno> listCliente;
+	@EJB
+	private IServicoEjb servicoEjb;
+	
+	private Cliente cliente;
+	private List<Cliente> listCliente;
+	
+	private List<Servico> listServico;
+	private List<Servico> listServicoSelect;
+	private DualListModel<Servico> listServicoSelecao;
 	
 	public ClienteMb() {
 		super();
-		this.cliente = new AgenteExterno();
+		this.cliente = new Cliente();
 	}
 
 	@PostConstruct
@@ -36,8 +47,12 @@ public class ClienteMb extends BaseMb{
 	}
 	
 	public void limpar(){
-		this.cliente = new AgenteExterno();
-		this.listCliente = new ArrayList<AgenteExterno>();
+		this.cliente = new Cliente();
+		this.listCliente = new ArrayList<Cliente>();
+		
+		this.listServico = servicoEjb.buscarAllServicos();
+		
+		this.listServicoSelecao = new DualListModel<Servico>(listServico, listServicoSelect);
 	}
 	
 	public void buscar(){
@@ -54,30 +69,34 @@ public class ClienteMb extends BaseMb{
 			setMostrarLista((this.listCliente != null)&&(!this.listCliente.isEmpty()));
 		}
 		
+		if (UtilsJapp.isNullOrZero(this.cliente.getId())){
+			this.cliente = clienteEjb.buscarServicoCliente(this.cliente);
+			this.listServicoSelect = this.cliente.getServicos();
+		}
 	}
 	
 	private boolean validarSalvar() {
 		boolean ret = true;
 		if (TipoPessoa.PF.getValor().equals(this.cliente.getTipoPessoa())){
 			if (StringUtils.isBlank(this.cliente.getNome())){
-				addMsgError("O campo Nome é obrigatório");
+				addMsgError("O campo Nome ï¿½ obrigatï¿½rio");
 				ret = false;
 			}
 			if (StringUtils.isBlank(this.cliente.getCpf())){
-				addMsgError("O campo CPF é obrigatório");
+				addMsgError("O campo CPF ï¿½ obrigatï¿½rio");
 				ret = false;
 			}
 		}else{
 			if (StringUtils.isBlank(this.cliente.getRazaoSocial())){
-				addMsgError("O campo Razão social é obrigatório");
+				addMsgError("O campo Razï¿½o social ï¿½ obrigatï¿½rio");
 				ret = false;
 			}
 			if (StringUtils.isBlank(this.cliente.getNomeFantasia())){
-				addMsgError("O campo Nome Fantasia é obrigatório");
+				addMsgError("O campo Nome Fantasia ï¿½ obrigatï¿½rio");
 				ret = false;
 			}
 			if (StringUtils.isBlank(this.cliente.getCnpj())){
-				addMsgError("O campo CNPJ é obrigatório");
+				addMsgError("O campo CNPJ ï¿½ obrigatï¿½rio");
 				ret = false;
 			}
 		}
@@ -97,27 +116,51 @@ public class ClienteMb extends BaseMb{
 		}
 	}
 	
-	public void editar(AgenteExterno us){
+	public void editar(Cliente us){
 		this.cliente = us;
 		empresaAux = this.cliente.getEmpresa();
 		alternaMostraLista();
 	}
 	
 	
-	public AgenteExterno getCliente() {
+	public Cliente getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(AgenteExterno cliente) {
+	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 
-	public List<AgenteExterno> getListCliente() {
+	public List<Cliente> getListCliente() {
 		return listCliente;
 	}
 
-	public void setListCliente(List<AgenteExterno> listCliente) {
+	public void setListCliente(List<Cliente> listCliente) {
 		this.listCliente = listCliente;
+	}
+
+	public List<Servico> getListServico() {
+		return listServico;
+	}
+
+	public void setListServico(List<Servico> listServico) {
+		this.listServico = listServico;
+	}
+
+	public List<Servico> getListServicoSelect() {
+		return listServicoSelect;
+	}
+
+	public void setListServicoSelect(List<Servico> listServicoSelect) {
+		this.listServicoSelect = listServicoSelect;
+	}
+
+	public DualListModel<Servico> getListServicoSelecao() {
+		return listServicoSelecao;
+	}
+
+	public void setListServicoSelecao(DualListModel<Servico> listServicoSelecao) {
+		this.listServicoSelecao = listServicoSelecao;
 	}
 	
 }

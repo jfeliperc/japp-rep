@@ -2,6 +2,7 @@ package com.module.jpa.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -23,15 +24,15 @@ import javax.persistence.TemporalType;
  * 
  */
 @Entity
-@Table(name="agente_externo")
+//@Table(name="fornecedor")
 
 @NamedQueries({
-    @NamedQuery(name = "AgenteExterno.findAll", query = "SELECT a FROM AgenteExterno a"),
-    @NamedQuery(name = "AgenteExterno.findById", query = "SELECT a FROM AgenteExterno a WHERE a.id = :id"),
-    @NamedQuery(name = "AgenteExterno.findByTipo", query = "SELECT a FROM AgenteExterno a WHERE a.tipo = :tipo"),    
-    @NamedQuery(name = "AgenteExterno.findByNome", query = "SELECT a FROM AgenteExterno a WHERE a.nome = :nome")})
+    @NamedQuery(name = "Fornecedor.findAll", query = "SELECT a FROM Fornecedor a"),
+    @NamedQuery(name = "Fornecedor.findById", query = "SELECT a FROM Fornecedor a WHERE a.id = :id"),
+    @NamedQuery(name = "Fornecedor.findByTipo", query = "SELECT a FROM Fornecedor a WHERE a.tipo = :tipo"),    
+    @NamedQuery(name = "Fornecedor.findByNome", query = "SELECT a FROM Fornecedor a WHERE a.nome = :nome")})
 
-public class AgenteExterno implements Serializable {
+public class Fornecedor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -83,14 +84,14 @@ public class AgenteExterno implements Serializable {
 	@ManyToOne(fetch=FetchType.EAGER) 
 	@JoinColumn(name="empresa_id")
 	private Empresa empresa;
-//
-//	@OneToMany(mappedBy="agenteExterno")
-//	private List<FornecProduto> fornecProdutos;
-//
-//	@OneToMany(mappedBy="agenteExterno")
-//	private List<Pedido> pedidos;
 
-	public AgenteExterno() {
+	@OneToMany(mappedBy="fornecedor")
+	private List<FornecProduto> fornecProdutos;
+
+	@OneToMany(mappedBy="fornecedor")
+	private List<Pedido> pedidos;
+
+	public Fornecedor() {
 		this.tipoPessoa = "PF";
 		
 		if (this.empresa == null){
@@ -249,49 +250,49 @@ public class AgenteExterno implements Serializable {
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
-//
-//	public List<FornecProduto> getFornecProdutos() {
-//		return this.fornecProdutos;
-//	}
-//
-//	public void setFornecProdutos(List<FornecProduto> fornecProdutos) {
-//		this.fornecProdutos = fornecProdutos;
-//	}
-//
-//	public FornecProduto addFornecProduto(FornecProduto fornecProduto) {
-//		getFornecProdutos().add(fornecProduto);
-//		fornecProduto.setAgenteExterno(this);
-//
-//		return fornecProduto;
-//	}
-//
-//	public FornecProduto removeFornecProduto(FornecProduto fornecProduto) {
-//		getFornecProdutos().remove(fornecProduto);
-//		fornecProduto.setAgenteExterno(null);
-//
-//		return fornecProduto;
-//	}
-//
-//	public List<Pedido> getPedidos() {
-//		return this.pedidos;
-//	}
-//
-//	public void setPedidos(List<Pedido> pedidos) {
-//		this.pedidos = pedidos;
-//	}
-//
-//	public Pedido addPedido(Pedido pedido) {
-//		getPedidos().add(pedido);
-//		pedido.setAgenteExterno(this);
-//
-//		return pedido;
-//	}
-//
-//	public Pedido removePedido(Pedido pedido) {
-//		getPedidos().remove(pedido);
-//		pedido.setAgenteExterno(null);
-//
-//		return pedido;
-//	}
+
+	public List<FornecProduto> getFornecProdutos() {
+		return this.fornecProdutos;
+	}
+
+	public void setFornecProdutos(List<FornecProduto> fornecProdutos) {
+		this.fornecProdutos = fornecProdutos;
+	}
+
+	public FornecProduto addFornecProduto(FornecProduto fornecProduto) {
+		getFornecProdutos().add(fornecProduto);
+		fornecProduto.setFornecedor(this);
+
+		return fornecProduto;
+	}
+
+	public FornecProduto removeFornecProduto(FornecProduto fornecProduto) {
+		getFornecProdutos().remove(fornecProduto);
+		fornecProduto.setFornecedor(null);
+
+		return fornecProduto;
+	}
+
+	public List<Pedido> getPedidos() {
+		return this.pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
+	public Pedido addPedido(Pedido pedido) {
+		getPedidos().add(pedido);
+		pedido.setFornecedor(this);
+
+		return pedido;
+	}
+
+	public Pedido removePedido(Pedido pedido) {
+		getPedidos().remove(pedido);
+		pedido.setFornecedor(null);
+
+		return pedido;
+	}
 
 }

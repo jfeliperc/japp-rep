@@ -49,7 +49,7 @@ public class FilterJapp implements Filter {
 //        		!request.getRequestURI().endsWith(".ecss") &&
 //        		(request.getRequestURI().endsWith(".jsf") || request.getRequestURI().endsWith(".xhtml")) &&
 //                request.getSession().getAttribute("AUTHENTICATED") == null) {
-//            response.sendRedirect(request.getContextPath() + "/pages/login.xhtml");
+  //      response.sendRedirect(request.getContextPath() + "/pages/login.xhtml");
 //        }
 		chain.doFilter(request, response);
 

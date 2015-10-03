@@ -140,7 +140,7 @@
 						
 						<h:panelGroup>
 		                	<h:commandLink action="#{pessoaMb.limparContatos()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
-		                	<h:commandLink action="#{pessoaMb.salvarContatos()}" value="" ><h:graphicImage value="/css/img/adicionar.png" width="20px" height="20px" /></h:commandLink>
+		                	<h:commandLink action="#{pessoaMb.adicionarContatos()}" value="" ><h:graphicImage value="/css/img/adicionar.png" width="20px" height="20px" /></h:commandLink>
 		                </h:panelGroup>		                
 	                    <h:panelGroup></h:panelGroup>
 						
@@ -168,7 +168,10 @@
 		    			<p:column>
 		    				<f:facet name="header">Ação</f:facet>
 		    				<center><h:commandLink action="#{pessoaMb.editarContato(us)}" value="" title="Editar dados deste registro">
-		    					<h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
+		    					<h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink>
+									<h:commandLink action="#{pessoaMb.excluirContato(us)}" value="" title="Excluir este registro" >
+								<h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>		    				
+		    				</center>
 		    			</p:column>
 		    		</p:dataTable>	
 				</p:panel>

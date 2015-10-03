@@ -87,6 +87,14 @@
 						<h:panelGroup style="width:80%" id="pgReceitasFrom">
 							<fieldset><legend>Receitas</legend>
 								<h:panelGrid columns="2" styleClass="gridForm_">
+									<h:outputLabel value="Serviço" for="selServicoRec" />
+			                    	<h:panelGroup id="selServicoRecPg" layout="block">
+					                    <h:selectOneMenu id="selServicoRec" value="#{receitaMb.tipoReceitaAux.id}" title="Tipo Receita" 
+					                    	required="false" requiredMessage="Campo Tipo Receita é obrigatório" style="width:250px">
+					                        <f:selectItems value="#{receitaMb.itemsTipoReceita}" var="tp" itemLabel="#{tp.nome}" itemValue="#{tp.id}"/>
+					                    </h:selectOneMenu>		                    
+				                    </h:panelGroup>
+								
 				                	<h:outputLabel value="Tipo de Receita" for="tipoReceita" />
 			                    	<h:panelGroup id="seltipoReceita" layout="block">
 					                    <h:selectOneMenu id="tipoProdutoId" value="#{receitaMb.tipoReceitaAux.id}" title="Tipo Receita" 

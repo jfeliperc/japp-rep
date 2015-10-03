@@ -71,8 +71,15 @@ public class PessoaMb extends BaseMb{
 	public void salvar(){
 		if (validarSalvar()){
 			try {
+				List<Contato> contatosTemp = this.pessoa.getContatos();
+				
 				this.pessoa.setEmpresa(getEmpresaAux());
 				this.pessoa = pessoaEjb.salvarPessoa(this.pessoa);
+				
+				pessoaEjb.removeAllContatos(this.pessoa);
+				pessoaEjb.salvarListContatoPessoa(this.pessoa, contatosTemp);
+				this.pessoa.setContatos(pessoaEjb.buscarContatos(this.pessoa));
+				
 			} catch (NoSuchAlgorithmException e) {				
 				addMsgError("Erro ao salvar dados - "+e.getMessage());
 			}
@@ -92,6 +99,9 @@ public class PessoaMb extends BaseMb{
 		this.contatoTemp = us;
 	}
 
+	public void excluirContato(Contato us){
+		this.pessoa.getContatos().remove(us);
+	}
 	
 	private boolean validarSalvar() {
 		boolean ret = true;
@@ -123,11 +133,13 @@ public class PessoaMb extends BaseMb{
 		this.contatoTemp = new Contato();
 	}
 	
-	public void salvarContatos(){
+	public void adicionarContatos(){
 		if ((this.pessoa != null)&&(!isIdZeroOrNull(this.pessoa.getId()))){
 			this.contatoTemp.setPessoa(this.pessoa);
-			pessoaEjb.salvarContatoPessoa(contatoTemp);
-			this.pessoa = pessoaEjb.buscarPessoa(this.pessoa);
+			//pessoaEjb.salvarContatoPessoa(contatoTemp);
+			//this.pessoa = pessoaEjb.buscarPessoa(this.pessoa);
+			this.pessoa.getContatos().add(this.contatoTemp);
+			this.contatoTemp = new Contato();
 		}
 	}
 	

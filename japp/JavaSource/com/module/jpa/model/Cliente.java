@@ -2,6 +2,7 @@ package com.module.jpa.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,9 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 
 /**
@@ -23,15 +25,15 @@ import javax.persistence.TemporalType;
  * 
  */
 @Entity
-@Table(name="agente_externo")
+//@Table(name="cliente")
 
 @NamedQueries({
-    @NamedQuery(name = "AgenteExterno.findAll", query = "SELECT a FROM AgenteExterno a"),
-    @NamedQuery(name = "AgenteExterno.findById", query = "SELECT a FROM AgenteExterno a WHERE a.id = :id"),
-    @NamedQuery(name = "AgenteExterno.findByTipo", query = "SELECT a FROM AgenteExterno a WHERE a.tipo = :tipo"),    
-    @NamedQuery(name = "AgenteExterno.findByNome", query = "SELECT a FROM AgenteExterno a WHERE a.nome = :nome")})
+    @NamedQuery(name = "Cliente.findAll", query = "SELECT a FROM Cliente a"),
+    @NamedQuery(name = "Cliente.findById", query = "SELECT a FROM Cliente a WHERE a.id = :id"),
+    @NamedQuery(name = "Cliente.findByTipo", query = "SELECT a FROM Cliente a WHERE a.tipo = :tipo"),    
+    @NamedQuery(name = "Cliente.findByNome", query = "SELECT a FROM Cliente a WHERE a.nome = :nome")})
 
-public class AgenteExterno implements Serializable {
+public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -83,14 +85,20 @@ public class AgenteExterno implements Serializable {
 	@ManyToOne(fetch=FetchType.EAGER) 
 	@JoinColumn(name="empresa_id")
 	private Empresa empresa;
-//
-//	@OneToMany(mappedBy="agenteExterno")
-//	private List<FornecProduto> fornecProdutos;
-//
-//	@OneToMany(mappedBy="agenteExterno")
-//	private List<Pedido> pedidos;
 
-	public AgenteExterno() {
+	@OneToMany(mappedBy="servico")
+	private List<ClienteServico> clienteServicos;
+	
+	@Transient
+	private List<Servico> servicos;
+	
+	//@OneToMany(mappedBy="cliente")
+	//private List<Servico> servicos;
+
+	//@OneToMany(mappedBy="cliente")
+	//private List<Pedido> pedidos;
+
+	public Cliente() {
 		this.tipoPessoa = "PF";
 		
 		if (this.empresa == null){
@@ -249,6 +257,39 @@ public class AgenteExterno implements Serializable {
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
+	
+
+	public List<ClienteServico> getClienteServicos() {
+		return this.clienteServicos;
+	}
+
+	public void setClienteServicos(List<ClienteServico> clienteServicos) {
+		this.clienteServicos = clienteServicos;
+	}
+
+	public ClienteServico addClienteServico(ClienteServico clienteServicos) {
+		getClienteServicos().add(clienteServicos);
+		clienteServicos.setCliente(this);
+
+		return clienteServicos;
+	}
+
+	public ClienteServico removeClienteServico(ClienteServico clienteServicos) {
+		getClienteServicos().remove(clienteServicos);
+		clienteServicos.setCliente(null);
+
+		return clienteServicos;
+	}
+
+	public List<Servico> getServicos() {
+		return servicos;
+	}
+
+	public void setServicos(List<Servico> servicos) {
+		this.servicos = servicos;
+	}
+
+	
 //
 //	public List<FornecProduto> getFornecProdutos() {
 //		return this.fornecProdutos;
@@ -260,14 +301,14 @@ public class AgenteExterno implements Serializable {
 //
 //	public FornecProduto addFornecProduto(FornecProduto fornecProduto) {
 //		getFornecProdutos().add(fornecProduto);
-//		fornecProduto.setAgenteExterno(this);
+//		fornecProduto.setCliente(this);
 //
 //		return fornecProduto;
 //	}
 //
 //	public FornecProduto removeFornecProduto(FornecProduto fornecProduto) {
 //		getFornecProdutos().remove(fornecProduto);
-//		fornecProduto.setAgenteExterno(null);
+//		fornecProduto.setCliente(null);
 //
 //		return fornecProduto;
 //	}
@@ -282,14 +323,14 @@ public class AgenteExterno implements Serializable {
 //
 //	public Pedido addPedido(Pedido pedido) {
 //		getPedidos().add(pedido);
-//		pedido.setAgenteExterno(this);
+//		pedido.setCliente(this);
 //
 //		return pedido;
 //	}
 //
 //	public Pedido removePedido(Pedido pedido) {
 //		getPedidos().remove(pedido);
-//		pedido.setAgenteExterno(null);
+//		pedido.setCliente(null);
 //
 //		return pedido;
 //	}
