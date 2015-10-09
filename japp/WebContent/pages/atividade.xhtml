@@ -28,25 +28,25 @@
 			      		<p:tab title="Atividades">
 			      			<h:panelGroup id="botoesPanel2" layout="block">		      			
 			      				<table><tr><td width="20px">
-			      				<h:commandLink action="#{servicoMb.limparAtividade()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+			      				<h:commandLink action="#{atividadeMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
 			      				</td><td width="20px">
-			      				<h:commandLink action="#{servicoMb.buscarAtividade()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
+			      				<h:commandLink action="#{atividadeMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
 			      				</td><td width="20px">
-			      				<h:commandLink action="#{servicoMb.salvarAtividade()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
+			      				<h:commandLink action="#{atividadeMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
 			      				</td><td width="20px">
-			      				<h:commandLink action="#{servicoMb.excluirAtividade()}" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
+			      				<h:commandLink action="#{atividadeMb.excluir()}" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
 			      				</td></tr></table>		      				
 				      		</h:panelGroup>
 							<h:panelGrid columns="2" styleClass="gridForm" cellspacing="5px" cellpadding="5">
 			                    <h:outputLabel value="Id" for="id" />
-			                    <h:inputText id="idtp" value="#{servicoMb.atividadeTemp.id}" required="false"/>
+			                    <h:inputText id="idtp" value="#{atividadeMb.atividade.id}" required="false"/>
 			                    <h:outputLabel value="Nome" for="nome" />
-			                    <h:inputText id="nometp" value="#{servicoMb.atividadeTemp.nome}" required="false" size="100"/>
+			                    <h:inputText id="nometp" value="#{atividadeMb.atividade.nome}" required="false" size="100"/>
 			                    <h:outputLabel value="Descrição" for="descricao" />
-			                    <h:inputText id="descricaotp" value="#{servicoMb.atividadeTemp.descricao}" required="false" size="100"/>			                    
+			                    <h:inputText id="descricaotp" value="#{atividadeMb.atividade.descricao}" required="false" size="100"/>			                    
 			                </h:panelGrid>
 			                <br/>
-							<p:dataTable value="#{servicoMb.servico.atividades}" var="us" style="width:100%" id="tbContato">
+							<p:dataTable value="#{atividadeMb.listAtividade}" var="us" style="width:100%" id="tbContato">
 				    			<p:column>
 				    				<f:facet name="header">Nome</f:facet>
 				    				<h:outputText value="#{us.nome}" />
@@ -54,10 +54,10 @@
 				    			<p:column>
 				    				<f:facet name="header">Descrição</f:facet>
 				    				<h:outputText value="#{us.descricao}" />
-				    			</p:p:column>
+				    			</p:column>
 				    			<p:column>
 				    				<f:facet name="header">Ação</f:facet>
-				    				<center><h:commandLink action="#{servicoMb.editarAtividade(us)}" value="" title="Editar dados deste registro">
+				    				<center><h:commandLink action="#{atividadeMb.editar(us)}" value="" title="Editar dados deste registro">
 				    					<h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
 				    			</p:column>
 				    		</p:dataTable>	

@@ -214,7 +214,7 @@ public class PessoaEjb implements IPessoaEjb {
 	@Override
 	public void salvarListContatoPessoa(Pessoa pessoa,List<Contato> contatosTemp) {
 		ContatoDao dao = new ContatoDao();
-		if (!UtilsJapp.isNullOrZero(pessoa.getId())){
+		if ((!UtilsJapp.isNullOrZero(pessoa.getId()))&&(contatosTemp != null)){
 			for (Contato contato : contatosTemp) {
 				contato.setId(null);
 				contato.setPessoa(pessoa);

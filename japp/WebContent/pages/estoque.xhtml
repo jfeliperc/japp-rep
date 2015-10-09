@@ -14,8 +14,8 @@
 	</ui:define>
 
     <ui:define name="conteudo">
-    	<h:form id="frmProduto">
-	    	<p:panel header="Estoque" style="width:99%; height: 95%; " rendered="#{!produtoMb.mostrarLista}">
+    	<h:form id="frmEstoque">
+	    	<p:panel header="Estoque" style="width:99%; height: 95%; ">
 		      	<table><tr><td width="1300px">
 		      	<div style="padding-left: 10px">		      	
 		      		
@@ -24,13 +24,9 @@
 		      				<span class="btn-group navbar-left">
 					      		<h:panelGroup id="botoesPanel" layout="block">		      			
 				      				<table><tr><td width="20px">
-				      				<h:commandLink action="#{produtoMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+				      				<h:commandLink action="#{estoqueMb.limpar()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
 				      				</td><td width="20px">
-				      				<h:commandLink action="#{produtoMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
-				      				</td><td width="20px">
-				      				<h:commandLink action="#{produtoMb.salvar()}" value="" ><h:graphicImage value="/css/img/salvar.png" width="20px" height="20px" /></h:commandLink>
-				      				</td><td width="20px">
-				      				<h:commandLink action="#{produtoMb.excluir()}" value="" ><h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink>
+				      				<h:commandLink action="#{estoqueMb.buscar()}" value="" ><h:graphicImage value="/css/img/buscar.png" width="20px" height="20px" /></h:commandLink>
 				      				</td></tr></table>		      				
 					      		</h:panelGroup>
 				      		</span>
@@ -58,16 +54,23 @@
 		            
 		            <h:panelGrid columns="2" styleClass="gridForm_">
 		            
+		            	<h:outputLabel value="Empresa/Filial" for="selEmpFil" />
+	                    <h:panelGroup id="pgselEmpFil" layout="block">
+		                    <h:selectOneMenu id="selEmpFil" value="#{estoqueMb.empresaAux.id}" title="Empresa/Filial" style="width:300px">
+		                        <f:selectItems value="#{receitaMb.empresas}" var="tp" itemLabel="#{tp.nomeFantasia}" itemValue="#{tp.id}"/>
+		                    </h:selectOneMenu>		                    
+	                    </h:panelGroup>		            
+		            
 						<h:outputLabel value="Tipo Produto" for="selTipoProd" />
 	                    <h:panelGroup id="selTipoProd" layout="block">
-		                    <h:selectOneMenu id="idTipPro" value="#{receitaMb.tipoProdutoAux.id}" title="Tipo Produto" style="width:250px">
+		                    <h:selectOneMenu id="idTipPro" value="#{receitaMb.tipoProdutoAux.id}" title="Tipo Produto" style="width:300px">
 		                        <f:selectItems value="#{receitaMb.itemsTipoProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
 		                    </h:selectOneMenu>		                    
 	                    </h:panelGroup>	
 	                    
 	                    <h:outputLabel value="Grupo Produto" for="selGrpProd" />
 	                    <h:panelGroup id="selGrpProd" layout="block">
-		                    <h:selectOneMenu id="idGrpPro" value="#{receitaMb.grupoProdutoAux.id}" title="Grupo Produto" style="width:250px">
+		                    <h:selectOneMenu id="idGrpPro" value="#{receitaMb.grupoProdutoAux.id}" title="Grupo Produto" style="width:300px">
 		                        <f:selectItems value="#{receitaMb.itemsGrupoProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
 		                    </h:selectOneMenu>		                    
 	                    </h:panelGroup>
@@ -75,58 +78,56 @@
 	                    <h:outputLabel value="Produto" for="idpro" />
 	                    <h:panelGroup id="selProd" layout="block">
 		                    <h:selectOneMenu id="idpro" value="#{receitaMb.produto.id}" title="Produto" 
-		                    	required="false" requiredMessage="Campo Produto é obrigatório" style="width:250px">
+		                    	required="false" requiredMessage="Campo Produto é obrigatório" style="width:350px">
 		                        <f:selectItems value="#{receitaMb.listProduto}" var="tp" itemLabel="#{tp.descricao}" itemValue="#{tp.id}"/>
 		                    </h:selectOneMenu>		                    
 	                    </h:panelGroup>	
 	                    	
 					</h:panelGrid>
-			      	<h:panelGrid columns="4" styleClass="gridForm" cellspacing="5px" cellpadding="5">
-	                    	
-	                    <h:outputLabel value="Nome" for="nome" />
-	                    <h:inputText id="nome" value="#{produtoMb.produto.nome}" title="Nome" required="false" 
-	                    	requiredMessage="ProdutoRequiredMessage_nome}" size="40" disabled="true"/>
-	                    
-	                    <h:outputLabel value="Descricao" for="descricao" />
-	                    <h:inputText id="descricao" value="#{produtoMb.produto.descricao}" title="Descricao" size="50" disabled="true" />
-	                    
-	                    <h:outputLabel value="Cód. Externo" for="cod_externo" />
-	                    <h:inputText id="cod_externo" value="#{produtoMb.produto.codExterno}" title="Código Externo" />
-	                    
-						<h:outputLabel value="Medida" for="medida" />
-	                    <h:inputText id="medida" value="#{produtoMb.produto.codExterno}" title="Medida" />	                    
-	                    
-	                </h:panelGrid>
-	                
-	                <p:dataTable value="#{receitaMb.listReceita}" var="us" style="width:100%" id="tbGrupos">
+			      		                
+	                <p:dataTable value="#{estoqueMb.listEstoque}" var="us" style="width:100%" id="tbEstoque">
 			    			<p:column>
 			    				<f:facet name="header">Id Produto</f:facet>
-			    				<h:outputText value="#{us.id}" />
+			    				<h:outputText value="#{us.produto.id}" />
 			    			</p:column>
 			    			<p:column>
 			    				<f:facet name="header">Produto</f:facet>
-			    				<h:outputText value="#{us.descricao}" />
+			    				<h:outputText value="#{us.produto.nome}" />
 			    			</p:column>
 			    			<p:column>
 			    				<f:facet name="header">Medida</f:facet>
-			    				<h:outputText value="#{us.descricao}" />
+			    				<h:outputText value="#{us.produto.medida}" />
 			    			</p:column>
 			    			<p:column>
 			    				<f:facet name="header">Quantidade</f:facet>
-			    				<h:outputText value="#{us.descricao}" />
+			    				<h:outputText value="#{us.quantidade}" />
 			    			</p:column>
 			    			<p:column>
 			    				<f:facet name="header">Qtd. Mínima</f:facet>
-			    				<h:outputText value="#{us.descricao}" />
+			    				<h:outputText value="#{us.produto.qtdMinima}" />
 			    			</p:column>
 			    			<p:column>
 			    				<f:facet name="header">Data Contagem</f:facet>
-			    				<h:outputText value="#{us.descricao}" />
+			    				<h:outputText value="#{us.datacontagem}" >
+			                        <f:convertDateTime pattern="dd/MM/yyyy" />
+			                    </h:outputText>
 			    			</p:column>
 			    			<p:column>
 			    				<f:facet name="header">Ação</f:facet>
-			    				<center><h:commandLink action="#{receitaMb.editar(us)}" value="" title="Editar dados deste registro">
-			    					<h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
+			    				<center>
+			    					<h:commandLink action="#{receitaMb.editar(us)}" value="" title="Implantar quantidade">
+			    						<h:graphicImage value="/css/img/db_insert.png" width="30px" height="30px" /></h:commandLink>
+			    					
+			    					<h:commandLink action="#{receitaMb.editar(us)}" value="" title="Transferência Filiais">
+			    						<h:graphicImage value="/css/img/transferencia.png" width="30px" height="30px" /></h:commandLink>
+			    					
+			    					<h:commandLink action="#{receitaMb.editar(us)}" value="" title="Solicitar compra">
+			    						<h:graphicImage value="/css/img/carrinho.png" width="30px" height="30px" /></h:commandLink>
+			    						
+			    					<h:commandLink action="#{receitaMb.editar(us)}" value="" title="Lançar perda">
+			    						<h:graphicImage value="/css/img/lixeira.png" width="30px" height="30px" /></h:commandLink>		
+			    						
+			    				</center>
 			    			</p:column>
 			    		</p:dataTable>  
                 	    
@@ -135,42 +136,7 @@
 				</div>
 				</td></tr></table>	
 		    </p:panel>
-		    
-		    <p:panel header="Lista de produtos" style="width:100%; height: 95%; " rendered="#{produtoMb.mostrarLista}">
-		    	<table><tr><td width="1300px">
-		    	<div style="padding-left: 10px">
-			      	<nav class="navbar navbar-default" style="min-height: 30px !important;">
-		  				<div class="container-fluid">
-				      		<span class="btn-group navbar-right">
-				      			<span class="btn-group">
-									<h:commandLink styleClass="btn btn-link" action="#{produtoMb.alternaMostraLista()}" value="Ver detalhe" />
-								</span>				      			
-				      		</span>
-				      	</div>
-				    </nav>	
-				</div>    
-		    	<p:dataTable value="#{produtoMb.listProduto}" var="us" style="width:100%" id="tbProdutos">
-		    			<p:column>
-		    				<f:facet name="header">Nome</f:facet>
-		    				<h:outputText value="#{us.nome}" />
-		    			</p:column>
-		    			<p:column>
-		    				<f:facet name="header">Descricao</f:facet>
-		    				<h:outputText value="#{us.descricao}" />
-		    			</p:column>
-		    			<p:column>
-		    				<f:facet name="header">Medida</f:facet>
-		    				<h:outputText value="#{us.medida}" />
-		    			</p:column>
-		    			<p:column>
-		    				<f:facet name="header">Ação</f:facet>
-				      		<center><h:commandLink action="#{produtoMb.editar(us)}" value="" title="Editar dados deste registro"><h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
-		    			</p:column>
-		    	</p:dataTable>
-		    	</td></tr></table>
-		    </p:panel>
-   
-		    
+		    		    
 	    </h:form>
     </ui:define>
     

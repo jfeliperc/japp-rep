@@ -12,6 +12,10 @@ import com.module.jpa.model.Fornecedor;
 
 public class FornecedorDao extends Dao<Fornecedor> {
 
+	public FornecedorDao(){
+		super(Fornecedor.class);
+	}
+	
 	public List<Fornecedor> findByExample(Fornecedor fornecedor) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 	    CriteriaQuery<Fornecedor> c = cb.createQuery(Fornecedor.class);	    

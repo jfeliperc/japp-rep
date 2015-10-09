@@ -3,18 +3,18 @@
 -- DROP TABLE parcelas_nfe;
 -- DROP TABLE cfop_nfentrada;
 
--- tabela:nfentrada será a tabela mestre da nf.
+-- tabela:nfentrada serï¿½ a tabela mestre da nf.
 CREATE TABLE IF NOT EXISTS nf_entrada (
 id INT NOT NULL AUTO_INCREMENT,
 codigo VARCHAR(10) NOT NULL,
 notafiscal VARCHAR(15) NOT NULL,
 notafiscalinterna VARCHAR(15),
 fornecedor INT,
-ordemdecompra INTEGER,
+ordemdecompra INT,
 entrada DATE NOT NULL,
 emissao DATE NOT NULL,
 saida DATE,
-transportadora INTEGER,
+transportadora INT,
 tipofrete INT NOT NULL,
 freteagregado INT NOT NULL,
 baseicms NUMERIC(15,2) NOT NULL,
@@ -44,7 +44,7 @@ pesoliquido NUMERIC(15,3) NOT NULL,
 quantidadevolume NUMERIC(15,3) NOT NULL,
 especievolume VARCHAR(10),
 marcavolume VARCHAR(10),
-numerovolume INTEGER,
+numerovolume INT,
 placaveiculo VARCHAR(10),
 ufveiculo VARCHAR(2),
 `status` INT NOT NULL,
@@ -58,13 +58,13 @@ PRIMARY KEY (id),
 INDEX `idx_num_notafiscal` (notafiscal ASC)
 );
 
--- tabela:itemnfentrada será a tebela detalhes dos itens.
+-- tabela:itemnfentrada serï¿½ a tebela detalhes dos itens.
 CREATE TABLE IF NOT EXISTS item_nf_entrada (
 id INT NOT NULL AUTO_INCREMENT,
-itemnfentrada INTEGER NOT NULL,
-nfentrada INTEGER NOT NULL,
+itemnfentrada INT NOT NULL,
+nfentrada INT NOT NULL,
 ean VARCHAR(15) NOT NULL,
-produto INTEGER NOT NULL,
+produto INT NOT NULL,
 cst INT NOT NULL,
 quantidade NUMERIC(15,3) NOT NULL,
 unidadeembalagem NUMERIC(15,3) NOT NULL,
@@ -78,11 +78,11 @@ PRIMARY KEY (id),
 CONSTRAINT `fk_nfent_item_nfent` FOREIGN KEY (`nfentrada`) REFERENCES nf_entrada (id) 
 );
 
--- tabela:parcelasnfe será a tabela detalhes das parcelas da nf.
+-- tabela:parcelasnfe serï¿½ a tabela detalhes das parcelas da nf.
 CREATE TABLE IF NOT EXISTS parcelas_nfe (
 id INT NOT NULL AUTO_INCREMENT,
-parcelasnfe INTEGER NOT NULL,
-nfentrada INTEGER NOT NULL,
+parcelasnfe INT NOT NULL,
+nfentrada INT NOT NULL,
 notafiscal VARCHAR(15) NOT NULL,
 documento VARCHAR(15) NOT NULL,
 vencimento DATE NOT NULL,
@@ -91,11 +91,11 @@ PRIMARY KEY (id),
 CONSTRAINT `fk_nfent_parc_nfent` FOREIGN KEY (`nfentrada`) REFERENCES nf_entrada (id) 
 );
 
--- tabela:cfop_nfentrada será a tabela detalhes das cfop´s contidas na nf.
+-- tabela:cfop_nfentrada serï¿½ a tabela detalhes das cfopï¿½s contidas na nf.
 CREATE TABLE IF NOT EXISTS cfop_nfentrada (
 id INT NOT NULL AUTO_INCREMENT,
-cfop_nfentrada INTEGER NOT NULL,
-nfentrada INTEGER NOT NULL,
+cfop_nfentrada INT NOT NULL,
+nfentrada INT NOT NULL,
 cfop VARCHAR(5) NOT NULL,
 PRIMARY KEY (id),
 CONSTRAINT `fk_nfent_cfop_nfent` FOREIGN KEY (`nfentrada`) REFERENCES nf_entrada (id) 

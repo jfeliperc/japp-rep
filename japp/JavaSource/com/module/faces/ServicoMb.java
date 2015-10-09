@@ -86,7 +86,7 @@ public class ServicoMb extends BaseMb{
 			this.servico = this.listServico.get(0);
 			this.listServico.clear();
 		}else if ((this.listServico == null)||(this.listServico.isEmpty())){
-			addMsg("Nenhum servi�o encontrado na busca.");
+			addMsg("Nenhum serviço encontrado na busca.");
 			limpar();
 		}else{
 			setMostrarLista((this.listServico != null)&&(!this.listServico.isEmpty()));

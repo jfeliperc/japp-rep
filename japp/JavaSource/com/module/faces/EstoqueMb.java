@@ -11,6 +11,7 @@ import javax.faces.bean.SessionScoped;
 import org.apache.commons.lang3.StringUtils;
 
 import com.module.ejb.contract.IEstoqueEjb;
+import com.module.jpa.model.Empresa;
 import com.module.jpa.model.Estoque;
 import com.module.jpa.model.GrupoProduto;
 import com.module.jpa.model.Produto;
@@ -24,11 +25,17 @@ public class EstoqueMb extends BaseMb{
 	@EJB
 	private IEstoqueEjb estoqueEjb;
 
-	private Produto produto;
 	private List<Produto> listProduto;
 	private List<Estoque> listEstoque;
 	private List<TipoProduto> itemsTipoProduto;
 	private List<GrupoProduto> itemsGrupoProduto;
+	private List<Empresa> itemsempresa;
+
+	private Produto produto;
+	private GrupoProduto grupoProduto;
+	private TipoProduto tipoProduto;
+	private Empresa empresa;
+	private Estoque estoqueFiltro;
 	
 	@PostConstruct
 	public void posConstrucao(){
@@ -37,26 +44,29 @@ public class EstoqueMb extends BaseMb{
 	
 	public EstoqueMb(){		
 		this.produto = new Produto();
-		this.itemsTipoProduto = new ArrayList<TipoProduto>();   
+		this.estoqueFiltro = new Estoque();
+		this.itemsTipoProduto = new ArrayList<TipoProduto>();
+		this.listEstoque = new ArrayList<Estoque>();
 	}
 
 	public void limpar(){
 		this.produto = new Produto();
+		this.estoqueFiltro = new Estoque();
 		this.listProduto = new ArrayList<Produto>();
-		this.produto.setId(null);
+		this.listEstoque = new ArrayList<Estoque>();
 	}
 	
 	public void buscar(){
-//		this.listProduto = produtoEjb.listarProdutos(this.produto);
-		if ((this.listProduto != null)&&(!this.listProduto.isEmpty())&&(this.listProduto.size() == 1)){
-			this.produto = this.listProduto.get(0);
-			this.listProduto.clear();
+		try {
+			this.listEstoque = estoqueEjb.buscarPosicaoEstoque(estoqueFiltro);
+		} catch (Exception e) {
+			addMsgError("Erro ao tentar buscar dados posição estoque.");
 		}
 	}
 	
 	public void salvar(){
 		if (validarSalvar()){
-//			this.produto = this.produtoEjb.cadastrarProduto(this.produto);
+
 		}
 	}
 	
@@ -116,6 +126,46 @@ public class EstoqueMb extends BaseMb{
 
 	public void setListEstoque(List<Estoque> listEstoque) {
 		this.listEstoque = listEstoque;
+	}
+
+	public List<Empresa> getItemsempresa() {
+		return itemsempresa;
+	}
+
+	public void setItemsempresa(List<Empresa> itemsempresa) {
+		this.itemsempresa = itemsempresa;
+	}
+
+	public GrupoProduto getGrupoProduto() {
+		return grupoProduto;
+	}
+
+	public void setGrupoProduto(GrupoProduto grupoProduto) {
+		this.grupoProduto = grupoProduto;
+	}
+
+	public TipoProduto getTipoProduto() {
+		return tipoProduto;
+	}
+
+	public void setTipoProduto(TipoProduto tipoProduto) {
+		this.tipoProduto = tipoProduto;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
+	public Estoque getEstoqueFiltro() {
+		return estoqueFiltro;
+	}
+
+	public void setEstoqueFiltro(Estoque estoqueFiltro) {
+		this.estoqueFiltro = estoqueFiltro;
 	}
 	
 }

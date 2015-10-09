@@ -1,8 +1,21 @@
 package com.module.jpa.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -10,107 +23,143 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQuery(name="Estoque.findAll", query="SELECT e FROM Estoque e")
+@NamedQueries({
+    @NamedQuery(name = "Estoque.findAll", query = "SELECT e FROM Estoque e"),
+    @NamedQuery(name = "Estoque.findById", query = "SELECT e FROM Estoque e WHERE e.id = :id"),
+    @NamedQuery(name = "Estoque.findByPessoaId", query = "SELECT e FROM Estoque e WHERE e.pessoaId = :pessoaId"),
+    @NamedQuery(name = "Estoque.findByDataultimofechamento", query = "SELECT e FROM Estoque e WHERE e.dataultimofechamento = :dataultimofechamento"),
+    @NamedQuery(name = "Estoque.findByDatacontagem", query = "SELECT e FROM Estoque e WHERE e.datacontagem = :datacontagem"),
+    @NamedQuery(name = "Estoque.findByQuantidade", query = "SELECT e FROM Estoque e WHERE e.quantidade = :quantidade"),
+    @NamedQuery(name = "Estoque.findByStatus", query = "SELECT e FROM Estoque e WHERE e.status = :status")})
 public class Estoque implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-
-	private String datacontagem;
-
-	private String dataultimofechamento;
-
-	@Column(name="pessoa_id")
-	private int pessoaId;
-
-	private String quantidade;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
 	
-	@Column(name="custo_medio")
-	private Double custoMedio;
+    @Column(name = "pessoa_id")
+    private Integer pessoaId;
+    
+    @Column(name = "dataultimofechamento")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataultimofechamento;
+    
+    @Column(name = "datacontagem")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date datacontagem;
+    
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "quantidade")
+    private Double quantidade;
+    
+    @Column(name = "status")
+    private String status;
+    
+    @JoinColumn(name = "empresa_id", referencedColumnName = "id")
+    @ManyToOne
+    private Empresa empresa;
+    
+    @JoinColumn(name = "produto_id", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private Produto produto;
 
-	private String status;
+    public Estoque() {
+    }
 
-	@ManyToOne
-	private Produto produto;
+    public Estoque(Integer id) {
+        this.id = id;
+    }
 
-	@ManyToOne(fetch = FetchType.LAZY) 
-	@JoinColumn(name="empresa_id")
-	private Empresa empresa;
-	
-	public Estoque() {
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public int getId() {
-		return this.id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public Integer getPessoaId() {
+        return pessoaId;
+    }
 
-	public String getDatacontagem() {
-		return this.datacontagem;
-	}
+    public void setPessoaId(Integer pessoaId) {
+        this.pessoaId = pessoaId;
+    }
 
-	public void setDatacontagem(String datacontagem) {
-		this.datacontagem = datacontagem;
-	}
+    public Date getDataultimofechamento() {
+        return dataultimofechamento;
+    }
 
-	public String getDataultimofechamento() {
-		return this.dataultimofechamento;
-	}
+    public void setDataultimofechamento(Date dataultimofechamento) {
+        this.dataultimofechamento = dataultimofechamento;
+    }
 
-	public void setDataultimofechamento(String dataultimofechamento) {
-		this.dataultimofechamento = dataultimofechamento;
-	}
+    public Date getDatacontagem() {
+        return datacontagem;
+    }
 
-	public int getPessoaId() {
-		return this.pessoaId;
-	}
+    public void setDatacontagem(Date datacontagem) {
+        this.datacontagem = datacontagem;
+    }
 
-	public void setPessoaId(int pessoaId) {
-		this.pessoaId = pessoaId;
-	}
+    public Double getQuantidade() {
+        return quantidade;
+    }
 
-	public String getQuantidade() {
-		return this.quantidade;
-	}
+    public void setQuantidade(Double quantidade) {
+        this.quantidade = quantidade;
+    }
 
-	public void setQuantidade(String quantidade) {
-		this.quantidade = quantidade;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	public String getStatus() {
-		return this.status;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public Empresa getEmpresa() {
+        return empresa;
+    }
 
-	public Produto getProduto() {
-		return this.produto;
-	}
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
 
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
+    public Produto getProduto() {
+        return produto;
+    }
 
-	public Double getCustoMedio() {
-		return custoMedio;
-	}
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
 
-	public void setCustoMedio(Double custoMedio) {
-		this.custoMedio = custoMedio;
-	}
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
 
-	public Empresa getEmpresa() {
-		return empresa;
-	}
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Estoque)) {
+            return false;
+        }
+        Estoque other = (Estoque) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
 
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
+    @Override
+    public String toString() {
+        return "javaapptestes.jpa.model.Estoque[ id=" + id + " ]";
+    }
+    
 }

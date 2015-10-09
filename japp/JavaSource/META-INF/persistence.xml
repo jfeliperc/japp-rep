@@ -21,6 +21,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
 		<class>com.module.jpa.model.Empresa</class>
 		<class>com.module.jpa.model.Endereco</class>
 		<class>com.module.jpa.model.Estoque</class>
+		<class>com.module.jpa.model.EstoqueMovimento</class>
 		<class>com.module.jpa.model.FornecProduto</class>
 		<class>com.module.jpa.model.GrupoProduto</class>
 		<class>com.module.jpa.model.Orcamento</class>

@@ -35,6 +35,11 @@ public class FornecedorEjb implements IFornecedorEjb {
 			fornecedor.setDatainclusao(new Date());
 			dao.add(fornecedor);
 		}else{
+			
+			if ((fornecedor.getEmpresa() == null)||(UtilsJapp.isNullOrZero(fornecedor.getEmpresa().getId()))){
+				fornecedor.setEmpresa(null);
+			}
+			
 			dao.update(fornecedor);
 		}
 		return fornecedor;

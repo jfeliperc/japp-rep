@@ -52,6 +52,7 @@
 	                	<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
 	                	<hr/>
 		            </h:panelGroup>
+		            
 			      	<h:panelGrid columns="4" cellspacing="5px" cellpadding="5" id="gridForm" style="border:none !important;">
 	                    <h:outputLabel value="Id" for="id" />
 	                    <h:inputText id="id" value="#{produtoMb.produto.id}" title="ProdutoTitle_id}" required="false" 
@@ -80,10 +81,10 @@
 	                    <h:inputText id="cod_externo" value="#{produtoMb.produto.codExterno}" title="Código Externo" />
 	                    
 	                    <h:outputLabel value="Qtd. Média Compra" for="qtdRefCompra" />
-	                    <h:inputText id="qtdRefCompra" value="#{produtoMb.produto.qtdRefCompra}" title="ProdutoTitle_qtdRefCompra}" />
+	                    <h:inputText id="qtdRefCompra" value="#{produtoMb.produto.qtdRefCompra}" />
 	                    
 	                    <h:outputLabel value="Qtd. Média Saída" for="qtdRefSaida" />
-	                    <h:inputText id="qtdRefSaida" value="#{produtoMb.produto.qtdRefSaida}" title="ProdutoTitle_qtdRefSaida}" />
+	                    <h:inputText id="qtdRefSaida" value="#{produtoMb.produto.qtdRefSaida}" />
 	                    
 	                    <h:outputLabel value="Alíquota IPI" for="aliqIpi" />
 	                    <h:inputText id="aliqIpi" value="#{produtoMb.produto.aliqIpi}" title="Alíquota IPI" />
@@ -96,14 +97,15 @@
 	                    
 	                    <h:outputLabel value="Índice Coacção" for="indiceCoacao" />
 	                    <h:inputText id="indiceCoacao" value="#{produtoMb.produto.indiceCoaccao}" title="Índice Coacção" />	                    
+	                    
+	                    <h:outputLabel value="Qtd. Mínima Estoque" for="qtdMinProd" />
+	                    <h:inputText id="qtdMinProd" value="#{produtoMb.produto.qtdMinima}" />
 	                    	                    
 	                    <h:outputLabel value="Empresa" for="empresaId" />
 	                    <h:selectOneMenu id="empresaId" value="#{produtoMb.empresaAux.id}" title="Selecione a empresa vinculada" style="width:250px">
 	                        <f:selectItem itemValue="#{null}" itemLabel=""/>
 	                        <f:selectItems value="#{produtoMb.empresas}" var="emp" itemValue="#{emp.id}" itemLabel="#{emp.nomeFantasia}"/>
-	                    </h:selectOneMenu>	                    
-	                    <h:panelGroup></h:panelGroup>
-	                    <h:panelGroup></h:panelGroup>
+	                    </h:selectOneMenu>	        
 	                    
 	                    <h:outputLabel value="Tipo" for="tipoProdutoId" />
 	                    <h:panelGroup id="selPanel" style="border:none; padding: 0px 0px;">
@@ -134,7 +136,12 @@
 	                </h:panelGrid>
                 	    
 					<br/><br/><hr/>
-					
+										
+		            <h:commandLink action="#{produtoMb.inserirControleEstoque(produtoMb.produto)}" value="" title="Controlar estoque deste produto" > 
+				    	<h:graphicImage value="/css/img/valida.png" width="20px" height="20px" />
+				    	<h:outputLabel value="_Controlar em estoque" />
+				    </h:commandLink>
+		            					
 				</div>
 				</td></tr></table>	
 		    </p:panel>

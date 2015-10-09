@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `japp`.`produto` (
   `nome` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(150) NULL,
   `cod_externo` VARCHAR(45) NULL,
-  `medida` VARCHAR(45) NULL,
+  `medida` VARCHAR(5) NULL,
   `qtd_minima` DOUBLE NULL,
   `qtd_ref_compra` VARCHAR(45) NULL,
   `qtd_ref_saida` VARCHAR(45) NULL,
@@ -121,15 +121,37 @@ CREATE TABLE IF NOT EXISTS `japp`.`estoque` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `produto_id` INT NOT NULL,
   `pessoa_id` INT NULL,
-  `dataultimofechamento` VARCHAR(45) NULL,
-  `datacontagem` VARCHAR(45) NULL,
-  `quantidade` VARCHAR(45) NULL,
-  `status` VARCHAR(45) NULL,
+  `dataultimofechamento` DATETIME NULL,
+  `datacontagem` DATETIME NULL,
+  `quantidade` NUMERIC(15,2) NULL,
+  `status` VARCHAR(2) NULL,
   `empresa_id` INT NULL, 
   PRIMARY KEY (`id`),
   INDEX `fk_estoque_produto_idx` (`produto_id` ASC),
   CONSTRAINT `fk_estoque_produto` FOREIGN KEY (`produto_id`) REFERENCES `japp`.`produto` (`id`) ON UPDATE NO ACTION,  
   CONSTRAINT `fk_empresa_estoque` FOREIGN KEY (`empresa_id`) REFERENCES `japp`.`empresa` (`id`) ON UPDATE NO ACTION)
+ENGINE = INNODB;
+
+-- -----------------------------------------------------
+-- Table `japp`.`estoque_movimento`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `japp`.`estoque_movimento` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `produto_id` INT NOT NULL,
+  `pessoa_id` INT NULL,
+  `empresa_id` INT NULL, 
+  `tipo_movimento` VARCHAR(5) NULL,
+  `num_documento` VARCHAR(15) NULL,
+  `data_movimento` DATETIME NULL,
+  `quantidade` NUMERIC(15,2) NULL,
+  `quantidade_trans` NUMERIC(15,2) NULL,
+  `medida` VARCHAR(5) NULL,
+  `status` VARCHAR(2) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_estoquemov_produto_idx` (`produto_id` ASC),
+  INDEX `fk_estoquemov_data_movimento_idx` (`data_movimento` ASC),
+  CONSTRAINT `fk_estoquemov_produto` FOREIGN KEY (`produto_id`) REFERENCES `japp`.`produto` (`id`) ON UPDATE NO ACTION,  
+  CONSTRAINT `fk_empresamov_estoque` FOREIGN KEY (`empresa_id`) REFERENCES `japp`.`empresa` (`id`) ON UPDATE NO ACTION)
 ENGINE = INNODB;
 
 -- -----------------------------------------------------
@@ -151,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `japp`.`atividade` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(150) NULL,
-  `tipo_atividade_id` INT NOT NULL,
+  `tipo_atividade_id` INT NULL,
   `servico_id` INT NULL,
   `datainclusao` DATETIME NULL,
   `dataalteracao` DATETIME NULL,

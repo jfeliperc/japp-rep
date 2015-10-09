@@ -11,6 +11,7 @@ import javax.faces.model.SelectItem;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.module.ejb.contract.IEstoqueEjb;
 import com.module.ejb.contract.IProdutoEjb;
 import com.module.jpa.model.Empresa;
 import com.module.jpa.model.GrupoProduto;
@@ -24,6 +25,9 @@ public class ProdutoMb extends BaseMb{
 
 	@EJB
 	private IProdutoEjb produtoEjb;
+
+	@EJB
+	private IEstoqueEjb estoqueEjb;
 
 	private Produto produto;
 	private List<Produto> listProduto;
@@ -124,6 +128,15 @@ public class ProdutoMb extends BaseMb{
 		alternaMostraLista();
 	}
 
+	
+	public void inserirControleEstoque(Produto produtoEst){
+		try {
+			estoqueEjb.inserirProdutoEstoque(produtoEst);
+			addMsg("Produto inserido em controle de estoque.");
+		} catch (Exception e) {
+			addMsgError("Erro ao tentar inserir produto em controle de estoque.");
+		}
+	}
 	
 	public void excluir(){
 		this.produtoEjb.excluirProduto(this.produto);

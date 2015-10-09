@@ -88,7 +88,7 @@ public class BaseMb {
 	}
 
 	protected void addMsgError(String msg){
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro no processo", msg);
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro no processo - "+msg, msg);
         FacesContext.getCurrentInstance().addMessage(null, message);   
 	}
 	

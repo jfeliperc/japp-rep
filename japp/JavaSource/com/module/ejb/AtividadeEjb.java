@@ -32,6 +32,9 @@ public class AtividadeEjb implements IAtividadeEjb, Serializable {
 	@Override
 	public Atividade salvarAtividade(Atividade atividade) {
 		atividade.setDataalteracao(new Date());
+		
+		atividade.setTipoAtividade(null);
+		
 		if (UtilsJapp.isNullOrZero(atividade.getId())){
 			atividade.setDatainclusao(new Date());
 			atividade.setId(null);
