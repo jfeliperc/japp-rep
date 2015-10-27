@@ -8,9 +8,14 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.module.faces.geral.UtilsJapp;
 import com.module.jpa.model.Produto;
 
 public class ProdutoDao extends Dao<Produto> {
+	
+	public ProdutoDao(){
+		super(Produto.class);
+	}
 
 	public List<Produto> findByExample(Produto produto) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -29,7 +34,8 @@ public class ProdutoDao extends Dao<Produto> {
 
 	private Predicate prepararPredicatesByExample(Produto produto, CriteriaBuilder cb, Root<Produto> raiz) {
 		Predicate predicate = cb.and();
-		if ((produto.getId() != null)&&(!"".equals(produto.getId()))&&(0 != produto.getId().intValue())){
+		if (!UtilsJapp.isNullOrZero(produto.getId())){
+		//if ((produto.getId() != null)&&(!"".equals(produto.getId()))&&(0 != produto.getId().intValue())){
 			predicate = cb.and(predicate, cb.equal(raiz.get("id"), produto.getId()));
 		}
 		if ((produto.getNome() != null)&&(!"".equals(produto.getNome()))){

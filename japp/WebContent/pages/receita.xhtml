@@ -67,7 +67,7 @@
 		                    </h:panelGroup> 
 		                    
 		                    <h:outputLabel value="Calorias" for="caloriasRec" />
-						    <h:inputText id="caloriasRec" value="#{receitaMb.receitaProduto.quantidade}" title="Calorias da receita" disabled="true" size="25"/>                 
+						    <h:inputText id="caloriasRec" value="#{receitaMb.receita.calorias}" title="Calorias da receita" disabled="true" size="25"/>                 
 		                </h:panelGrid>
 		                <hr/>
 		                <p:dataTable value="#{receitaMb.listReceita}" var="us" style="width:100%" id="tbGrupos">
@@ -81,7 +81,7 @@
 			    			</p:column>
 			    			<p:column>
 			    				<f:facet name="header">Resumo</f:facet>
-			    				<h:outputText value="#{us.descricao}" />
+			    				<h:outputText value="#{us.resumo}" />
 			    			</p:column>
 			    			<p:column>
 			    				<f:facet name="header">Ação</f:facet>
@@ -94,9 +94,9 @@
 					<p:panel header="Detalhe" style="width:99%; height: 95%; ">
 						<h:panelGroup id="botoesPanelDetalhe" layout="block">		      			
 		      				<table><tr><td width="20px">
-		      				<h:commandLink action="#{receitaMb.limparDetalhe()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
+		      				<h:commandLink action="#{receitaMb.limparCamposIngredientes()}" value="" ><h:graphicImage value="/css/img/limpar.png" width="20px" height="20px" /></h:commandLink>
 		      				</td><td width="20px">
-		      				<h:commandLink action="#{receitaMb.salvarDetalhe()}" value="" ><h:graphicImage value="/css/img/adicionar.png" width="20px" height="20px" /></h:commandLink>      				
+		      				<h:commandLink action="#{receitaMb.adicionarIngrediente()}" value="" ><h:graphicImage value="/css/img/adicionar.png" width="20px" height="20px" /></h:commandLink>      				
 		      				</td></tr></table>		      				
 			      		</h:panelGroup>
 									
@@ -129,11 +129,14 @@
 										<hr/>
 						                <h:panelGrid columns="6" styleClass="gridForm"> 
 						                  
-						                    <h:outputLabel value="Comensal" for="qtd" />
-						                    <h:inputText id="qtd" value="#{receitaMb.receitaProduto.comensal}" size="25"/>
+						                  	<h:outputLabel value="Quantidade" for="qtd" />
+						                    <h:inputText id="qtd" value="#{receitaMb.receitaProduto.quantidade}" size="25"/>
+						                  
+						                    <h:outputLabel value="Comensal" for="cms" />
+						                    <h:inputText id="cms" value="#{receitaMb.receitaProduto.comensal}" size="25"/>
 						                    <h:outputLabel value="Percapta" for="percap" />
 						                    <h:inputText id="percap" value="#{receitaMb.receitaProduto.percapta}" size="25"/>
-						                    <h:panelGroup></h:panelGroup><h:panelGroup></h:panelGroup>
+						                    
 						                    <h:outputLabel value="Total" for="total" />
 						                    <h:inputText id="total" value="#{receitaMb.receitaProduto.total}" size="25"/>
 						                    <h:outputLabel value="Custo" for="custo" />
@@ -145,23 +148,33 @@
 						                    <h:outputLabel value="Obs.:" for="obsReceita" />
 						                    <h:inputText id="obsReceita" value="#{receitaMb.receitaProduto.observacao}" title="Observação" size="150"/>						                                        
 						                </h:panelGrid>						                
-										<p:dataTable value="#{tipoGrupoProdutoMb.listGrupoProduto}" var="us" style="width:100%" id="tbIngredientes" >
-							    			<p:column>
-							    				<f:facet name="header">id</f:facet>
-							    				<h:outputText value="#{us.id}" />
-							    			</p:column>
-							    			<p:column>
+										<p:dataTable value="#{receitaMb.listReceitaProduto}" var="us" style="width:100%" id="tbIngredientes" >
+							    			<p:column width="15%">
 							    				<f:facet name="header">Produto</f:facet>
-							    				<h:outputText value="#{us.nome}" />
+							    				<h:outputText value="#{us.produto.nome}" />
 							    			</p:column>
-							    			<p:column>
+							    			<p:column width="10%">
 							    				<f:facet name="header">Quantidade</f:facet>
-							    				<h:outputText value="#{us.descricao}" />
-							    			</p:column>					    			
-							    			<p:column>
+							    				<h:outputText value="#{us.quantidade}" />
+							    			</p:column>
+							    			
+							    			<p:column width="10%">
+							    				<f:facet name="header">Comensal</f:facet>
+							    				<h:outputText value="#{us.comensal}" />
+							    			</p:column>
+							    			<p:column width="10%">
+							    				<f:facet name="header">Percapta</f:facet>
+							    				<h:outputText value="#{us.percapta}" />
+							    			</p:column>
+							    			<p:column width="10%">
+							    				<f:facet name="header">Total</f:facet>
+							    				<h:outputText value="#{us.total}" />
+							    			</p:column>
+							    								    			
+							    			<p:column width="5%">
 							    				<f:facet name="header">Ação</f:facet>
-							    				<center><h:commandLink action="#{receitaMb.editarProduto(us)}" value="" title="Editar dados deste registro">
-							    					<h:graphicImage value="/css/img/edit.png" width="20px" height="20px" /></h:commandLink></center>
+							    				<center><h:commandLink action="#{receitaMb.removerProdutoReceita(us)}" value="" title="Remover produto da receita">
+							    					<h:graphicImage value="/css/img/excluir.png" width="20px" height="20px" /></h:commandLink></center>
 							    			</p:column>
 							    		</p:dataTable>
 						    		</fieldset>

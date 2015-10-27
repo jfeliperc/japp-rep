@@ -13,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.module.ejb.contract.IProdutoEjb;
 import com.module.ejb.contract.IReceitaEjb;
 import com.module.ejb.contract.IServicoEjb;
+import com.module.faces.geral.UtilsJapp;
 import com.module.jpa.model.GrupoProduto;
 import com.module.jpa.model.Produto;
 import com.module.jpa.model.Receita;
@@ -67,7 +68,7 @@ public class ReceitaMb extends BaseMb{
 		this.produto = new Produto();
 		this.produto.setId(null);
 		
-		this.listProduto = new ArrayList<Produto>();
+		this.listProduto = produtoEjb.buscarAllProdutos(); // new ArrayList<Produto>();
 		this.itemsTipoProduto = produtoEjb.buscarAllTipoProduto();
 		this.itemsGrupoProduto = produtoEjb.buscarAllGrupoProduto();
 		this.itemsTipoReceita = receitaEjb.buscarAllTipoReceitas();
@@ -86,18 +87,7 @@ public class ReceitaMb extends BaseMb{
 	public void buscar(){
 				
 		try {
-			this.produto.setEmpresa(getEmpresaAux());
-			this.listProduto = produtoEjb.listarProdutos(this.produto);
 			
-			if ((this.listProduto != null)&&(!this.listProduto.isEmpty())&&(this.listProduto.size() == 1)){
-				this.produto = this.listProduto.get(0);
-				this.tipoProdutoAux = this.produto.getTipoProduto();
-				this.grupoProdutoAux = this.produto.getGrupoProduto();
-				empresaAux = this.produto.getEmpresa();
-				this.listProduto.clear();
-			}else{
-				setMostrarLista((this.listProduto != null)&&(!this.listProduto.isEmpty()));
-			}
 			
 		} catch (Exception e) {
 			addMsgError("Erro ao buscar pessoa(s) - "+e.getMessage());
@@ -106,20 +96,17 @@ public class ReceitaMb extends BaseMb{
 	
 	public void salvar(){
 		if (validarSalvar()){
-			this.produto = this.produtoEjb.cadastrarProduto(this.produto);
+			
 		}
 	}
 	
 	private boolean validarSalvar() {
 		boolean ret = true;
 		if (StringUtils.isBlank(this.produto.getNome())){
-			addMsgError("O campo Nome é obrigatório");
+			addMsgError("O campo Nome ï¿½ obrigatï¿½rio");
 			ret = false;
 		}
-		if (StringUtils.isBlank(this.produto.getDescricao())){
-			addMsgError("O campo Descrição é obrigatório");
-			ret = false;
-		}
+		
 		return ret;
 	}
 
@@ -127,8 +114,8 @@ public class ReceitaMb extends BaseMb{
 		this.receita = us;
 	}
 	
-	public void editarProduto(ReceitaProduto prod){
-		this.produto = prod.getProduto();
+	public void removerProdutoReceita(ReceitaProduto prod){
+		this.listReceitaProduto.remove(prod);
 	}
 	
 	public void excluir(){
@@ -136,12 +123,21 @@ public class ReceitaMb extends BaseMb{
 		buscar();
 	}
 	
-	public void limparDetalhe(){
+	public void limparCamposIngredientes(){
 		
 	}
 	
-	public void salvarDetalhe(){
+	public void adicionarIngrediente(){
+		if (this.listReceitaProduto == null){
+			this.listReceitaProduto = new ArrayList<ReceitaProduto>();
+		}
 		
+		if (!UtilsJapp.isNullOrZero(this.produto.getId())){
+			this.receitaProduto.setProduto( produtoEjb.buscarProduto(this.produto));
+			this.listReceitaProduto.add(this.receitaProduto);
+
+			this.receitaProduto = new ReceitaProduto();		
+		}
 	}
 	
 	public String irCadastroTipoReceita(){

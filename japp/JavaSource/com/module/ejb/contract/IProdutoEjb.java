@@ -27,5 +27,7 @@ public interface IProdutoEjb {
 	public List<GrupoProduto> buscarAllGrupoProduto();
 
 	public List<TipoProduto> buscarAllTipoProduto();
+
+	public List<Produto> buscarAllProdutos();
 	
 }

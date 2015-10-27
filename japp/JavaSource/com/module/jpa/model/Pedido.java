@@ -12,13 +12,27 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Pedido.findAll", query="SELECT p FROM Pedido p")
+@NamedQueries({
+    @NamedQuery(name = "Pedido.findAll", query = "SELECT p FROM Pedido p"),
+    @NamedQuery(name = "Pedido.findById", query = "SELECT p FROM Pedido p WHERE p.id = :id"),
+    @NamedQuery(name = "Pedido.findByDatapedido", query = "SELECT p FROM Pedido p WHERE p.datapedido = :datapedido"),
+    @NamedQuery(name = "Pedido.findByDataprevista", query = "SELECT p FROM Pedido p WHERE p.dataprevista = :dataprevista"),
+    @NamedQuery(name = "Pedido.findByDataenvio", query = "SELECT p FROM Pedido p WHERE p.dataenvio = :dataenvio"),
+    @NamedQuery(name = "Pedido.findByEnviovia", query = "SELECT p FROM Pedido p WHERE p.enviovia = :enviovia"),
+    @NamedQuery(name = "Pedido.findByValorfrete", query = "SELECT p FROM Pedido p WHERE p.valorfrete = :valorfrete"),
+    @NamedQuery(name = "Pedido.findByValorpedido", query = "SELECT p FROM Pedido p WHERE p.valorpedido = :valorpedido"),
+    @NamedQuery(name = "Pedido.findByDestnome", query = "SELECT p FROM Pedido p WHERE p.destnome = :destnome"),
+    @NamedQuery(name = "Pedido.findByDestendereco", query = "SELECT p FROM Pedido p WHERE p.destendereco = :destendereco"),
+    @NamedQuery(name = "Pedido.findByDestcidade", query = "SELECT p FROM Pedido p WHERE p.destcidade = :destcidade"),
+    @NamedQuery(name = "Pedido.findByDestestado", query = "SELECT p FROM Pedido p WHERE p.destestado = :destestado"),
+    @NamedQuery(name = "Pedido.findByDestcaixapostal", query = "SELECT p FROM Pedido p WHERE p.destcaixapostal = :destcaixapostal"),
+    @NamedQuery(name = "Pedido.findByDestpais", query = "SELECT p FROM Pedido p WHERE p.destpais = :destpais")})
 public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Integer id;
 
 	@Temporal(TemporalType.DATE)
 	private Date dataenvio;
@@ -41,7 +55,7 @@ public class Pedido implements Serializable {
 
 	private String destpais;
 
-	private int enviovia;
+	private Integer enviovia;
 
 	private BigDecimal valorfrete;
 
@@ -60,11 +74,11 @@ public class Pedido implements Serializable {
 	public Pedido() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -140,11 +154,11 @@ public class Pedido implements Serializable {
 		this.destpais = destpais;
 	}
 
-	public int getEnviovia() {
+	public Integer getEnviovia() {
 		return this.enviovia;
 	}
 
-	public void setEnviovia(int enviovia) {
+	public void setEnviovia(Integer enviovia) {
 		this.enviovia = enviovia;
 	}
 

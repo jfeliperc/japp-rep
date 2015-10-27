@@ -152,5 +152,12 @@ public class ProdutoEjb implements IProdutoEjb {
 		return ret;
 	}
 
+	@Override
+	public List<Produto> buscarAllProdutos() {
+		ProdutoDao dao = new ProdutoDao();
+		List<Produto> ret = dao.getAll();
+		return ret;
+	}
+
 
 }
