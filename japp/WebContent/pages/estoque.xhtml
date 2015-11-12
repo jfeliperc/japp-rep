@@ -85,48 +85,44 @@
 	                    	
 					</h:panelGrid>
 			      		                
-	                <p:dataTable value="#{estoqueMb.listEstoque}" var="us" style="width:100%" id="tbEstoque">
-			    			<p:column>
+	                <p:dataTable value="#{estoqueMb.listEstoque}" var="us" style="width:1500px" id="tbEstoque">
+			    			<p:column width="5%">
 			    				<f:facet name="header">Id Produto</f:facet>
 			    				<h:outputText value="#{us.produto.id}" />
 			    			</p:column>
-			    			<p:column>
+			    			<p:column width="20%">
 			    				<f:facet name="header">Produto</f:facet>
 			    				<h:outputText value="#{us.produto.nome}" />
 			    			</p:column>
-			    			<p:column>
+			    			<p:column width="10%">
 			    				<f:facet name="header">Medida</f:facet>
 			    				<h:outputText value="#{us.produto.medida}" />
 			    			</p:column>
-			    			<p:column>
+			    			<p:column width="10%">
 			    				<f:facet name="header">Quantidade</f:facet>
 			    				<h:outputText value="#{us.quantidade}" />
 			    			</p:column>
-			    			<p:column>
+			    			<p:column width="10%">
 			    				<f:facet name="header">Qtd. Mínima</f:facet>
 			    				<h:outputText value="#{us.produto.qtdMinima}" />
 			    			</p:column>
-			    			<p:column>
+			    			<p:column width="15%">
 			    				<f:facet name="header">Data Contagem</f:facet>
 			    				<h:outputText value="#{us.datacontagem}" >
 			                        <f:convertDateTime pattern="dd/MM/yyyy" />
 			                    </h:outputText>
 			    			</p:column>
-			    			<p:column>
+			    			<p:column width="15%">
 			    				<f:facet name="header">Ação</f:facet>
 			    				<center>
-			    					<h:commandLink action="#{receitaMb.editar(us)}" value="" title="Implantar quantidade">
-			    						<h:graphicImage value="/css/img/db_insert.png" width="30px" height="30px" /></h:commandLink>
-			    					
-			    					<h:commandLink action="#{receitaMb.editar(us)}" value="" title="Transferência Filiais">
-			    						<h:graphicImage value="/css/img/transferencia.png" width="30px" height="30px" /></h:commandLink>
-			    					
-			    					<h:commandLink action="#{receitaMb.editar(us)}" value="" title="Solicitar compra">
-			    						<h:graphicImage value="/css/img/carrinho.png" width="30px" height="30px" /></h:commandLink>
-			    						
-			    					<h:commandLink action="#{receitaMb.editar(us)}" value="" title="Lançar perda">
-			    						<h:graphicImage value="/css/img/lixeira.png" width="30px" height="30px" /></h:commandLink>		
-			    						
+			    					<p:panelMenu style="width:150px">
+			    						<p:submenu label="Opções">
+								            <p:menuitem value="Implantação" action="#{estoqueMb.buscar()}" oncomplete="PF('dlg_prod_impl_est').show();"/>
+								            <p:menuitem value="Transferência" action="#{estoqueMb.buscar()}" oncomplete="PF('dlg_prod_impl_est').show();"/>
+								            <p:menuitem value="Compra" action="#{estoqueMb.buscar()}" oncomplete="PF('dlg_prod_impl_est').show();"/>
+								            <p:menuitem value="Perda" action="#{estoqueMb.buscar()}" oncomplete="PF('dlg_prod_impl_est').show();"/>
+								        </p:submenu>
+			    					</p:panelMenu>				    						
 			    				</center>
 			    			</p:column>
 			    		</p:dataTable>  
@@ -136,6 +132,11 @@
 				</div>
 				</td></tr></table>	
 		    </p:panel>
+		    
+		    <ui:include src="modal/produto_impl_est.xhtml"/>
+		    <ui:include src="modal/produto_solic_compra.xhtml"/>
+		    <ui:include src="modal/produto_transf.xhtml"/>
+		    	
 		    		    
 	    </h:form>
     </ui:define>
