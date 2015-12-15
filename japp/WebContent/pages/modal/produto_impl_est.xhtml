@@ -6,10 +6,21 @@
 	  xmlns:p="http://primefaces.org/ui">
 
 	<ui:composition>
-		<p:dialog width="400px" height="350px" id="dlg_prod_impl_est" widgetVar="dlg_prod_impl_est"
+		<p:dialog width="450px" height="350px" id="dlg_prod_impl_est" widgetVar="dlg_prod_impl_est"
 			modal="true" resizable="true" showEffect="clip">
 			<p:panel>
-			
+				<h:panelGrid columns="2" styleClass="gridForm" cellspacing="5px" cellpadding="5">
+                    <h:outputLabel value="Id" for="idtpSrv" />
+                    <h:inputText id="idtpSrv" value="#{servicoMb.servico.id}" title="Id" required="false"/>
+                    
+                    <h:outputLabel value="Nome" for="nometpSrv" />
+                    <h:inputText id="nometpSrv" value="#{servicoMb.servico.nome}" title="Nome" required="false" size="70"/>
+                    
+                    <h:outputLabel value="Descrição" for="descricaotpSrv" />
+                    <h:inputText id="descricaotpSrv" value="#{servicoMb.servico.descricao}" title="Descrição" required="false" size="80"/>
+                                        
+                </h:panelGrid>
+                <br/><br/>		
 			</p:panel>
 		</p:dialog>	
 	</ui:composition>
